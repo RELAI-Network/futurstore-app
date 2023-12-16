@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../components/search.dart';
 import 'apps.dart';
 import 'games.dart';
 
@@ -17,8 +18,8 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
 
 
   final pages = const [
-    GamesScreen(),
     AppsScreen(),
+    GamesScreen(),
   ];
 
   @override
@@ -38,20 +39,24 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
   Widget build(BuildContext context) {
     return SafeArea(child:Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: const Text("AIR STORE HOME"),
+        preferredSize: Size(MediaQuery.of(context).size.width ,100.0),
+        child: Column(
+          children: [
+            Search()
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.app_shortcut, size: 25),
-              label: "Apps",
+              label: AppsScreen.label,
               activeIcon: Icon(Icons.app_shortcut, size: 25),
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(Icons.sports_esports_outlined, size: 20),
-              label: "Games",
+              label: GamesScreen.label,
               activeIcon: Icon(Icons.sports_esports_outlined, size: 25),
               backgroundColor: Colors.white),
         ],

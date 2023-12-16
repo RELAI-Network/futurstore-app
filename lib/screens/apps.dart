@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppsScreen extends StatefulWidget {
   const AppsScreen({super.key});
+  static const String label = "Apps";
 
   @override
   State<AppsScreen> createState() => _AppsScreenState();
