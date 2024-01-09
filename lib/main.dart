@@ -1,5 +1,5 @@
-import 'package:airstore/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:futurstore/screens/home.dart';
 import 'package:polkadart/polkadart.dart';
 import 'package:polkadart/provider.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'AIR STORE',
+      title: 'FuturStore',
       home: HomeScreen(),
     );
   }

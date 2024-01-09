@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/search.dart';
+import '../utils/substrate_helpers.dart';
 import 'apps.dart';
 import 'games.dart';
 
@@ -40,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
     return SafeArea(child:Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width ,100.0),
-        child: Column(
-          children: [
+        child: const Column(
+          children:  [
             Search()
           ],
         ),
