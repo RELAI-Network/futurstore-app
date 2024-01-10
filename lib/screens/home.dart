@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../components/search.dart';
-import '../utils/substrate_helpers.dart';
 import 'apps.dart';
 import 'games.dart';
 
