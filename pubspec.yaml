@@ -17,6 +17,7 @@ dependencies:
   polkadart: ^0.2.6
   bip39: ^1.0.6
   polkadart_keyring: ^0.2.1
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../components/search.dart';
-import 'apps.dart';
-import 'games.dart';
+import 'apps_screen.dart';
+import 'games_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -64,8 +64,10 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
           setState(() {
             currentIndex = index;
           });
+          print("Current Index $currentIndex");
         },
       ),
+      body:  pages[currentIndex],
     ));
   }
 }

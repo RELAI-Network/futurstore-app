@@ -11,6 +11,6 @@ class GamesScreen extends StatefulWidget {
 class _GamesScreenState extends State<GamesScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Apps"));
+    return const Center(child: Text("Games"));
   }
 }

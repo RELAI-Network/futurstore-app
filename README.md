@@ -1,3 +1,3 @@
-# futurstore-app 
-Mobile app client for accessing the AIR Store Decentralized marketplace 📱🎮
+# Futur Store App 📱🎮
 
+Flutter Mobile app client for accessing the Futur Store Decentralized marketplace.

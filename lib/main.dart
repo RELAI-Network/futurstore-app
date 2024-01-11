@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futurstore/screens/home.dart';
+import 'package:futurstore/screens/home_screen.dart';
 import 'package:polkadart/polkadart.dart';
 import 'package:polkadart/provider.dart';
 
@@ -10,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
