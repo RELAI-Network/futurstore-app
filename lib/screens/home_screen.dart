@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../components/search.dart';
 import 'apps_screen.dart';
 import 'games_screen.dart';
+import 'books_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
   final pages = const [
     AppsScreen(),
     GamesScreen(),
+    BooksScreen(),
   ];
 
   @override
@@ -50,14 +52,19 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
         currentIndex: currentIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.app_shortcut, size: 25),
+              icon: Icon(Icons.app_shortcut, size: 30),
               label: AppsScreen.label,
-              activeIcon: Icon(Icons.app_shortcut, size: 25),
+              activeIcon: Icon(Icons.app_shortcut, size: 30),
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.sports_esports_outlined, size: 20),
+              icon: Icon(Icons.sports_esports_outlined, size: 30),
               label: GamesScreen.label,
-              activeIcon: Icon(Icons.sports_esports_outlined, size: 25),
+              activeIcon: Icon(Icons.sports_esports_outlined, size: 30),
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.book_rounded, size: 30),
+              label: BooksScreen.label,
+              activeIcon: Icon(Icons.book_outlined, size: 30),
               backgroundColor: Colors.white),
         ],
         onTap: (index) {
