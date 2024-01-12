@@ -12,7 +12,7 @@ class AppsScreen extends StatefulWidget {
 }
 
 class _AppsScreenState extends State<AppsScreen> {
-  List<AppModel> applist = testAppList;
+  List<AppModel> applist = testAppsList;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _AppsScreenState extends State<AppsScreen> {
       crossAxisCount: 3,
       children: applist.map((a) {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(2.0),
           child: AppCard(appData: a,)
         );
       }).toList(),

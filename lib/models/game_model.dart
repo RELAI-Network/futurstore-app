@@ -4,6 +4,8 @@ class GameModel {
   String? description;
   GameCategory? category;
   String? gameSize;
+  bool? online;
+
 
   GameModel({
     this.logoUrl,
@@ -11,6 +13,7 @@ class GameModel {
     this.description,
     this.category,
     this.gameSize,
+    this.online,
   });
 }
 
