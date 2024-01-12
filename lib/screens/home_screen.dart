@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/search.dart';
+import '../components/app_drawer.dart';
 import 'apps_screen.dart';
 import 'games_screen.dart';
 import 'books_screen.dart';
@@ -48,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
           ],
         ),
       ),
+      drawer: AppDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         items: const <BottomNavigationBarItem>[
