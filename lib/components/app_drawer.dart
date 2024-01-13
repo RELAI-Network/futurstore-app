@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/wallet_generator_screen.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
@@ -26,40 +27,43 @@ class _AppDrawerState extends State<AppDrawer> {
             FlutterLogo(
               size: 70,
             ),
-            Text('FuturStore',
-              style: TextStyle(
-                fontSize: 28,
-                letterSpacing: 3
-              ),
+            Text(
+              'FuturStore',
+              style: TextStyle(fontSize: 28, letterSpacing: 3),
             )
           ],
         ),
-              SizedBox(
-                height: 4,
-              ),
-              Divider(thickness: 1),
-
+        SizedBox(
+          height: 4,
+        ),
+        Divider(thickness: 1),
         ListTile(
           onTap: () {},
-          leading: Icon(Icons.apps ,size: 20, color: Colors.black54),
+          leading: Icon(Icons.apps, size: 20, color: Colors.black54),
           title: Text('My Apps and Games'),
         ),
         ListTile(
-          onTap: () {},
-          leading: Icon(Icons.wallet,size: 20, color: Colors.black54),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => WalletGeneratorScreen(),
+              ),
+            );
+          },
+          leading: Icon(Icons.wallet, size: 20, color: Colors.black54),
           title: Text('Manage Wallets'),
         ),
         ListTile(
           onTap: () {},
-          leading: Icon(Icons.settings,size: 20, color: Colors.black54),
+          leading: Icon(Icons.settings, size: 20, color: Colors.black54),
           title: Text('Settings'),
         ),
         ListTile(
           onTap: () {},
-          leading: Icon(Icons.language,size: 20, color: Colors.black54),
+          leading: Icon(Icons.language, size: 20, color: Colors.black54),
           title: Text('Language'),
         ),
-
       ]),
     )));
   }

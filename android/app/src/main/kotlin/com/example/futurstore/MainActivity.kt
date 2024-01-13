@@ -1,4 +1,4 @@
-package com.example.airstore
+package com.example.futurstore
 
 import io.flutter.embedding.android.FlutterActivity
 

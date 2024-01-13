@@ -1,6 +1,6 @@
 {
-    "name": "airstore",
-    "short_name": "airstore",
+    "name": "futurstore",
+    "short_name": "futurstore",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
