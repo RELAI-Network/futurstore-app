@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AppSection extends StatefulWidget {
   const AppSection({super.key});
 
@@ -8,5 +10,7 @@ class AppSection extends StatefulWidget {
 class _AppSectionState extends State<AppSection> {
   @override
   Widget build(BuildContext context) {
+
+    return Text("App Section");
   }
 }

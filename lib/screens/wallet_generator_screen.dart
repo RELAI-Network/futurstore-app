@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../substrate/substrate_wallet.dart';
+import '../utils/utils.dart';
 
 
 class WalletGeneratorScreen extends StatefulWidget {
@@ -13,8 +14,10 @@ class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
 
   void _generateWallet() {
     _wallet.init();
-    setState(() {});
     _wallet.retrieveMnemo("wallet");
+
+    print("### ### ### Public Key is : ${_wallet.getKeyPair()?.publicKey}");
+
   }
 
   @override
@@ -32,6 +35,14 @@ class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
             ElevatedButton(
               onPressed: _generateWallet,
               child: Text('Generate Wallet'),
+            ),
+            SizedBox(height: 20,),
+
+            ElevatedButton(
+              onPressed:() {
+                Utils.testConnection();
+              },
+              child: Text('Test Connection'),
             ),
           ],
         ),
