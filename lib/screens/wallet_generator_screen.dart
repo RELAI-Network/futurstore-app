@@ -11,7 +11,8 @@ class WalletGeneratorScreen extends StatefulWidget {
 
 class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
 
-  SubstrateWallet _wallet = SubstrateWallet();
+  SubstrateWallet _wallet = SubstrateWallet.instance;
+
   TextEditingController _mnemonicController = TextEditingController();
 
   @override
