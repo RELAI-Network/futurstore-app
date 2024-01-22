@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:futurstore/screens/home_screen.dart';
-import 'package:polkadart/polkadart.dart';
-import 'package:polkadart/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
