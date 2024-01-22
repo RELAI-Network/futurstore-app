@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../substrate/substrate_wallet.dart';
+import '../utils/constants.dart';
 import '../utils/utils.dart';
 
 
@@ -11,25 +12,34 @@ class WalletGeneratorScreen extends StatefulWidget {
 class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
 
   SubstrateWallet _wallet = SubstrateWallet();
-
-  void _generateWallet() {
-    _wallet.init();
-    _wallet.retrieveMnemo("wallet");
-
-    print("### ### ### Public Key is : ${_wallet.getKeyPair()?.publicKey}");
-
-  }
+  TextEditingController _mnemonicController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wallet Generator'),
+        title: Text('Wallet Management'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+
+            Padding(
+              padding: const EdgeInsets.only(left:28, right: 28),
+              child: TextField(
+                controller: _mnemonicController,
+                keyboardType: TextInputType.multiline,
+                minLines: 1,
+                maxLines: 5,
+                decoration: InputDecoration(hintText: "Enter Mnemonic"),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: _connectExistingWallet,
+              child: Text('Connect Existing Wallet'),
+            ),
+            SizedBox(height: 20,),
             if (_wallet.getMnemonic() != null) Text('Mnemonic: ${_wallet.getMnemonic()}'),
             if (_wallet.getKeyPair()?.publicKey != null) Text('Public Key: ${_wallet.getKeyPair()?.publicKey}'),
             ElevatedButton(
@@ -37,7 +47,6 @@ class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
               child: Text('Generate Wallet'),
             ),
             SizedBox(height: 20,),
-
             ElevatedButton(
               onPressed:() {
                 Utils.testConnection();
@@ -49,4 +58,35 @@ class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
       ),
     );
   }
+
+  void _generateWallet() {
+    _wallet.init();
+    _wallet.retrieveMnemo("wallet");
+  }
+
+  void _connectExistingWallet(){
+    String mnemonic = _mnemonicController.text;
+    String? validationError = validateMnemonic(mnemonic);
+    if (validationError != null) {
+      // Display the error message to the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(validationError)),
+      );
+      return;
+    }
+    // Restore the account using the mnemonic
+    _wallet.restoreWalletFromMnemonic(mnemonic);
+
+    // Store the restored account in the wallet
+    _wallet.storeMnemo(WALLET_PREFIX);
+  }
+
+  String? validateMnemonic(String mnemonic) {
+    List<String> words = mnemonic.split(' ');
+    if (words.length != 12 && words.length != 24) {
+      return 'Mnemonic must be 12 or 24 words';
+    }
+    return null;
+  }
+
 }

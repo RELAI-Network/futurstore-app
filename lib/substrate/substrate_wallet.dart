@@ -1,8 +1,8 @@
 import 'package:bip39/bip39.dart' as bip39;
+import 'package:futurstore/utils/constants.dart';
 import 'package:polkadart_keyring/polkadart_keyring.dart';
 import 'package:polkadart/polkadart.dart' show Provider, StateApi;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
 
 
 class SubstrateWallet {
@@ -20,7 +20,7 @@ class SubstrateWallet {
   Future<void> init() async {
     _generateMnemonic();
     await _generateKeyPair();
-    storeMnemo("wallet");
+    storeMnemo(WALLET_PREFIX);
   }
 
   /// Generate Keypair from Mnemonic
@@ -46,15 +46,17 @@ class SubstrateWallet {
     storage.write(key: key, value: _mnemonic);
   }
 
-  retrieveMnemo(String key) async {
+   retrieveMnemo(String key) async {
     AndroidOptions _getAndroidOptions() => const AndroidOptions(
       encryptedSharedPreferences: true,
     );
     final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
-    String? mnemo = await storage.read(key: key);
-    print("### ### ### Retrieved Mnemo is : $mnemo");
+    _mnemonic = await storage.read(key: key);
   }
 
-
+  Future<void> restoreWalletFromMnemonic(String mnemonic) async {
+    _mnemonic = mnemonic;
+    _keyPair = await KeyPair.fromMnemonic(mnemonic);
+  }
 
 }
