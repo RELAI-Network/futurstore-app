@@ -37,9 +37,10 @@ class SubstrateWallet {
   /// Generate Keypair from Mnemonic
   Future<void> _generateKeyPair() async {
     var keyring = Keyring();
-    keyring.ss58Format = 42; // Use Substrate's default address format
-    _keyPair = await keyring.createKeyPairFromMnemonic(_mnemonic!);
+    //keyring.ss58Format = 42; // Use Substrate's default address format
+   // _keyPair = await keyring.createKeyPairFromMnemonic(_mnemonic!);
   }
+
 
   String? getMnemonic() {
     return _mnemonic;
@@ -67,7 +68,7 @@ class SubstrateWallet {
 
   Future<void> restoreWalletFromMnemonic(String mnemonic) async {
     _mnemonic = mnemonic;
-    _keyPair = await KeyPair.fromMnemonic(mnemonic);
+    //_keyPair = await KeyPair.fromMnemonic(mnemonic);
     print("######## Wallet Successfuly restored ${_keyPair!.address}");
   }
 }

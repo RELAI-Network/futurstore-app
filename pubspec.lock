@@ -177,6 +177,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.1"
+  edwards25519:
+    dependency: transitive
+    description:
+      name: edwards25519
+      sha256: "48e4678136e362bed9790dfb716ebe8e2f34f026bdb900b058214620672c6273"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   equatable:
     dependency: transitive
     description:
@@ -416,6 +424,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.0"
+  merlin:
+    dependency: transitive
+    description:
+      name: merlin
+      sha256: c6b5d5bc70880aa7639686db66480d0be4b89da843b5cab20550610507da2540
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   meta:
     dependency: transitive
     description:
@@ -516,26 +532,26 @@ packages:
     dependency: "direct main"
     description:
       name: polkadart
-      sha256: "658040a728a21d9a27b126fd4f1356fede8803435c1fc02aec71260172a64278"
+      sha256: f3a9e6c7c0f45bf49ac8ee277bdb8fe0ef78d3900d9b3eb0c94ef931f4ea694d
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.6"
+    version: "0.3.2"
   polkadart_cli:
     dependency: "direct main"
     description:
       name: polkadart_cli
-      sha256: b9635ab8e95b3a0bcad86a222393f0a491c2ee62ea8b46b7fe7ceba72a9b0fd5
+      sha256: "58e9e33b5363eae93ee553fa5e28622858cffeeeaba27937ae4a716844a425e8"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.4"
+    version: "0.3.2"
   polkadart_keyring:
     dependency: "direct main"
     description:
       name: polkadart_keyring
-      sha256: ba568c22f3ff2a77c35fe0d53845212c1a433f99645e286550d1889dbb437d3c
+      sha256: "9c5c6bd24bcf6346989c214dcbaa78085c1d92336927d06ad5b430cc8af0ac0c"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.1"
+    version: "0.3.0"
   polkadart_scale_codec:
     dependency: transitive
     description:
@@ -576,6 +592,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.0"
+  ristretto255:
+    dependency: transitive
+    description:
+      name: ristretto255
+      sha256: "3824d6786146dfb3b0783f305b714d36fa213c0d08e0ba864267baa0ede51cdd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -653,6 +677,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.0"
+  sr25519:
+    dependency: transitive
+    description:
+      name: sr25519
+      sha256: b26343af32bc934d86fac7e3f6dda42770db3ffafa79db564c49db2f7ade4ac9
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   ss58:
     dependency: transitive
     description:
@@ -685,6 +717,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  strobe:
+    dependency: transitive
+    description:
+      name: strobe
+      sha256: a23adf7d305e45c6f210270aa925d8b404819144e29f7c5257a67281b63e0887
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   substrate_bip39:
     dependency: transitive
     description:

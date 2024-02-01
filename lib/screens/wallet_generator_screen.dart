@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futurstore/substrate/transactions.dart';
 import '../substrate/substrate_wallet.dart';
 import '../utils/constants.dart';
 import '../utils/utils.dart';
@@ -53,6 +54,14 @@ class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
                 Utils.testConnection();
               },
               child: Text('Test Connection'),
+            ),
+
+            ElevatedButton(
+              onPressed:() {
+               var txs = Transactions();
+               txs.transfer();
+              },
+              child: Text('Get Peers'),
             ),
           ],
         ),
