@@ -4,77 +4,131 @@ import '../substrate/substrate_wallet.dart';
 import '../utils/constants.dart';
 import '../utils/utils.dart';
 
-
 class WalletGeneratorScreen extends StatefulWidget {
   @override
   _WalletGeneratorScreenState createState() => _WalletGeneratorScreenState();
 }
 
 class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
+  final SubstrateWallet _wallet = SubstrateWallet.instance;
+  final TextEditingController _mnemonicController = TextEditingController();
+  bool _isLoading = false; // Assume wallet is initially not loading
 
-  SubstrateWallet _wallet = SubstrateWallet.instance;
-
-  TextEditingController _mnemonicController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _wallet.retrieveMnemo(WALLET_PREFIX).then((_) {
+      setState(() {});
+    }).catchError((error) {
+      print("Mnemo removed or not created yet");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wallet Management'),
-      ),
-      body: Center(
+        title:  Text("Wallet Management"),
+        actions: [
+          Container(
+            width: 18,
+            height: 18,
+            decoration: BoxDecoration(
+              color: _wallet.isConnected ? Colors.green : Colors.red,
+              shape: BoxShape.circle,
+            ),
+          ),
+        ],
+
+    ),
+      body:  Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-
-            Padding(
-              padding: const EdgeInsets.only(left:28, right: 28),
-              child: TextField(
-                controller: _mnemonicController,
-                keyboardType: TextInputType.multiline,
-                minLines: 1,
-                maxLines: 5,
-                decoration: InputDecoration(hintText: "Enter Mnemonic"),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              if (_isLoading) const CircularProgressIndicator(),
+              if (_wallet.isConnected)
+                Text('Wallet Address: ${_wallet.getKeyPair()?.address}'),
+              SizedBox(height: 12,),
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left: 28, right: 28),
+                child: TextField(
+                  controller: _mnemonicController,
+                  keyboardType: TextInputType.multiline,
+                  minLines: 1,
+                  maxLines: 5,
+                  decoration: InputDecoration(hintText: "Enter Mnemonic"),
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: _connectExistingWallet,
-              child: Text('Connect Existing Wallet'),
-            ),
-            SizedBox(height: 20,),
-            if (_wallet.getMnemonic() != null) Text('Mnemonic: ${_wallet.getMnemonic()}'),
-            if (_wallet.getKeyPair()?.publicKey != null) Text('Public Key: ${_wallet.getKeyPair()?.publicKey}'),
-            ElevatedButton(
-              onPressed: _generateWallet,
-              child: Text('Generate Wallet'),
-            ),
-            SizedBox(height: 20,),
-            ElevatedButton(
-              onPressed:() {
-                Utils.testConnection();
-              },
-              child: Text('Test Connection'),
-            ),
+              ElevatedButton(
+                onPressed: _connectWalletFromMnemo,
+                child: Text('Connect Wallet from Mnemonic'),
+              ),
+              const Divider(),
+              ElevatedButton(
+                onPressed: _connectStoredWallet,
+                child: Text('Connect Stored Wallet'),
+              ),
+              const Divider(),
 
-            ElevatedButton(
-              onPressed:() {
-               var txs = Transactions();
-               txs.transfer();
-              },
-              child: Text('Get Peers'),
-            ),
-          ],
-        ),
+              ElevatedButton(
+                onPressed: _generateWallet,
+                child: Text('Generate Wallet'),
+              ),
+              const Divider(),
+              ElevatedButton(
+                onPressed: () {
+                  Utils.testConnection();
+                },
+                child: Text('Test Connection'),
+              ),
+              const Divider(),
+              ElevatedButton(
+                onPressed: () {
+                disconnectWallet();
+                },
+                child: Text('Disconnect'),
+              ),
+            ],
+          ),
       ),
     );
   }
 
-  void _generateWallet() {
-    _wallet.init();
-    _wallet.retrieveMnemo("wallet");
+  void _generateWallet() async {
+    setState(() {
+      _isLoading = true;
+    });
+    await _wallet.init();
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    print("############----${_wallet.getMnemonic()}");
+
   }
 
-  void _connectExistingWallet(){
+  void _connectStoredWallet()async{
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    await _wallet.retrieveMnemo(WALLET_PREFIX);
+
+    if(_wallet.getMnemonic() == null){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('No stored mnemonic found')),
+      );
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  void _connectWalletFromMnemo() {
     String mnemonic = _mnemonicController.text;
     String? validationError = validateMnemonic(mnemonic);
     if (validationError != null) {
@@ -89,6 +143,21 @@ class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
 
     // Store the restored account in the wallet
     _wallet.storeMnemo(WALLET_PREFIX);
+
+    // Update connection status
+    setState(() {
+      _wallet.setIsConnected(true);
+    });
+  }
+
+  Future<void> disconnectWallet() async {
+    // Clear stored credentials or tokens
+    _wallet.clearWallet();
+
+    // Update connection status
+    setState(() {
+      _wallet.setIsConnected(false);
+    });
   }
 
   String? validateMnemonic(String mnemonic) {
@@ -98,5 +167,4 @@ class _WalletGeneratorScreenState extends State<WalletGeneratorScreen> {
     }
     return null;
   }
-
 }
