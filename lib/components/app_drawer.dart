@@ -19,7 +19,7 @@ class _AppDrawerState extends State<AppDrawer> {
       margin: EdgeInsets.all(8),
       padding: EdgeInsets.only(top: 32),
       child: Column(children: [
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Row(
@@ -47,7 +47,7 @@ class _AppDrawerState extends State<AppDrawer> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => WalletGeneratorScreen(),
+                builder: (context) => WalletManagerScreen(),
               ),
             );
           },
