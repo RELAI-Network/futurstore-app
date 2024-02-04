@@ -95,13 +95,7 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
                 disconnectWallet();
               },
               child: Text('Disconnect'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                _getInfos();
-              },
-              child: Text('GetInfos'),
-            ),
+            )
           ],
         ),
       ),
