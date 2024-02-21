@@ -1,8 +1,8 @@
 import 'package:bip39/bip39.dart' as bip39;
+// import 'package:polkadart/polkadart.dart' show Provider, StateApi;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:futurstore/utils/constants.dart';
 import 'package:polkadart_keyring/polkadart_keyring.dart';
-import 'package:polkadart/polkadart.dart' show Provider, StateApi;
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SubstrateWallet {
   String? _mnemonic;
@@ -48,18 +48,18 @@ class SubstrateWallet {
   }
 
   storeMnemo(String key) {
-    AndroidOptions _getAndroidOptions() => const AndroidOptions(
+    AndroidOptions getAndroidOptions() => const AndroidOptions(
           encryptedSharedPreferences: true,
         );
-    final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
+    final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
     storage.write(key: key, value: _mnemonic);
   }
 
   retrieveMnemo(String key) async {
-    AndroidOptions _getAndroidOptions() => const AndroidOptions(
+    AndroidOptions getAndroidOptions() => const AndroidOptions(
           encryptedSharedPreferences: true,
         );
-    final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
+    final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
     _mnemonic = await storage.read(key: key);
     if (_mnemonic != null) {
       _keyPair = await KeyPair.sr25519.fromMnemonic(_mnemonic!);
@@ -78,10 +78,10 @@ class SubstrateWallet {
   }
 
   Future<void> clearMnemo(String key) async {
-    AndroidOptions _getAndroidOptions() => const AndroidOptions(
+    AndroidOptions getAndroidOptions() => const AndroidOptions(
           encryptedSharedPreferences: true,
         );
-    final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
+    final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
     storage.delete(key: key);
   }
 

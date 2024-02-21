@@ -18,8 +18,6 @@ dependencies:
   polkadart: ^0.3.2
   polkadart_keyring: ^0.3.0
 
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

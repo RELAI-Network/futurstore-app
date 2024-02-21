@@ -2,14 +2,13 @@ import 'package:futurstore/generated/relai_network/relai_network.dart';
 import 'package:futurstore/generated/relai_network/types/frame_system/account_info.dart';
 import 'package:futurstore/substrate/substrate_wallet.dart';
 import 'package:futurstore/utils/constants.dart';
-import 'package:polkadart/polkadart.dart'
-    show  StateApi;
+import 'package:polkadart/polkadart.dart' show StateApi;
 import 'package:polkadart/provider.dart';
-
 
 class Transactions {
   late WsProvider _relai_network_provider;
   late RelaiNetwork _relai_network;
+  // ignore: unused_field
   late StateApi _api;
   final _wallet = SubstrateWallet.instance;
 
@@ -27,7 +26,6 @@ class Transactions {
   static Transactions get instance {
     return _instance;
   }
-
 
   Future<BigInt> getBalance() async {
     var pk = _wallet.getKeyPair()?.publicKey.bytes;

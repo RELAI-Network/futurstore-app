@@ -1,7 +1,7 @@
-import '../utils/data.dart';
+// import '../utils/data.dart';
 import '../models/app_model.dart';
-import '../models/game_model.dart';
 import '../models/book_model.dart';
+import '../models/game_model.dart';
 
 List<AppModel> testAppsList = [
   AppModel(
@@ -81,17 +81,15 @@ List<BookModel> testBooksList = [
     price: 21,
   ),
   BookModel(
-    isbn: "xxyyzz",
-    bookType: BookType.Text,
-    coverUrl: "http://abcd.com/2.jpg",
-    title: "The Blockchain Rise",
-    description:
-        "Exploring how blockchain technologies are taking over the world and changing every aspect of the society ",
-    genre: BookGenre.Science,
-    authors: ["Fortune Wade"],
-    publicationDate: 2021,
-    publicationLanguage: PublicationLanguage.English,
-    price: 23
-  )
-
+      isbn: "xxyyzz",
+      bookType: BookType.Text,
+      coverUrl: "http://abcd.com/2.jpg",
+      title: "The Blockchain Rise",
+      description:
+          "Exploring how blockchain technologies are taking over the world and changing every aspect of the society ",
+      genre: BookGenre.Science,
+      authors: ["Fortune Wade"],
+      publicationDate: 2021,
+      publicationLanguage: PublicationLanguage.English,
+      price: 23)
 ];
