@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'package:convert/convert.dart';
 import 'package:flutter/material.dart';
 import 'package:futurstore/generated/relai_network/relai_network.dart';
@@ -27,7 +29,9 @@ Future<void> main(List<String> arguments) async {
 
   final block = await provider.send('chain_getBlock', []);
 
-  final blockNumber = int.parse(block.result['block']['header']['number']);
+  final blockNumber = int.parse(
+    block.result['block']['header']['number'] as String,
+  );
 
   final blockHash = (await provider.send('chain_getBlockHash', []))
       .result
@@ -38,7 +42,8 @@ Future<void> main(List<String> arguments) async {
       .replaceAll('0x', '');
 
   final keyring = await KeyPair.sr25519.fromMnemonic(
-      "resource mirror lecture smooth midnight muffin position cup pepper fruit vanish also//0"); // This is a random key
+    'resource mirror lecture smooth midnight muffin position cup pepper fruit vanish also//0',
+  ); // This is a random key
 
   final publicKey = hex.encode(keyring.publicKey.bytes);
   debugPrint('Public Key: $publicKey');
@@ -51,8 +56,8 @@ Future<void> main(List<String> arguments) async {
     method: encodedCall,
     specVersion: specVersion,
     transactionVersion: transactionVersion,
-    genesisHash: genesisHash,
-    blockHash: blockHash,
+    genesisHash: genesisHash as String,
+    blockHash: blockHash as String,
     blockNumber: blockNumber,
     eraPeriod: 64,
     nonce: 0, // Supposing it is this wallet first transaction
@@ -79,9 +84,8 @@ Future<void> main(List<String> arguments) async {
   final hexExtrinsic = hex.encode(extrinsic);
   debugPrint('Extrinsic: $hexExtrinsic');
 
-  final author = AuthorApi(provider);
-  author.submitAndWatchExtrinsic(
+  /* final author =  */ await AuthorApi(provider).submitAndWatchExtrinsic(
     extrinsic,
-    (p0) => debugPrint("Extrinsic result: ${p0.type} - {${p0.value}}"),
+    (p0) => debugPrint('Extrinsic result: ${p0.type} - {${p0.value}}'),
   );
 }

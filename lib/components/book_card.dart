@@ -4,16 +4,16 @@ import '../models/book_model.dart';
 import '../screens/book_detail_screen.dart';
 
 class BookCard extends StatelessWidget {
+  const BookCard({required this.data, super.key});
   final BookModel data;
-  const BookCard({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
+      onTap: () async {
+        await Navigator.push(
           context,
-          MaterialPageRoute(
+          MaterialPageRoute<Object>(
             builder: (context) => BookDetailScreen(data),
           ),
         );
@@ -22,16 +22,16 @@ class BookCard extends StatelessWidget {
         color: Colors.greenAccent,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 2.0),
+              padding: const EdgeInsets.only(top: 2),
               child: Text(
-                  data.title!), // Assuming 'title' is a field in your AppModel
+                data.title!,
+              ), // Assuming 'title' is a field in your AppModel
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 2.0),
+              padding: const EdgeInsets.only(top: 2),
               child: Text(
                 data.price.toString(),
                 style: const TextStyle(),

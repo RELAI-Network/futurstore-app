@@ -14,9 +14,10 @@ class _SearchState extends State<Search> {
       padding: const EdgeInsets.only(right: 8),
       alignment: Alignment.topCenter,
       decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 2.0)],
-          borderRadius: BorderRadius.circular(8)),
+        color: Colors.white,
+        boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 2)],
+        borderRadius: BorderRadius.circular(8),
+      ),
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 20, left: 16, right: 16),
       child: Row(
@@ -33,11 +34,12 @@ class _SearchState extends State<Search> {
           const Flexible(
             child: TextField(
               showCursor: false,
-              decoration:  InputDecoration(
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  hintText: 'Search for apps & games'),
+              decoration: InputDecoration(
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                hintText: 'Search for apps & games',
+              ),
             ),
           ),
           const SizedBox(
@@ -46,9 +48,10 @@ class _SearchState extends State<Search> {
           InkWell(
             onTap: () {},
             child: const CircleAvatar(
-                maxRadius: 17,
-                backgroundColor: Colors.cyan,
-              child: Text('R'),),
+              maxRadius: 17,
+              backgroundColor: Colors.cyan,
+              child: Text('R'),
+            ),
           ),
         ],
       ),

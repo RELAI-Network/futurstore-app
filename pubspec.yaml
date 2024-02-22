@@ -6,7 +6,7 @@ version: 0.0.1+1
 environment:
   sdk: '>=3.2.3 <4.0.0'
 dependencies:
-  austerity: ^1.1.0
+  austerity: ^1.2.0
   bip39: ^1.0.6
   carousel_slider: ^4.2.1
   cloud_firestore: ^4.14.0

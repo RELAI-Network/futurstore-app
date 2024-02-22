@@ -1,4 +1,36 @@
 class ApplicationModel {
+  ApplicationModel({
+    required this.downloadSize,
+    required this.categoryId,
+    required this.categoryName,
+    required this.containsAds,
+    required this.createdAt,
+    required this.description,
+    required this.downloadsCount,
+    required this.email,
+    required this.hasInAppPurchases,
+    required this.id,
+    required this.logoImageSquareUrl,
+    required this.minAgeRequirement,
+    required this.name,
+    required this.publisherId,
+    required this.publisherName,
+    required this.packageName,
+    required this.privacyPolicyLinkUrl,
+    required this.releaseFileMainUrl,
+    required this.screenshots,
+    required this.tags,
+    required this.version,
+    this.address,
+    this.coverImageRectUrl,
+    this.notesAverage,
+    this.notesCount,
+    this.phone,
+    this.price,
+    this.trailerVideoUrl,
+    this.updatedAt,
+    this.websiteUrl,
+  });
   final String? address;
 
   final int downloadSize;
@@ -58,37 +90,4 @@ class ApplicationModel {
   final DateTime? updatedAt;
 
   final String? websiteUrl;
-
-  ApplicationModel({
-    this.address,
-    required this.downloadSize,
-    required this.categoryId,
-    required this.categoryName,
-    required this.containsAds,
-    this.coverImageRectUrl,
-    required this.createdAt,
-    required this.description,
-    required this.downloadsCount,
-    required this.email,
-    required this.hasInAppPurchases,
-    required this.id,
-    required this.logoImageSquareUrl,
-    required this.minAgeRequirement,
-    required this.name,
-    this.notesAverage,
-    this.notesCount,
-    this.phone,
-    this.price,
-    required this.publisherId,
-    required this.publisherName,
-    required this.packageName,
-    required this.privacyPolicyLinkUrl,
-    required this.releaseFileMainUrl,
-    required this.screenshots,
-    required this.tags,
-    required this.version,
-    this.trailerVideoUrl,
-    this.updatedAt,
-    this.websiteUrl,
-  });
 }
