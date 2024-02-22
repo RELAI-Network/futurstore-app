@@ -26,5 +26,10 @@
         "titleBar.inactiveBackground": "#a77c7899",
         "titleBar.inactiveForeground": "#15202b99"
     },
-    "peacock.color": "#a77c78"
+    "peacock.color": "#a77c78",
+    "cSpell.words": [
+        "futurstore",
+        "multiaddress",
+        "polkadart"
+    ]
 }

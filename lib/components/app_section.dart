@@ -10,7 +10,6 @@ class AppSection extends StatefulWidget {
 class _AppSectionState extends State<AppSection> {
   @override
   Widget build(BuildContext context) {
-
-    return Text("App Section");
+    return const Text("App Section");
   }
 }

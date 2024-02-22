@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:futurstore/substrate/transactions.dart';
+
 import '../substrate/substrate_wallet.dart';
 import '../utils/constants.dart';
 import '../utils/utils.dart';
 
 class WalletManagerScreen extends StatefulWidget {
+  const WalletManagerScreen({super.key});
+
   @override
-  _WalletManagerScreenState createState() => _WalletManagerScreenState();
+  State<WalletManagerScreen> createState() => _WalletManagerScreenState();
 }
 
 class _WalletManagerScreenState extends State<WalletManagerScreen> {
@@ -20,12 +23,11 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
   void initState() {
     super.initState();
     _wallet.retrieveMnemo(WALLET_PREFIX).then((_) async {
-
       _balance = await _transactions.getBalance();
 
       setState(() {});
     }).catchError((error) {
-      print("Mnemo removed or not created yet");
+      debugPrint("Mnemo removed or not created yet");
     });
   }
 
@@ -33,7 +35,7 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Wallet Management"),
+        title: const Text("Wallet Management"),
         actions: [
           Container(
             width: 18,
@@ -50,10 +52,11 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             if (_isLoading) const CircularProgressIndicator(),
-             if(_wallet.isConnected) Text("The Balance is : ${_balance.toString()}"),
+            if (_wallet.isConnected)
+              Text("The Balance is : ${_balance.toString()}"),
             if (_wallet.isConnected)
               Text('Wallet Address: ${_wallet.getKeyPair()?.address}'),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             const Divider(),
@@ -64,37 +67,36 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
                 keyboardType: TextInputType.multiline,
                 minLines: 1,
                 maxLines: 5,
-                decoration: InputDecoration(hintText: "Enter Mnemonic"),
+                decoration: const InputDecoration(hintText: "Enter Mnemonic"),
               ),
             ),
             ElevatedButton(
               onPressed: _connectWalletFromMnemo,
-              child: Text('Connect Wallet from Mnemonic'),
+              child: const Text('Connect Wallet from Mnemonic'),
             ),
             const Divider(),
             ElevatedButton(
               onPressed: _connectStoredWallet,
-              child: Text('Connect Stored Wallet'),
+              child: const Text('Connect Stored Wallet'),
             ),
             const Divider(),
-
             ElevatedButton(
               onPressed: _generateWallet,
-              child: Text('Generate Wallet'),
+              child: const Text('Generate Wallet'),
             ),
             const Divider(),
             ElevatedButton(
               onPressed: () {
                 Utils.testConnection();
               },
-              child: Text('Test Connection'),
+              child: const Text('Test Connection'),
             ),
             const Divider(),
             ElevatedButton(
               onPressed: () {
                 disconnectWallet();
               },
-              child: Text('Disconnect'),
+              child: const Text('Disconnect'),
             )
           ],
         ),
@@ -124,7 +126,7 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
 
     if (_wallet.getMnemonic() == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('No stored mnemonic found')),
+        const SnackBar(content: Text('No stored mnemonic found')),
       );
     }
 
@@ -172,5 +174,4 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
     }
     return null;
   }
-
 }

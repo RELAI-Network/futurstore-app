@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../screens/wallet_generator_screen.dart';
 
 class AppDrawer extends StatefulWidget {
@@ -16,13 +17,13 @@ class _AppDrawerState extends State<AppDrawer> {
     return Drawer(
         child: SingleChildScrollView(
             child: Container(
-      margin: EdgeInsets.all(8),
-      padding: EdgeInsets.only(top: 32),
+      margin: const EdgeInsets.all(8),
+      padding: const EdgeInsets.only(top: 32),
       child: Column(children: [
         const SizedBox(
           height: 8,
         ),
-        Row(
+        const Row(
           children: [
             FlutterLogo(
               size: 70,
@@ -33,36 +34,36 @@ class _AppDrawerState extends State<AppDrawer> {
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
-        Divider(thickness: 1),
+        const Divider(thickness: 1),
         ListTile(
           onTap: () {},
-          leading: Icon(Icons.apps, size: 20, color: Colors.black54),
-          title: Text('My Apps and Games'),
+          leading: const Icon(Icons.apps, size: 20, color: Colors.black54),
+          title: const Text('My Apps and Games'),
         ),
         ListTile(
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => WalletManagerScreen(),
+                builder: (context) => const WalletManagerScreen(),
               ),
             );
           },
-          leading: Icon(Icons.wallet, size: 20, color: Colors.black54),
-          title: Text('Manage Wallets'),
+          leading: const Icon(Icons.wallet, size: 20, color: Colors.black54),
+          title: const Text('Manage Wallets'),
         ),
         ListTile(
           onTap: () {},
-          leading: Icon(Icons.settings, size: 20, color: Colors.black54),
-          title: Text('Settings'),
+          leading: const Icon(Icons.settings, size: 20, color: Colors.black54),
+          title: const Text('Settings'),
         ),
         ListTile(
           onTap: () {},
-          leading: Icon(Icons.language, size: 20, color: Colors.black54),
-          title: Text('Language'),
+          leading: const Icon(Icons.language, size: 20, color: Colors.black54),
+          title: const Text('Language'),
         ),
       ]),
     )));

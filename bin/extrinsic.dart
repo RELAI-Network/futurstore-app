@@ -1,17 +1,17 @@
 import 'package:convert/convert.dart';
+import 'package:flutter/material.dart';
 import 'package:futurstore/generated/relai_network/relai_network.dart';
 import 'package:futurstore/generated/relai_network/types/sp_runtime/multiaddress/multi_address.dart';
 import 'package:futurstore/utils/constants.dart';
 import 'package:polkadart/polkadart.dart'
     show
-    AuthorApi,
-    Extrinsic,
-    Provider,
-    SignatureType,
-    SigningPayload,
-    StateApi;
+        AuthorApi,
+        Extrinsic,
+        Provider,
+        SignatureType,
+        SigningPayload,
+        StateApi;
 import 'package:polkadart_keyring/polkadart_keyring.dart';
-
 
 Future<void> main(List<String> arguments) async {
   final provider = Provider.fromUri(Uri.parse(RELAI_RPC));
@@ -41,11 +41,11 @@ Future<void> main(List<String> arguments) async {
       "resource mirror lecture smooth midnight muffin position cup pepper fruit vanish also//0"); // This is a random key
 
   final publicKey = hex.encode(keyring.publicKey.bytes);
-  print('Public Key: $publicKey');
-  final dest = $MultiAddress().id(hex.decode(publicKey));
+  debugPrint('Public Key: $publicKey');
+  final dest = const $MultiAddress().id(hex.decode(publicKey));
   final runtimeCall = api.tx.balances.transferAll(dest: dest, keepAlive: true);
   final encodedCall = hex.encode(runtimeCall.encode());
-  print('Encoded call: $encodedCall');
+  debugPrint('Encoded call: $encodedCall');
 
   final payloadToSign = SigningPayload(
     method: encodedCall,
@@ -60,11 +60,11 @@ Future<void> main(List<String> arguments) async {
   );
 
   final payload = payloadToSign.encode(api.registry);
-  print('Payload: ${hex.encode(payload)}');
+  debugPrint('Payload: ${hex.encode(payload)}');
 
   final signature = keyring.sign(payload);
   final hexSignature = hex.encode(signature);
-  print('Signature: $hexSignature');
+  debugPrint('Signature: $hexSignature');
 
   final extrinsic = Extrinsic(
     signer: publicKey,
@@ -77,9 +77,11 @@ Future<void> main(List<String> arguments) async {
   ).encode(api.registry, SignatureType.sr25519);
 
   final hexExtrinsic = hex.encode(extrinsic);
-  print('Extrinsic: $hexExtrinsic');
+  debugPrint('Extrinsic: $hexExtrinsic');
 
   final author = AuthorApi(provider);
   author.submitAndWatchExtrinsic(
-      extrinsic, (p0) => print("Extrinsic result: ${p0.type} - {${p0.value}}"));
+    extrinsic,
+    (p0) => debugPrint("Extrinsic result: ${p0.type} - {${p0.value}}"),
+  );
 }

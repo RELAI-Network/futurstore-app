@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:futurstore/generated/relai_network/relai_network.dart';
 import 'package:futurstore/generated/relai_network/types/frame_system/account_info.dart';
 import 'package:futurstore/substrate/substrate_wallet.dart';
@@ -28,9 +29,12 @@ class Transactions {
   }
 
   Future<BigInt> getBalance() async {
-    var pk = _wallet.getKeyPair()?.publicKey.bytes;
+    var keyPair = _wallet.getKeyPair();
+    var pk = keyPair?.publicKey.bytes;
     AccountInfo? accountInfo = await _relai_network.query.system.account(pk!);
-    print("########-----Balance AccountInfo is : ${accountInfo.data.free}");
+    debugPrint(
+      "########-----Balance AccountInfo is : ${accountInfo.data.free}",
+    );
     return accountInfo.data.free;
   }
 }

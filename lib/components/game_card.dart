@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../models/game_model.dart';
 import '../screens/game_detail_screen.dart';
 
@@ -9,7 +10,7 @@ class GameCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: (){
+        onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -22,16 +23,16 @@ class GameCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              FlutterLogo(size: 52.0), // You can adjust the size as needed
+              const FlutterLogo(
+                size: 52.0,
+              ), // You can adjust the size as needed
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: Text(data.title!), // Assuming 'title' is a field in your AppModel
+                child: Text(data
+                    .title!), // Assuming 'title' is a field in your AppModel
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 }
-
-
