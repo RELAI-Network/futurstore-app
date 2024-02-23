@@ -1,12 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../../../models/app_model.dart';
+import '../models/app.dart';
 
 class AppDetailScreen extends StatefulWidget {
   const AppDetailScreen(this.appData, {super.key});
-  static const String id = 'appdetail';
-  final AppModel appData;
+  static const String id = 'app_details';
+  final ApplicationModel appData;
 
   @override
   State<AppDetailScreen> createState() => _AppDetailScreenState();
@@ -25,8 +25,8 @@ class _AppDetailScreenState extends State<AppDetailScreen> {
                 leading: const FlutterLogo(
                   size: 40,
                 ),
-                title: Text(widget.appData.title!),
-                subtitle: Text(widget.appData.description!),
+                title: Text(widget.appData.title),
+                subtitle: Text(widget.appData.description),
                 trailing: ElevatedButton(
                   onPressed: () {},
                   style: ButtonStyle(
@@ -52,7 +52,7 @@ class _AppDetailScreenState extends State<AppDetailScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text('Size: ${widget.appData.appSize!}'),
+                child: Text('Size: ${widget.appData.appSize}'),
               ),
             ],
           ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:futurstore/substrate/transactions.dart';
 
+import '../../../core/utils/constants.dart';
+import '../../../core/utils/utils.dart';
 import '../../../substrate/substrate_wallet.dart';
-import '../../../utils/constants.dart';
-import '../../../utils/utils.dart';
 
 class WalletManagerScreen extends StatefulWidget {
   const WalletManagerScreen({super.key});

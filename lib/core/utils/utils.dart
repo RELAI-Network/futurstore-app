@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:futurstore/utils/constants.dart';
+import 'package:futurstore/core/utils/constants.dart';
 import 'package:polkadart/polkadart.dart' show StateApi, WsProvider;
 
 // ignore: avoid_classes_with_only_static_members

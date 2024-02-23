@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:futurstore/core/utils/constants.dart';
 import 'package:futurstore/generated/relai_network/relai_network.dart';
 import 'package:futurstore/substrate/substrate_wallet.dart';
-import 'package:futurstore/utils/constants.dart';
 import 'package:polkadart/polkadart.dart' show StateApi;
 import 'package:polkadart/provider.dart';
 

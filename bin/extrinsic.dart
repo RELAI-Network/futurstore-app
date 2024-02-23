@@ -2,9 +2,9 @@
 
 import 'package:convert/convert.dart';
 import 'package:flutter/material.dart';
+import 'package:futurstore/core/utils/constants.dart';
 import 'package:futurstore/generated/relai_network/relai_network.dart';
 import 'package:futurstore/generated/relai_network/types/sp_runtime/multiaddress/multi_address.dart';
-import 'package:futurstore/utils/constants.dart';
 import 'package:polkadart/polkadart.dart'
     show
         AuthorApi,

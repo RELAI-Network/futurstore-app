@@ -1,3 +1,6 @@
+import 'package:dart_utils/dart_utils.dart';
+import 'package:intl/intl.dart';
+
 class BookModel {
   BookModel({
     required this.authors,
@@ -36,6 +39,28 @@ class BookModel {
   final String? textFormat;
   final String title;
   final String type;
+
+  PublicationLanguage get publicationLanguageEnum {
+    return PublicationLanguage.values.firstWhereOrNull(
+          (languageEnum) => languageEnum.name == language,
+        ) ??
+        PublicationLanguage.english;
+  }
+
+  String get publicationLanguage => publicationLanguageEnum.name.capitalize;
+
+  BookType get typeEnum {
+    return BookType.values.firstWhereOrNull(
+          (bookTypeEnum) => bookTypeEnum.name == type,
+        ) ??
+        BookType.text;
+  }
+
+  String get typeName => typeEnum.name.capitalize;
+
+  String get publicationDate {
+    return DateFormat.yMMMd(publicationLanguageEnum.code).format(publishedAt);
+  }
 }
 
 enum BookGender {
@@ -51,13 +76,16 @@ enum BookGender {
 }
 
 enum PublicationLanguage {
-  english,
-  french,
-  spanish,
-  arabic,
-  russian,
-  chinese,
-  italian;
+  english('en'),
+  french('fr'),
+  spanish('es'),
+  arabic('ar'),
+  russian('ru'),
+  chinese('ch'),
+  italian('it');
+
+  const PublicationLanguage(this.code);
+  final String code;
 }
 
 enum BookType {

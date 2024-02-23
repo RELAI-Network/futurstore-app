@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/app.dart';
 import '../widgets/app_card.dart';
-import '../../../models/app_model.dart';
 
 class AppsScreen extends StatefulWidget {
   const AppsScreen({super.key});
@@ -15,7 +15,7 @@ class _AppsScreenState extends State<AppsScreen> {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 3,
-      children: <AppModel>[].map((a) {
+      children: <ApplicationModel>[].map((a) {
         return Padding(
           padding: const EdgeInsets.all(2),
           child: AppCard(

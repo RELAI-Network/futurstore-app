@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/book_model.dart';
+import '../models/book.dart';
 
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen(this.data, {super.key});
-  static const String id = 'bookdetail';
+  static const String id = 'book_details';
   final BookModel data;
 
   @override
@@ -24,7 +24,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                 leading: const FlutterLogo(
                   size: 40,
                 ),
-                title: Text(widget.data.title!),
+                title: Text(widget.data.title),
                 trailing: ElevatedButton(
                   onPressed: () {},
                   style: ButtonStyle(
@@ -44,12 +44,12 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text(widget.data.description!),
+                child: Text(widget.data.description),
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Text(
-                  'Book Type: ${widget.data.bookType}',
+                  'Book Type: ${widget.data.typeName}',
                 ),
               ),
               Padding(
@@ -60,7 +60,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text('Price: ${widget.data.price!}'),
+                child: Text('Price: ${widget.data.price}'),
               ),
             ],
           ),

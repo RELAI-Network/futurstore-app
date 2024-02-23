@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../pages/app_detail_screen.dart';
 import '../models/app.dart';
+import '../pages/app_detail_screen.dart';
 
 class AppCard extends StatelessWidget {
   const AppCard({required this.appData, super.key});

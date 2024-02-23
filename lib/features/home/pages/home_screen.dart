@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../components/app_drawer.dart';
-import '../../../components/search.dart';
+import '../../../core/components/app_drawer.dart';
+import '../../../core/components/search.dart';
 import '../../apps/pages/apps_screen.dart';
 import '../../books/pages/books_screen.dart';
 import '../../games/pages/games_screen.dart';
