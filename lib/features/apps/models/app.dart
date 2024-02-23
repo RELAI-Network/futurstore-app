@@ -1,3 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
+import 'package:futurstore/core/config/firestore_serializable.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'app.g.dart';
+
+@Collection<ApplicationModel>(ApplicationModel.collection)
+final appsReferences = ApplicationModelCollectionReference();
+
+@firestoreSerializable
 class ApplicationModel {
   ApplicationModel({
     required this.downloadSize,
@@ -33,41 +44,82 @@ class ApplicationModel {
     this.websiteUrl,
   });
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   static const String collection = 'apps';
 
   final String? address;
-  final String categoryId;
-  final String categoryName;
-  final bool containsAds;
-  final String? coverImageRectUrl;
-  final DateTime createdAt;
   final String description;
-  final int downloadSize;
-  final int downloadsCount;
   final String email;
-  final bool hasInAppPurchases;
-  final String id;
-  final String logoImageSquareUrl;
-  final int minAgeRequirement;
   final String name;
-  final int? notesAverage;
-  final int? notesCount;
-  final String packageName;
   final String? phone;
   final double? price;
-  final String privacyPolicyLinkUrl;
-  final String publisherId;
-  final String publisherName;
-  final String releaseFileMainUrl;
   final List<String> screenshots;
   final List<String> tags;
-  final String? trailerVideoUrl;
   final String type;
-  final DateTime? updatedAt;
   final String version;
-  final String? websiteUrl;
 
-  String get title => name;
+  @JsonKey(name: 'category_id')
+  final String categoryId;
+
+  @JsonKey(name: 'category_name')
+  final String categoryName;
+
+  @JsonKey(name: 'contains_ads')
+  final bool containsAds;
+
+  @JsonKey(name: 'cover_image_rect_url')
+  final String? coverImageRectUrl;
+
+  @JsonKey(name: 'created_at')
+  final DateTime createdAt;
+
+  @JsonKey(name: 'download_size')
+  final int downloadSize;
+
+  @JsonKey(name: 'downloads_count')
+  final int downloadsCount;
+
+  @JsonKey(name: 'has_in_app_purchases')
+  final bool hasInAppPurchases;
+
+  @Id()
+  final String id;
+
+  @JsonKey(name: 'logo_image_square_url')
+  final String logoImageSquareUrl;
+
+  @JsonKey(name: 'min_age_requirement')
+  final int minAgeRequirement;
+
+  @JsonKey(name: 'notes_average')
+  final int? notesAverage;
+
+  @JsonKey(name: 'notes_count')
+  final int? notesCount;
+
+  @JsonKey(name: 'package_name')
+  final String packageName;
+
+  @JsonKey(name: 'privacy_policy_link_url')
+  final String privacyPolicyLinkUrl;
+
+  @JsonKey(name: 'publisher_id')
+  final String publisherId;
+
+  @JsonKey(name: 'publisher_name')
+  final String publisherName;
+
+  @JsonKey(name: 'release_file_main_url')
+  final String releaseFileMainUrl;
+
+  @JsonKey(name: 'trailer_video_url')
+  final String? trailerVideoUrl;
+
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @JsonKey(name: 'website_url')
+  final String? websiteUrl;
 
   String get appSize {
     if (downloadSize > 1000) {
@@ -76,6 +128,8 @@ class ApplicationModel {
       return '$downloadSize KB';
     }
   }
+
+  String get title => name;
 }
 
 enum ApplicationType {

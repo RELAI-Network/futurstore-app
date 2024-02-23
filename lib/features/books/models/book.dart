@@ -1,6 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:dart_utils/dart_utils.dart';
+import 'package:futurstore/core/config/firestore_serializable.dart';
 import 'package:intl/intl.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'book.g.dart';
+
+@Collection<BookModel>(BookModel.collection)
+final booksReference = BookModelCollectionReference();
+
+@firestoreSerializable
 class BookModel {
   BookModel({
     required this.authors,
@@ -21,6 +31,7 @@ class BookModel {
     this.textFormat,
   });
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   static const String collection = 'books';
 
   final String? audioFormat;
@@ -28,6 +39,7 @@ class BookModel {
   final String coverUrl;
   final String description;
   final String gender;
+  @Id()
   final String id;
   final String isbn;
   final String language;
