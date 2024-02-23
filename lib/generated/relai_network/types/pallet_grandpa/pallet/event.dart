@@ -35,17 +35,18 @@ abstract class Event {
 class $Event {
   const $Event();
 
-  NewAuthorities newAuthorities(
-      {required List<_i3.Tuple2<_i4.Public, BigInt>> authoritySet}) {
+  NewAuthorities newAuthorities({
+    required List<_i3.Tuple2<_i4.Public, BigInt>> authoritySet,
+  }) {
     return NewAuthorities(authoritySet: authoritySet);
   }
 
   Paused paused() {
-    return Paused();
+    return const Paused();
   }
 
   Resumed resumed() {
-    return Resumed();
+    return const Resumed();
   }
 }
 
@@ -75,16 +76,14 @@ class $EventCodec with _i1.Codec<Event> {
     switch (value.runtimeType) {
       case NewAuthorities:
         (value as NewAuthorities).encodeTo(output);
-        break;
       case Paused:
         (value as Paused).encodeTo(output);
-        break;
       case Resumed:
         (value as Resumed).encodeTo(output);
-        break;
       default:
         throw Exception(
-            'Event: Unsupported "$value" of type "${value.runtimeType}"');
+          'Event: Unsupported "$value" of type "${value.runtimeType}"',
+        );
     }
   }
 
@@ -99,7 +98,8 @@ class $EventCodec with _i1.Codec<Event> {
         return 1;
       default:
         throw Exception(
-            'Event: Unsupported "$value" of type "${value.runtimeType}"');
+          'Event: Unsupported "$value" of type "${value.runtimeType}"',
+        );
     }
   }
 }
@@ -110,11 +110,13 @@ class NewAuthorities extends Event {
 
   factory NewAuthorities._decode(_i1.Input input) {
     return NewAuthorities(
-        authoritySet: const _i1.SequenceCodec<_i3.Tuple2<_i4.Public, BigInt>>(
-            _i3.Tuple2Codec<_i4.Public, BigInt>(
-      _i4.PublicCodec(),
-      _i1.U64Codec.codec,
-    )).decode(input));
+      authoritySet: const _i1.SequenceCodec<_i3.Tuple2<_i4.Public, BigInt>>(
+        _i3.Tuple2Codec<_i4.Public, BigInt>(
+          _i4.PublicCodec(),
+          _i1.U64Codec.codec,
+        ),
+      ).decode(input),
+    );
   }
 
   /// AuthorityList
@@ -124,22 +126,25 @@ class NewAuthorities extends Event {
   Map<String, Map<String, List<List<dynamic>>>> toJson() => {
         'NewAuthorities': {
           'authoritySet': authoritySet
-              .map((value) => [
-                    value.value0.toList(),
-                    value.value1,
-                  ])
-              .toList()
-        }
+              .map(
+                (value) => [
+                  value.value0.toList(),
+                  value.value1,
+                ],
+              )
+              .toList(),
+        },
       };
 
   int _sizeHint() {
-    int size = 1;
+    var size = 1;
     size = size +
         const _i1.SequenceCodec<_i3.Tuple2<_i4.Public, BigInt>>(
-            _i3.Tuple2Codec<_i4.Public, BigInt>(
-          _i4.PublicCodec(),
-          _i1.U64Codec.codec,
-        )).sizeHint(authoritySet);
+          _i3.Tuple2Codec<_i4.Public, BigInt>(
+            _i4.PublicCodec(),
+            _i1.U64Codec.codec,
+          ),
+        ).sizeHint(authoritySet);
     return size;
   }
 
@@ -149,10 +154,11 @@ class NewAuthorities extends Event {
       output,
     );
     const _i1.SequenceCodec<_i3.Tuple2<_i4.Public, BigInt>>(
-        _i3.Tuple2Codec<_i4.Public, BigInt>(
-      _i4.PublicCodec(),
-      _i1.U64Codec.codec,
-    )).encodeTo(
+      _i3.Tuple2Codec<_i4.Public, BigInt>(
+        _i4.PublicCodec(),
+        _i1.U64Codec.codec,
+      ),
+    ).encodeTo(
       authoritySet,
       output,
     );

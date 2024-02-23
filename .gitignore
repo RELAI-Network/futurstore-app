@@ -16,6 +16,7 @@ migrate_working_dir/
 *.iws
 .idea/
 
+
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
@@ -49,3 +50,5 @@ lib/firebase_options.dart
 macos/Runner/GoogleService-Info.plist
 macos/firebase_app_id_file.json
 
+# Design related files
+.design/

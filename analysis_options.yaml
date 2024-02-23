@@ -23,7 +23,7 @@ analyzer:
     #always_specify_types: false
     always_use_package_imports: ignore
     annotate_overrides: error
-    avoid_annotating_with_dynamic: error
+    avoid_annotating_with_dynamic: info
     avoid_bool_literals_in_conditional_expressions: error
     avoid_catches_without_on_clauses: ignore
     avoid_catching_errors: error
@@ -50,7 +50,7 @@ analyzer:
     avoid_private_typedef_functions: error
     avoid_redundant_argument_values: error
     avoid_relative_lib_imports: error
-    avoid_renaming_method_parameters: error
+    avoid_renaming_method_parameters: ignore
     avoid_return_types_on_setters: error
     avoid_returning_null: error
     avoid_returning_null_for_future: error
@@ -127,13 +127,13 @@ analyzer:
     invalid_visibility_annotation: error
     invariant_booleans: error
     iterable_contains_unrelated_type: error
-    join_return_with_assignment: error
+    join_return_with_assignment: info
     leading_newlines_in_multiline_strings: error
     library_annotations: error
     library_names: error
     library_prefixes: error
     library_private_types_in_public_api: error
-    lines_longer_than_80_chars: error
+    lines_longer_than_80_chars: info
     list_remove_unrelated_type: error
     literal_only_boolean_expressions: error
     matching_super_parameters: error
@@ -155,7 +155,7 @@ analyzer:
     null_check_always_fails: error
     null_check_on_nullable_type_parameter: error
     null_closures: error
-    omit_local_variable_types: error
+    omit_local_variable_types: info
     one_member_abstracts: error
     only_throw_errors: error
     overridden_fields: error
@@ -212,7 +212,7 @@ analyzer:
     # If you see too many of these, try prefixing more members with _
     public_member_api_docs: ignore
     recursive_getters: error
-    require_trailing_commas: error
+    require_trailing_commas: info
     secure_pubspec_urls: error
     sdk_version_constructor_tearoffs: error
     sized_box_for_whitespace: error
@@ -229,11 +229,11 @@ analyzer:
     tighten_type_of_initializing_formals: error
     type_annotate_public_apis: error
     type_init_formals: error
-    type_literal_in_constant_pattern: error
+    type_literal_in_constant_pattern: info
     unawaited_futures: error
     unnecessary_await_in_return: error
     unnecessary_brace_in_string_interps: error
-    unnecessary_breaks: error
+    unnecessary_breaks: info
     unnecessary_cast: error
     unnecessary_const: error
     unnecessary_constructor_name: error

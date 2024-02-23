@@ -77,29 +77,29 @@ class $EquivocationCodec with _i1.Codec<Equivocation> {
 
   @override
   void encodeTo(
-    Equivocation obj,
+    Equivocation value,
     _i1.Output output,
   ) {
     _i1.U64Codec.codec.encodeTo(
-      obj.roundNumber,
+      value.roundNumber,
       output,
     );
     const _i1.U8ArrayCodec(32).encodeTo(
-      obj.identity,
+      value.identity,
       output,
     );
     const _i3.Tuple2Codec<_i4.Prevote, _i5.Signature>(
       _i4.Prevote.codec,
       _i5.SignatureCodec(),
     ).encodeTo(
-      obj.first,
+      value.first,
       output,
     );
     const _i3.Tuple2Codec<_i4.Prevote, _i5.Signature>(
       _i4.Prevote.codec,
       _i5.SignatureCodec(),
     ).encodeTo(
-      obj.second,
+      value.second,
       output,
     );
   }
@@ -121,20 +121,20 @@ class $EquivocationCodec with _i1.Codec<Equivocation> {
   }
 
   @override
-  int sizeHint(Equivocation obj) {
-    int size = 0;
-    size = size + _i1.U64Codec.codec.sizeHint(obj.roundNumber);
-    size = size + const _i2.PublicCodec().sizeHint(obj.identity);
+  int sizeHint(Equivocation value) {
+    var size = 0;
+    size = size + _i1.U64Codec.codec.sizeHint(value.roundNumber);
+    size = size + const _i2.PublicCodec().sizeHint(value.identity);
     size = size +
         const _i3.Tuple2Codec<_i4.Prevote, _i5.Signature>(
           _i4.Prevote.codec,
           _i5.SignatureCodec(),
-        ).sizeHint(obj.first);
+        ).sizeHint(value.first);
     size = size +
         const _i3.Tuple2Codec<_i4.Prevote, _i5.Signature>(
           _i4.Prevote.codec,
           _i5.SignatureCodec(),
-        ).sizeHint(obj.second);
+        ).sizeHint(value.second);
     return size;
   }
 }
