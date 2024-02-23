@@ -14,4 +14,6 @@ class ApplicationRelease {
   final bool isBeta;
   final String releasesNotes;
   final String version;
+
+  static const String collection = 'releases';
 }

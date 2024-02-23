@@ -1,4 +1,5 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes
+// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes, lines_longer_than_80_chars
+
 import 'dart:async' as _i8;
 import 'dart:typed_data' as _i9;
 

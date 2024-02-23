@@ -25,13 +25,13 @@ analyzer:
     annotate_overrides: error
     avoid_annotating_with_dynamic: error
     avoid_bool_literals_in_conditional_expressions: error
-    avoid_catches_without_on_clauses: error
+    avoid_catches_without_on_clauses: ignore
     avoid_catching_errors: error
     avoid_classes_with_only_static_members: error
     avoid_double_and_int_checks: error
     avoid_dynamic_calls: error
     avoid_empty_else: error
-    avoid_equals_and_hash_code_on_mutable_classes: error
+    avoid_equals_and_hash_code_on_mutable_classes: ignore
     avoid_escaping_inner_quotes: error
     avoid_field_initializers_in_const_classes: error
     avoid_final_parameters: error

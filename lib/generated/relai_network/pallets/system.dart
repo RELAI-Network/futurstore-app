@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes
+// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes, lines_longer_than_80_chars
 import 'dart:async' as _i12;
 import 'dart:typed_data' as _i15;
 
@@ -111,11 +111,12 @@ class Queries {
       const _i1.StorageMap<_i6.H256, List<_i9.Tuple2<int, int>>>(
     prefix: 'System',
     storage: 'EventTopics',
-    valueCodec:
-        _i4.SequenceCodec<_i9.Tuple2<int, int>>(_i9.Tuple2Codec<int, int>(
-      _i4.U32Codec.codec,
-      _i4.U32Codec.codec,
-    )),
+    valueCodec: _i4.SequenceCodec<_i9.Tuple2<int, int>>(
+      _i9.Tuple2Codec<int, int>(
+        _i4.U32Codec.codec,
+        _i4.U32Codec.codec,
+      ),
+    ),
     hasher: _i1.StorageHasher.blake2b128Concat(_i6.H256Codec()),
   );
 
@@ -245,7 +246,6 @@ class Queries {
     return List<int>.filled(
       32,
       0,
-      growable: false,
     ); /* Default */
   }
 
@@ -295,7 +295,6 @@ class Queries {
     return List<int>.filled(
       32,
       0,
-      growable: false,
     ); /* Default */
   }
 
@@ -370,8 +369,9 @@ class Queries {
   }
 
   /// Stores the `spec_version` and `spec_name` of when the last runtime upgrade happened.
-  _i12.Future<_i10.LastRuntimeUpgradeInfo?> lastRuntimeUpgrade(
-      {_i1.BlockHash? at}) async {
+  _i12.Future<_i10.LastRuntimeUpgradeInfo?> lastRuntimeUpgrade({
+    _i1.BlockHash? at,
+  }) async {
     final hashedKey = _lastRuntimeUpgrade.hashedKey();
     final bytes = await __api.getStorage(
       hashedKey,
@@ -572,8 +572,9 @@ class Txs {
   }
 
   /// See [`Pallet::set_storage`].
-  _i16.RuntimeCall setStorage(
-      {required List<_i9.Tuple2<List<int>, List<int>>> items}) {
+  _i16.RuntimeCall setStorage({
+    required List<_i9.Tuple2<List<int>, List<int>>> items,
+  }) {
     final call = _i17.Call.values.setStorage(items: items);
     return _i16.RuntimeCall.values.system(call);
   }
@@ -676,20 +677,18 @@ class Constants {
           refTime: BigInt.from(124414000),
           proofSize: BigInt.zero,
         ),
-        maxExtrinsic: null,
-        maxTotal: null,
-        reserved: null,
       ),
     ),
   );
 
   /// The maximum length of a block (in bytes).
   final _i21.BlockLength blockLength = const _i21.BlockLength(
-      max: _i22.PerDispatchClass(
-    normal: 3932160,
-    operational: 5242880,
-    mandatory: 5242880,
-  ));
+    max: _i22.PerDispatchClass(
+      normal: 3932160,
+      operational: 5242880,
+      mandatory: 5242880,
+    ),
+  );
 
   /// Maximum number of block number to block hash mappings to keep (oldest pruned first).
   final int blockHashCount = 2400;

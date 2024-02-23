@@ -12,6 +12,8 @@ dependencies:
   cloud_firestore: ^4.14.0
   convert: ^3.1.1
   cupertino_icons: ^1.0.2
+  dart_utils:
+    git: https://github.com/bienvenuelisis/dart_utils.git
   firebase_core: ^2.24.2
   flutter:
     sdk: flutter

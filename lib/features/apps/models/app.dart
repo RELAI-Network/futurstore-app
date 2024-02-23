@@ -22,6 +22,7 @@ class ApplicationModel {
     required this.tags,
     required this.version,
     this.address,
+    this.type = 'app',
     this.coverImageRectUrl,
     this.notesAverage,
     this.notesCount,
@@ -31,63 +32,43 @@ class ApplicationModel {
     this.updatedAt,
     this.websiteUrl,
   });
+
+  static const String collection = 'apps';
+
   final String? address;
-
-  final int downloadSize;
-
   final String categoryId;
-
   final String categoryName;
-
   final bool containsAds;
-
   final String? coverImageRectUrl;
-
   final DateTime createdAt;
-
   final String description;
-
+  final int downloadSize;
   final int downloadsCount;
-
   final String email;
-
   final bool hasInAppPurchases;
-
   final String id;
-
   final String logoImageSquareUrl;
-
   final int minAgeRequirement;
-
   final String name;
-
   final int? notesAverage;
-
   final int? notesCount;
-
-  final String? phone;
-
-  final double? price;
-
-  final String publisherId;
-
-  final String publisherName;
-
   final String packageName;
-
+  final String? phone;
+  final double? price;
   final String privacyPolicyLinkUrl;
-
+  final String publisherId;
+  final String publisherName;
   final String releaseFileMainUrl;
-
   final List<String> screenshots;
-
   final List<String> tags;
-
-  final String version;
-
   final String? trailerVideoUrl;
-
+  final String type;
   final DateTime? updatedAt;
-
+  final String version;
   final String? websiteUrl;
+}
+
+enum ApplicationType {
+  app,
+  game;
 }

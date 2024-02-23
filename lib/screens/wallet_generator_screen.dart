@@ -22,12 +22,14 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
   @override
   void initState() {
     super.initState();
-    _wallet.retrieveMnemo(WALLET_PREFIX).then((_) async {
+    // ignore: discarded_futures
+    _wallet.retrieveMnemo(kWalletPrefix).then((_) async {
       _balance = await _transactions.getBalance();
 
       setState(() {});
+      // ignore: discarded_futures
     }).catchError((error) {
-      debugPrint("Mnemo removed or not created yet");
+      debugPrint('Mnemo removed or not created yet');
     });
   }
 
@@ -35,7 +37,7 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Wallet Management"),
+        title: const Text('Wallet Management'),
         actions: [
           Container(
             width: 18,
@@ -52,8 +54,7 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             if (_isLoading) const CircularProgressIndicator(),
-            if (_wallet.isConnected)
-              Text("The Balance is : ${_balance.toString()}"),
+            if (_wallet.isConnected) Text('The Balance is : $_balance'),
             if (_wallet.isConnected)
               Text('Wallet Address: ${_wallet.getKeyPair()?.address}'),
             const SizedBox(
@@ -67,7 +68,7 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
                 keyboardType: TextInputType.multiline,
                 minLines: 1,
                 maxLines: 5,
-                decoration: const InputDecoration(hintText: "Enter Mnemonic"),
+                decoration: const InputDecoration(hintText: 'Enter Mnemonic'),
               ),
             ),
             ElevatedButton(
@@ -85,26 +86,22 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
               child: const Text('Generate Wallet'),
             ),
             const Divider(),
-            ElevatedButton(
-              onPressed: () {
-                Utils.testConnection();
-              },
-              child: const Text('Test Connection'),
+            const ElevatedButton(
+              onPressed: Utils.testConnection,
+              child: Text('Test Connection'),
             ),
             const Divider(),
             ElevatedButton(
-              onPressed: () {
-                disconnectWallet();
-              },
+              onPressed: disconnectWallet,
               child: const Text('Disconnect'),
-            )
+            ),
           ],
         ),
       ),
     );
   }
 
-  void _generateWallet() async {
+  Future<void> _generateWallet() async {
     setState(() {
       _isLoading = true;
     });
@@ -114,17 +111,17 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
       _isLoading = false;
     });
 
-    print("############----${_wallet.getMnemonic()}");
+    debugPrint('############----${_wallet.getMnemonic()}');
   }
 
-  void _connectStoredWallet() async {
+  Future<void> _connectStoredWallet() async {
     setState(() {
       _isLoading = true;
     });
 
-    await _wallet.retrieveMnemo(WALLET_PREFIX);
+    await _wallet.retrieveMnemo(kWalletPrefix);
 
-    if (_wallet.getMnemonic() == null) {
+    if (_wallet.getMnemonic() == null && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('No stored mnemonic found')),
       );
@@ -135,9 +132,9 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
     });
   }
 
-  void _connectWalletFromMnemo() {
-    String mnemonic = _mnemonicController.text;
-    String? validationError = validateMnemonic(mnemonic);
+  Future<void> _connectWalletFromMnemo() async {
+    final mnemonic = _mnemonicController.text;
+    final validationError = validateMnemonic(mnemonic);
     if (validationError != null) {
       // Display the error message to the user
       ScaffoldMessenger.of(context).showSnackBar(
@@ -146,29 +143,29 @@ class _WalletManagerScreenState extends State<WalletManagerScreen> {
       return;
     }
     // Restore the account using the mnemonic
-    _wallet.restoreWalletFromMnemonic(mnemonic);
+    await _wallet.restoreWalletFromMnemonic(mnemonic);
 
     // Store the restored account in the wallet
-    _wallet.storeMnemo(WALLET_PREFIX);
+    await _wallet.storeMnemo(kWalletPrefix);
 
     // Update connection status
     setState(() {
-      _wallet.setIsConnected(true);
+      _wallet.isConnected = true;
     });
   }
 
   Future<void> disconnectWallet() async {
     // Clear stored credentials or tokens
-    _wallet.clearWallet();
+    await _wallet.clearWallet();
 
     // Update connection status
     setState(() {
-      _wallet.setIsConnected(false);
+      _wallet.isConnected = false;
     });
   }
 
   String? validateMnemonic(String mnemonic) {
-    List<String> words = mnemonic.split(' ');
+    final words = mnemonic.split(' ');
     if (words.length != 12 && words.length != 24) {
       return 'Mnemonic must be 12 or 24 words';
     }

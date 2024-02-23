@@ -28,9 +28,16 @@
     },
     "peacock.color": "#a77c78",
     "cSpell.words": [
+        "arabic",
+        "chinese",
+        "epub",
         "firestore",
         "futurstore",
+        "isbn",
+        "italian",
         "multiaddress",
-        "polkadart"
+        "polkadart",
+        "russian",
+        "spanish"
     ]
 }

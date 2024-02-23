@@ -209,6 +209,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.4"
+  dart_utils:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "25d837076584e3c1283fed8dc3e0e6d3847e252e"
+      url: "https://github.com/bienvenuelisis/dart_utils.git"
+    source: git
+    version: "0.0.1"
   ed25519_edwards:
     dependency: transitive
     description:
@@ -918,5 +927,5 @@ packages:
     source: hosted
     version: "1.1.4+1"
 sdks:
-  dart: ">=3.2.3 <4.0.0"
+  dart: ">=3.2.5 <4.0.0"
   flutter: ">=3.16.0"

@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes
+// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes, lines_longer_than_80_chars
 import 'dart:async' as _i3;
 import 'dart:typed_data' as _i4;
 
@@ -69,8 +69,8 @@ class Txs {
 
   /// See [`Pallet::set`].
   _i5.RuntimeCall set({required BigInt now}) {
-    final _call = _i6.Call.values.set(now: now);
-    return _i5.RuntimeCall.values.timestamp(_call);
+    final call = _i6.Call.values.set(now: now);
+    return _i5.RuntimeCall.values.timestamp(call);
   }
 }
 

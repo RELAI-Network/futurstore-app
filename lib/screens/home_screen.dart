@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../components/search.dart';
 import '../components/app_drawer.dart';
+import '../components/search.dart';
 import 'apps_screen.dart';
-import 'games_screen.dart';
 import 'books_screen.dart';
+import 'games_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,11 +13,9 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin {
-
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController? _tabController;
   int currentIndex = 0;
-
 
   final pages = const [
     AppsScreen(),
@@ -28,8 +26,7 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
   @override
   void initState() {
     super.initState();
-    _tabController =
-        TabController(vsync: this, initialIndex: 0, length: pages.length);
+    _tabController = TabController(vsync: this, length: pages.length);
   }
 
   @override
@@ -40,43 +37,48 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child:Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width ,100.0),
-        child: const Column(
-          children:  [
-            Search()
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size(MediaQuery.of(context).size.width, 100),
+          child: const Column(
+            children: [
+              Search(),
+            ],
+          ),
         ),
-      ),
-      drawer: AppDrawer(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+        drawer: const AppDrawer(),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
               icon: Icon(Icons.app_shortcut, size: 30),
-              label: AppsScreen.label,
+              label: 'Apps',
               activeIcon: Icon(Icons.app_shortcut, size: 30),
-              backgroundColor: Colors.white),
-          BottomNavigationBarItem(
+              backgroundColor: Colors.white,
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.sports_esports_outlined, size: 30),
               label: GamesScreen.label,
               activeIcon: Icon(Icons.sports_esports_outlined, size: 30),
-              backgroundColor: Colors.white),
-          BottomNavigationBarItem(
+              backgroundColor: Colors.white,
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.book_rounded, size: 30),
               label: BooksScreen.label,
               activeIcon: Icon(Icons.book_outlined, size: 30),
-              backgroundColor: Colors.white),
-        ],
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-          print("Current Index $currentIndex");
-        },
+              backgroundColor: Colors.white,
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+            debugPrint('Current Index $currentIndex');
+          },
+        ),
+        body: pages[currentIndex],
       ),
-      body:  pages[currentIndex],
-    ));
+    );
   }
 }

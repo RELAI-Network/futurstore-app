@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'FuturStore',
+      // ignore: avoid_redundant_argument_values
       debugShowCheckedModeBanner: true,
       home: HomeScreen(),
     );

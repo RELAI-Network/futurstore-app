@@ -16,7 +16,7 @@ import 'package:polkadart/polkadart.dart'
 import 'package:polkadart_keyring/polkadart_keyring.dart';
 
 Future<void> main(List<String> arguments) async {
-  final provider = Provider.fromUri(Uri.parse(RELAI_RPC));
+  final provider = Provider.fromUri(Uri.parse(kRelaiRPC));
   final api = RelaiNetwork(provider);
 
   final stateApi = StateApi(provider);

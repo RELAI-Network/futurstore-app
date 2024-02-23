@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes
+// ignore_for_file: no_leading_underscores_for_library_prefixes, strict_raw_type
 import 'dart:async' as _i9;
 
 import 'package:polkadart/polkadart.dart' as _i1;
@@ -39,15 +39,15 @@ class Queries {
 class Extrinsics {
   Extrinsics();
 
-  final _i2.Txs system = _i2.Txs();
+  final _i2.Txs system = const _i2.Txs();
 
-  final _i3.Txs timestamp = _i3.Txs();
+  final _i3.Txs timestamp = const _i3.Txs();
 
-  final _i5.Txs grandpa = _i5.Txs();
+  final _i5.Txs grandpa = const _i5.Txs();
 
-  final _i6.Txs balances = _i6.Txs();
+  final _i6.Txs balances = const _i6.Txs();
 
-  final _i8.Txs sudo = _i8.Txs();
+  final _i8.Txs sudo = const _i8.Txs();
 }
 
 class Constants {
@@ -80,29 +80,21 @@ class Registry {
 
   final int extrinsicVersion = 4;
 
-  List getSignedExtensionTypes() {
+  List<String> getSignedExtensionTypes() {
     return ['CheckMortality', 'CheckNonce', 'ChargeTransactionPayment'];
   }
 
-  List getSignedExtensionExtra() {
+  List<String> getSignedExtensionExtra() {
     return [
       'CheckSpecVersion',
       'CheckTxVersion',
       'CheckGenesis',
-      'CheckMortality'
+      'CheckMortality',
     ];
   }
 }
 
 class RelaiNetwork {
-  RelaiNetwork._(
-    this._provider,
-    this.rpc,
-  )   : query = Queries(rpc.state),
-        constant = Constants(),
-        tx = Extrinsics(),
-        registry = Registry();
-
   factory RelaiNetwork(_i1.Provider provider) {
     final rpc = Rpc(
       state: _i1.StateApi(provider),
@@ -113,6 +105,13 @@ class RelaiNetwork {
       rpc,
     );
   }
+  RelaiNetwork._(
+    this._provider,
+    this.rpc,
+  )   : query = Queries(rpc.state),
+        constant = Constants(),
+        tx = Extrinsics(),
+        registry = Registry();
 
   factory RelaiNetwork.url(Uri url) {
     final provider = _i1.Provider.fromUri(url);
@@ -131,11 +130,11 @@ class RelaiNetwork {
 
   final Registry registry;
 
-  _i9.Future connect() async {
-    return await _provider.connect();
+  _i9.Future connect() {
+    return _provider.connect();
   }
 
-  _i9.Future disconnect() async {
-    return await _provider.disconnect();
+  _i9.Future disconnect() {
+    return _provider.disconnect();
   }
 }
