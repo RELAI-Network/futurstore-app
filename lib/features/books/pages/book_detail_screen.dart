@@ -4,7 +4,9 @@ import '../models/book.dart';
 
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen(this.data, {super.key});
+
   static const String id = 'book_details';
+
   final BookModel data;
 
   @override
@@ -39,7 +41,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Text(
-                  'Edition date: ${widget.data.publicationDate!}',
+                  'Edition date: ${widget.data.publicationDate}',
                 ),
               ),
               Padding(

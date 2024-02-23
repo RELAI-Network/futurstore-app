@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:futurstore/features/books/models/book.dart';
 
 import '../widgets/book_card.dart';
-import '../../../models/book_model.dart';
-import '../../../utils/data.dart';
 
 class BooksScreen extends StatefulWidget {
   const BooksScreen({super.key});
@@ -13,13 +12,11 @@ class BooksScreen extends StatefulWidget {
 }
 
 class _BooksScreenState extends State<BooksScreen> {
-  List<BookModel> books = testBooksList;
-
   @override
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 3,
-      children: books.map((a) {
+      children: <BookModel>[].map((a) {
         return Padding(
           padding: const EdgeInsets.all(8),
           child: BookCard(

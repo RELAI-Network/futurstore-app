@@ -5,7 +5,9 @@ import '../models/game.dart';
 
 class GameDetailScreen extends StatefulWidget {
   const GameDetailScreen(this.data, {super.key});
+
   static const String id = 'game_details';
+
   final GameModel data;
 
   @override
@@ -52,7 +54,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text('Size: ${widget.data.gameSize!}'),
+                child: Text('Size: ${widget.data.appSize}'),
               ),
             ],
           ),
