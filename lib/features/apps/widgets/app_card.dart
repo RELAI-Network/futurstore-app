@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../models/app_model.dart';
-import '../screens/app_detail_screen.dart';
+import '../pages/app_detail_screen.dart';
+import '../models/app.dart';
 
 class AppCard extends StatelessWidget {
   const AppCard({required this.appData, super.key});
-  final AppModel appData;
+
+  final ApplicationModel appData;
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +29,13 @@ class AppCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Text(
-                appData.title!,
+                appData.title,
               ), // Assuming 'title' is a field in your AppModel
             ),
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: Text(
-                appData.appSize!,
+                appData.appSize,
               ), // Assuming 'size' is a field in your AppModel
             ),
           ],

@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../models/app_model.dart';
+import 'package:flutter/material.dart';
+
+import '../../../models/app_model.dart';
 
 class AppDetailScreen extends StatefulWidget {
-  static const String id = "appdetail";
+  const AppDetailScreen(this.appData, {super.key});
+  static const String id = 'appdetail';
   final AppModel appData;
-
-  const AppDetailScreen(this.appData);
 
   @override
   State<AppDetailScreen> createState() => _AppDetailScreenState();
@@ -22,19 +22,22 @@ class _AppDetailScreenState extends State<AppDetailScreen> {
           child: Column(
             children: <Widget>[
               ListTile(
-                leading: FlutterLogo(size: 40,),
+                leading: const FlutterLogo(
+                  size: 40,
+                ),
                 title: Text(widget.appData.title!),
                 subtitle: Text(widget.appData.description!),
                 trailing: ElevatedButton(
                   onPressed: () {},
-                  child: Text('Install'),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.green),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
                   ),
+                  child: const Text('Install'),
                 ),
               ),
-
               CarouselSlider(
                 options: CarouselOptions(height: 400),
                 items: [
@@ -43,15 +46,14 @@ class _AppDetailScreenState extends State<AppDetailScreen> {
                   Image.network('https://picsum.photos/200/300?random=3'),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8),
                 child: Text('Version: X'),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Text('Size: ${widget.appData.appSize!}'),
               ),
-
             ],
           ),
         ),
@@ -59,4 +61,3 @@ class _AppDetailScreenState extends State<AppDetailScreen> {
     );
   }
 }
-

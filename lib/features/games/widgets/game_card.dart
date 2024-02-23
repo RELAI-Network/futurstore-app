@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:futurstore/core/extensions/navigator.dart';
+import 'package:futurstore/features/games/models/game.dart';
 
-import '../models/game_model.dart';
-import '../screens/game_detail_screen.dart';
+import '../pages/game_detail_screen.dart';
 
 class GameCard extends StatelessWidget {
   const GameCard({required this.data, super.key});
@@ -24,7 +24,7 @@ class GameCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Text(
-                data.title!,
+                data.name,
               ), // Assuming 'title' is a field in your AppModel
             ),
           ],

@@ -66,6 +66,16 @@ class ApplicationModel {
   final DateTime? updatedAt;
   final String version;
   final String? websiteUrl;
+
+  String get title => name;
+
+  String get appSize {
+    if (downloadSize > 1000) {
+      return '${(downloadSize / 1000).toStringAsFixed(2)} MB';
+    } else {
+      return '$downloadSize KB';
+    }
+  }
 }
 
 enum ApplicationType {

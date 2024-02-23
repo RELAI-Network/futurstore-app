@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../components/app_drawer.dart';
-import '../components/search.dart';
-import 'apps_screen.dart';
-import 'books_screen.dart';
-import 'games_screen.dart';
+import '../../../components/app_drawer.dart';
+import '../../../components/search.dart';
+import '../../apps/pages/apps_screen.dart';
+import '../../books/pages/books_screen.dart';
+import '../../games/pages/games_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

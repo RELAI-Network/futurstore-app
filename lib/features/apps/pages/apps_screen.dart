@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components/app_card.dart';
-import '../models/app_model.dart';
+import '../widgets/app_card.dart';
+import '../../../models/app_model.dart';
 
 class AppsScreen extends StatefulWidget {
   const AppsScreen({super.key});

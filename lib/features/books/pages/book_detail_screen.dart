@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../models/book_model.dart';
+import '../../../models/book_model.dart';
 
 class BookDetailScreen extends StatefulWidget {
-  static const String id = "bookdetail";
-  final BookModel data;
-
   const BookDetailScreen(this.data, {super.key});
+  static const String id = 'bookdetail';
+  final BookModel data;
 
   @override
   State<BookDetailScreen> createState() => _BookDetailScreenState();
@@ -38,29 +37,29 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Text(
                   'Edition date: ${widget.data.publicationDate!}',
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Text(widget.data.description!),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Text(
-                  'Book Type: ${widget.data.bookType.toString()}',
+                  'Book Type: ${widget.data.bookType}',
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Text(
-                  'Language : ${widget.data.publicationLanguage.toString()}',
+                  'Language : ${widget.data.publicationLanguage}',
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Text('Price: ${widget.data.price!}'),
               ),
             ],

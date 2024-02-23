@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../models/book_model.dart';
-import '../screens/book_detail_screen.dart';
+import '../models/book.dart';
+import '../pages/book_detail_screen.dart';
 
 class BookCard extends StatelessWidget {
   const BookCard({required this.data, super.key});
@@ -27,7 +27,7 @@ class BookCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 2),
               child: Text(
-                data.title!,
+                data.title,
               ), // Assuming 'title' is a field in your AppModel
             ),
             Padding(

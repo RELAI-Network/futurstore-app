@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:futurstore/screens/home_screen.dart';
+import 'package:futurstore/features/home/pages/home_screen.dart';
 
 import 'firebase_options.dart';
 

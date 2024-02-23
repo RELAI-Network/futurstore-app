@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:futurstore/features/games/models/game.dart';
 
-import '../components/game_card.dart';
-import '../models/game_model.dart';
+import '../widgets/game_card.dart';
 
 class GamesScreen extends StatefulWidget {
   const GamesScreen({super.key});

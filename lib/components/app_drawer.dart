@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/wallet_generator_screen.dart';
+import '../features/wallets/pages/wallet_generator_screen.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
