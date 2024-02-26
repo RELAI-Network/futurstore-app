@@ -1,3 +1,8 @@
 {
-  "@@locale": "es"
+  "@@locale": "es",
+  "loadingError": "Ha ocurrido un error al cargar los datos.",
+  "retry": "Reintentar",
+  "games": "Juegos",
+  "books": "Libros",
+  "apps": "Aplicaciones"
 }

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../models/game.dart';
+import '../data/models/game.dart';
 
 class GameDetailScreen extends StatefulWidget {
   const GameDetailScreen(this.data, {super.key});

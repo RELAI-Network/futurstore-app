@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/app.dart';
+import '../data/models/app.dart';
 import '../pages/app_detail_screen.dart';
 
 class AppCard extends StatelessWidget {

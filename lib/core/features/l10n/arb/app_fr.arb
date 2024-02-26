@@ -1,3 +1,8 @@
 {
-  "@@locale": "fr"
+  "@@locale": "fr",
+  "loadingError": "Une erreur est survenue pendant le chargement des données.",
+  "retry": "Réessayer",
+  "games": "Jeux",
+  "books": "Livres",
+  "apps": "Applications"
 }

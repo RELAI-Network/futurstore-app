@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:futurstore/core/features/l10n/l10n.dart';
+import 'package:futurstore/features/apps/pages/apps_page.dart';
 
 import '../../../core/components/app_drawer.dart';
 import '../../../core/components/search.dart';
-import '../../apps/pages/apps_screen.dart';
 import '../../books/pages/books_screen.dart';
-import '../../games/pages/games_screen.dart';
+import '../../games/pages/games_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,9 +18,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController? _tabController;
   int currentIndex = 0;
 
-  final pages = const [
-    AppsScreen(),
-    GamesScreen(),
+  final pages = const <Widget>[
+    AppsPage(),
+    GamesPage(),
     BooksScreen(),
   ];
 
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -50,23 +52,23 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         drawer: const AppDrawer(),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.app_shortcut, size: 30),
-              label: 'Apps',
-              activeIcon: Icon(Icons.app_shortcut, size: 30),
+              icon: const Icon(Icons.app_shortcut, size: 30),
+              label: l10n.apps,
+              activeIcon: const Icon(Icons.app_shortcut, size: 30),
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.sports_esports_outlined, size: 30),
-              label: GamesScreen.label,
-              activeIcon: Icon(Icons.sports_esports_outlined, size: 30),
+              icon: const Icon(Icons.sports_esports_outlined, size: 30),
+              label: l10n.games,
+              activeIcon: const Icon(Icons.sports_esports_outlined, size: 30),
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.book_rounded, size: 30),
-              label: BooksScreen.label,
-              activeIcon: Icon(Icons.book_outlined, size: 30),
+              icon: const Icon(Icons.book_rounded, size: 30),
+              label: l10n.books,
+              activeIcon: const Icon(Icons.book_outlined, size: 30),
               backgroundColor: Colors.white,
             ),
           ],

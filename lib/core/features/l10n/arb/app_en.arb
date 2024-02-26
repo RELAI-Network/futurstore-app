@@ -1,3 +1,8 @@
 {
-  "@@locale": "en"
+  "@@locale": "en",
+  "loadingError": "Error occurred while loading the data.",
+  "retry": "Retry",
+  "games": "Games",
+  "books": "Books",
+  "apps": "Apps"
 }

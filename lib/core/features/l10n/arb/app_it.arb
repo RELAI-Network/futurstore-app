@@ -1,3 +1,8 @@
 {
-  "@@locale": "it"
+  "@@locale": "it",
+  "loadingError": "Errore verificatosi durante il caricamento dei dati.",
+  "retry": "Riprova",
+  "games": "Giochi",
+  "books": "Libri",
+  "apps": "App"
 }

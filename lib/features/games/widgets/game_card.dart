@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futurstore/core/extensions/navigator.dart';
-import 'package:futurstore/features/games/models/game.dart';
+import 'package:futurstore/features/games/data/models/game.dart';
 
 import '../pages/game_detail_screen.dart';
 

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../models/app.dart';
+import '../data/models/app.dart';
 
 class AppDetailScreen extends StatefulWidget {
   const AppDetailScreen(this.appData, {super.key});

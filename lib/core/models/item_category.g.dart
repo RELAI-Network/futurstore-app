@@ -134,8 +134,8 @@ abstract class ItemCategoryDocumentReference extends FirestoreDocumentReference<
   Future<void> update({
     String description,
     FieldValue descriptionFieldValue,
-    String name,
-    FieldValue nameFieldValue,
+    String label,
+    FieldValue labelFieldValue,
     String? iconUrl,
     FieldValue iconUrlFieldValue,
     List<String> itemTypes,
@@ -149,8 +149,8 @@ abstract class ItemCategoryDocumentReference extends FirestoreDocumentReference<
     Transaction transaction, {
     String description,
     FieldValue descriptionFieldValue,
-    String name,
-    FieldValue nameFieldValue,
+    String label,
+    FieldValue labelFieldValue,
     String? iconUrl,
     FieldValue iconUrlFieldValue,
     List<String> itemTypes,
@@ -189,8 +189,8 @@ class _$ItemCategoryDocumentReference extends FirestoreDocumentReference<
   Future<void> update({
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
-    Object? name = _sentinel,
-    FieldValue? nameFieldValue,
+    Object? label = _sentinel,
+    FieldValue? labelFieldValue,
     Object? iconUrl = _sentinel,
     FieldValue? iconUrlFieldValue,
     Object? itemTypes = _sentinel,
@@ -201,8 +201,8 @@ class _$ItemCategoryDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both description and descriptionFieldValue",
     );
     assert(
-      name == _sentinel || nameFieldValue == null,
-      "Cannot specify both name and nameFieldValue",
+      label == _sentinel || labelFieldValue == null,
+      "Cannot specify both label and labelFieldValue",
     );
     assert(
       iconUrl == _sentinel || iconUrlFieldValue == null,
@@ -218,11 +218,11 @@ class _$ItemCategoryDocumentReference extends FirestoreDocumentReference<
             _$ItemCategoryPerFieldToJson.description(description as String),
       if (descriptionFieldValue != null)
         _$ItemCategoryFieldMap['description']!: descriptionFieldValue,
-      if (name != _sentinel)
-        _$ItemCategoryFieldMap['name']!:
-            _$ItemCategoryPerFieldToJson.name(name as String),
-      if (nameFieldValue != null)
-        _$ItemCategoryFieldMap['name']!: nameFieldValue,
+      if (label != _sentinel)
+        _$ItemCategoryFieldMap['label']!:
+            _$ItemCategoryPerFieldToJson.label(label as String),
+      if (labelFieldValue != null)
+        _$ItemCategoryFieldMap['label']!: labelFieldValue,
       if (iconUrl != _sentinel)
         _$ItemCategoryFieldMap['iconUrl']!:
             _$ItemCategoryPerFieldToJson.iconUrl(iconUrl as String?),
@@ -242,8 +242,8 @@ class _$ItemCategoryDocumentReference extends FirestoreDocumentReference<
     Transaction transaction, {
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
-    Object? name = _sentinel,
-    FieldValue? nameFieldValue,
+    Object? label = _sentinel,
+    FieldValue? labelFieldValue,
     Object? iconUrl = _sentinel,
     FieldValue? iconUrlFieldValue,
     Object? itemTypes = _sentinel,
@@ -254,8 +254,8 @@ class _$ItemCategoryDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both description and descriptionFieldValue",
     );
     assert(
-      name == _sentinel || nameFieldValue == null,
-      "Cannot specify both name and nameFieldValue",
+      label == _sentinel || labelFieldValue == null,
+      "Cannot specify both label and labelFieldValue",
     );
     assert(
       iconUrl == _sentinel || iconUrlFieldValue == null,
@@ -271,11 +271,11 @@ class _$ItemCategoryDocumentReference extends FirestoreDocumentReference<
             _$ItemCategoryPerFieldToJson.description(description as String),
       if (descriptionFieldValue != null)
         _$ItemCategoryFieldMap['description']!: descriptionFieldValue,
-      if (name != _sentinel)
-        _$ItemCategoryFieldMap['name']!:
-            _$ItemCategoryPerFieldToJson.name(name as String),
-      if (nameFieldValue != null)
-        _$ItemCategoryFieldMap['name']!: nameFieldValue,
+      if (label != _sentinel)
+        _$ItemCategoryFieldMap['label']!:
+            _$ItemCategoryPerFieldToJson.label(label as String),
+      if (labelFieldValue != null)
+        _$ItemCategoryFieldMap['label']!: labelFieldValue,
       if (iconUrl != _sentinel)
         _$ItemCategoryFieldMap['iconUrl']!:
             _$ItemCategoryPerFieldToJson.iconUrl(iconUrl as String?),
@@ -367,7 +367,7 @@ abstract class ItemCategoryQuery
     bool? isNull,
   });
 
-  ItemCategoryQuery whereName({
+  ItemCategoryQuery whereLabel({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -460,7 +460,7 @@ abstract class ItemCategoryQuery
     ItemCategoryDocumentSnapshot? startAfterDocument,
   });
 
-  ItemCategoryQuery orderByName({
+  ItemCategoryQuery orderByLabel({
     bool descending = false,
     String startAt,
     String startAfter,
@@ -661,7 +661,7 @@ class _$ItemCategoryQuery
   }
 
   @override
-  ItemCategoryQuery whereName({
+  ItemCategoryQuery whereLabel({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -675,29 +675,29 @@ class _$ItemCategoryQuery
     return _$ItemCategoryQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ItemCategoryFieldMap['name']!,
+        _$ItemCategoryFieldMap['label']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$ItemCategoryPerFieldToJson.name(isEqualTo as String)
+            ? _$ItemCategoryPerFieldToJson.label(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$ItemCategoryPerFieldToJson.name(isNotEqualTo as String)
+            ? _$ItemCategoryPerFieldToJson.label(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$ItemCategoryPerFieldToJson.name(isLessThan as String)
+            ? _$ItemCategoryPerFieldToJson.label(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ItemCategoryPerFieldToJson.name(isLessThanOrEqualTo as String)
+            ? _$ItemCategoryPerFieldToJson.label(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$ItemCategoryPerFieldToJson.name(isGreaterThan as String)
+            ? _$ItemCategoryPerFieldToJson.label(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
             ? _$ItemCategoryPerFieldToJson
-                .name(isGreaterThanOrEqualTo as String)
+                .label(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$ItemCategoryPerFieldToJson.name(e)),
+        whereIn: whereIn?.map((e) => _$ItemCategoryPerFieldToJson.label(e)),
         whereNotIn:
-            whereNotIn?.map((e) => _$ItemCategoryPerFieldToJson.name(e)),
+            whereNotIn?.map((e) => _$ItemCategoryPerFieldToJson.label(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1030,7 +1030,7 @@ class _$ItemCategoryQuery
   }
 
   @override
-  ItemCategoryQuery orderByName({
+  ItemCategoryQuery orderByLabel({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -1042,7 +1042,7 @@ class _$ItemCategoryQuery
     ItemCategoryDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor
-        .orderBy(_$ItemCategoryFieldMap['name']!, descending: descending);
+        .orderBy(_$ItemCategoryFieldMap['label']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -1350,7 +1350,7 @@ class ItemCategoryQueryDocumentSnapshot
 
 ItemCategory _$ItemCategoryFromJson(Map<String, dynamic> json) => ItemCategory(
       id: json['id'] as String,
-      name: json['name'] as String,
+      label: json['label'] as String,
       description: json['description'] as String,
       itemTypes: (json['item_types'] as List<dynamic>)
           .map((e) => e as String)
@@ -1360,7 +1360,7 @@ ItemCategory _$ItemCategoryFromJson(Map<String, dynamic> json) => ItemCategory(
 
 const _$ItemCategoryFieldMap = <String, String>{
   'description': 'description',
-  'name': 'name',
+  'label': 'label',
   'iconUrl': 'icon_url',
   'id': 'id',
   'itemTypes': 'item_types',
@@ -1371,7 +1371,7 @@ abstract class _$ItemCategoryPerFieldToJson {
   // ignore: unused_element
   static Object? description(String instance) => instance;
   // ignore: unused_element
-  static Object? name(String instance) => instance;
+  static Object? label(String instance) => instance;
   // ignore: unused_element
   static Object? iconUrl(String? instance) => instance;
   // ignore: unused_element
@@ -1383,7 +1383,7 @@ abstract class _$ItemCategoryPerFieldToJson {
 Map<String, dynamic> _$ItemCategoryToJson(ItemCategory instance) =>
     <String, dynamic>{
       'description': instance.description,
-      'name': instance.name,
+      'label': instance.label,
       'icon_url': instance.iconUrl,
       'id': instance.id,
       'item_types': instance.itemTypes,

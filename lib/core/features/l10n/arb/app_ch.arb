@@ -1,3 +1,8 @@
 {
-  "@@locale": "ch"
+  "@@locale": "ch",
+  "loadingError": "Beim Lade vo de Date isch en Fähler basseert.",
+  "retry": "Retry",
+  "games": "Games",
+  "books": "Books",
+  "apps": "Apps"
 }

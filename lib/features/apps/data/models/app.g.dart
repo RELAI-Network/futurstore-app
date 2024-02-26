@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'game.dart';
+part of 'app.dart';
 
 // **************************************************************************
 // CollectionGenerator
@@ -20,81 +20,85 @@ const _sentinel = _Sentinel();
 /// A collection reference object can be used for adding documents,
 /// getting document references, and querying for documents
 /// (using the methods inherited from Query).
-abstract class GameModelCollectionReference
+abstract class ApplicationModelCollectionReference
     implements
-        GameModelQuery,
-        FirestoreCollectionReference<GameModel, GameModelQuerySnapshot> {
-  factory GameModelCollectionReference([
+        ApplicationModelQuery,
+        FirestoreCollectionReference<ApplicationModel,
+            ApplicationModelQuerySnapshot> {
+  factory ApplicationModelCollectionReference([
     FirebaseFirestore? firestore,
-  ]) = _$GameModelCollectionReference;
+  ]) = _$ApplicationModelCollectionReference;
 
-  static GameModel fromFirestore(
+  static ApplicationModel fromFirestore(
     DocumentSnapshot<Map<String, Object?>> snapshot,
     SnapshotOptions? options,
   ) {
-    return _$GameModelFromJson({'id': snapshot.id, ...?snapshot.data()});
+    return _$ApplicationModelFromJson({'id': snapshot.id, ...?snapshot.data()});
   }
 
   static Map<String, Object?> toFirestore(
-    GameModel value,
+    ApplicationModel value,
     SetOptions? options,
   ) {
-    return {..._$GameModelToJson(value)}..remove('id');
+    return {..._$ApplicationModelToJson(value)}..remove('id');
   }
 
   @override
-  CollectionReference<GameModel> get reference;
+  CollectionReference<ApplicationModel> get reference;
 
   @override
-  GameModelDocumentReference doc([String? id]);
+  ApplicationModelDocumentReference doc([String? id]);
 
   /// Add a new document to this collection with the specified data,
   /// assigning it a document ID automatically.
-  Future<GameModelDocumentReference> add(GameModel value);
+  Future<ApplicationModelDocumentReference> add(ApplicationModel value);
 }
 
-class _$GameModelCollectionReference extends _$GameModelQuery
-    implements GameModelCollectionReference {
-  factory _$GameModelCollectionReference([FirebaseFirestore? firestore]) {
+class _$ApplicationModelCollectionReference extends _$ApplicationModelQuery
+    implements ApplicationModelCollectionReference {
+  factory _$ApplicationModelCollectionReference(
+      [FirebaseFirestore? firestore]) {
     firestore ??= FirebaseFirestore.instance;
 
-    return _$GameModelCollectionReference._(
-      firestore.collection('games').withConverter(
-            fromFirestore: GameModelCollectionReference.fromFirestore,
-            toFirestore: GameModelCollectionReference.toFirestore,
+    return _$ApplicationModelCollectionReference._(
+      firestore.collection('apps').withConverter(
+            fromFirestore: ApplicationModelCollectionReference.fromFirestore,
+            toFirestore: ApplicationModelCollectionReference.toFirestore,
           ),
     );
   }
 
-  _$GameModelCollectionReference._(
-    CollectionReference<GameModel> reference,
+  _$ApplicationModelCollectionReference._(
+    CollectionReference<ApplicationModel> reference,
   ) : super(reference, $referenceWithoutCursor: reference);
 
   String get path => reference.path;
 
   @override
-  CollectionReference<GameModel> get reference =>
-      super.reference as CollectionReference<GameModel>;
+  CollectionReference<ApplicationModel> get reference =>
+      super.reference as CollectionReference<ApplicationModel>;
 
   @override
-  GameModelDocumentReference doc([String? id]) {
+  ApplicationModelDocumentReference doc([String? id]) {
     assert(
       id == null || id.split('/').length == 1,
       'The document ID cannot be from a different collection',
     );
-    return GameModelDocumentReference(
+    return ApplicationModelDocumentReference(
       reference.doc(id),
     );
   }
 
   @override
-  Future<GameModelDocumentReference> add(GameModel value) {
-    return reference.add(value).then((ref) => GameModelDocumentReference(ref));
+  Future<ApplicationModelDocumentReference> add(ApplicationModel value) {
+    return reference
+        .add(value)
+        .then((ref) => ApplicationModelDocumentReference(ref));
   }
 
   @override
   bool operator ==(Object other) {
-    return other is _$GameModelCollectionReference &&
+    return other is _$ApplicationModelCollectionReference &&
         other.runtimeType == runtimeType &&
         other.reference == reference;
   }
@@ -103,23 +107,30 @@ class _$GameModelCollectionReference extends _$GameModelQuery
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
-abstract class GameModelDocumentReference
-    extends FirestoreDocumentReference<GameModel, GameModelDocumentSnapshot> {
-  factory GameModelDocumentReference(DocumentReference<GameModel> reference) =
-      _$GameModelDocumentReference;
+abstract class ApplicationModelDocumentReference
+    extends FirestoreDocumentReference<ApplicationModel,
+        ApplicationModelDocumentSnapshot> {
+  factory ApplicationModelDocumentReference(
+          DocumentReference<ApplicationModel> reference) =
+      _$ApplicationModelDocumentReference;
 
-  DocumentReference<GameModel> get reference;
+  DocumentReference<ApplicationModel> get reference;
 
-  /// A reference to the [GameModelCollectionReference] containing this document.
-  GameModelCollectionReference get parent {
-    return _$GameModelCollectionReference(reference.firestore);
+  /// A reference to the [ApplicationModelCollectionReference] containing this document.
+  ApplicationModelCollectionReference get parent {
+    return _$ApplicationModelCollectionReference(reference.firestore);
   }
 
-  @override
-  Stream<GameModelDocumentSnapshot> snapshots();
+  late final ApplicationReleaseCollectionReference releases =
+      _$ApplicationReleaseCollectionReference(
+    reference,
+  );
 
   @override
-  Future<GameModelDocumentSnapshot> get([GetOptions? options]);
+  Stream<ApplicationModelDocumentSnapshot> snapshots();
+
+  @override
+  Future<ApplicationModelDocumentSnapshot> get([GetOptions? options]);
 
   @override
   Future<void> delete();
@@ -131,6 +142,8 @@ abstract class GameModelDocumentReference
   Future<void> update({
     String? address,
     FieldValue addressFieldValue,
+    String appType,
+    FieldValue appTypeFieldValue,
     String description,
     FieldValue descriptionFieldValue,
     String email,
@@ -145,8 +158,6 @@ abstract class GameModelDocumentReference
     FieldValue screenshotsFieldValue,
     List<String> tags,
     FieldValue tagsFieldValue,
-    String type,
-    FieldValue typeFieldValue,
     String version,
     FieldValue versionFieldValue,
     String categoryId,
@@ -198,6 +209,8 @@ abstract class GameModelDocumentReference
     Transaction transaction, {
     String? address,
     FieldValue addressFieldValue,
+    String appType,
+    FieldValue appTypeFieldValue,
     String description,
     FieldValue descriptionFieldValue,
     String email,
@@ -212,8 +225,6 @@ abstract class GameModelDocumentReference
     FieldValue screenshotsFieldValue,
     List<String> tags,
     FieldValue tagsFieldValue,
-    String type,
-    FieldValue typeFieldValue,
     String version,
     FieldValue versionFieldValue,
     String categoryId,
@@ -259,37 +270,45 @@ abstract class GameModelDocumentReference
   });
 }
 
-class _$GameModelDocumentReference
-    extends FirestoreDocumentReference<GameModel, GameModelDocumentSnapshot>
-    implements GameModelDocumentReference {
-  _$GameModelDocumentReference(this.reference);
+class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
+        ApplicationModel, ApplicationModelDocumentSnapshot>
+    implements ApplicationModelDocumentReference {
+  _$ApplicationModelDocumentReference(this.reference);
 
   @override
-  final DocumentReference<GameModel> reference;
+  final DocumentReference<ApplicationModel> reference;
 
-  /// A reference to the [GameModelCollectionReference] containing this document.
-  GameModelCollectionReference get parent {
-    return _$GameModelCollectionReference(reference.firestore);
+  /// A reference to the [ApplicationModelCollectionReference] containing this document.
+  ApplicationModelCollectionReference get parent {
+    return _$ApplicationModelCollectionReference(reference.firestore);
+  }
+
+  late final ApplicationReleaseCollectionReference releases =
+      _$ApplicationReleaseCollectionReference(
+    reference,
+  );
+
+  @override
+  Stream<ApplicationModelDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(ApplicationModelDocumentSnapshot._);
   }
 
   @override
-  Stream<GameModelDocumentSnapshot> snapshots() {
-    return reference.snapshots().map(GameModelDocumentSnapshot._);
+  Future<ApplicationModelDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(ApplicationModelDocumentSnapshot._);
   }
 
   @override
-  Future<GameModelDocumentSnapshot> get([GetOptions? options]) {
-    return reference.get(options).then(GameModelDocumentSnapshot._);
-  }
-
-  @override
-  Future<GameModelDocumentSnapshot> transactionGet(Transaction transaction) {
-    return transaction.get(reference).then(GameModelDocumentSnapshot._);
+  Future<ApplicationModelDocumentSnapshot> transactionGet(
+      Transaction transaction) {
+    return transaction.get(reference).then(ApplicationModelDocumentSnapshot._);
   }
 
   Future<void> update({
     Object? address = _sentinel,
     FieldValue? addressFieldValue,
+    Object? appType = _sentinel,
+    FieldValue? appTypeFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
     Object? email = _sentinel,
@@ -304,8 +323,6 @@ class _$GameModelDocumentReference
     FieldValue? screenshotsFieldValue,
     Object? tags = _sentinel,
     FieldValue? tagsFieldValue,
-    Object? type = _sentinel,
-    FieldValue? typeFieldValue,
     Object? version = _sentinel,
     FieldValue? versionFieldValue,
     Object? categoryId = _sentinel,
@@ -354,6 +371,10 @@ class _$GameModelDocumentReference
       "Cannot specify both address and addressFieldValue",
     );
     assert(
+      appType == _sentinel || appTypeFieldValue == null,
+      "Cannot specify both appType and appTypeFieldValue",
+    );
+    assert(
       description == _sentinel || descriptionFieldValue == null,
       "Cannot specify both description and descriptionFieldValue",
     );
@@ -380,10 +401,6 @@ class _$GameModelDocumentReference
     assert(
       tags == _sentinel || tagsFieldValue == null,
       "Cannot specify both tags and tagsFieldValue",
-    );
-    assert(
-      type == _sentinel || typeFieldValue == null,
-      "Cannot specify both type and typeFieldValue",
     );
     assert(
       version == _sentinel || versionFieldValue == null,
@@ -472,155 +489,173 @@ class _$GameModelDocumentReference
     );
     final json = {
       if (address != _sentinel)
-        _$GameModelFieldMap['address']!:
-            _$GameModelPerFieldToJson.address(address as String?),
+        _$ApplicationModelFieldMap['address']!:
+            _$ApplicationModelPerFieldToJson.address(address as String?),
       if (addressFieldValue != null)
-        _$GameModelFieldMap['address']!: addressFieldValue,
+        _$ApplicationModelFieldMap['address']!: addressFieldValue,
+      if (appType != _sentinel)
+        _$ApplicationModelFieldMap['appType']!:
+            _$ApplicationModelPerFieldToJson.appType(appType as String),
+      if (appTypeFieldValue != null)
+        _$ApplicationModelFieldMap['appType']!: appTypeFieldValue,
       if (description != _sentinel)
-        _$GameModelFieldMap['description']!:
-            _$GameModelPerFieldToJson.description(description as String),
+        _$ApplicationModelFieldMap['description']!:
+            _$ApplicationModelPerFieldToJson.description(description as String),
       if (descriptionFieldValue != null)
-        _$GameModelFieldMap['description']!: descriptionFieldValue,
+        _$ApplicationModelFieldMap['description']!: descriptionFieldValue,
       if (email != _sentinel)
-        _$GameModelFieldMap['email']!:
-            _$GameModelPerFieldToJson.email(email as String),
+        _$ApplicationModelFieldMap['email']!:
+            _$ApplicationModelPerFieldToJson.email(email as String),
       if (emailFieldValue != null)
-        _$GameModelFieldMap['email']!: emailFieldValue,
+        _$ApplicationModelFieldMap['email']!: emailFieldValue,
       if (name != _sentinel)
-        _$GameModelFieldMap['name']!:
-            _$GameModelPerFieldToJson.name(name as String),
-      if (nameFieldValue != null) _$GameModelFieldMap['name']!: nameFieldValue,
+        _$ApplicationModelFieldMap['name']!:
+            _$ApplicationModelPerFieldToJson.name(name as String),
+      if (nameFieldValue != null)
+        _$ApplicationModelFieldMap['name']!: nameFieldValue,
       if (phone != _sentinel)
-        _$GameModelFieldMap['phone']!:
-            _$GameModelPerFieldToJson.phone(phone as String?),
+        _$ApplicationModelFieldMap['phone']!:
+            _$ApplicationModelPerFieldToJson.phone(phone as String?),
       if (phoneFieldValue != null)
-        _$GameModelFieldMap['phone']!: phoneFieldValue,
+        _$ApplicationModelFieldMap['phone']!: phoneFieldValue,
       if (price != _sentinel)
-        _$GameModelFieldMap['price']!:
-            _$GameModelPerFieldToJson.price(price as double?),
+        _$ApplicationModelFieldMap['price']!:
+            _$ApplicationModelPerFieldToJson.price(price as double?),
       if (priceFieldValue != null)
-        _$GameModelFieldMap['price']!: priceFieldValue,
+        _$ApplicationModelFieldMap['price']!: priceFieldValue,
       if (screenshots != _sentinel)
-        _$GameModelFieldMap['screenshots']!:
-            _$GameModelPerFieldToJson.screenshots(screenshots as List<String>),
+        _$ApplicationModelFieldMap['screenshots']!:
+            _$ApplicationModelPerFieldToJson
+                .screenshots(screenshots as List<String>),
       if (screenshotsFieldValue != null)
-        _$GameModelFieldMap['screenshots']!: screenshotsFieldValue,
+        _$ApplicationModelFieldMap['screenshots']!: screenshotsFieldValue,
       if (tags != _sentinel)
-        _$GameModelFieldMap['tags']!:
-            _$GameModelPerFieldToJson.tags(tags as List<String>),
-      if (tagsFieldValue != null) _$GameModelFieldMap['tags']!: tagsFieldValue,
-      if (type != _sentinel)
-        _$GameModelFieldMap['type']!:
-            _$GameModelPerFieldToJson.type(type as String),
-      if (typeFieldValue != null) _$GameModelFieldMap['type']!: typeFieldValue,
+        _$ApplicationModelFieldMap['tags']!:
+            _$ApplicationModelPerFieldToJson.tags(tags as List<String>),
+      if (tagsFieldValue != null)
+        _$ApplicationModelFieldMap['tags']!: tagsFieldValue,
       if (version != _sentinel)
-        _$GameModelFieldMap['version']!:
-            _$GameModelPerFieldToJson.version(version as String),
+        _$ApplicationModelFieldMap['version']!:
+            _$ApplicationModelPerFieldToJson.version(version as String),
       if (versionFieldValue != null)
-        _$GameModelFieldMap['version']!: versionFieldValue,
+        _$ApplicationModelFieldMap['version']!: versionFieldValue,
       if (categoryId != _sentinel)
-        _$GameModelFieldMap['categoryId']!:
-            _$GameModelPerFieldToJson.categoryId(categoryId as String),
+        _$ApplicationModelFieldMap['categoryId']!:
+            _$ApplicationModelPerFieldToJson.categoryId(categoryId as String),
       if (categoryIdFieldValue != null)
-        _$GameModelFieldMap['categoryId']!: categoryIdFieldValue,
+        _$ApplicationModelFieldMap['categoryId']!: categoryIdFieldValue,
       if (categoryName != _sentinel)
-        _$GameModelFieldMap['categoryName']!:
-            _$GameModelPerFieldToJson.categoryName(categoryName as String),
+        _$ApplicationModelFieldMap['categoryName']!:
+            _$ApplicationModelPerFieldToJson
+                .categoryName(categoryName as String),
       if (categoryNameFieldValue != null)
-        _$GameModelFieldMap['categoryName']!: categoryNameFieldValue,
+        _$ApplicationModelFieldMap['categoryName']!: categoryNameFieldValue,
       if (containsAds != _sentinel)
-        _$GameModelFieldMap['containsAds']!:
-            _$GameModelPerFieldToJson.containsAds(containsAds as bool),
+        _$ApplicationModelFieldMap['containsAds']!:
+            _$ApplicationModelPerFieldToJson.containsAds(containsAds as bool),
       if (containsAdsFieldValue != null)
-        _$GameModelFieldMap['containsAds']!: containsAdsFieldValue,
+        _$ApplicationModelFieldMap['containsAds']!: containsAdsFieldValue,
       if (coverImageRectUrl != _sentinel)
-        _$GameModelFieldMap['coverImageRectUrl']!: _$GameModelPerFieldToJson
-            .coverImageRectUrl(coverImageRectUrl as String?),
+        _$ApplicationModelFieldMap['coverImageRectUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .coverImageRectUrl(coverImageRectUrl as String?),
       if (coverImageRectUrlFieldValue != null)
-        _$GameModelFieldMap['coverImageRectUrl']!: coverImageRectUrlFieldValue,
+        _$ApplicationModelFieldMap['coverImageRectUrl']!:
+            coverImageRectUrlFieldValue,
       if (createdAt != _sentinel)
-        _$GameModelFieldMap['createdAt']!:
-            _$GameModelPerFieldToJson.createdAt(createdAt as DateTime),
+        _$ApplicationModelFieldMap['createdAt']!:
+            _$ApplicationModelPerFieldToJson.createdAt(createdAt as DateTime),
       if (createdAtFieldValue != null)
-        _$GameModelFieldMap['createdAt']!: createdAtFieldValue,
+        _$ApplicationModelFieldMap['createdAt']!: createdAtFieldValue,
       if (downloadSize != _sentinel)
-        _$GameModelFieldMap['downloadSize']!:
-            _$GameModelPerFieldToJson.downloadSize(downloadSize as int),
+        _$ApplicationModelFieldMap['downloadSize']!:
+            _$ApplicationModelPerFieldToJson.downloadSize(downloadSize as int),
       if (downloadSizeFieldValue != null)
-        _$GameModelFieldMap['downloadSize']!: downloadSizeFieldValue,
+        _$ApplicationModelFieldMap['downloadSize']!: downloadSizeFieldValue,
       if (downloadsCount != _sentinel)
-        _$GameModelFieldMap['downloadsCount']!:
-            _$GameModelPerFieldToJson.downloadsCount(downloadsCount as int),
+        _$ApplicationModelFieldMap['downloadsCount']!:
+            _$ApplicationModelPerFieldToJson
+                .downloadsCount(downloadsCount as int),
       if (downloadsCountFieldValue != null)
-        _$GameModelFieldMap['downloadsCount']!: downloadsCountFieldValue,
+        _$ApplicationModelFieldMap['downloadsCount']!: downloadsCountFieldValue,
       if (hasInAppPurchases != _sentinel)
-        _$GameModelFieldMap['hasInAppPurchases']!: _$GameModelPerFieldToJson
-            .hasInAppPurchases(hasInAppPurchases as bool),
+        _$ApplicationModelFieldMap['hasInAppPurchases']!:
+            _$ApplicationModelPerFieldToJson
+                .hasInAppPurchases(hasInAppPurchases as bool),
       if (hasInAppPurchasesFieldValue != null)
-        _$GameModelFieldMap['hasInAppPurchases']!: hasInAppPurchasesFieldValue,
+        _$ApplicationModelFieldMap['hasInAppPurchases']!:
+            hasInAppPurchasesFieldValue,
       if (logoImageSquareUrl != _sentinel)
-        _$GameModelFieldMap['logoImageSquareUrl']!: _$GameModelPerFieldToJson
-            .logoImageSquareUrl(logoImageSquareUrl as String),
+        _$ApplicationModelFieldMap['logoImageSquareUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .logoImageSquareUrl(logoImageSquareUrl as String),
       if (logoImageSquareUrlFieldValue != null)
-        _$GameModelFieldMap['logoImageSquareUrl']!:
+        _$ApplicationModelFieldMap['logoImageSquareUrl']!:
             logoImageSquareUrlFieldValue,
       if (minAgeRequirement != _sentinel)
-        _$GameModelFieldMap['minAgeRequirement']!: _$GameModelPerFieldToJson
-            .minAgeRequirement(minAgeRequirement as int),
+        _$ApplicationModelFieldMap['minAgeRequirement']!:
+            _$ApplicationModelPerFieldToJson
+                .minAgeRequirement(minAgeRequirement as int),
       if (minAgeRequirementFieldValue != null)
-        _$GameModelFieldMap['minAgeRequirement']!: minAgeRequirementFieldValue,
+        _$ApplicationModelFieldMap['minAgeRequirement']!:
+            minAgeRequirementFieldValue,
       if (notesAverage != _sentinel)
-        _$GameModelFieldMap['notesAverage']!:
-            _$GameModelPerFieldToJson.notesAverage(notesAverage as int?),
+        _$ApplicationModelFieldMap['notesAverage']!:
+            _$ApplicationModelPerFieldToJson.notesAverage(notesAverage as int?),
       if (notesAverageFieldValue != null)
-        _$GameModelFieldMap['notesAverage']!: notesAverageFieldValue,
+        _$ApplicationModelFieldMap['notesAverage']!: notesAverageFieldValue,
       if (notesCount != _sentinel)
-        _$GameModelFieldMap['notesCount']!:
-            _$GameModelPerFieldToJson.notesCount(notesCount as int?),
+        _$ApplicationModelFieldMap['notesCount']!:
+            _$ApplicationModelPerFieldToJson.notesCount(notesCount as int?),
       if (notesCountFieldValue != null)
-        _$GameModelFieldMap['notesCount']!: notesCountFieldValue,
+        _$ApplicationModelFieldMap['notesCount']!: notesCountFieldValue,
       if (packageName != _sentinel)
-        _$GameModelFieldMap['packageName']!:
-            _$GameModelPerFieldToJson.packageName(packageName as String),
+        _$ApplicationModelFieldMap['packageName']!:
+            _$ApplicationModelPerFieldToJson.packageName(packageName as String),
       if (packageNameFieldValue != null)
-        _$GameModelFieldMap['packageName']!: packageNameFieldValue,
+        _$ApplicationModelFieldMap['packageName']!: packageNameFieldValue,
       if (privacyPolicyLinkUrl != _sentinel)
-        _$GameModelFieldMap['privacyPolicyLinkUrl']!: _$GameModelPerFieldToJson
-            .privacyPolicyLinkUrl(privacyPolicyLinkUrl as String),
+        _$ApplicationModelFieldMap['privacyPolicyLinkUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .privacyPolicyLinkUrl(privacyPolicyLinkUrl as String),
       if (privacyPolicyLinkUrlFieldValue != null)
-        _$GameModelFieldMap['privacyPolicyLinkUrl']!:
+        _$ApplicationModelFieldMap['privacyPolicyLinkUrl']!:
             privacyPolicyLinkUrlFieldValue,
       if (publisherId != _sentinel)
-        _$GameModelFieldMap['publisherId']!:
-            _$GameModelPerFieldToJson.publisherId(publisherId as String),
+        _$ApplicationModelFieldMap['publisherId']!:
+            _$ApplicationModelPerFieldToJson.publisherId(publisherId as String),
       if (publisherIdFieldValue != null)
-        _$GameModelFieldMap['publisherId']!: publisherIdFieldValue,
+        _$ApplicationModelFieldMap['publisherId']!: publisherIdFieldValue,
       if (publisherName != _sentinel)
-        _$GameModelFieldMap['publisherName']!:
-            _$GameModelPerFieldToJson.publisherName(publisherName as String),
+        _$ApplicationModelFieldMap['publisherName']!:
+            _$ApplicationModelPerFieldToJson
+                .publisherName(publisherName as String),
       if (publisherNameFieldValue != null)
-        _$GameModelFieldMap['publisherName']!: publisherNameFieldValue,
+        _$ApplicationModelFieldMap['publisherName']!: publisherNameFieldValue,
       if (releaseFileMainUrl != _sentinel)
-        _$GameModelFieldMap['releaseFileMainUrl']!: _$GameModelPerFieldToJson
-            .releaseFileMainUrl(releaseFileMainUrl as String),
+        _$ApplicationModelFieldMap['releaseFileMainUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .releaseFileMainUrl(releaseFileMainUrl as String),
       if (releaseFileMainUrlFieldValue != null)
-        _$GameModelFieldMap['releaseFileMainUrl']!:
+        _$ApplicationModelFieldMap['releaseFileMainUrl']!:
             releaseFileMainUrlFieldValue,
       if (trailerVideoUrl != _sentinel)
-        _$GameModelFieldMap['trailerVideoUrl']!: _$GameModelPerFieldToJson
-            .trailerVideoUrl(trailerVideoUrl as String?),
+        _$ApplicationModelFieldMap['trailerVideoUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .trailerVideoUrl(trailerVideoUrl as String?),
       if (trailerVideoUrlFieldValue != null)
-        _$GameModelFieldMap['trailerVideoUrl']!: trailerVideoUrlFieldValue,
+        _$ApplicationModelFieldMap['trailerVideoUrl']!:
+            trailerVideoUrlFieldValue,
       if (updatedAt != _sentinel)
-        _$GameModelFieldMap['updatedAt']!:
-            _$GameModelPerFieldToJson.updatedAt(updatedAt as DateTime?),
+        _$ApplicationModelFieldMap['updatedAt']!:
+            _$ApplicationModelPerFieldToJson.updatedAt(updatedAt as DateTime?),
       if (updatedAtFieldValue != null)
-        _$GameModelFieldMap['updatedAt']!: updatedAtFieldValue,
+        _$ApplicationModelFieldMap['updatedAt']!: updatedAtFieldValue,
       if (websiteUrl != _sentinel)
-        _$GameModelFieldMap['websiteUrl']!:
-            _$GameModelPerFieldToJson.websiteUrl(websiteUrl as String?),
+        _$ApplicationModelFieldMap['websiteUrl']!:
+            _$ApplicationModelPerFieldToJson.websiteUrl(websiteUrl as String?),
       if (websiteUrlFieldValue != null)
-        _$GameModelFieldMap['websiteUrl']!: websiteUrlFieldValue,
+        _$ApplicationModelFieldMap['websiteUrl']!: websiteUrlFieldValue,
     };
 
     return reference.update(json);
@@ -630,6 +665,8 @@ class _$GameModelDocumentReference
     Transaction transaction, {
     Object? address = _sentinel,
     FieldValue? addressFieldValue,
+    Object? appType = _sentinel,
+    FieldValue? appTypeFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
     Object? email = _sentinel,
@@ -644,8 +681,6 @@ class _$GameModelDocumentReference
     FieldValue? screenshotsFieldValue,
     Object? tags = _sentinel,
     FieldValue? tagsFieldValue,
-    Object? type = _sentinel,
-    FieldValue? typeFieldValue,
     Object? version = _sentinel,
     FieldValue? versionFieldValue,
     Object? categoryId = _sentinel,
@@ -694,6 +729,10 @@ class _$GameModelDocumentReference
       "Cannot specify both address and addressFieldValue",
     );
     assert(
+      appType == _sentinel || appTypeFieldValue == null,
+      "Cannot specify both appType and appTypeFieldValue",
+    );
+    assert(
       description == _sentinel || descriptionFieldValue == null,
       "Cannot specify both description and descriptionFieldValue",
     );
@@ -720,10 +759,6 @@ class _$GameModelDocumentReference
     assert(
       tags == _sentinel || tagsFieldValue == null,
       "Cannot specify both tags and tagsFieldValue",
-    );
-    assert(
-      type == _sentinel || typeFieldValue == null,
-      "Cannot specify both type and typeFieldValue",
     );
     assert(
       version == _sentinel || versionFieldValue == null,
@@ -812,155 +847,173 @@ class _$GameModelDocumentReference
     );
     final json = {
       if (address != _sentinel)
-        _$GameModelFieldMap['address']!:
-            _$GameModelPerFieldToJson.address(address as String?),
+        _$ApplicationModelFieldMap['address']!:
+            _$ApplicationModelPerFieldToJson.address(address as String?),
       if (addressFieldValue != null)
-        _$GameModelFieldMap['address']!: addressFieldValue,
+        _$ApplicationModelFieldMap['address']!: addressFieldValue,
+      if (appType != _sentinel)
+        _$ApplicationModelFieldMap['appType']!:
+            _$ApplicationModelPerFieldToJson.appType(appType as String),
+      if (appTypeFieldValue != null)
+        _$ApplicationModelFieldMap['appType']!: appTypeFieldValue,
       if (description != _sentinel)
-        _$GameModelFieldMap['description']!:
-            _$GameModelPerFieldToJson.description(description as String),
+        _$ApplicationModelFieldMap['description']!:
+            _$ApplicationModelPerFieldToJson.description(description as String),
       if (descriptionFieldValue != null)
-        _$GameModelFieldMap['description']!: descriptionFieldValue,
+        _$ApplicationModelFieldMap['description']!: descriptionFieldValue,
       if (email != _sentinel)
-        _$GameModelFieldMap['email']!:
-            _$GameModelPerFieldToJson.email(email as String),
+        _$ApplicationModelFieldMap['email']!:
+            _$ApplicationModelPerFieldToJson.email(email as String),
       if (emailFieldValue != null)
-        _$GameModelFieldMap['email']!: emailFieldValue,
+        _$ApplicationModelFieldMap['email']!: emailFieldValue,
       if (name != _sentinel)
-        _$GameModelFieldMap['name']!:
-            _$GameModelPerFieldToJson.name(name as String),
-      if (nameFieldValue != null) _$GameModelFieldMap['name']!: nameFieldValue,
+        _$ApplicationModelFieldMap['name']!:
+            _$ApplicationModelPerFieldToJson.name(name as String),
+      if (nameFieldValue != null)
+        _$ApplicationModelFieldMap['name']!: nameFieldValue,
       if (phone != _sentinel)
-        _$GameModelFieldMap['phone']!:
-            _$GameModelPerFieldToJson.phone(phone as String?),
+        _$ApplicationModelFieldMap['phone']!:
+            _$ApplicationModelPerFieldToJson.phone(phone as String?),
       if (phoneFieldValue != null)
-        _$GameModelFieldMap['phone']!: phoneFieldValue,
+        _$ApplicationModelFieldMap['phone']!: phoneFieldValue,
       if (price != _sentinel)
-        _$GameModelFieldMap['price']!:
-            _$GameModelPerFieldToJson.price(price as double?),
+        _$ApplicationModelFieldMap['price']!:
+            _$ApplicationModelPerFieldToJson.price(price as double?),
       if (priceFieldValue != null)
-        _$GameModelFieldMap['price']!: priceFieldValue,
+        _$ApplicationModelFieldMap['price']!: priceFieldValue,
       if (screenshots != _sentinel)
-        _$GameModelFieldMap['screenshots']!:
-            _$GameModelPerFieldToJson.screenshots(screenshots as List<String>),
+        _$ApplicationModelFieldMap['screenshots']!:
+            _$ApplicationModelPerFieldToJson
+                .screenshots(screenshots as List<String>),
       if (screenshotsFieldValue != null)
-        _$GameModelFieldMap['screenshots']!: screenshotsFieldValue,
+        _$ApplicationModelFieldMap['screenshots']!: screenshotsFieldValue,
       if (tags != _sentinel)
-        _$GameModelFieldMap['tags']!:
-            _$GameModelPerFieldToJson.tags(tags as List<String>),
-      if (tagsFieldValue != null) _$GameModelFieldMap['tags']!: tagsFieldValue,
-      if (type != _sentinel)
-        _$GameModelFieldMap['type']!:
-            _$GameModelPerFieldToJson.type(type as String),
-      if (typeFieldValue != null) _$GameModelFieldMap['type']!: typeFieldValue,
+        _$ApplicationModelFieldMap['tags']!:
+            _$ApplicationModelPerFieldToJson.tags(tags as List<String>),
+      if (tagsFieldValue != null)
+        _$ApplicationModelFieldMap['tags']!: tagsFieldValue,
       if (version != _sentinel)
-        _$GameModelFieldMap['version']!:
-            _$GameModelPerFieldToJson.version(version as String),
+        _$ApplicationModelFieldMap['version']!:
+            _$ApplicationModelPerFieldToJson.version(version as String),
       if (versionFieldValue != null)
-        _$GameModelFieldMap['version']!: versionFieldValue,
+        _$ApplicationModelFieldMap['version']!: versionFieldValue,
       if (categoryId != _sentinel)
-        _$GameModelFieldMap['categoryId']!:
-            _$GameModelPerFieldToJson.categoryId(categoryId as String),
+        _$ApplicationModelFieldMap['categoryId']!:
+            _$ApplicationModelPerFieldToJson.categoryId(categoryId as String),
       if (categoryIdFieldValue != null)
-        _$GameModelFieldMap['categoryId']!: categoryIdFieldValue,
+        _$ApplicationModelFieldMap['categoryId']!: categoryIdFieldValue,
       if (categoryName != _sentinel)
-        _$GameModelFieldMap['categoryName']!:
-            _$GameModelPerFieldToJson.categoryName(categoryName as String),
+        _$ApplicationModelFieldMap['categoryName']!:
+            _$ApplicationModelPerFieldToJson
+                .categoryName(categoryName as String),
       if (categoryNameFieldValue != null)
-        _$GameModelFieldMap['categoryName']!: categoryNameFieldValue,
+        _$ApplicationModelFieldMap['categoryName']!: categoryNameFieldValue,
       if (containsAds != _sentinel)
-        _$GameModelFieldMap['containsAds']!:
-            _$GameModelPerFieldToJson.containsAds(containsAds as bool),
+        _$ApplicationModelFieldMap['containsAds']!:
+            _$ApplicationModelPerFieldToJson.containsAds(containsAds as bool),
       if (containsAdsFieldValue != null)
-        _$GameModelFieldMap['containsAds']!: containsAdsFieldValue,
+        _$ApplicationModelFieldMap['containsAds']!: containsAdsFieldValue,
       if (coverImageRectUrl != _sentinel)
-        _$GameModelFieldMap['coverImageRectUrl']!: _$GameModelPerFieldToJson
-            .coverImageRectUrl(coverImageRectUrl as String?),
+        _$ApplicationModelFieldMap['coverImageRectUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .coverImageRectUrl(coverImageRectUrl as String?),
       if (coverImageRectUrlFieldValue != null)
-        _$GameModelFieldMap['coverImageRectUrl']!: coverImageRectUrlFieldValue,
+        _$ApplicationModelFieldMap['coverImageRectUrl']!:
+            coverImageRectUrlFieldValue,
       if (createdAt != _sentinel)
-        _$GameModelFieldMap['createdAt']!:
-            _$GameModelPerFieldToJson.createdAt(createdAt as DateTime),
+        _$ApplicationModelFieldMap['createdAt']!:
+            _$ApplicationModelPerFieldToJson.createdAt(createdAt as DateTime),
       if (createdAtFieldValue != null)
-        _$GameModelFieldMap['createdAt']!: createdAtFieldValue,
+        _$ApplicationModelFieldMap['createdAt']!: createdAtFieldValue,
       if (downloadSize != _sentinel)
-        _$GameModelFieldMap['downloadSize']!:
-            _$GameModelPerFieldToJson.downloadSize(downloadSize as int),
+        _$ApplicationModelFieldMap['downloadSize']!:
+            _$ApplicationModelPerFieldToJson.downloadSize(downloadSize as int),
       if (downloadSizeFieldValue != null)
-        _$GameModelFieldMap['downloadSize']!: downloadSizeFieldValue,
+        _$ApplicationModelFieldMap['downloadSize']!: downloadSizeFieldValue,
       if (downloadsCount != _sentinel)
-        _$GameModelFieldMap['downloadsCount']!:
-            _$GameModelPerFieldToJson.downloadsCount(downloadsCount as int),
+        _$ApplicationModelFieldMap['downloadsCount']!:
+            _$ApplicationModelPerFieldToJson
+                .downloadsCount(downloadsCount as int),
       if (downloadsCountFieldValue != null)
-        _$GameModelFieldMap['downloadsCount']!: downloadsCountFieldValue,
+        _$ApplicationModelFieldMap['downloadsCount']!: downloadsCountFieldValue,
       if (hasInAppPurchases != _sentinel)
-        _$GameModelFieldMap['hasInAppPurchases']!: _$GameModelPerFieldToJson
-            .hasInAppPurchases(hasInAppPurchases as bool),
+        _$ApplicationModelFieldMap['hasInAppPurchases']!:
+            _$ApplicationModelPerFieldToJson
+                .hasInAppPurchases(hasInAppPurchases as bool),
       if (hasInAppPurchasesFieldValue != null)
-        _$GameModelFieldMap['hasInAppPurchases']!: hasInAppPurchasesFieldValue,
+        _$ApplicationModelFieldMap['hasInAppPurchases']!:
+            hasInAppPurchasesFieldValue,
       if (logoImageSquareUrl != _sentinel)
-        _$GameModelFieldMap['logoImageSquareUrl']!: _$GameModelPerFieldToJson
-            .logoImageSquareUrl(logoImageSquareUrl as String),
+        _$ApplicationModelFieldMap['logoImageSquareUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .logoImageSquareUrl(logoImageSquareUrl as String),
       if (logoImageSquareUrlFieldValue != null)
-        _$GameModelFieldMap['logoImageSquareUrl']!:
+        _$ApplicationModelFieldMap['logoImageSquareUrl']!:
             logoImageSquareUrlFieldValue,
       if (minAgeRequirement != _sentinel)
-        _$GameModelFieldMap['minAgeRequirement']!: _$GameModelPerFieldToJson
-            .minAgeRequirement(minAgeRequirement as int),
+        _$ApplicationModelFieldMap['minAgeRequirement']!:
+            _$ApplicationModelPerFieldToJson
+                .minAgeRequirement(minAgeRequirement as int),
       if (minAgeRequirementFieldValue != null)
-        _$GameModelFieldMap['minAgeRequirement']!: minAgeRequirementFieldValue,
+        _$ApplicationModelFieldMap['minAgeRequirement']!:
+            minAgeRequirementFieldValue,
       if (notesAverage != _sentinel)
-        _$GameModelFieldMap['notesAverage']!:
-            _$GameModelPerFieldToJson.notesAverage(notesAverage as int?),
+        _$ApplicationModelFieldMap['notesAverage']!:
+            _$ApplicationModelPerFieldToJson.notesAverage(notesAverage as int?),
       if (notesAverageFieldValue != null)
-        _$GameModelFieldMap['notesAverage']!: notesAverageFieldValue,
+        _$ApplicationModelFieldMap['notesAverage']!: notesAverageFieldValue,
       if (notesCount != _sentinel)
-        _$GameModelFieldMap['notesCount']!:
-            _$GameModelPerFieldToJson.notesCount(notesCount as int?),
+        _$ApplicationModelFieldMap['notesCount']!:
+            _$ApplicationModelPerFieldToJson.notesCount(notesCount as int?),
       if (notesCountFieldValue != null)
-        _$GameModelFieldMap['notesCount']!: notesCountFieldValue,
+        _$ApplicationModelFieldMap['notesCount']!: notesCountFieldValue,
       if (packageName != _sentinel)
-        _$GameModelFieldMap['packageName']!:
-            _$GameModelPerFieldToJson.packageName(packageName as String),
+        _$ApplicationModelFieldMap['packageName']!:
+            _$ApplicationModelPerFieldToJson.packageName(packageName as String),
       if (packageNameFieldValue != null)
-        _$GameModelFieldMap['packageName']!: packageNameFieldValue,
+        _$ApplicationModelFieldMap['packageName']!: packageNameFieldValue,
       if (privacyPolicyLinkUrl != _sentinel)
-        _$GameModelFieldMap['privacyPolicyLinkUrl']!: _$GameModelPerFieldToJson
-            .privacyPolicyLinkUrl(privacyPolicyLinkUrl as String),
+        _$ApplicationModelFieldMap['privacyPolicyLinkUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .privacyPolicyLinkUrl(privacyPolicyLinkUrl as String),
       if (privacyPolicyLinkUrlFieldValue != null)
-        _$GameModelFieldMap['privacyPolicyLinkUrl']!:
+        _$ApplicationModelFieldMap['privacyPolicyLinkUrl']!:
             privacyPolicyLinkUrlFieldValue,
       if (publisherId != _sentinel)
-        _$GameModelFieldMap['publisherId']!:
-            _$GameModelPerFieldToJson.publisherId(publisherId as String),
+        _$ApplicationModelFieldMap['publisherId']!:
+            _$ApplicationModelPerFieldToJson.publisherId(publisherId as String),
       if (publisherIdFieldValue != null)
-        _$GameModelFieldMap['publisherId']!: publisherIdFieldValue,
+        _$ApplicationModelFieldMap['publisherId']!: publisherIdFieldValue,
       if (publisherName != _sentinel)
-        _$GameModelFieldMap['publisherName']!:
-            _$GameModelPerFieldToJson.publisherName(publisherName as String),
+        _$ApplicationModelFieldMap['publisherName']!:
+            _$ApplicationModelPerFieldToJson
+                .publisherName(publisherName as String),
       if (publisherNameFieldValue != null)
-        _$GameModelFieldMap['publisherName']!: publisherNameFieldValue,
+        _$ApplicationModelFieldMap['publisherName']!: publisherNameFieldValue,
       if (releaseFileMainUrl != _sentinel)
-        _$GameModelFieldMap['releaseFileMainUrl']!: _$GameModelPerFieldToJson
-            .releaseFileMainUrl(releaseFileMainUrl as String),
+        _$ApplicationModelFieldMap['releaseFileMainUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .releaseFileMainUrl(releaseFileMainUrl as String),
       if (releaseFileMainUrlFieldValue != null)
-        _$GameModelFieldMap['releaseFileMainUrl']!:
+        _$ApplicationModelFieldMap['releaseFileMainUrl']!:
             releaseFileMainUrlFieldValue,
       if (trailerVideoUrl != _sentinel)
-        _$GameModelFieldMap['trailerVideoUrl']!: _$GameModelPerFieldToJson
-            .trailerVideoUrl(trailerVideoUrl as String?),
+        _$ApplicationModelFieldMap['trailerVideoUrl']!:
+            _$ApplicationModelPerFieldToJson
+                .trailerVideoUrl(trailerVideoUrl as String?),
       if (trailerVideoUrlFieldValue != null)
-        _$GameModelFieldMap['trailerVideoUrl']!: trailerVideoUrlFieldValue,
+        _$ApplicationModelFieldMap['trailerVideoUrl']!:
+            trailerVideoUrlFieldValue,
       if (updatedAt != _sentinel)
-        _$GameModelFieldMap['updatedAt']!:
-            _$GameModelPerFieldToJson.updatedAt(updatedAt as DateTime?),
+        _$ApplicationModelFieldMap['updatedAt']!:
+            _$ApplicationModelPerFieldToJson.updatedAt(updatedAt as DateTime?),
       if (updatedAtFieldValue != null)
-        _$GameModelFieldMap['updatedAt']!: updatedAtFieldValue,
+        _$ApplicationModelFieldMap['updatedAt']!: updatedAtFieldValue,
       if (websiteUrl != _sentinel)
-        _$GameModelFieldMap['websiteUrl']!:
-            _$GameModelPerFieldToJson.websiteUrl(websiteUrl as String?),
+        _$ApplicationModelFieldMap['websiteUrl']!:
+            _$ApplicationModelPerFieldToJson.websiteUrl(websiteUrl as String?),
       if (websiteUrlFieldValue != null)
-        _$GameModelFieldMap['websiteUrl']!: websiteUrlFieldValue,
+        _$ApplicationModelFieldMap['websiteUrl']!: websiteUrlFieldValue,
     };
 
     transaction.update(reference, json);
@@ -968,7 +1021,7 @@ class _$GameModelDocumentReference
 
   @override
   bool operator ==(Object other) {
-    return other is GameModelDocumentReference &&
+    return other is ApplicationModelDocumentReference &&
         other.runtimeType == runtimeType &&
         other.parent == parent &&
         other.id == id;
@@ -978,13 +1031,13 @@ class _$GameModelDocumentReference
   int get hashCode => Object.hash(runtimeType, parent, id);
 }
 
-abstract class GameModelQuery
-    implements QueryReference<GameModel, GameModelQuerySnapshot> {
+abstract class ApplicationModelQuery
+    implements QueryReference<ApplicationModel, ApplicationModelQuerySnapshot> {
   @override
-  GameModelQuery limit(int limit);
+  ApplicationModelQuery limit(int limit);
 
   @override
-  GameModelQuery limitToLast(int limit);
+  ApplicationModelQuery limitToLast(int limit);
 
   /// Perform a where query based on a [FieldPath].
   ///
@@ -1003,7 +1056,7 @@ abstract class GameModelQuery
   /// ```dart
   /// collection.whereTitle(isEqualTo: 'title');
   /// ```
-  GameModelQuery whereFieldPath(
+  ApplicationModelQuery whereFieldPath(
     Object fieldPath, {
     Object? isEqualTo,
     Object? isNotEqualTo,
@@ -1018,7 +1071,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereDocumentId({
+  ApplicationModelQuery whereDocumentId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1030,7 +1083,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereAddress({
+  ApplicationModelQuery whereAddress({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1042,7 +1095,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereDescription({
+  ApplicationModelQuery whereAppType({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1054,7 +1107,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereEmail({
+  ApplicationModelQuery whereDescription({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1066,7 +1119,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereName({
+  ApplicationModelQuery whereEmail({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1078,7 +1131,19 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery wherePhone({
+  ApplicationModelQuery whereName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationModelQuery wherePhone({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1090,7 +1155,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery wherePrice({
+  ApplicationModelQuery wherePrice({
     double? isEqualTo,
     double? isNotEqualTo,
     double? isLessThan,
@@ -1102,7 +1167,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereScreenshots({
+  ApplicationModelQuery whereScreenshots({
     List<String>? isEqualTo,
     List<String>? isNotEqualTo,
     List<String>? isLessThan,
@@ -1114,7 +1179,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereTags({
+  ApplicationModelQuery whereTags({
     List<String>? isEqualTo,
     List<String>? isNotEqualTo,
     List<String>? isLessThan,
@@ -1126,7 +1191,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereType({
+  ApplicationModelQuery whereVersion({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1138,7 +1203,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereVersion({
+  ApplicationModelQuery whereCategoryId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1150,7 +1215,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereCategoryId({
+  ApplicationModelQuery whereCategoryName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1162,19 +1227,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereCategoryName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  });
-
-  GameModelQuery whereContainsAds({
+  ApplicationModelQuery whereContainsAds({
     bool? isEqualTo,
     bool? isNotEqualTo,
     bool? isLessThan,
@@ -1186,7 +1239,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereCoverImageRectUrl({
+  ApplicationModelQuery whereCoverImageRectUrl({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1198,7 +1251,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereCreatedAt({
+  ApplicationModelQuery whereCreatedAt({
     DateTime? isEqualTo,
     DateTime? isNotEqualTo,
     DateTime? isLessThan,
@@ -1210,7 +1263,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereDownloadSize({
+  ApplicationModelQuery whereDownloadSize({
     int? isEqualTo,
     int? isNotEqualTo,
     int? isLessThan,
@@ -1222,7 +1275,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereDownloadsCount({
+  ApplicationModelQuery whereDownloadsCount({
     int? isEqualTo,
     int? isNotEqualTo,
     int? isLessThan,
@@ -1234,7 +1287,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereHasInAppPurchases({
+  ApplicationModelQuery whereHasInAppPurchases({
     bool? isEqualTo,
     bool? isNotEqualTo,
     bool? isLessThan,
@@ -1246,7 +1299,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereLogoImageSquareUrl({
+  ApplicationModelQuery whereLogoImageSquareUrl({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1258,7 +1311,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereMinAgeRequirement({
+  ApplicationModelQuery whereMinAgeRequirement({
     int? isEqualTo,
     int? isNotEqualTo,
     int? isLessThan,
@@ -1270,7 +1323,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereNotesAverage({
+  ApplicationModelQuery whereNotesAverage({
     int? isEqualTo,
     int? isNotEqualTo,
     int? isLessThan,
@@ -1282,7 +1335,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereNotesCount({
+  ApplicationModelQuery whereNotesCount({
     int? isEqualTo,
     int? isNotEqualTo,
     int? isLessThan,
@@ -1294,7 +1347,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery wherePackageName({
+  ApplicationModelQuery wherePackageName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1306,7 +1359,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery wherePrivacyPolicyLinkUrl({
+  ApplicationModelQuery wherePrivacyPolicyLinkUrl({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1318,7 +1371,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery wherePublisherId({
+  ApplicationModelQuery wherePublisherId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1330,7 +1383,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery wherePublisherName({
+  ApplicationModelQuery wherePublisherName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1342,7 +1395,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereReleaseFileMainUrl({
+  ApplicationModelQuery whereReleaseFileMainUrl({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1354,7 +1407,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereTrailerVideoUrl({
+  ApplicationModelQuery whereTrailerVideoUrl({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1366,7 +1419,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereUpdatedAt({
+  ApplicationModelQuery whereUpdatedAt({
     DateTime? isEqualTo,
     DateTime? isNotEqualTo,
     DateTime? isLessThan,
@@ -1378,7 +1431,7 @@ abstract class GameModelQuery
     bool? isNull,
   });
 
-  GameModelQuery whereWebsiteUrl({
+  ApplicationModelQuery whereWebsiteUrl({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1410,397 +1463,398 @@ abstract class GameModelQuery
   /// ```dart
   /// collection.orderByTitle(startAt: 'title');
   /// ```
-  GameModelQuery orderByFieldPath(
+  ApplicationModelQuery orderByFieldPath(
     Object fieldPath, {
     bool descending = false,
     Object startAt,
     Object startAfter,
     Object endAt,
     Object endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByDocumentId({
+  ApplicationModelQuery orderByDocumentId({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByAddress({
+  ApplicationModelQuery orderByAddress({
     bool descending = false,
     String? startAt,
     String? startAfter,
     String? endAt,
     String? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByDescription({
+  ApplicationModelQuery orderByAppType({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByEmail({
+  ApplicationModelQuery orderByDescription({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByName({
+  ApplicationModelQuery orderByEmail({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByPhone({
+  ApplicationModelQuery orderByName({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationModelQuery orderByPhone({
     bool descending = false,
     String? startAt,
     String? startAfter,
     String? endAt,
     String? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByPrice({
+  ApplicationModelQuery orderByPrice({
     bool descending = false,
     double? startAt,
     double? startAfter,
     double? endAt,
     double? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByScreenshots({
+  ApplicationModelQuery orderByScreenshots({
     bool descending = false,
     List<String> startAt,
     List<String> startAfter,
     List<String> endAt,
     List<String> endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByTags({
+  ApplicationModelQuery orderByTags({
     bool descending = false,
     List<String> startAt,
     List<String> startAfter,
     List<String> endAt,
     List<String> endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByType({
+  ApplicationModelQuery orderByVersion({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByVersion({
+  ApplicationModelQuery orderByCategoryId({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByCategoryId({
+  ApplicationModelQuery orderByCategoryName({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByCategoryName({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  });
-
-  GameModelQuery orderByContainsAds({
+  ApplicationModelQuery orderByContainsAds({
     bool descending = false,
     bool startAt,
     bool startAfter,
     bool endAt,
     bool endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByCoverImageRectUrl({
+  ApplicationModelQuery orderByCoverImageRectUrl({
     bool descending = false,
     String? startAt,
     String? startAfter,
     String? endAt,
     String? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByCreatedAt({
+  ApplicationModelQuery orderByCreatedAt({
     bool descending = false,
     DateTime startAt,
     DateTime startAfter,
     DateTime endAt,
     DateTime endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByDownloadSize({
+  ApplicationModelQuery orderByDownloadSize({
     bool descending = false,
     int startAt,
     int startAfter,
     int endAt,
     int endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByDownloadsCount({
+  ApplicationModelQuery orderByDownloadsCount({
     bool descending = false,
     int startAt,
     int startAfter,
     int endAt,
     int endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByHasInAppPurchases({
+  ApplicationModelQuery orderByHasInAppPurchases({
     bool descending = false,
     bool startAt,
     bool startAfter,
     bool endAt,
     bool endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByLogoImageSquareUrl({
+  ApplicationModelQuery orderByLogoImageSquareUrl({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByMinAgeRequirement({
+  ApplicationModelQuery orderByMinAgeRequirement({
     bool descending = false,
     int startAt,
     int startAfter,
     int endAt,
     int endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByNotesAverage({
+  ApplicationModelQuery orderByNotesAverage({
     bool descending = false,
     int? startAt,
     int? startAfter,
     int? endAt,
     int? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByNotesCount({
+  ApplicationModelQuery orderByNotesCount({
     bool descending = false,
     int? startAt,
     int? startAfter,
     int? endAt,
     int? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByPackageName({
+  ApplicationModelQuery orderByPackageName({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByPrivacyPolicyLinkUrl({
+  ApplicationModelQuery orderByPrivacyPolicyLinkUrl({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByPublisherId({
+  ApplicationModelQuery orderByPublisherId({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByPublisherName({
+  ApplicationModelQuery orderByPublisherName({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByReleaseFileMainUrl({
+  ApplicationModelQuery orderByReleaseFileMainUrl({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByTrailerVideoUrl({
+  ApplicationModelQuery orderByTrailerVideoUrl({
     bool descending = false,
     String? startAt,
     String? startAfter,
     String? endAt,
     String? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByUpdatedAt({
+  ApplicationModelQuery orderByUpdatedAt({
     bool descending = false,
     DateTime? startAt,
     DateTime? startAfter,
     DateTime? endAt,
     DateTime? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  GameModelQuery orderByWebsiteUrl({
+  ApplicationModelQuery orderByWebsiteUrl({
     bool descending = false,
     String? startAt,
     String? startAfter,
     String? endAt,
     String? endBefore,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 }
 
-class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
-    implements GameModelQuery {
-  _$GameModelQuery(
+class _$ApplicationModelQuery
+    extends QueryReference<ApplicationModel, ApplicationModelQuerySnapshot>
+    implements ApplicationModelQuery {
+  _$ApplicationModelQuery(
     this._collection, {
-    required Query<GameModel> $referenceWithoutCursor,
+    required Query<ApplicationModel> $referenceWithoutCursor,
     $QueryCursor $queryCursor = const $QueryCursor(),
   }) : super(
           $referenceWithoutCursor: $referenceWithoutCursor,
@@ -1810,20 +1864,22 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   final CollectionReference<Object?> _collection;
 
   @override
-  Stream<GameModelQuerySnapshot> snapshots([SnapshotOptions? options]) {
-    return reference.snapshots().map(GameModelQuerySnapshot._fromQuerySnapshot);
+  Stream<ApplicationModelQuerySnapshot> snapshots([SnapshotOptions? options]) {
+    return reference
+        .snapshots()
+        .map(ApplicationModelQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
-  Future<GameModelQuerySnapshot> get([GetOptions? options]) {
+  Future<ApplicationModelQuerySnapshot> get([GetOptions? options]) {
     return reference
         .get(options)
-        .then(GameModelQuerySnapshot._fromQuerySnapshot);
+        .then(ApplicationModelQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
-  GameModelQuery limit(int limit) {
-    return _$GameModelQuery(
+  ApplicationModelQuery limit(int limit) {
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
       $queryCursor: $queryCursor,
@@ -1831,8 +1887,8 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery limitToLast(int limit) {
-    return _$GameModelQuery(
+  ApplicationModelQuery limitToLast(int limit) {
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
       $queryCursor: $queryCursor,
@@ -1840,7 +1896,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereFieldPath(
+  ApplicationModelQuery whereFieldPath(
     Object fieldPath, {
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -1854,7 +1910,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<Object?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         fieldPath,
@@ -1877,7 +1933,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereDocumentId({
+  ApplicationModelQuery whereDocumentId({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -1888,7 +1944,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         FieldPath.documentId,
@@ -1909,7 +1965,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereAddress({
+  ApplicationModelQuery whereAddress({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -1920,32 +1976,34 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['address']!,
+        _$ApplicationModelFieldMap['address']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.address(isEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson.address(isEqualTo as String?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.address(isNotEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson.address(isNotEqualTo as String?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.address(isLessThan as String?)
+            ? _$ApplicationModelPerFieldToJson.address(isLessThan as String?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.address(isLessThanOrEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .address(isLessThanOrEqualTo as String?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.address(isGreaterThan as String?)
+            ? _$ApplicationModelPerFieldToJson.address(isGreaterThan as String?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .address(isGreaterThanOrEqualTo as String?)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.address(e)),
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.address(e)),
         whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.address(e)),
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.address(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1955,7 +2013,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereDescription({
+  ApplicationModelQuery whereAppType({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -1966,33 +2024,131 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['description']!,
+        _$ApplicationModelFieldMap['appType']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.description(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.appType(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.description(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.appType(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.description(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson.appType(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
+                .appType(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationModelPerFieldToJson.appType(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .appType(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.appType(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.appType(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery whereDescription({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationModelFieldMap['description']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.description(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson
+                .description(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationModelPerFieldToJson.description(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
                 .description(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.description(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .description(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .description(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.description(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.description(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.description(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery whereEmail({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationModelFieldMap['email']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.email(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.email(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationModelPerFieldToJson.email(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .email(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationModelPerFieldToJson.email(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .email(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$ApplicationModelPerFieldToJson.email(e)),
         whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.description(e)),
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.email(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2002,7 +2158,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereEmail({
+  ApplicationModelQuery whereName({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2013,30 +2169,33 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['email']!,
+        _$ApplicationModelFieldMap['name']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.email(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.name(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.email(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.name(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.email(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson.name(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.email(isLessThanOrEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .name(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.email(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson.name(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.email(isGreaterThanOrEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .name(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.email(e)),
-        whereNotIn: whereNotIn?.map((e) => _$GameModelPerFieldToJson.email(e)),
+        whereIn: whereIn?.map((e) => _$ApplicationModelPerFieldToJson.name(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.name(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2046,51 +2205,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereName({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['name']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.name(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.name(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.name(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.name(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.name(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.name(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.name(e)),
-        whereNotIn: whereNotIn?.map((e) => _$GameModelPerFieldToJson.name(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery wherePhone({
+  ApplicationModelQuery wherePhone({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2101,30 +2216,33 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['phone']!,
+        _$ApplicationModelFieldMap['phone']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.phone(isEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson.phone(isEqualTo as String?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.phone(isNotEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson.phone(isNotEqualTo as String?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.phone(isLessThan as String?)
+            ? _$ApplicationModelPerFieldToJson.phone(isLessThan as String?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.phone(isLessThanOrEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .phone(isLessThanOrEqualTo as String?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.phone(isGreaterThan as String?)
+            ? _$ApplicationModelPerFieldToJson.phone(isGreaterThan as String?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.phone(isGreaterThanOrEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .phone(isGreaterThanOrEqualTo as String?)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.phone(e)),
-        whereNotIn: whereNotIn?.map((e) => _$GameModelPerFieldToJson.phone(e)),
+        whereIn: whereIn?.map((e) => _$ApplicationModelPerFieldToJson.phone(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.phone(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2134,7 +2252,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery wherePrice({
+  ApplicationModelQuery wherePrice({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2145,30 +2263,33 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<double?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['price']!,
+        _$ApplicationModelFieldMap['price']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.price(isEqualTo as double?)
+            ? _$ApplicationModelPerFieldToJson.price(isEqualTo as double?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.price(isNotEqualTo as double?)
+            ? _$ApplicationModelPerFieldToJson.price(isNotEqualTo as double?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.price(isLessThan as double?)
+            ? _$ApplicationModelPerFieldToJson.price(isLessThan as double?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.price(isLessThanOrEqualTo as double?)
+            ? _$ApplicationModelPerFieldToJson
+                .price(isLessThanOrEqualTo as double?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.price(isGreaterThan as double?)
+            ? _$ApplicationModelPerFieldToJson.price(isGreaterThan as double?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.price(isGreaterThanOrEqualTo as double?)
+            ? _$ApplicationModelPerFieldToJson
+                .price(isGreaterThanOrEqualTo as double?)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.price(e)),
-        whereNotIn: whereNotIn?.map((e) => _$GameModelPerFieldToJson.price(e)),
+        whereIn: whereIn?.map((e) => _$ApplicationModelPerFieldToJson.price(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.price(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2178,7 +2299,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereScreenshots({
+  ApplicationModelQuery whereScreenshots({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2189,39 +2310,41 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? arrayContainsAny,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['screenshots']!,
+        _$ApplicationModelFieldMap['screenshots']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.screenshots(isEqualTo as List<String>)
+            ? _$ApplicationModelPerFieldToJson
+                .screenshots(isEqualTo as List<String>)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .screenshots(isNotEqualTo as List<String>)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.screenshots(isLessThan as List<String>)
+            ? _$ApplicationModelPerFieldToJson
+                .screenshots(isLessThan as List<String>)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .screenshots(isLessThanOrEqualTo as List<String>)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .screenshots(isGreaterThan as List<String>)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .screenshots(isGreaterThanOrEqualTo as List<String>)
             : null,
         arrayContains: arrayContains != null
-            ? (_$GameModelPerFieldToJson.screenshots([arrayContains as String])
-                    as List?)!
+            ? (_$ApplicationModelPerFieldToJson
+                    .screenshots([arrayContains as String]) as List?)!
                 .single
             : null,
         arrayContainsAny: arrayContainsAny != null
-            ? _$GameModelPerFieldToJson.screenshots(arrayContainsAny)
+            ? _$ApplicationModelPerFieldToJson.screenshots(arrayContainsAny)
                 as Iterable<Object>?
             : null,
         isNull: isNull ??
@@ -2233,7 +2356,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereTags({
+  ApplicationModelQuery whereTags({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2244,37 +2367,39 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? arrayContainsAny,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['tags']!,
+        _$ApplicationModelFieldMap['tags']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.tags(isEqualTo as List<String>)
+            ? _$ApplicationModelPerFieldToJson.tags(isEqualTo as List<String>)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.tags(isNotEqualTo as List<String>)
+            ? _$ApplicationModelPerFieldToJson
+                .tags(isNotEqualTo as List<String>)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.tags(isLessThan as List<String>)
+            ? _$ApplicationModelPerFieldToJson.tags(isLessThan as List<String>)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .tags(isLessThanOrEqualTo as List<String>)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.tags(isGreaterThan as List<String>)
+            ? _$ApplicationModelPerFieldToJson
+                .tags(isGreaterThan as List<String>)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .tags(isGreaterThanOrEqualTo as List<String>)
             : null,
         arrayContains: arrayContains != null
-            ? (_$GameModelPerFieldToJson.tags([arrayContains as String])
+            ? (_$ApplicationModelPerFieldToJson.tags([arrayContains as String])
                     as List?)!
                 .single
             : null,
         arrayContainsAny: arrayContainsAny != null
-            ? _$GameModelPerFieldToJson.tags(arrayContainsAny)
+            ? _$ApplicationModelPerFieldToJson.tags(arrayContainsAny)
                 as Iterable<Object>?
             : null,
         isNull: isNull ??
@@ -2286,7 +2411,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereType({
+  ApplicationModelQuery whereVersion({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2297,76 +2422,34 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['type']!,
+        _$ApplicationModelFieldMap['version']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.type(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.version(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.type(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.version(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.type(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson.version(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.type(isLessThanOrEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .version(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.type(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson.version(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.type(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.type(e)),
-        whereNotIn: whereNotIn?.map((e) => _$GameModelPerFieldToJson.type(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery whereVersion({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['version']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.version(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.version(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.version(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.version(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.version(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .version(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.version(e)),
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.version(e)),
         whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.version(e)),
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.version(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2376,7 +2459,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereCategoryId({
+  ApplicationModelQuery whereCategoryId({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2387,33 +2470,36 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['categoryId']!,
+        _$ApplicationModelFieldMap['categoryId']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.categoryId(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.categoryId(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.categoryId(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .categoryId(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.categoryId(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson.categoryId(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .categoryId(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.categoryId(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .categoryId(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .categoryId(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.categoryId(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.categoryId(e)),
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.categoryId(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.categoryId(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2423,7 +2509,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereCategoryName({
+  ApplicationModelQuery whereCategoryName({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2434,33 +2520,37 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['categoryName']!,
+        _$ApplicationModelFieldMap['categoryName']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.categoryName(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.categoryName(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.categoryName(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .categoryName(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.categoryName(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .categoryName(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .categoryName(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.categoryName(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .categoryName(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .categoryName(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.categoryName(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.categoryName(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.categoryName(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.categoryName(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2470,7 +2560,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereContainsAds({
+  ApplicationModelQuery whereContainsAds({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2481,32 +2571,35 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<bool>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['containsAds']!,
+        _$ApplicationModelFieldMap['containsAds']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.containsAds(isEqualTo as bool)
+            ? _$ApplicationModelPerFieldToJson.containsAds(isEqualTo as bool)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.containsAds(isNotEqualTo as bool)
+            ? _$ApplicationModelPerFieldToJson.containsAds(isNotEqualTo as bool)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.containsAds(isLessThan as bool)
+            ? _$ApplicationModelPerFieldToJson.containsAds(isLessThan as bool)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.containsAds(isLessThanOrEqualTo as bool)
+            ? _$ApplicationModelPerFieldToJson
+                .containsAds(isLessThanOrEqualTo as bool)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.containsAds(isGreaterThan as bool)
+            ? _$ApplicationModelPerFieldToJson
+                .containsAds(isGreaterThan as bool)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .containsAds(isGreaterThanOrEqualTo as bool)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.containsAds(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.containsAds(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.containsAds(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.containsAds(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2516,7 +2609,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereCoverImageRectUrl({
+  ApplicationModelQuery whereCoverImageRectUrl({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2527,36 +2620,38 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['coverImageRectUrl']!,
+        _$ApplicationModelFieldMap['coverImageRectUrl']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.coverImageRectUrl(isEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .coverImageRectUrl(isEqualTo as String?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .coverImageRectUrl(isNotEqualTo as String?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.coverImageRectUrl(isLessThan as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .coverImageRectUrl(isLessThan as String?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .coverImageRectUrl(isLessThanOrEqualTo as String?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .coverImageRectUrl(isGreaterThan as String?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .coverImageRectUrl(isGreaterThanOrEqualTo as String?)
             : null,
-        whereIn:
-            whereIn?.map((e) => _$GameModelPerFieldToJson.coverImageRectUrl(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.coverImageRectUrl(e)),
         whereNotIn: whereNotIn
-            ?.map((e) => _$GameModelPerFieldToJson.coverImageRectUrl(e)),
+            ?.map((e) => _$ApplicationModelPerFieldToJson.coverImageRectUrl(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2566,7 +2661,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereCreatedAt({
+  ApplicationModelQuery whereCreatedAt({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2577,33 +2672,36 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<DateTime>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['createdAt']!,
+        _$ApplicationModelFieldMap['createdAt']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.createdAt(isEqualTo as DateTime)
+            ? _$ApplicationModelPerFieldToJson.createdAt(isEqualTo as DateTime)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.createdAt(isNotEqualTo as DateTime)
+            ? _$ApplicationModelPerFieldToJson
+                .createdAt(isNotEqualTo as DateTime)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.createdAt(isLessThan as DateTime)
+            ? _$ApplicationModelPerFieldToJson.createdAt(isLessThan as DateTime)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .createdAt(isLessThanOrEqualTo as DateTime)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.createdAt(isGreaterThan as DateTime)
+            ? _$ApplicationModelPerFieldToJson
+                .createdAt(isGreaterThan as DateTime)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .createdAt(isGreaterThanOrEqualTo as DateTime)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.createdAt(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.createdAt(e)),
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.createdAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.createdAt(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2613,7 +2711,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereDownloadSize({
+  ApplicationModelQuery whereDownloadSize({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2624,32 +2722,35 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<int>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['downloadSize']!,
+        _$ApplicationModelFieldMap['downloadSize']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.downloadSize(isEqualTo as int)
+            ? _$ApplicationModelPerFieldToJson.downloadSize(isEqualTo as int)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.downloadSize(isNotEqualTo as int)
+            ? _$ApplicationModelPerFieldToJson.downloadSize(isNotEqualTo as int)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.downloadSize(isLessThan as int)
+            ? _$ApplicationModelPerFieldToJson.downloadSize(isLessThan as int)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.downloadSize(isLessThanOrEqualTo as int)
+            ? _$ApplicationModelPerFieldToJson
+                .downloadSize(isLessThanOrEqualTo as int)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.downloadSize(isGreaterThan as int)
+            ? _$ApplicationModelPerFieldToJson
+                .downloadSize(isGreaterThan as int)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .downloadSize(isGreaterThanOrEqualTo as int)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.downloadSize(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.downloadSize(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.downloadSize(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.downloadSize(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2659,7 +2760,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereDownloadsCount({
+  ApplicationModelQuery whereDownloadsCount({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2670,34 +2771,36 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<int>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['downloadsCount']!,
+        _$ApplicationModelFieldMap['downloadsCount']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.downloadsCount(isEqualTo as int)
+            ? _$ApplicationModelPerFieldToJson.downloadsCount(isEqualTo as int)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.downloadsCount(isNotEqualTo as int)
+            ? _$ApplicationModelPerFieldToJson
+                .downloadsCount(isNotEqualTo as int)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.downloadsCount(isLessThan as int)
+            ? _$ApplicationModelPerFieldToJson.downloadsCount(isLessThan as int)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .downloadsCount(isLessThanOrEqualTo as int)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.downloadsCount(isGreaterThan as int)
+            ? _$ApplicationModelPerFieldToJson
+                .downloadsCount(isGreaterThan as int)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .downloadsCount(isGreaterThanOrEqualTo as int)
             : null,
-        whereIn:
-            whereIn?.map((e) => _$GameModelPerFieldToJson.downloadsCount(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.downloadsCount(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.downloadsCount(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.downloadsCount(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2707,7 +2810,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereHasInAppPurchases({
+  ApplicationModelQuery whereHasInAppPurchases({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2718,34 +2821,38 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<bool>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['hasInAppPurchases']!,
+        _$ApplicationModelFieldMap['hasInAppPurchases']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.hasInAppPurchases(isEqualTo as bool)
+            ? _$ApplicationModelPerFieldToJson
+                .hasInAppPurchases(isEqualTo as bool)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.hasInAppPurchases(isNotEqualTo as bool)
+            ? _$ApplicationModelPerFieldToJson
+                .hasInAppPurchases(isNotEqualTo as bool)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.hasInAppPurchases(isLessThan as bool)
+            ? _$ApplicationModelPerFieldToJson
+                .hasInAppPurchases(isLessThan as bool)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .hasInAppPurchases(isLessThanOrEqualTo as bool)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.hasInAppPurchases(isGreaterThan as bool)
+            ? _$ApplicationModelPerFieldToJson
+                .hasInAppPurchases(isGreaterThan as bool)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .hasInAppPurchases(isGreaterThanOrEqualTo as bool)
             : null,
-        whereIn:
-            whereIn?.map((e) => _$GameModelPerFieldToJson.hasInAppPurchases(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.hasInAppPurchases(e)),
         whereNotIn: whereNotIn
-            ?.map((e) => _$GameModelPerFieldToJson.hasInAppPurchases(e)),
+            ?.map((e) => _$ApplicationModelPerFieldToJson.hasInAppPurchases(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2755,7 +2862,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereLogoImageSquareUrl({
+  ApplicationModelQuery whereLogoImageSquareUrl({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2766,36 +2873,38 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['logoImageSquareUrl']!,
+        _$ApplicationModelFieldMap['logoImageSquareUrl']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.logoImageSquareUrl(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .logoImageSquareUrl(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .logoImageSquareUrl(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.logoImageSquareUrl(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .logoImageSquareUrl(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .logoImageSquareUrl(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .logoImageSquareUrl(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .logoImageSquareUrl(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn
-            ?.map((e) => _$GameModelPerFieldToJson.logoImageSquareUrl(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$GameModelPerFieldToJson.logoImageSquareUrl(e)),
+        whereIn: whereIn?.map(
+            (e) => _$ApplicationModelPerFieldToJson.logoImageSquareUrl(e)),
+        whereNotIn: whereNotIn?.map(
+            (e) => _$ApplicationModelPerFieldToJson.logoImageSquareUrl(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2805,7 +2914,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereMinAgeRequirement({
+  ApplicationModelQuery whereMinAgeRequirement({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2816,34 +2925,38 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<int>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['minAgeRequirement']!,
+        _$ApplicationModelFieldMap['minAgeRequirement']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.minAgeRequirement(isEqualTo as int)
+            ? _$ApplicationModelPerFieldToJson
+                .minAgeRequirement(isEqualTo as int)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.minAgeRequirement(isNotEqualTo as int)
+            ? _$ApplicationModelPerFieldToJson
+                .minAgeRequirement(isNotEqualTo as int)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.minAgeRequirement(isLessThan as int)
+            ? _$ApplicationModelPerFieldToJson
+                .minAgeRequirement(isLessThan as int)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .minAgeRequirement(isLessThanOrEqualTo as int)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.minAgeRequirement(isGreaterThan as int)
+            ? _$ApplicationModelPerFieldToJson
+                .minAgeRequirement(isGreaterThan as int)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .minAgeRequirement(isGreaterThanOrEqualTo as int)
             : null,
-        whereIn:
-            whereIn?.map((e) => _$GameModelPerFieldToJson.minAgeRequirement(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.minAgeRequirement(e)),
         whereNotIn: whereNotIn
-            ?.map((e) => _$GameModelPerFieldToJson.minAgeRequirement(e)),
+            ?.map((e) => _$ApplicationModelPerFieldToJson.minAgeRequirement(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2853,7 +2966,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereNotesAverage({
+  ApplicationModelQuery whereNotesAverage({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2864,33 +2977,36 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<int?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['notesAverage']!,
+        _$ApplicationModelFieldMap['notesAverage']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.notesAverage(isEqualTo as int?)
+            ? _$ApplicationModelPerFieldToJson.notesAverage(isEqualTo as int?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.notesAverage(isNotEqualTo as int?)
+            ? _$ApplicationModelPerFieldToJson
+                .notesAverage(isNotEqualTo as int?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.notesAverage(isLessThan as int?)
+            ? _$ApplicationModelPerFieldToJson.notesAverage(isLessThan as int?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .notesAverage(isLessThanOrEqualTo as int?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.notesAverage(isGreaterThan as int?)
+            ? _$ApplicationModelPerFieldToJson
+                .notesAverage(isGreaterThan as int?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .notesAverage(isGreaterThanOrEqualTo as int?)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.notesAverage(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.notesAverage(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.notesAverage(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.notesAverage(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2900,7 +3016,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereNotesCount({
+  ApplicationModelQuery whereNotesCount({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2911,32 +3027,34 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<int?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['notesCount']!,
+        _$ApplicationModelFieldMap['notesCount']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.notesCount(isEqualTo as int?)
+            ? _$ApplicationModelPerFieldToJson.notesCount(isEqualTo as int?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.notesCount(isNotEqualTo as int?)
+            ? _$ApplicationModelPerFieldToJson.notesCount(isNotEqualTo as int?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.notesCount(isLessThan as int?)
+            ? _$ApplicationModelPerFieldToJson.notesCount(isLessThan as int?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson.notesCount(isLessThanOrEqualTo as int?)
+            ? _$ApplicationModelPerFieldToJson
+                .notesCount(isLessThanOrEqualTo as int?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.notesCount(isGreaterThan as int?)
+            ? _$ApplicationModelPerFieldToJson.notesCount(isGreaterThan as int?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .notesCount(isGreaterThanOrEqualTo as int?)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.notesCount(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.notesCount(e)),
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.notesCount(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.notesCount(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2946,7 +3064,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery wherePackageName({
+  ApplicationModelQuery wherePackageName({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -2957,33 +3075,36 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['packageName']!,
+        _$ApplicationModelFieldMap['packageName']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.packageName(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.packageName(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.packageName(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .packageName(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.packageName(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson.packageName(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .packageName(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.packageName(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .packageName(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .packageName(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.packageName(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.packageName(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.packageName(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.packageName(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2993,7 +3114,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery wherePrivacyPolicyLinkUrl({
+  ApplicationModelQuery wherePrivacyPolicyLinkUrl({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -3004,38 +3125,38 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['privacyPolicyLinkUrl']!,
+        _$ApplicationModelFieldMap['privacyPolicyLinkUrl']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .privacyPolicyLinkUrl(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .privacyPolicyLinkUrl(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .privacyPolicyLinkUrl(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .privacyPolicyLinkUrl(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .privacyPolicyLinkUrl(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .privacyPolicyLinkUrl(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn
-            ?.map((e) => _$GameModelPerFieldToJson.privacyPolicyLinkUrl(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$GameModelPerFieldToJson.privacyPolicyLinkUrl(e)),
+        whereIn: whereIn?.map(
+            (e) => _$ApplicationModelPerFieldToJson.privacyPolicyLinkUrl(e)),
+        whereNotIn: whereNotIn?.map(
+            (e) => _$ApplicationModelPerFieldToJson.privacyPolicyLinkUrl(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3045,7 +3166,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery wherePublisherId({
+  ApplicationModelQuery wherePublisherId({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -3056,33 +3177,36 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['publisherId']!,
+        _$ApplicationModelFieldMap['publisherId']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.publisherId(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.publisherId(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.publisherId(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .publisherId(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.publisherId(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson.publisherId(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .publisherId(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.publisherId(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .publisherId(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .publisherId(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.publisherId(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.publisherId(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.publisherId(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.publisherId(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3092,7 +3216,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery wherePublisherName({
+  ApplicationModelQuery wherePublisherName({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -3103,34 +3227,38 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['publisherName']!,
+        _$ApplicationModelFieldMap['publisherName']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.publisherName(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .publisherName(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.publisherName(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .publisherName(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.publisherName(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .publisherName(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .publisherName(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.publisherName(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .publisherName(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .publisherName(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn:
-            whereIn?.map((e) => _$GameModelPerFieldToJson.publisherName(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.publisherName(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.publisherName(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.publisherName(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3140,7 +3268,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereReleaseFileMainUrl({
+  ApplicationModelQuery whereReleaseFileMainUrl({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -3151,36 +3279,38 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['releaseFileMainUrl']!,
+        _$ApplicationModelFieldMap['releaseFileMainUrl']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.releaseFileMainUrl(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson
+                .releaseFileMainUrl(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .releaseFileMainUrl(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.releaseFileMainUrl(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson
+                .releaseFileMainUrl(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .releaseFileMainUrl(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .releaseFileMainUrl(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .releaseFileMainUrl(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn
-            ?.map((e) => _$GameModelPerFieldToJson.releaseFileMainUrl(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$GameModelPerFieldToJson.releaseFileMainUrl(e)),
+        whereIn: whereIn?.map(
+            (e) => _$ApplicationModelPerFieldToJson.releaseFileMainUrl(e)),
+        whereNotIn: whereNotIn?.map(
+            (e) => _$ApplicationModelPerFieldToJson.releaseFileMainUrl(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3190,7 +3320,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereTrailerVideoUrl({
+  ApplicationModelQuery whereTrailerVideoUrl({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -3201,35 +3331,38 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['trailerVideoUrl']!,
+        _$ApplicationModelFieldMap['trailerVideoUrl']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.trailerVideoUrl(isEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .trailerVideoUrl(isEqualTo as String?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.trailerVideoUrl(isNotEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .trailerVideoUrl(isNotEqualTo as String?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.trailerVideoUrl(isLessThan as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .trailerVideoUrl(isLessThan as String?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .trailerVideoUrl(isLessThanOrEqualTo as String?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .trailerVideoUrl(isGreaterThan as String?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .trailerVideoUrl(isGreaterThanOrEqualTo as String?)
             : null,
-        whereIn:
-            whereIn?.map((e) => _$GameModelPerFieldToJson.trailerVideoUrl(e)),
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.trailerVideoUrl(e)),
         whereNotIn: whereNotIn
-            ?.map((e) => _$GameModelPerFieldToJson.trailerVideoUrl(e)),
+            ?.map((e) => _$ApplicationModelPerFieldToJson.trailerVideoUrl(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3239,7 +3372,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereUpdatedAt({
+  ApplicationModelQuery whereUpdatedAt({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -3250,33 +3383,37 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<DateTime?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['updatedAt']!,
+        _$ApplicationModelFieldMap['updatedAt']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.updatedAt(isEqualTo as DateTime?)
+            ? _$ApplicationModelPerFieldToJson.updatedAt(isEqualTo as DateTime?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.updatedAt(isNotEqualTo as DateTime?)
+            ? _$ApplicationModelPerFieldToJson
+                .updatedAt(isNotEqualTo as DateTime?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.updatedAt(isLessThan as DateTime?)
+            ? _$ApplicationModelPerFieldToJson
+                .updatedAt(isLessThan as DateTime?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .updatedAt(isLessThanOrEqualTo as DateTime?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.updatedAt(isGreaterThan as DateTime?)
+            ? _$ApplicationModelPerFieldToJson
+                .updatedAt(isGreaterThan as DateTime?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .updatedAt(isGreaterThanOrEqualTo as DateTime?)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.updatedAt(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.updatedAt(e)),
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.updatedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.updatedAt(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3286,7 +3423,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery whereWebsiteUrl({
+  ApplicationModelQuery whereWebsiteUrl({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -3297,33 +3434,36 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
     List<String?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$GameModelFieldMap['websiteUrl']!,
+        _$ApplicationModelFieldMap['websiteUrl']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.websiteUrl(isEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson.websiteUrl(isEqualTo as String?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$GameModelPerFieldToJson.websiteUrl(isNotEqualTo as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .websiteUrl(isNotEqualTo as String?)
             : null,
         isLessThan: isLessThan != null
-            ? _$GameModelPerFieldToJson.websiteUrl(isLessThan as String?)
+            ? _$ApplicationModelPerFieldToJson.websiteUrl(isLessThan as String?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .websiteUrl(isLessThanOrEqualTo as String?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$GameModelPerFieldToJson.websiteUrl(isGreaterThan as String?)
+            ? _$ApplicationModelPerFieldToJson
+                .websiteUrl(isGreaterThan as String?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$GameModelPerFieldToJson
+            ? _$ApplicationModelPerFieldToJson
                 .websiteUrl(isGreaterThanOrEqualTo as String?)
             : null,
-        whereIn: whereIn?.map((e) => _$GameModelPerFieldToJson.websiteUrl(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$GameModelPerFieldToJson.websiteUrl(e)),
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.websiteUrl(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationModelPerFieldToJson.websiteUrl(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3333,17 +3473,17 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByFieldPath(
+  ApplicationModelQuery orderByFieldPath(
     Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query =
         $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
@@ -3399,7 +3539,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -3407,16 +3547,16 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByDocumentId({
+  ApplicationModelQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
         descending: descending);
@@ -3472,7 +3612,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -3480,968 +3620,19 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByAddress({
+  ApplicationModelQuery orderByAddress({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['address']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByDescription({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['description']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByEmail({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$GameModelFieldMap['email']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByName({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$GameModelFieldMap['name']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByPhone({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$GameModelFieldMap['phone']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByPrice({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$GameModelFieldMap['price']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByScreenshots({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['screenshots']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByTags({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$GameModelFieldMap['tags']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByType({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$GameModelFieldMap['type']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByVersion({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['version']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByCategoryId({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['categoryId']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByCategoryName({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['categoryName']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByContainsAds({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['containsAds']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByCoverImageRectUrl({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$GameModelFieldMap['coverImageRectUrl']!,
+        _$ApplicationModelFieldMap['address']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -4495,7 +3686,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -4503,165 +3694,19 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByCreatedAt({
+  ApplicationModelQuery orderByAppType({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['createdAt']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByDownloadSize({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['downloadSize']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByDownloadsCount({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$GameModelFieldMap['downloadsCount']!,
+        _$ApplicationModelFieldMap['appType']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -4715,7 +3760,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -4723,19 +3768,19 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByHasInAppPurchases({
+  ApplicationModelQuery orderByDescription({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$GameModelFieldMap['hasInAppPurchases']!,
+        _$ApplicationModelFieldMap['description']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -4789,7 +3834,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -4797,19 +3842,311 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByLogoImageSquareUrl({
+  ApplicationModelQuery orderByEmail({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$ApplicationModelFieldMap['email']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByName({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$ApplicationModelFieldMap['name']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByPhone({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$ApplicationModelFieldMap['phone']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByPrice({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$ApplicationModelFieldMap['price']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByScreenshots({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$GameModelFieldMap['logoImageSquareUrl']!,
+        _$ApplicationModelFieldMap['screenshots']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -4863,7 +4200,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -4871,19 +4208,92 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByMinAgeRequirement({
+  ApplicationModelQuery orderByTags({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$ApplicationModelFieldMap['tags']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByVersion({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$GameModelFieldMap['minAgeRequirement']!,
+        _$ApplicationModelFieldMap['version']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -4937,7 +4347,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -4945,238 +4355,19 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByNotesAverage({
+  ApplicationModelQuery orderByCategoryId({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['notesAverage']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByNotesCount({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['notesCount']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByPackageName({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['packageName']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByPrivacyPolicyLinkUrl({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$GameModelFieldMap['privacyPolicyLinkUrl']!,
+        _$ApplicationModelFieldMap['categoryId']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -5230,7 +4421,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -5238,165 +4429,19 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByPublisherId({
+  ApplicationModelQuery orderByCategoryName({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['publisherId']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByPublisherName({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['publisherName']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$GameModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  GameModelQuery orderByReleaseFileMainUrl({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$GameModelFieldMap['releaseFileMainUrl']!,
+        _$ApplicationModelFieldMap['categoryName']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -5450,7 +4495,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -5458,19 +4503,19 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByTrailerVideoUrl({
+  ApplicationModelQuery orderByContainsAds({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$GameModelFieldMap['trailerVideoUrl']!,
+        _$ApplicationModelFieldMap['containsAds']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -5524,7 +4569,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -5532,19 +4577,20 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByUpdatedAt({
+  ApplicationModelQuery orderByCoverImageRectUrl({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['updatedAt']!, descending: descending);
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['coverImageRectUrl']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -5597,7 +4643,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -5605,19 +4651,20 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   }
 
   @override
-  GameModelQuery orderByWebsiteUrl({
+  ApplicationModelQuery orderByCreatedAt({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    GameModelDocumentSnapshot? startAtDocument,
-    GameModelDocumentSnapshot? endAtDocument,
-    GameModelDocumentSnapshot? endBeforeDocument,
-    GameModelDocumentSnapshot? startAfterDocument,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$GameModelFieldMap['websiteUrl']!, descending: descending);
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['createdAt']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -5670,7 +4717,1117 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
       );
     }
 
-    return _$GameModelQuery(
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByDownloadSize({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['downloadSize']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByDownloadsCount({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['downloadsCount']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByHasInAppPurchases({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['hasInAppPurchases']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByLogoImageSquareUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['logoImageSquareUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByMinAgeRequirement({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['minAgeRequirement']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByNotesAverage({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['notesAverage']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByNotesCount({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['notesCount']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByPackageName({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['packageName']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByPrivacyPolicyLinkUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['privacyPolicyLinkUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByPublisherId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['publisherId']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByPublisherName({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['publisherName']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByReleaseFileMainUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['releaseFileMainUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByTrailerVideoUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['trailerVideoUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByUpdatedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['updatedAt']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByWebsiteUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['websiteUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -5679,7 +5836,7 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
 
   @override
   bool operator ==(Object other) {
-    return other is _$GameModelQuery &&
+    return other is _$ApplicationModelQuery &&
         other.runtimeType == runtimeType &&
         other.reference == reference;
   }
@@ -5688,56 +5845,59 @@ class _$GameModelQuery extends QueryReference<GameModel, GameModelQuerySnapshot>
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
-class GameModelDocumentSnapshot extends FirestoreDocumentSnapshot<GameModel> {
-  GameModelDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+class ApplicationModelDocumentSnapshot
+    extends FirestoreDocumentSnapshot<ApplicationModel> {
+  ApplicationModelDocumentSnapshot._(this.snapshot) : data = snapshot.data();
 
   @override
-  final DocumentSnapshot<GameModel> snapshot;
+  final DocumentSnapshot<ApplicationModel> snapshot;
 
   @override
-  GameModelDocumentReference get reference {
-    return GameModelDocumentReference(
+  ApplicationModelDocumentReference get reference {
+    return ApplicationModelDocumentReference(
       snapshot.reference,
     );
   }
 
   @override
-  final GameModel? data;
+  final ApplicationModel? data;
 }
 
-class GameModelQuerySnapshot
-    extends FirestoreQuerySnapshot<GameModel, GameModelQueryDocumentSnapshot> {
-  GameModelQuerySnapshot._(
+class ApplicationModelQuerySnapshot extends FirestoreQuerySnapshot<
+    ApplicationModel, ApplicationModelQueryDocumentSnapshot> {
+  ApplicationModelQuerySnapshot._(
     this.snapshot,
     this.docs,
     this.docChanges,
   );
 
-  factory GameModelQuerySnapshot._fromQuerySnapshot(
-    QuerySnapshot<GameModel> snapshot,
+  factory ApplicationModelQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<ApplicationModel> snapshot,
   ) {
-    final docs = snapshot.docs.map(GameModelQueryDocumentSnapshot._).toList();
+    final docs =
+        snapshot.docs.map(ApplicationModelQueryDocumentSnapshot._).toList();
 
     final docChanges = snapshot.docChanges.map((change) {
       return _decodeDocumentChange(
         change,
-        GameModelDocumentSnapshot._,
+        ApplicationModelDocumentSnapshot._,
       );
     }).toList();
 
-    return GameModelQuerySnapshot._(
+    return ApplicationModelQuerySnapshot._(
       snapshot,
       docs,
       docChanges,
     );
   }
 
-  static FirestoreDocumentChange<GameModelDocumentSnapshot>
+  static FirestoreDocumentChange<ApplicationModelDocumentSnapshot>
       _decodeDocumentChange<T>(
     DocumentChange<T> docChange,
-    GameModelDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+    ApplicationModelDocumentSnapshot Function(DocumentSnapshot<T> doc)
+        decodeDoc,
   ) {
-    return FirestoreDocumentChange<GameModelDocumentSnapshot>(
+    return FirestoreDocumentChange<ApplicationModelDocumentSnapshot>(
       type: docChange.type,
       oldIndex: docChange.oldIndex,
       newIndex: docChange.newIndex,
@@ -5745,29 +5905,1575 @@ class GameModelQuerySnapshot
     );
   }
 
-  final QuerySnapshot<GameModel> snapshot;
+  final QuerySnapshot<ApplicationModel> snapshot;
 
   @override
-  final List<GameModelQueryDocumentSnapshot> docs;
+  final List<ApplicationModelQueryDocumentSnapshot> docs;
 
   @override
-  final List<FirestoreDocumentChange<GameModelDocumentSnapshot>> docChanges;
+  final List<FirestoreDocumentChange<ApplicationModelDocumentSnapshot>>
+      docChanges;
 }
 
-class GameModelQueryDocumentSnapshot
-    extends FirestoreQueryDocumentSnapshot<GameModel>
-    implements GameModelDocumentSnapshot {
-  GameModelQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+class ApplicationModelQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<ApplicationModel>
+    implements ApplicationModelDocumentSnapshot {
+  ApplicationModelQueryDocumentSnapshot._(this.snapshot)
+      : data = snapshot.data();
 
   @override
-  final QueryDocumentSnapshot<GameModel> snapshot;
+  final QueryDocumentSnapshot<ApplicationModel> snapshot;
 
   @override
-  final GameModel data;
+  final ApplicationModel data;
 
   @override
-  GameModelDocumentReference get reference {
-    return GameModelDocumentReference(snapshot.reference);
+  ApplicationModelDocumentReference get reference {
+    return ApplicationModelDocumentReference(snapshot.reference);
+  }
+}
+
+/// A collection reference object can be used for adding documents,
+/// getting document references, and querying for documents
+/// (using the methods inherited from Query).
+abstract class ApplicationReleaseCollectionReference
+    implements
+        ApplicationReleaseQuery,
+        FirestoreCollectionReference<ApplicationRelease,
+            ApplicationReleaseQuerySnapshot> {
+  factory ApplicationReleaseCollectionReference(
+    DocumentReference<ApplicationModel> parent,
+  ) = _$ApplicationReleaseCollectionReference;
+
+  static ApplicationRelease fromFirestore(
+    DocumentSnapshot<Map<String, Object?>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return _$ApplicationReleaseFromJson(
+        {'id': snapshot.id, ...?snapshot.data()});
+  }
+
+  static Map<String, Object?> toFirestore(
+    ApplicationRelease value,
+    SetOptions? options,
+  ) {
+    return {..._$ApplicationReleaseToJson(value)}..remove('id');
+  }
+
+  @override
+  CollectionReference<ApplicationRelease> get reference;
+
+  /// A reference to the containing [ApplicationModelDocumentReference] if this is a subcollection.
+  ApplicationModelDocumentReference get parent;
+
+  @override
+  ApplicationReleaseDocumentReference doc([String? id]);
+
+  /// Add a new document to this collection with the specified data,
+  /// assigning it a document ID automatically.
+  Future<ApplicationReleaseDocumentReference> add(ApplicationRelease value);
+}
+
+class _$ApplicationReleaseCollectionReference extends _$ApplicationReleaseQuery
+    implements ApplicationReleaseCollectionReference {
+  factory _$ApplicationReleaseCollectionReference(
+    DocumentReference<ApplicationModel> parent,
+  ) {
+    return _$ApplicationReleaseCollectionReference._(
+      ApplicationModelDocumentReference(parent),
+      parent.collection('releases').withConverter(
+            fromFirestore: ApplicationReleaseCollectionReference.fromFirestore,
+            toFirestore: ApplicationReleaseCollectionReference.toFirestore,
+          ),
+    );
+  }
+
+  _$ApplicationReleaseCollectionReference._(
+    this.parent,
+    CollectionReference<ApplicationRelease> reference,
+  ) : super(reference, $referenceWithoutCursor: reference);
+
+  @override
+  final ApplicationModelDocumentReference parent;
+
+  String get path => reference.path;
+
+  @override
+  CollectionReference<ApplicationRelease> get reference =>
+      super.reference as CollectionReference<ApplicationRelease>;
+
+  @override
+  ApplicationReleaseDocumentReference doc([String? id]) {
+    assert(
+      id == null || id.split('/').length == 1,
+      'The document ID cannot be from a different collection',
+    );
+    return ApplicationReleaseDocumentReference(
+      reference.doc(id),
+    );
+  }
+
+  @override
+  Future<ApplicationReleaseDocumentReference> add(ApplicationRelease value) {
+    return reference
+        .add(value)
+        .then((ref) => ApplicationReleaseDocumentReference(ref));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$ApplicationReleaseCollectionReference &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+abstract class ApplicationReleaseDocumentReference
+    extends FirestoreDocumentReference<ApplicationRelease,
+        ApplicationReleaseDocumentSnapshot> {
+  factory ApplicationReleaseDocumentReference(
+          DocumentReference<ApplicationRelease> reference) =
+      _$ApplicationReleaseDocumentReference;
+
+  DocumentReference<ApplicationRelease> get reference;
+
+  /// A reference to the [ApplicationReleaseCollectionReference] containing this document.
+  ApplicationReleaseCollectionReference get parent {
+    return _$ApplicationReleaseCollectionReference(
+      reference.parent.parent!.withConverter<ApplicationModel>(
+        fromFirestore: ApplicationModelCollectionReference.fromFirestore,
+        toFirestore: ApplicationModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<ApplicationReleaseDocumentSnapshot> snapshots();
+
+  @override
+  Future<ApplicationReleaseDocumentSnapshot> get([GetOptions? options]);
+
+  @override
+  Future<void> delete();
+
+  /// Updates data on the document. Data will be merged with any existing
+  /// document data.
+  ///
+  /// If no document exists yet, the update will fail.
+  Future<void> update({
+    String version,
+    FieldValue versionFieldValue,
+    DateTime addedAt,
+    FieldValue addedAtFieldValue,
+    String fileDownloadUrl,
+    FieldValue fileDownloadUrlFieldValue,
+    bool isBeta,
+    FieldValue isBetaFieldValue,
+    String releasesNotes,
+    FieldValue releasesNotesFieldValue,
+  });
+
+  /// Updates fields in the current document using the transaction API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void transactionUpdate(
+    Transaction transaction, {
+    String version,
+    FieldValue versionFieldValue,
+    DateTime addedAt,
+    FieldValue addedAtFieldValue,
+    String fileDownloadUrl,
+    FieldValue fileDownloadUrlFieldValue,
+    bool isBeta,
+    FieldValue isBetaFieldValue,
+    String releasesNotes,
+    FieldValue releasesNotesFieldValue,
+  });
+}
+
+class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
+        ApplicationRelease, ApplicationReleaseDocumentSnapshot>
+    implements ApplicationReleaseDocumentReference {
+  _$ApplicationReleaseDocumentReference(this.reference);
+
+  @override
+  final DocumentReference<ApplicationRelease> reference;
+
+  /// A reference to the [ApplicationReleaseCollectionReference] containing this document.
+  ApplicationReleaseCollectionReference get parent {
+    return _$ApplicationReleaseCollectionReference(
+      reference.parent.parent!.withConverter<ApplicationModel>(
+        fromFirestore: ApplicationModelCollectionReference.fromFirestore,
+        toFirestore: ApplicationModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<ApplicationReleaseDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(ApplicationReleaseDocumentSnapshot._);
+  }
+
+  @override
+  Future<ApplicationReleaseDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(ApplicationReleaseDocumentSnapshot._);
+  }
+
+  @override
+  Future<ApplicationReleaseDocumentSnapshot> transactionGet(
+      Transaction transaction) {
+    return transaction
+        .get(reference)
+        .then(ApplicationReleaseDocumentSnapshot._);
+  }
+
+  Future<void> update({
+    Object? version = _sentinel,
+    FieldValue? versionFieldValue,
+    Object? addedAt = _sentinel,
+    FieldValue? addedAtFieldValue,
+    Object? fileDownloadUrl = _sentinel,
+    FieldValue? fileDownloadUrlFieldValue,
+    Object? isBeta = _sentinel,
+    FieldValue? isBetaFieldValue,
+    Object? releasesNotes = _sentinel,
+    FieldValue? releasesNotesFieldValue,
+  }) async {
+    assert(
+      version == _sentinel || versionFieldValue == null,
+      "Cannot specify both version and versionFieldValue",
+    );
+    assert(
+      addedAt == _sentinel || addedAtFieldValue == null,
+      "Cannot specify both addedAt and addedAtFieldValue",
+    );
+    assert(
+      fileDownloadUrl == _sentinel || fileDownloadUrlFieldValue == null,
+      "Cannot specify both fileDownloadUrl and fileDownloadUrlFieldValue",
+    );
+    assert(
+      isBeta == _sentinel || isBetaFieldValue == null,
+      "Cannot specify both isBeta and isBetaFieldValue",
+    );
+    assert(
+      releasesNotes == _sentinel || releasesNotesFieldValue == null,
+      "Cannot specify both releasesNotes and releasesNotesFieldValue",
+    );
+    final json = {
+      if (version != _sentinel)
+        _$ApplicationReleaseFieldMap['version']!:
+            _$ApplicationReleasePerFieldToJson.version(version as String),
+      if (versionFieldValue != null)
+        _$ApplicationReleaseFieldMap['version']!: versionFieldValue,
+      if (addedAt != _sentinel)
+        _$ApplicationReleaseFieldMap['addedAt']!:
+            _$ApplicationReleasePerFieldToJson.addedAt(addedAt as DateTime),
+      if (addedAtFieldValue != null)
+        _$ApplicationReleaseFieldMap['addedAt']!: addedAtFieldValue,
+      if (fileDownloadUrl != _sentinel)
+        _$ApplicationReleaseFieldMap['fileDownloadUrl']!:
+            _$ApplicationReleasePerFieldToJson
+                .fileDownloadUrl(fileDownloadUrl as String),
+      if (fileDownloadUrlFieldValue != null)
+        _$ApplicationReleaseFieldMap['fileDownloadUrl']!:
+            fileDownloadUrlFieldValue,
+      if (isBeta != _sentinel)
+        _$ApplicationReleaseFieldMap['isBeta']!:
+            _$ApplicationReleasePerFieldToJson.isBeta(isBeta as bool),
+      if (isBetaFieldValue != null)
+        _$ApplicationReleaseFieldMap['isBeta']!: isBetaFieldValue,
+      if (releasesNotes != _sentinel)
+        _$ApplicationReleaseFieldMap['releasesNotes']!:
+            _$ApplicationReleasePerFieldToJson
+                .releasesNotes(releasesNotes as String),
+      if (releasesNotesFieldValue != null)
+        _$ApplicationReleaseFieldMap['releasesNotes']!: releasesNotesFieldValue,
+    };
+
+    return reference.update(json);
+  }
+
+  void transactionUpdate(
+    Transaction transaction, {
+    Object? version = _sentinel,
+    FieldValue? versionFieldValue,
+    Object? addedAt = _sentinel,
+    FieldValue? addedAtFieldValue,
+    Object? fileDownloadUrl = _sentinel,
+    FieldValue? fileDownloadUrlFieldValue,
+    Object? isBeta = _sentinel,
+    FieldValue? isBetaFieldValue,
+    Object? releasesNotes = _sentinel,
+    FieldValue? releasesNotesFieldValue,
+  }) {
+    assert(
+      version == _sentinel || versionFieldValue == null,
+      "Cannot specify both version and versionFieldValue",
+    );
+    assert(
+      addedAt == _sentinel || addedAtFieldValue == null,
+      "Cannot specify both addedAt and addedAtFieldValue",
+    );
+    assert(
+      fileDownloadUrl == _sentinel || fileDownloadUrlFieldValue == null,
+      "Cannot specify both fileDownloadUrl and fileDownloadUrlFieldValue",
+    );
+    assert(
+      isBeta == _sentinel || isBetaFieldValue == null,
+      "Cannot specify both isBeta and isBetaFieldValue",
+    );
+    assert(
+      releasesNotes == _sentinel || releasesNotesFieldValue == null,
+      "Cannot specify both releasesNotes and releasesNotesFieldValue",
+    );
+    final json = {
+      if (version != _sentinel)
+        _$ApplicationReleaseFieldMap['version']!:
+            _$ApplicationReleasePerFieldToJson.version(version as String),
+      if (versionFieldValue != null)
+        _$ApplicationReleaseFieldMap['version']!: versionFieldValue,
+      if (addedAt != _sentinel)
+        _$ApplicationReleaseFieldMap['addedAt']!:
+            _$ApplicationReleasePerFieldToJson.addedAt(addedAt as DateTime),
+      if (addedAtFieldValue != null)
+        _$ApplicationReleaseFieldMap['addedAt']!: addedAtFieldValue,
+      if (fileDownloadUrl != _sentinel)
+        _$ApplicationReleaseFieldMap['fileDownloadUrl']!:
+            _$ApplicationReleasePerFieldToJson
+                .fileDownloadUrl(fileDownloadUrl as String),
+      if (fileDownloadUrlFieldValue != null)
+        _$ApplicationReleaseFieldMap['fileDownloadUrl']!:
+            fileDownloadUrlFieldValue,
+      if (isBeta != _sentinel)
+        _$ApplicationReleaseFieldMap['isBeta']!:
+            _$ApplicationReleasePerFieldToJson.isBeta(isBeta as bool),
+      if (isBetaFieldValue != null)
+        _$ApplicationReleaseFieldMap['isBeta']!: isBetaFieldValue,
+      if (releasesNotes != _sentinel)
+        _$ApplicationReleaseFieldMap['releasesNotes']!:
+            _$ApplicationReleasePerFieldToJson
+                .releasesNotes(releasesNotes as String),
+      if (releasesNotesFieldValue != null)
+        _$ApplicationReleaseFieldMap['releasesNotes']!: releasesNotesFieldValue,
+    };
+
+    transaction.update(reference, json);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ApplicationReleaseDocumentReference &&
+        other.runtimeType == runtimeType &&
+        other.parent == parent &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, id);
+}
+
+abstract class ApplicationReleaseQuery
+    implements
+        QueryReference<ApplicationRelease, ApplicationReleaseQuerySnapshot> {
+  @override
+  ApplicationReleaseQuery limit(int limit);
+
+  @override
+  ApplicationReleaseQuery limitToLast(int limit);
+
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  ApplicationReleaseQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationReleaseQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationReleaseQuery whereVersion({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationReleaseQuery whereAddedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationReleaseQuery whereFileDownloadUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationReleaseQuery whereIsBeta({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationReleaseQuery whereReleasesNotes({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  /// Perform an order query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of order queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```
+  ApplicationReleaseQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationReleaseQuery orderByDocumentId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationReleaseQuery orderByVersion({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationReleaseQuery orderByAddedAt({
+    bool descending = false,
+    DateTime startAt,
+    DateTime startAfter,
+    DateTime endAt,
+    DateTime endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationReleaseQuery orderByFileDownloadUrl({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationReleaseQuery orderByIsBeta({
+    bool descending = false,
+    bool startAt,
+    bool startAfter,
+    bool endAt,
+    bool endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationReleaseQuery orderByReleasesNotes({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+}
+
+class _$ApplicationReleaseQuery
+    extends QueryReference<ApplicationRelease, ApplicationReleaseQuerySnapshot>
+    implements ApplicationReleaseQuery {
+  _$ApplicationReleaseQuery(
+    this._collection, {
+    required Query<ApplicationRelease> $referenceWithoutCursor,
+    $QueryCursor $queryCursor = const $QueryCursor(),
+  }) : super(
+          $referenceWithoutCursor: $referenceWithoutCursor,
+          $queryCursor: $queryCursor,
+        );
+
+  final CollectionReference<Object?> _collection;
+
+  @override
+  Stream<ApplicationReleaseQuerySnapshot> snapshots(
+      [SnapshotOptions? options]) {
+    return reference
+        .snapshots()
+        .map(ApplicationReleaseQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Future<ApplicationReleaseQuerySnapshot> get([GetOptions? options]) {
+    return reference
+        .get(options)
+        .then(ApplicationReleaseQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  ApplicationReleaseQuery limit(int limit) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery limitToLast(int limit) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery whereVersion({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationReleaseFieldMap['version']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson.version(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson.version(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationReleasePerFieldToJson.version(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .version(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .version(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .version(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$ApplicationReleasePerFieldToJson.version(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.version(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery whereAddedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationReleaseFieldMap['addedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson.addedAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .addedAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationReleasePerFieldToJson.addedAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .addedAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .addedAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .addedAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$ApplicationReleasePerFieldToJson.addedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.addedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery whereFileDownloadUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationReleaseFieldMap['fileDownloadUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .fileDownloadUrl(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .fileDownloadUrl(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .fileDownloadUrl(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .fileDownloadUrl(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .fileDownloadUrl(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .fileDownloadUrl(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.fileDownloadUrl(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.fileDownloadUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery whereIsBeta({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationReleaseFieldMap['isBeta']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson.isBeta(isEqualTo as bool)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson.isBeta(isNotEqualTo as bool)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationReleasePerFieldToJson.isBeta(isLessThan as bool)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .isBeta(isLessThanOrEqualTo as bool)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationReleasePerFieldToJson.isBeta(isGreaterThan as bool)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .isBeta(isGreaterThanOrEqualTo as bool)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$ApplicationReleasePerFieldToJson.isBeta(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.isBeta(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery whereReleasesNotes({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationReleaseFieldMap['releasesNotes']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .releasesNotes(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .releasesNotes(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .releasesNotes(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .releasesNotes(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .releasesNotes(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .releasesNotes(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.releasesNotes(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.releasesNotes(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query =
+        $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByDocumentId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByVersion({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationReleaseFieldMap['version']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByAddedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationReleaseFieldMap['addedAt']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByFileDownloadUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationReleaseFieldMap['fileDownloadUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByIsBeta({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationReleaseFieldMap['isBeta']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByReleasesNotes({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationReleaseFieldMap['releasesNotes']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$ApplicationReleaseQuery &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+class ApplicationReleaseDocumentSnapshot
+    extends FirestoreDocumentSnapshot<ApplicationRelease> {
+  ApplicationReleaseDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<ApplicationRelease> snapshot;
+
+  @override
+  ApplicationReleaseDocumentReference get reference {
+    return ApplicationReleaseDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final ApplicationRelease? data;
+}
+
+class ApplicationReleaseQuerySnapshot extends FirestoreQuerySnapshot<
+    ApplicationRelease, ApplicationReleaseQueryDocumentSnapshot> {
+  ApplicationReleaseQuerySnapshot._(
+    this.snapshot,
+    this.docs,
+    this.docChanges,
+  );
+
+  factory ApplicationReleaseQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<ApplicationRelease> snapshot,
+  ) {
+    final docs =
+        snapshot.docs.map(ApplicationReleaseQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        ApplicationReleaseDocumentSnapshot._,
+      );
+    }).toList();
+
+    return ApplicationReleaseQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<ApplicationReleaseDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    ApplicationReleaseDocumentSnapshot Function(DocumentSnapshot<T> doc)
+        decodeDoc,
+  ) {
+    return FirestoreDocumentChange<ApplicationReleaseDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
+
+  final QuerySnapshot<ApplicationRelease> snapshot;
+
+  @override
+  final List<ApplicationReleaseQueryDocumentSnapshot> docs;
+
+  @override
+  final List<FirestoreDocumentChange<ApplicationReleaseDocumentSnapshot>>
+      docChanges;
+}
+
+class ApplicationReleaseQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<ApplicationRelease>
+    implements ApplicationReleaseDocumentSnapshot {
+  ApplicationReleaseQueryDocumentSnapshot._(this.snapshot)
+      : data = snapshot.data();
+
+  @override
+  final QueryDocumentSnapshot<ApplicationRelease> snapshot;
+
+  @override
+  final ApplicationRelease data;
+
+  @override
+  ApplicationReleaseDocumentReference get reference {
+    return ApplicationReleaseDocumentReference(snapshot.reference);
   }
 }
 
@@ -5775,7 +7481,8 @@ class GameModelQueryDocumentSnapshot
 // JsonSerializableGenerator
 // **************************************************************************
 
-GameModel _$GameModelFromJson(Map<String, dynamic> json) => GameModel(
+ApplicationModel _$ApplicationModelFromJson(Map<String, dynamic> json) =>
+    ApplicationModel(
       downloadSize: json['download_size'] as int,
       categoryId: json['category_id'] as String,
       categoryName: json['category_name'] as String,
@@ -5801,6 +7508,7 @@ GameModel _$GameModelFromJson(Map<String, dynamic> json) => GameModel(
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
       version: json['version'] as String,
       address: json['address'] as String?,
+      appType: json['appType'] as String? ?? 'app',
       coverImageRectUrl: json['cover_image_rect_url'] as String?,
       notesAverage: json['notes_average'] as int?,
       notesCount: json['notes_count'] as int?,
@@ -5812,8 +7520,9 @@ GameModel _$GameModelFromJson(Map<String, dynamic> json) => GameModel(
       websiteUrl: json['website_url'] as String?,
     );
 
-const _$GameModelFieldMap = <String, String>{
+const _$ApplicationModelFieldMap = <String, String>{
   'address': 'address',
+  'appType': 'appType',
   'description': 'description',
   'email': 'email',
   'name': 'name',
@@ -5846,9 +7555,11 @@ const _$GameModelFieldMap = <String, String>{
 };
 
 // ignore: unused_element
-abstract class _$GameModelPerFieldToJson {
+abstract class _$ApplicationModelPerFieldToJson {
   // ignore: unused_element
   static Object? address(String? instance) => instance;
+  // ignore: unused_element
+  static Object? appType(String instance) => instance;
   // ignore: unused_element
   static Object? description(String instance) => instance;
   // ignore: unused_element
@@ -5912,8 +7623,10 @@ abstract class _$GameModelPerFieldToJson {
   static Object? websiteUrl(String? instance) => instance;
 }
 
-Map<String, dynamic> _$GameModelToJson(GameModel instance) => <String, dynamic>{
+Map<String, dynamic> _$ApplicationModelToJson(ApplicationModel instance) =>
+    <String, dynamic>{
       'address': instance.address,
+      'appType': instance.appType,
       'description': instance.description,
       'email': instance.email,
       'name': instance.name,
@@ -5958,3 +7671,118 @@ Json? _$JsonConverterToJson<Json, Value>(
   Json? Function(Value value) toJson,
 ) =>
     value == null ? null : toJson(value);
+
+ApplicationRelease _$ApplicationReleaseFromJson(Map<String, dynamic> json) =>
+    ApplicationRelease(
+      addedAt: const FirestoreDateTimeConverter()
+          .fromJson(json['added_at'] as Timestamp),
+      fileDownloadUrl: json['file_download_url'] as String,
+      id: json['id'] as String,
+      isBeta: json['is_beta'] as bool,
+      releasesNotes: json['releases_notes'] as String,
+      version: json['version'] as String,
+    );
+
+const _$ApplicationReleaseFieldMap = <String, String>{
+  'version': 'version',
+  'addedAt': 'added_at',
+  'fileDownloadUrl': 'file_download_url',
+  'id': 'id',
+  'isBeta': 'is_beta',
+  'releasesNotes': 'releases_notes',
+};
+
+// ignore: unused_element
+abstract class _$ApplicationReleasePerFieldToJson {
+  // ignore: unused_element
+  static Object? version(String instance) => instance;
+  // ignore: unused_element
+  static Object? addedAt(DateTime instance) =>
+      const FirestoreDateTimeConverter().toJson(instance);
+  // ignore: unused_element
+  static Object? fileDownloadUrl(String instance) => instance;
+  // ignore: unused_element
+  static Object? id(String instance) => instance;
+  // ignore: unused_element
+  static Object? isBeta(bool instance) => instance;
+  // ignore: unused_element
+  static Object? releasesNotes(String instance) => instance;
+}
+
+Map<String, dynamic> _$ApplicationReleaseToJson(ApplicationRelease instance) =>
+    <String, dynamic>{
+      'version': instance.version,
+      'added_at': const FirestoreDateTimeConverter().toJson(instance.addedAt),
+      'file_download_url': instance.fileDownloadUrl,
+      'id': instance.id,
+      'is_beta': instance.isBeta,
+      'releases_notes': instance.releasesNotes,
+    };
+
+ItemNote _$ItemNoteFromJson(Map<String, dynamic> json) => ItemNote(
+      addedAt: const FirestoreDateTimeConverter()
+          .fromJson(json['added_at'] as Timestamp),
+      comment: json['comment'] as String,
+      downVotesCount: json['down_votes_count'] as int,
+      id: json['id'] as String,
+      updatedAt: const FirestoreDateTimeConverter()
+          .fromJson(json['updated_at'] as Timestamp),
+      upVotesCount: json['up_votes_count'] as int,
+      userId: json['user_id'] as String,
+      userName: json['user_name'] as String,
+      userProfilePictureUrl: json['user_profile_picture_url'] as String,
+      value: (json['value'] as num).toDouble(),
+    );
+
+const _$ItemNoteFieldMap = <String, String>{
+  'comment': 'comment',
+  'value': 'value',
+  'addedAt': 'added_at',
+  'downVotesCount': 'down_votes_count',
+  'id': 'id',
+  'upVotesCount': 'up_votes_count',
+  'updatedAt': 'updated_at',
+  'userId': 'user_id',
+  'userName': 'user_name',
+  'userProfilePictureUrl': 'user_profile_picture_url',
+};
+
+// ignore: unused_element
+abstract class _$ItemNotePerFieldToJson {
+  // ignore: unused_element
+  static Object? comment(String instance) => instance;
+  // ignore: unused_element
+  static Object? value(double instance) => instance;
+  // ignore: unused_element
+  static Object? addedAt(DateTime instance) =>
+      const FirestoreDateTimeConverter().toJson(instance);
+  // ignore: unused_element
+  static Object? downVotesCount(int instance) => instance;
+  // ignore: unused_element
+  static Object? id(String instance) => instance;
+  // ignore: unused_element
+  static Object? upVotesCount(int instance) => instance;
+  // ignore: unused_element
+  static Object? updatedAt(DateTime instance) =>
+      const FirestoreDateTimeConverter().toJson(instance);
+  // ignore: unused_element
+  static Object? userId(String instance) => instance;
+  // ignore: unused_element
+  static Object? userName(String instance) => instance;
+  // ignore: unused_element
+  static Object? userProfilePictureUrl(String instance) => instance;
+}
+
+Map<String, dynamic> _$ItemNoteToJson(ItemNote instance) => <String, dynamic>{
+      'comment': instance.comment,
+      'value': instance.value,
+      'added_at': const FirestoreDateTimeConverter().toJson(instance.addedAt),
+      'down_votes_count': instance.downVotesCount,
+      'id': instance.id,
+      'up_votes_count': instance.upVotesCount,
+      'updated_at':
+          const FirestoreDateTimeConverter().toJson(instance.updatedAt),
+      'user_id': instance.userId,
+      'user_name': instance.userName,
+      'user_profile_picture_url': instance.userProfilePictureUrl,
+    };

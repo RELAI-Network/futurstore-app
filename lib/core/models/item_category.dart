@@ -13,7 +13,7 @@ final itemsCategoriesReference = ItemCategoryCollectionReference();
 class ItemCategory {
   ItemCategory({
     required this.id,
-    required this.name,
+    required this.label,
     required this.description,
     required this.itemTypes,
     this.iconUrl,
@@ -23,7 +23,7 @@ class ItemCategory {
   static const String collection = 'items_categories';
 
   final String description;
-  final String name;
+  final String label;
 
   @JsonKey(name: 'icon_url')
   final String? iconUrl;
