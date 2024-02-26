@@ -69,9 +69,9 @@ class AppsStateNotifier extends SafeChangeNotifier {
           category == null ? state.forYou : (state.apps[category] ?? []);
 
       final response = await _appsService.getGames(
-          // category: category,
-          // offset: categoryFeed.length,
-          );
+        category: category,
+        // offset: categoryFeed.length,
+      );
 
       // Append fetched apps blocks to the list of apps blocks
       // for the given category.

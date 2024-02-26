@@ -57,7 +57,6 @@ class ApplicationModel {
   static const String collection = 'apps';
 
   final String? address;
-  final String appType;
   final String description;
   final String email;
   final String name;
@@ -66,6 +65,9 @@ class ApplicationModel {
   final List<String> screenshots;
   final List<String> tags;
   final String version;
+
+  @JsonKey(name: 'app_type')
+  final String appType;
 
   @JsonKey(name: 'category_id')
   final String categoryId;
@@ -82,7 +84,7 @@ class ApplicationModel {
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
 
-  @JsonKey(name: 'download_size')
+  @JsonKey(name: 'app_download_size')
   final int downloadSize;
 
   @JsonKey(name: 'downloads_count')

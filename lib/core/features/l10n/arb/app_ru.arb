@@ -4,5 +4,11 @@
   "retry": "Повторить",
   "games": "Игры",
   "books": "Книги",
+  "noAppCategoriesFound": "Категории приложений не обнаружены",
+  "noGamesCategoriesFound": "Категории игр не обнаружены",
+  "noBooksCategoriesFound": "Категории книг не обнаружены",
+  "noAppsFoundInThisCategory": "В этой категории приложений нет.",
+  "noGamesFoundInThisCategory": "В этой категории не найдено ни одной игры",
+  "noBooksFoundInThisCategory": "В этой категории не найдено ни одной книги",
   "apps": "Приложения"
 }

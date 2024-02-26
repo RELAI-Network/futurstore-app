@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/foundation.dart';
+import 'package:futurstore/core/models/item_category.dart';
 import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/games/data/models/game.dart';
 
@@ -13,11 +14,16 @@ class FirestoreAppsRepo extends IAppsRepo {
   late final ApplicationModelCollectionReference _appsService;
 
   @override
-  Future<List<ApplicationModel>> getApps() async {
+  Future<List<ApplicationModel>> getApps({ItemCategory? category}) async {
     try {
-      return (await _appsService
-              .whereAppType(isEqualTo: ApplicationType.app.name)
-              .get())
+      return (category == null
+              ? (await _appsService
+                  .whereAppType(isEqualTo: ApplicationType.app.name)
+                  .get())
+              : (await _appsService
+                  .whereCategoryId(isEqualTo: category.id)
+                  .whereAppType(isEqualTo: ApplicationType.app.name)
+                  .get()))
           .docs
           .map((e) => e.data)
           .toList();
@@ -29,14 +35,19 @@ class FirestoreAppsRepo extends IAppsRepo {
   }
 
   @override
-  Future<List<GameModel>> getGames() async {
+  Future<List<GameModel>> getGames({ItemCategory? category}) async {
     try {
-      return (await _appsService
-              .whereAppType(isEqualTo: ApplicationType.game.name)
-              .get())
-          .docs
-          .map((e) => e.data.toGame())
-          .toList();
+      final docs = (category == null
+              ? (await _appsService
+                  // .whereAppType(isEqualTo: ApplicationType.game.name)
+                  .get())
+              : (await _appsService
+                  // .whereCategoryId(isEqualTo: category.id)
+                  // .whereAppType(isEqualTo: ApplicationType.game.name)
+                  .get()))
+          .docs;
+
+      return docs.map((e) => e.data.toGame()).toList();
     } catch (e) {
       debugPrint(e.toString());
 

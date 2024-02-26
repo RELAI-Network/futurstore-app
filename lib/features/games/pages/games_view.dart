@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:futurstore/core/features/l10n/l10n.dart';
 import 'package:futurstore/core/models/item_category.dart';
 import 'package:futurstore/features/apps/widgets/categories_tab_bar.dart';
 import 'package:futurstore/features/apps/widgets/category_tab.dart';
+import 'package:futurstore/features/commons/views/loading_error_screen_view.dart';
 import 'package:futurstore/features/games/controllers/providers/games_state_provider.dart';
 import 'package:futurstore/features/games/controllers/providers/selected_category_provider.dart';
 import 'package:futurstore/features/games/widgets/game_card.dart';
@@ -127,19 +129,26 @@ class _GamesViewState extends ConsumerState<GamesView>
                   );
                 }
 
-                return GridView.count(
-                  controller: _controllers[category],
-                  crossAxisCount: 3,
-                  children: (appsState.state.apps[category] ?? []).map(
-                    (a) {
-                      return Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: GameCard(
+                if (appsState.state.apps[category]?.isEmpty ?? false) {
+                  return LoadingErrorScreenView(
+                    error: context.l10n.noGamesFoundInThisCategory,
+                    retry: _onTabChanged,
+                  );
+                }
+
+                return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: GridView.count(
+                    controller: _controllers[category],
+                    crossAxisCount: 3,
+                    children: (appsState.state.apps[category] ?? []).map(
+                      (a) {
+                        return GameCard(
                           data: a,
-                        ),
-                      );
-                    },
-                  ).toList(),
+                        );
+                      },
+                    ).toList(),
+                  ),
                 );
               },
             ).toList(),

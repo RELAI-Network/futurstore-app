@@ -4,5 +4,11 @@
   "retry": "Reintentar",
   "games": "Juegos",
   "books": "Libros",
+  "noAppCategoriesFound": "No se encontraron categorías de aplicaciones",
+  "noGamesCategoriesFound": "No se encontraron categorías de juegos",
+  "noBooksCategoriesFound": "No se encontraron categorías de libros",
+  "noAppsFoundInThisCategory": "No se encontraron aplicaciones en esta categoría",
+  "noGamesFoundInThisCategory": "No se encontraron juegos en esta categoría",
+  "noBooksFoundInThisCategory": "No se encontraron libros en esta categoría",
   "apps": "Aplicaciones"
 }

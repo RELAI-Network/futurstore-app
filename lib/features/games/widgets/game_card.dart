@@ -18,9 +18,10 @@ class GameCard extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const FlutterLogo(
-              size: 52,
-            ), // You can adjust the size as needed
+            Image.network(
+              data.logoImageSquareUrl,
+              cacheHeight: 52,
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Text(

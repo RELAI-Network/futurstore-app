@@ -142,8 +142,6 @@ abstract class ApplicationModelDocumentReference
   Future<void> update({
     String? address,
     FieldValue addressFieldValue,
-    String appType,
-    FieldValue appTypeFieldValue,
     String description,
     FieldValue descriptionFieldValue,
     String email,
@@ -160,6 +158,8 @@ abstract class ApplicationModelDocumentReference
     FieldValue tagsFieldValue,
     String version,
     FieldValue versionFieldValue,
+    String appType,
+    FieldValue appTypeFieldValue,
     String categoryId,
     FieldValue categoryIdFieldValue,
     String categoryName,
@@ -209,8 +209,6 @@ abstract class ApplicationModelDocumentReference
     Transaction transaction, {
     String? address,
     FieldValue addressFieldValue,
-    String appType,
-    FieldValue appTypeFieldValue,
     String description,
     FieldValue descriptionFieldValue,
     String email,
@@ -227,6 +225,8 @@ abstract class ApplicationModelDocumentReference
     FieldValue tagsFieldValue,
     String version,
     FieldValue versionFieldValue,
+    String appType,
+    FieldValue appTypeFieldValue,
     String categoryId,
     FieldValue categoryIdFieldValue,
     String categoryName,
@@ -307,8 +307,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
   Future<void> update({
     Object? address = _sentinel,
     FieldValue? addressFieldValue,
-    Object? appType = _sentinel,
-    FieldValue? appTypeFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
     Object? email = _sentinel,
@@ -325,6 +323,8 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? tagsFieldValue,
     Object? version = _sentinel,
     FieldValue? versionFieldValue,
+    Object? appType = _sentinel,
+    FieldValue? appTypeFieldValue,
     Object? categoryId = _sentinel,
     FieldValue? categoryIdFieldValue,
     Object? categoryName = _sentinel,
@@ -371,10 +371,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both address and addressFieldValue",
     );
     assert(
-      appType == _sentinel || appTypeFieldValue == null,
-      "Cannot specify both appType and appTypeFieldValue",
-    );
-    assert(
       description == _sentinel || descriptionFieldValue == null,
       "Cannot specify both description and descriptionFieldValue",
     );
@@ -405,6 +401,10 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     assert(
       version == _sentinel || versionFieldValue == null,
       "Cannot specify both version and versionFieldValue",
+    );
+    assert(
+      appType == _sentinel || appTypeFieldValue == null,
+      "Cannot specify both appType and appTypeFieldValue",
     );
     assert(
       categoryId == _sentinel || categoryIdFieldValue == null,
@@ -493,11 +493,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             _$ApplicationModelPerFieldToJson.address(address as String?),
       if (addressFieldValue != null)
         _$ApplicationModelFieldMap['address']!: addressFieldValue,
-      if (appType != _sentinel)
-        _$ApplicationModelFieldMap['appType']!:
-            _$ApplicationModelPerFieldToJson.appType(appType as String),
-      if (appTypeFieldValue != null)
-        _$ApplicationModelFieldMap['appType']!: appTypeFieldValue,
       if (description != _sentinel)
         _$ApplicationModelFieldMap['description']!:
             _$ApplicationModelPerFieldToJson.description(description as String),
@@ -539,6 +534,11 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             _$ApplicationModelPerFieldToJson.version(version as String),
       if (versionFieldValue != null)
         _$ApplicationModelFieldMap['version']!: versionFieldValue,
+      if (appType != _sentinel)
+        _$ApplicationModelFieldMap['appType']!:
+            _$ApplicationModelPerFieldToJson.appType(appType as String),
+      if (appTypeFieldValue != null)
+        _$ApplicationModelFieldMap['appType']!: appTypeFieldValue,
       if (categoryId != _sentinel)
         _$ApplicationModelFieldMap['categoryId']!:
             _$ApplicationModelPerFieldToJson.categoryId(categoryId as String),
@@ -665,8 +665,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     Transaction transaction, {
     Object? address = _sentinel,
     FieldValue? addressFieldValue,
-    Object? appType = _sentinel,
-    FieldValue? appTypeFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
     Object? email = _sentinel,
@@ -683,6 +681,8 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? tagsFieldValue,
     Object? version = _sentinel,
     FieldValue? versionFieldValue,
+    Object? appType = _sentinel,
+    FieldValue? appTypeFieldValue,
     Object? categoryId = _sentinel,
     FieldValue? categoryIdFieldValue,
     Object? categoryName = _sentinel,
@@ -729,10 +729,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both address and addressFieldValue",
     );
     assert(
-      appType == _sentinel || appTypeFieldValue == null,
-      "Cannot specify both appType and appTypeFieldValue",
-    );
-    assert(
       description == _sentinel || descriptionFieldValue == null,
       "Cannot specify both description and descriptionFieldValue",
     );
@@ -763,6 +759,10 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     assert(
       version == _sentinel || versionFieldValue == null,
       "Cannot specify both version and versionFieldValue",
+    );
+    assert(
+      appType == _sentinel || appTypeFieldValue == null,
+      "Cannot specify both appType and appTypeFieldValue",
     );
     assert(
       categoryId == _sentinel || categoryIdFieldValue == null,
@@ -851,11 +851,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             _$ApplicationModelPerFieldToJson.address(address as String?),
       if (addressFieldValue != null)
         _$ApplicationModelFieldMap['address']!: addressFieldValue,
-      if (appType != _sentinel)
-        _$ApplicationModelFieldMap['appType']!:
-            _$ApplicationModelPerFieldToJson.appType(appType as String),
-      if (appTypeFieldValue != null)
-        _$ApplicationModelFieldMap['appType']!: appTypeFieldValue,
       if (description != _sentinel)
         _$ApplicationModelFieldMap['description']!:
             _$ApplicationModelPerFieldToJson.description(description as String),
@@ -897,6 +892,11 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             _$ApplicationModelPerFieldToJson.version(version as String),
       if (versionFieldValue != null)
         _$ApplicationModelFieldMap['version']!: versionFieldValue,
+      if (appType != _sentinel)
+        _$ApplicationModelFieldMap['appType']!:
+            _$ApplicationModelPerFieldToJson.appType(appType as String),
+      if (appTypeFieldValue != null)
+        _$ApplicationModelFieldMap['appType']!: appTypeFieldValue,
       if (categoryId != _sentinel)
         _$ApplicationModelFieldMap['categoryId']!:
             _$ApplicationModelPerFieldToJson.categoryId(categoryId as String),
@@ -1095,18 +1095,6 @@ abstract class ApplicationModelQuery
     bool? isNull,
   });
 
-  ApplicationModelQuery whereAppType({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  });
-
   ApplicationModelQuery whereDescription({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -1192,6 +1180,18 @@ abstract class ApplicationModelQuery
   });
 
   ApplicationModelQuery whereVersion({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationModelQuery whereAppType({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1500,18 +1500,6 @@ abstract class ApplicationModelQuery
     ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  ApplicationModelQuery orderByAppType({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
-    ApplicationModelDocumentSnapshot? startAtDocument,
-    ApplicationModelDocumentSnapshot? endAtDocument,
-    ApplicationModelDocumentSnapshot? endBeforeDocument,
-    ApplicationModelDocumentSnapshot? startAfterDocument,
-  });
-
   ApplicationModelQuery orderByDescription({
     bool descending = false,
     String startAt,
@@ -1597,6 +1585,18 @@ abstract class ApplicationModelQuery
   });
 
   ApplicationModelQuery orderByVersion({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationModelQuery orderByAppType({
     bool descending = false,
     String startAt,
     String startAfter,
@@ -2013,54 +2013,6 @@ class _$ApplicationModelQuery
   }
 
   @override
-  ApplicationModelQuery whereAppType({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ApplicationModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ApplicationModelFieldMap['appType']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.appType(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.appType(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$ApplicationModelPerFieldToJson.appType(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ApplicationModelPerFieldToJson
-                .appType(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ApplicationModelPerFieldToJson.appType(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ApplicationModelPerFieldToJson
-                .appType(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn:
-            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.appType(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.appType(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
   ApplicationModelQuery whereDescription({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -2450,6 +2402,54 @@ class _$ApplicationModelQuery
             whereIn?.map((e) => _$ApplicationModelPerFieldToJson.version(e)),
         whereNotIn:
             whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.version(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery whereAppType({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationModelFieldMap['appType']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.appType(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.appType(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationModelPerFieldToJson.appType(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .appType(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationModelPerFieldToJson.appType(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .appType(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.appType(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.appType(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3694,80 +3694,6 @@ class _$ApplicationModelQuery
   }
 
   @override
-  ApplicationModelQuery orderByAppType({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    ApplicationModelDocumentSnapshot? startAtDocument,
-    ApplicationModelDocumentSnapshot? endAtDocument,
-    ApplicationModelDocumentSnapshot? endBeforeDocument,
-    ApplicationModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$ApplicationModelFieldMap['appType']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$ApplicationModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
   ApplicationModelQuery orderByDescription({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -4294,6 +4220,80 @@ class _$ApplicationModelQuery
   }) {
     final query = $referenceWithoutCursor.orderBy(
         _$ApplicationModelFieldMap['version']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByAppType({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['appType']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -7483,7 +7483,7 @@ class ApplicationReleaseQueryDocumentSnapshot
 
 ApplicationModel _$ApplicationModelFromJson(Map<String, dynamic> json) =>
     ApplicationModel(
-      downloadSize: json['download_size'] as int,
+      downloadSize: json['app_download_size'] as int,
       categoryId: json['category_id'] as String,
       categoryName: json['category_name'] as String,
       containsAds: json['contains_ads'] as bool,
@@ -7508,7 +7508,7 @@ ApplicationModel _$ApplicationModelFromJson(Map<String, dynamic> json) =>
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
       version: json['version'] as String,
       address: json['address'] as String?,
-      appType: json['appType'] as String? ?? 'app',
+      appType: json['app_type'] as String? ?? 'app',
       coverImageRectUrl: json['cover_image_rect_url'] as String?,
       notesAverage: json['notes_average'] as int?,
       notesCount: json['notes_count'] as int?,
@@ -7522,7 +7522,6 @@ ApplicationModel _$ApplicationModelFromJson(Map<String, dynamic> json) =>
 
 const _$ApplicationModelFieldMap = <String, String>{
   'address': 'address',
-  'appType': 'appType',
   'description': 'description',
   'email': 'email',
   'name': 'name',
@@ -7531,12 +7530,13 @@ const _$ApplicationModelFieldMap = <String, String>{
   'screenshots': 'screenshots',
   'tags': 'tags',
   'version': 'version',
+  'appType': 'app_type',
   'categoryId': 'category_id',
   'categoryName': 'category_name',
   'containsAds': 'contains_ads',
   'coverImageRectUrl': 'cover_image_rect_url',
   'createdAt': 'created_at',
-  'downloadSize': 'download_size',
+  'downloadSize': 'app_download_size',
   'downloadsCount': 'downloads_count',
   'hasInAppPurchases': 'has_in_app_purchases',
   'id': 'id',
@@ -7559,8 +7559,6 @@ abstract class _$ApplicationModelPerFieldToJson {
   // ignore: unused_element
   static Object? address(String? instance) => instance;
   // ignore: unused_element
-  static Object? appType(String instance) => instance;
-  // ignore: unused_element
   static Object? description(String instance) => instance;
   // ignore: unused_element
   static Object? email(String instance) => instance;
@@ -7576,6 +7574,8 @@ abstract class _$ApplicationModelPerFieldToJson {
   static Object? tags(List<String> instance) => instance;
   // ignore: unused_element
   static Object? version(String instance) => instance;
+  // ignore: unused_element
+  static Object? appType(String instance) => instance;
   // ignore: unused_element
   static Object? categoryId(String instance) => instance;
   // ignore: unused_element
@@ -7626,7 +7626,6 @@ abstract class _$ApplicationModelPerFieldToJson {
 Map<String, dynamic> _$ApplicationModelToJson(ApplicationModel instance) =>
     <String, dynamic>{
       'address': instance.address,
-      'appType': instance.appType,
       'description': instance.description,
       'email': instance.email,
       'name': instance.name,
@@ -7635,13 +7634,14 @@ Map<String, dynamic> _$ApplicationModelToJson(ApplicationModel instance) =>
       'screenshots': instance.screenshots,
       'tags': instance.tags,
       'version': instance.version,
+      'app_type': instance.appType,
       'category_id': instance.categoryId,
       'category_name': instance.categoryName,
       'contains_ads': instance.containsAds,
       'cover_image_rect_url': instance.coverImageRectUrl,
       'created_at':
           const FirestoreDateTimeConverter().toJson(instance.createdAt),
-      'download_size': instance.downloadSize,
+      'app_download_size': instance.downloadSize,
       'downloads_count': instance.downloadsCount,
       'has_in_app_purchases': instance.hasInAppPurchases,
       'id': instance.id,

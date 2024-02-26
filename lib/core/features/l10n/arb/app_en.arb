@@ -4,5 +4,12 @@
   "retry": "Retry",
   "games": "Games",
   "books": "Books",
+  "noAppCategoriesFound": "No apps categories found",
+  "noGamesCategoriesFound": "No games categories found",
+  "noBooksCategoriesFound": "No books categories found",
+  "noAppsFoundInThisCategory": "No apps found in this category",
+  "noGamesFoundInThisCategory": "No games found in this category",
+  "noBooksFoundInThisCategory": "No books found in this category",
+  
   "apps": "Apps"
 }

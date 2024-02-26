@@ -42,5 +42,36 @@ class GameModel extends ApplicationModel {
 }
 
 extension ToGameClass on ApplicationModel {
-  GameModel toGame() => copyWith(appType: 'game') as GameModel;
+  GameModel toGame() => GameModel(
+        downloadSize: downloadSize,
+        categoryId: categoryId,
+        categoryName: categoryName,
+        containsAds: containsAds,
+        createdAt: createdAt,
+        description: description,
+        downloadsCount: downloadsCount,
+        email: email,
+        hasInAppPurchases: hasInAppPurchases,
+        id: id,
+        logoImageSquareUrl: logoImageSquareUrl,
+        minAgeRequirement: minAgeRequirement,
+        name: name,
+        publisherId: publisherId,
+        publisherName: publisherName,
+        packageName: packageName,
+        privacyPolicyLinkUrl: privacyPolicyLinkUrl,
+        releaseFileMainUrl: releaseFileMainUrl,
+        screenshots: screenshots,
+        tags: tags,
+        version: version,
+        address: address,
+        coverImageRectUrl: coverImageRectUrl,
+        notesAverage: notesAverage,
+        notesCount: notesCount,
+        phone: phone,
+        price: price,
+        trailerVideoUrl: trailerVideoUrl,
+        updatedAt: updatedAt,
+        websiteUrl: websiteUrl,
+      );
 }
