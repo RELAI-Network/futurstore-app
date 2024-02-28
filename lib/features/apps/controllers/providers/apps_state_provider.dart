@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:futurstore/core/extensions/safe_change_notifier.dart';
-import 'package:futurstore/core/models/item_category.dart';
+import 'package:futurstore/core/data/models/item_category.dart';
+import 'package:futurstore/core/utils/extensions/safe_change_notifier.dart';
 import 'package:futurstore/features/apps/data/models/app.dart';
 
 import '../../data/repo/i_apps.dart';

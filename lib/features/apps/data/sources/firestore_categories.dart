@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/foundation.dart';
-import 'package:futurstore/core/models/item_category.dart';
+import 'package:futurstore/core/data/models/item_category.dart';
 import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/books/models/book.dart';
 

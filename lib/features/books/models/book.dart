@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:dart_utils/dart_utils.dart';
-import 'package:futurstore/core/config/firestore_serializable.dart';
+import 'package:futurstore/core/utils/config/firestore_serializable.dart';
 import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 

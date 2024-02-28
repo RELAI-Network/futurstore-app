@@ -10,5 +10,12 @@
   "noAppsFoundInThisCategory": "No se encontraron aplicaciones en esta categoría",
   "noGamesFoundInThisCategory": "No se encontraron juegos en esta categoría",
   "noBooksFoundInThisCategory": "No se encontraron libros en esta categoría",
+  "adsSupported": "Con publicidad",
+  "purchasesInAppsSupported": "Compras integradas",
+  "installApp": "Instalar",
+  "appReviews": "Reseñas",
+  "ratedFor": "Clasificado para",
+  "aboutThisGame": "Acerca de este juego",
+  "ratingsAndReview": "Clasificaciones y reseñas",
   "apps": "Aplicaciones"
 }

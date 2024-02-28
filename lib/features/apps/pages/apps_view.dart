@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:futurstore/core/data/models/item_category.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
-import 'package:futurstore/core/models/item_category.dart';
-import 'package:futurstore/features/commons/views/loading_error_screen_view.dart';
+import 'package:futurstore/core/presentation/views/loading_error_screen_view.dart';
 
 import '../controllers/providers/apps_state_provider.dart';
 import '../controllers/providers/selected_category_provider.dart';

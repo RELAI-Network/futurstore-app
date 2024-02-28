@@ -3,8 +3,10 @@ Todo:
   ☐ Rename application package name and reconfigure Firebase Project.
   ☐ Configure Firebase AppCheck for both apps after renaming : https://firebase.google.com/docs/app-check/android/play-integrity-provider?hl=fr&authuser=0&_gl=1*bqlhih*_ga*MTUwNTgzNDEzMy4xNjk2MzI4NzYx*_ga_CW55HF8NVT*MTcwODU2MDUwMS4xNjAuMS4xNzA4NTYxNjAzLjE2LjAuMA.
   ☐ Add release Sha256 Keys to AppCheck on Firebase : https://console.firebase.google.com/u/0/project/relai-network-dev/appcheck/apps
+  ☐ Configure Background downloader for iOS : https://pub.dev/packages/background_downloader#ios
   ☐ 
 
 Improvements :
   ☐ Apps Data Safety section and information .
+  ☐ Configure App theming
   ☐ 
