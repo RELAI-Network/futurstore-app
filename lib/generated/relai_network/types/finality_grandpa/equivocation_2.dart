@@ -122,7 +122,7 @@ class $EquivocationCodec with _i1.Codec<Equivocation> {
 
   @override
   int sizeHint(Equivocation obj) {
-    int size = 0;
+    var size = 0;
     size = size + _i1.U64Codec.codec.sizeHint(obj.roundNumber);
     size = size + const _i2.PublicCodec().sizeHint(obj.identity);
     size = size +

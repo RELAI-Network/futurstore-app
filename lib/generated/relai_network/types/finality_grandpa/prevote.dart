@@ -81,7 +81,7 @@ class $PrevoteCodec with _i1.Codec<Prevote> {
 
   @override
   int sizeHint(Prevote obj) {
-    int size = 0;
+    var size = 0;
     size = size + const _i2.H256Codec().sizeHint(obj.targetHash);
     size = size + _i1.U32Codec.codec.sizeHint(obj.targetNumber);
     return size;

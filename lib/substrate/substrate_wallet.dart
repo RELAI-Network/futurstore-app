@@ -1,16 +1,16 @@
 import 'package:bip39/bip39.dart' as bip39;
-import 'package:futurstore/utils/constants.dart';
-import 'package:polkadart_keyring/polkadart_keyring.dart';
-import 'package:polkadart/polkadart.dart' show Provider, StateApi;
+import 'package:flutter/material.dart';
+// import 'package:polkadart/polkadart.dart' show Provider, StateApi;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:futurstore/core/utils/constants.dart';
+import 'package:polkadart_keyring/polkadart_keyring.dart';
 
 class SubstrateWallet {
+  // Private constructor
+  SubstrateWallet._privateConstructor();
   String? _mnemonic;
   KeyPair? _keyPair;
   bool _isConnected = false;
-
-  // Private constructor
-  SubstrateWallet._privateConstructor();
 
   // Static final instance
   static final SubstrateWallet _instance =
@@ -30,12 +30,12 @@ class SubstrateWallet {
   Future<void> init() async {
     _generateMnemonic();
     await _generateKeyPair();
-    storeMnemo(WALLET_PREFIX);
+    await storeMnemo(kWalletPrefix);
     _isConnected = true;
   }
 
   /// Generate Keypair from Mnemonic
-  _generateKeyPair() async {
+  Future<void> _generateKeyPair() async {
     _keyPair = await KeyPair.sr25519.fromMnemonic(_mnemonic!);
   }
 
@@ -47,54 +47,55 @@ class SubstrateWallet {
     return _keyPair;
   }
 
-  storeMnemo(String key) {
-    AndroidOptions _getAndroidOptions() => const AndroidOptions(
+  Future<void> storeMnemo(String key) async {
+    AndroidOptions getAndroidOptions() => const AndroidOptions(
           encryptedSharedPreferences: true,
         );
-    final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
-    storage.write(key: key, value: _mnemonic);
+    final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
+    await storage.write(key: key, value: _mnemonic);
   }
 
-  retrieveMnemo(String key) async {
-    AndroidOptions _getAndroidOptions() => const AndroidOptions(
+  Future<void> retrieveMnemo(String key) async {
+    AndroidOptions getAndroidOptions() => const AndroidOptions(
           encryptedSharedPreferences: true,
         );
-    final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
+    final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
     _mnemonic = await storage.read(key: key);
     if (_mnemonic != null) {
       _keyPair = await KeyPair.sr25519.fromMnemonic(_mnemonic!);
       _isConnected = true;
     } else {
-      print("No MNEMOMIC FOUND OR STORED");
+      debugPrint('No MNEMOMIC FOUND OR STORED');
     }
   }
 
   Future<void> restoreWalletFromMnemonic(String mnemonic) async {
     _mnemonic = mnemonic;
     _keyPair = await KeyPair.sr25519.fromMnemonic(mnemonic);
-    print("######## Wallet Successfuly restored ${_keyPair!.address}");
-    storeMnemo(WALLET_PREFIX);
+    debugPrint('######## Wallet Successfuly restored ${_keyPair!.address}');
+    await storeMnemo(kWalletPrefix);
     _isConnected = true;
   }
 
   Future<void> clearMnemo(String key) async {
-    AndroidOptions _getAndroidOptions() => const AndroidOptions(
+    AndroidOptions getAndroidOptions() => const AndroidOptions(
           encryptedSharedPreferences: true,
         );
-    final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
-    storage.delete(key: key);
+    final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
+    await storage.delete(key: key);
   }
 
-  void clearWallet() async {
+  Future<void> clearWallet() async {
     _mnemonic = null;
     _keyPair = null;
-    await clearMnemo(WALLET_PREFIX);
+    await clearMnemo(kWalletPrefix);
     _isConnected = false;
   }
 
+  // ignore: unnecessary_getters_setters
   bool get isConnected => _isConnected;
 
-  void setIsConnected(bool value) {
+  set isConnected(bool value) {
     _isConnected = value;
   }
 }

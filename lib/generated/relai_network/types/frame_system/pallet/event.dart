@@ -52,7 +52,7 @@ class $Event {
   }
 
   CodeUpdated codeUpdated() {
-    return CodeUpdated();
+    return const CodeUpdated();
   }
 
   NewAccount newAccount({required _i5.AccountId32 account}) {
@@ -106,25 +106,20 @@ class $EventCodec with _i1.Codec<Event> {
     switch (value.runtimeType) {
       case ExtrinsicSuccess:
         (value as ExtrinsicSuccess).encodeTo(output);
-        break;
       case ExtrinsicFailed:
         (value as ExtrinsicFailed).encodeTo(output);
-        break;
       case CodeUpdated:
         (value as CodeUpdated).encodeTo(output);
-        break;
       case NewAccount:
         (value as NewAccount).encodeTo(output);
-        break;
       case KilledAccount:
         (value as KilledAccount).encodeTo(output);
-        break;
       case Remarked:
         (value as Remarked).encodeTo(output);
-        break;
       default:
         throw Exception(
-            'Event: Unsupported "$value" of type "${value.runtimeType}"');
+          'Event: Unsupported "$value" of type "${value.runtimeType}"',
+        );
     }
   }
 
@@ -145,7 +140,8 @@ class $EventCodec with _i1.Codec<Event> {
         return (value as Remarked)._sizeHint();
       default:
         throw Exception(
-            'Event: Unsupported "$value" of type "${value.runtimeType}"');
+          'Event: Unsupported "$value" of type "${value.runtimeType}"',
+        );
     }
   }
 }
@@ -163,11 +159,11 @@ class ExtrinsicSuccess extends Event {
 
   @override
   Map<String, Map<String, Map<String, dynamic>>> toJson() => {
-        'ExtrinsicSuccess': {'dispatchInfo': dispatchInfo.toJson()}
+        'ExtrinsicSuccess': {'dispatchInfo': dispatchInfo.toJson()},
       };
 
   int _sizeHint() {
-    int size = 1;
+    var size = 1;
     size = size + _i3.DispatchInfo.codec.sizeHint(dispatchInfo);
     return size;
   }
@@ -220,11 +216,11 @@ class ExtrinsicFailed extends Event {
         'ExtrinsicFailed': {
           'dispatchError': dispatchError.toJson(),
           'dispatchInfo': dispatchInfo.toJson(),
-        }
+        },
       };
 
   int _sizeHint() {
-    int size = 1;
+    var size = 1;
     size = size + _i4.DispatchError.codec.sizeHint(dispatchError);
     size = size + _i3.DispatchInfo.codec.sizeHint(dispatchInfo);
     return size;
@@ -296,11 +292,11 @@ class NewAccount extends Event {
 
   @override
   Map<String, Map<String, List<int>>> toJson() => {
-        'NewAccount': {'account': account.toList()}
+        'NewAccount': {'account': account.toList()},
       };
 
   int _sizeHint() {
-    int size = 1;
+    var size = 1;
     size = size + const _i5.AccountId32Codec().sizeHint(account);
     return size;
   }
@@ -345,11 +341,11 @@ class KilledAccount extends Event {
 
   @override
   Map<String, Map<String, List<int>>> toJson() => {
-        'KilledAccount': {'account': account.toList()}
+        'KilledAccount': {'account': account.toList()},
       };
 
   int _sizeHint() {
-    int size = 1;
+    var size = 1;
     size = size + const _i5.AccountId32Codec().sizeHint(account);
     return size;
   }
@@ -406,11 +402,11 @@ class Remarked extends Event {
         'Remarked': {
           'sender': sender.toList(),
           'hash': hash.toList(),
-        }
+        },
       };
 
   int _sizeHint() {
-    int size = 1;
+    var size = 1;
     size = size + const _i5.AccountId32Codec().sizeHint(sender);
     size = size + const _i6.H256Codec().sizeHint(hash);
     return size;

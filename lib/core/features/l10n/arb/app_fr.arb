@@ -1,0 +1,14 @@
+{
+  "@@locale": "fr",
+  "loadingError": "Une erreur est survenue pendant le chargement des données.",
+  "retry": "Réessayer",
+  "games": "Jeux",
+  "books": "Livres",
+  "noAppCategoriesFound": "Aucune catégorie d'application trouvée",
+  "noGamesCategoriesFound": "Aucune catégorie de jeux trouvée",
+  "noBooksCategoriesFound": "Aucune catégorie de livres trouvée",
+  "noAppsFoundInThisCategory": "Aucune application trouvée dans cette catégorie",
+  "noGamesFoundInThisCategory": "Aucun jeu trouvé dans cette catégorie",
+  "noBooksFoundInThisCategory": "Aucun livre trouvé dans cette catégorie",
+  "apps": "Applications"
+}

@@ -1,4 +1,5 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes
+// ignore: lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes
 import 'dart:async' as _i3;
 import 'dart:typed_data' as _i4;
 
@@ -47,8 +48,8 @@ class Txs {
 
   /// See [`Pallet::sudo`].
   _i5.RuntimeCall sudo({required _i5.RuntimeCall call}) {
-    final _call = _i6.Call.values.sudo(call: call);
-    return _i5.RuntimeCall.values.sudo(_call);
+    final call0 = _i6.Call.values.sudo(call: call);
+    return _i5.RuntimeCall.values.sudo(call0);
   }
 
   /// See [`Pallet::sudo_unchecked_weight`].
@@ -56,17 +57,17 @@ class Txs {
     required _i5.RuntimeCall call,
     required _i7.Weight weight,
   }) {
-    final _call = _i6.Call.values.sudoUncheckedWeight(
+    final call0 = _i6.Call.values.sudoUncheckedWeight(
       call: call,
       weight: weight,
     );
-    return _i5.RuntimeCall.values.sudo(_call);
+    return _i5.RuntimeCall.values.sudo(call0);
   }
 
   /// See [`Pallet::set_key`].
   _i5.RuntimeCall setKey({required _i8.MultiAddress new_}) {
-    final _call = _i6.Call.values.setKey(new_: new_);
-    return _i5.RuntimeCall.values.sudo(_call);
+    final call = _i6.Call.values.setKey(new_: new_);
+    return _i5.RuntimeCall.values.sudo(call);
   }
 
   /// See [`Pallet::sudo_as`].
@@ -74,10 +75,10 @@ class Txs {
     required _i8.MultiAddress who,
     required _i5.RuntimeCall call,
   }) {
-    final _call = _i6.Call.values.sudoAs(
+    final call0 = _i6.Call.values.sudoAs(
       who: who,
       call: call,
     );
-    return _i5.RuntimeCall.values.sudo(_call);
+    return _i5.RuntimeCall.values.sudo(call0);
   }
 }

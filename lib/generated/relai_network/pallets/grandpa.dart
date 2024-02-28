@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes
+// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes, lines_longer_than_80_chars, avoid_annotating_with_dynamic
 import 'dart:async' as _i6;
 import 'dart:typed_data' as _i7;
 
@@ -10,7 +10,7 @@ import '../types/pallet_grandpa/stored_pending_change.dart' as _i3;
 import '../types/pallet_grandpa/stored_state.dart' as _i2;
 import '../types/relai_network_runtime/runtime_call.dart' as _i8;
 import '../types/sp_consensus_grandpa/equivocation_proof.dart' as _i9;
-import '../types/sp_core/void.dart' as _i10;
+import '../types/sp_core/void.dart';
 import '../types/tuples.dart' as _i5;
 
 class Queries {
@@ -72,12 +72,13 @@ class Queries {
     if (bytes != null) {
       return _state.decodeValue(bytes);
     }
-    return _i2.Live(); /* Default */
+    return const _i2.Live(); /* Default */
   }
 
   /// Pending change: (signaled at, scheduled change).
-  _i6.Future<_i3.StoredPendingChange?> pendingChange(
-      {_i1.BlockHash? at}) async {
+  _i6.Future<_i3.StoredPendingChange?> pendingChange({
+    _i1.BlockHash? at,
+  }) async {
     final hashedKey = _pendingChange.hashedKey();
     final bytes = await __api.getStorage(
       hashedKey,
@@ -203,25 +204,25 @@ class Txs {
   /// See [`Pallet::report_equivocation`].
   _i8.RuntimeCall reportEquivocation({
     required _i9.EquivocationProof equivocationProof,
-    required _i10.Void keyOwnerProof,
+    required Void keyOwnerProof,
   }) {
-    final _call = _i11.Call.values.reportEquivocation(
+    final call = _i11.Call.values.reportEquivocation(
       equivocationProof: equivocationProof,
       keyOwnerProof: keyOwnerProof,
     );
-    return _i8.RuntimeCall.values.grandpa(_call);
+    return _i8.RuntimeCall.values.grandpa(call);
   }
 
   /// See [`Pallet::report_equivocation_unsigned`].
   _i8.RuntimeCall reportEquivocationUnsigned({
     required _i9.EquivocationProof equivocationProof,
-    required _i10.Void keyOwnerProof,
+    required Void keyOwnerProof,
   }) {
-    final _call = _i11.Call.values.reportEquivocationUnsigned(
+    final call = _i11.Call.values.reportEquivocationUnsigned(
       equivocationProof: equivocationProof,
       keyOwnerProof: keyOwnerProof,
     );
-    return _i8.RuntimeCall.values.grandpa(_call);
+    return _i8.RuntimeCall.values.grandpa(call);
   }
 
   /// See [`Pallet::note_stalled`].
@@ -229,11 +230,11 @@ class Txs {
     required int delay,
     required int bestFinalizedBlockNumber,
   }) {
-    final _call = _i11.Call.values.noteStalled(
+    final call = _i11.Call.values.noteStalled(
       delay: delay,
       bestFinalizedBlockNumber: bestFinalizedBlockNumber,
     );
-    return _i8.RuntimeCall.values.grandpa(_call);
+    return _i8.RuntimeCall.values.grandpa(call);
   }
 }
 

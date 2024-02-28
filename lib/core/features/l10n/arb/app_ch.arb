@@ -1,0 +1,14 @@
+{
+  "@@locale": "ch",
+  "loadingError": "Beim Lade vo de Date isch en Fähler basseert.",
+  "retry": "Retry",
+  "games": "Games",
+  "books": "Books",
+  "noAppCategoriesFound": "Nennina cattagoreas d’app",
+  "noGamesCategoriesFound": "Nennina cattagoreas da gieu",
+  "noBooksCategoriesFound": "Nengünna cattagoreas da cudeschs",
+  "noAppsFoundInThisCategory": "Ndai ina birša apps i questa categoria",
+  "noGamesFoundInThisCategory": "此類別中未找到任何遊戲",
+  "noBooksFoundInThisCategory": "此類別中未找到任何書籍",
+  "apps": "Apps"
+}

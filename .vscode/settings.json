@@ -1,0 +1,43 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#bb9a97",
+        "activityBar.background": "#bb9a97",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#4c744f",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#15202b99",
+        "editorGroup.border": "#bb9a97",
+        "panel.border": "#bb9a97",
+        "sash.hoverBorder": "#bb9a97",
+        "sideBar.border": "#bb9a97",
+        "statusBar.background": "#a77c78",
+        "statusBar.border": "#a77c78",
+        "statusBar.debuggingBackground": "#78a3a7",
+        "statusBar.debuggingBorder": "#78a3a7",
+        "statusBar.debuggingForeground": "#15202b",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#8f615d",
+        "statusBarItem.remoteBackground": "#a77c78",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#a77c78",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.border": "#a77c78",
+        "titleBar.inactiveBackground": "#a77c7899",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#a77c78",
+    "cSpell.words": [
+        "arabic",
+        "chinese",
+        "epub",
+        "firestore",
+        "futurstore",
+        "isbn",
+        "italian",
+        "multiaddress",
+        "polkadart",
+        "russian",
+        "spanish"
+    ]
+}

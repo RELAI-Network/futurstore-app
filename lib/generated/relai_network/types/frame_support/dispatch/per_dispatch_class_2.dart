@@ -89,7 +89,7 @@ class $PerDispatchClassCodec with _i1.Codec<PerDispatchClass> {
 
   @override
   int sizeHint(PerDispatchClass obj) {
-    int size = 0;
+    var size = 0;
     size = size + _i2.WeightsPerClass.codec.sizeHint(obj.normal);
     size = size + _i2.WeightsPerClass.codec.sizeHint(obj.operational);
     size = size + _i2.WeightsPerClass.codec.sizeHint(obj.mandatory);
