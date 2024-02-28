@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_redundant_argument_values
 
-import 'package:background_downloader/background_downloader.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ import 'package:futurstore/core/presentation/theming/configs/app_colors.dart';
 import 'package:futurstore/core/presentation/theming/configs/app_spacing.dart';
 import 'package:futurstore/core/utils/extensions/build_context.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
+import 'package:futurstore/features/games/widgets/install_button.dart';
 
 import '../data/models/game.dart';
 
@@ -159,34 +159,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 const _Gap(),
                 SizedBox(
                   width: context.width * 0.9,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      try {
-                        final task = DownloadTask(
-                          url: widget.data.releaseFileMainUrl,
-                          filename: '${widget.data.packageName}.apk',
-                          // directory: '',
-                          updates: Updates.statusAndProgress,
-                          requiresWiFi: false,
-                          // requiresWiFi: true,
-                          retries: 5,
-                          allowPause: true,
-                        );
-
-                        await FileDownloader().download(
-                          task,
-                          onProgress: (progress) =>
-                              debugPrint('Progress: ${progress * 100}%'),
-                          onStatus: (status) => debugPrint('Status: $status'),
-                        );
-                      } catch (e) {
-                        debugPrint(e.toString());
-                      }
-                    },
-                    child: Text(
-                      l10n.installApp,
-                    ),
-                  ),
+                  child: InstallGameButton(widget.data),
                 ),
                 const _Gap(),
                 CarouselSlider(

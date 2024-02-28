@@ -7,6 +7,8 @@
   "noAppCategoriesFound": "No se encontraron categorías de aplicaciones",
   "noGamesCategoriesFound": "No se encontraron categorías de juegos",
   "noBooksCategoriesFound": "No se encontraron categorías de libros",
+  "noAppsFound": "No se encontró ninguna aplicación.",
+  "noGamesFound": "No se encontró ningún juego.",
   "noAppsFoundInThisCategory": "No se encontraron aplicaciones en esta categoría",
   "noGamesFoundInThisCategory": "No se encontraron juegos en esta categoría",
   "noBooksFoundInThisCategory": "No se encontraron libros en esta categoría",
@@ -17,5 +19,8 @@
   "ratedFor": "Clasificado para",
   "aboutThisGame": "Acerca de este juego",
   "ratingsAndReview": "Clasificaciones y reseñas",
+  "cancelInstallation": "Cancelar",
+  "openApp": "Abrir",
+  "downloadingPackage": "Descargando",
   "apps": "Aplicaciones"
 }

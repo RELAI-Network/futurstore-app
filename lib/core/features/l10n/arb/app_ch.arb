@@ -7,6 +7,8 @@
   "noAppCategoriesFound": "Nennina cattagoreas d’app",
   "noGamesCategoriesFound": "Nennina cattagoreas da gieu",
   "noBooksCategoriesFound": "Nengünna cattagoreas da cudeschs",
+  "noAppsFound": "Ngi gudidiwetga addet.",
+  "noGamesFound": "Ngi agadiwetga addet.",
   "noAppsFoundInThisCategory": "Ndai ina birša apps i questa categoria",
   "noGamesFoundInThisCategory": "此類別中未找到任何遊戲",
   "noBooksFoundInThisCategory": "此類別中未找到任何書籍",
@@ -17,5 +19,8 @@
   "ratedFor": "Ignayê",
   "aboutThisGame": "About this game",
   "ratingsAndReview": "Bewertungen und Rezensionen",
+  "cancelInstallation": "Cancel",
+  "openApp": "Open",
+  "downloadingPackage": "Ni googwet",
   "apps": "Apps"
 }

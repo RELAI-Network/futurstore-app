@@ -20,10 +20,8 @@ class AppsState extends Equatable {
   /// Default constructor
   const AppsState({
     required this.status,
-    this.apps = const {},
-    this.hasMoreApps = const {},
-    this.hasMoreForYouApps = false,
-    this.forYou = const [],
+    this.apps = const [],
+    this.hasMoreApps = true,
   });
 
   /// Initial state
@@ -35,40 +33,29 @@ class AppsState extends Equatable {
   /// Feed status
   final AppsStatus status;
 
-  /// For you apps
-  final List<ApplicationModel> forYou;
-
-  /// Has more top news
-  final bool hasMoreForYouApps;
-
   /// Apps
-  final Map<ItemCategory, List<ApplicationModel>> apps;
+  final List<ApplicationModel> apps;
 
   /// Has more apps
-  final Map<ItemCategory, bool> hasMoreApps;
+  final bool hasMoreApps;
 
   @override
   List<Object> get props => [
         status,
         apps,
         hasMoreApps,
-        forYou,
       ];
 
   /// Copy with
   AppsState copyWith({
     AppsStatus? status,
-    Map<ItemCategory, List<ApplicationModel>>? apps,
-    Map<ItemCategory, bool>? hasMoreApps,
-    List<ApplicationModel>? forYou,
-    bool? hasMoreForYouApps,
+    List<ApplicationModel>? apps,
+    bool? hasMoreApps,
   }) {
     return AppsState(
       status: status ?? this.status,
       apps: apps ?? this.apps,
       hasMoreApps: hasMoreApps ?? this.hasMoreApps,
-      forYou: forYou ?? this.forYou,
-      hasMoreForYouApps: hasMoreForYouApps ?? this.hasMoreForYouApps,
     );
   }
 }

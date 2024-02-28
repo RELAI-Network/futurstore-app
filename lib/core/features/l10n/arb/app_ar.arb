@@ -7,6 +7,8 @@
   "noAppCategoriesFound": "لم يتم العثور على فئات تطبيقات",
   "noGamesCategoriesFound": "لم يتم العثور على فئات ألعاب",
   "noBooksCategoriesFound": "لم يتم العثور على فئات كتب",
+  "noAppsFound": "لم يتم العثور على تطبيقات.",
+  "noGamesFound": "لم يتم العثور على ألعاب.",
   "noAppsFoundInThisCategory": "لا توجد تطبيقات في هذه الفئة",
   "noGamesFoundInThisCategory": "لم يتم العثور على ألعاب في هذه الفئة",
   "noBooksFoundInThisCategory": "لم يتم العثور على كتب في هذه الفئة",
@@ -17,5 +19,8 @@
   "ratedFor": "مخصص لـ",
   "aboutThisGame": "حول اللعبة",
   "ratingsAndReview": "التقييمات والمراجعات",
+  "cancelInstallation": "إلغاء",
+  "openApp": "فتح",
+  "downloadingPackage": "جارٍ التنزيل",
   "apps": "تطبيقات"
 }

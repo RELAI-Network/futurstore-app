@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'download_task_status.dart';
+import '../download_task_status.dart';
 
 typedef FileBackgroundDownloadFunction = Future<File> Function(
   String url,
