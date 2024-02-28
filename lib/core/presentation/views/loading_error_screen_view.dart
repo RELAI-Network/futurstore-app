@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:futurstore/core/extensions/build_context.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
+import 'package:futurstore/core/utils/extensions/build_context.dart';
 
 class LoadingErrorScreenView extends StatelessWidget {
   const LoadingErrorScreenView({required this.retry, super.key, this.error});

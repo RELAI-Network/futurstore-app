@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
-import 'package:futurstore/core/config/firestore_serializable.dart';
+import 'package:futurstore/core/utils/config/firestore_serializable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'app.g.dart';
@@ -103,7 +103,7 @@ class ApplicationModel {
   final int minAgeRequirement;
 
   @JsonKey(name: 'notes_average')
-  final int? notesAverage;
+  final double? notesAverage;
 
   @JsonKey(name: 'notes_count')
   final int? notesCount;
@@ -164,7 +164,7 @@ class ApplicationModel {
     String? id,
     String? logoImageSquareUrl,
     int? minAgeRequirement,
-    int? notesAverage,
+    double? notesAverage,
     int? notesCount,
     String? packageName,
     String? privacyPolicyLinkUrl,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
+import 'package:futurstore/core/presentation/views/loading_error_screen_view.dart';
 import 'package:futurstore/features/apps/controllers/providers/apps_categories_provider.dart';
 import 'package:futurstore/features/apps/pages/apps_view.dart';
-import 'package:futurstore/features/commons/views/loading_error_screen_view.dart';
 
 class AppsPage extends ConsumerWidget {
   const AppsPage({super.key});

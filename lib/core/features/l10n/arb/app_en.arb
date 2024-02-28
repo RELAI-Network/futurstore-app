@@ -10,6 +10,12 @@
   "noAppsFoundInThisCategory": "No apps found in this category",
   "noGamesFoundInThisCategory": "No games found in this category",
   "noBooksFoundInThisCategory": "No books found in this category",
-  
+  "adsSupported": "Ad supported",
+  "purchasesInAppsSupported": "In app purchases",
+  "installApp": "Install",
+  "appReviews": "Reviews",
+  "ratedFor": "Rated for",
+  "aboutThisGame": "About this game",
+  "ratingsAndReview": "Ratings and reviews",
   "apps": "Apps"
 }

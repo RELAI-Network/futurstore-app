@@ -180,7 +180,7 @@ abstract class ApplicationModelDocumentReference
     FieldValue logoImageSquareUrlFieldValue,
     int minAgeRequirement,
     FieldValue minAgeRequirementFieldValue,
-    int? notesAverage,
+    double? notesAverage,
     FieldValue notesAverageFieldValue,
     int? notesCount,
     FieldValue notesCountFieldValue,
@@ -247,7 +247,7 @@ abstract class ApplicationModelDocumentReference
     FieldValue logoImageSquareUrlFieldValue,
     int minAgeRequirement,
     FieldValue minAgeRequirementFieldValue,
-    int? notesAverage,
+    double? notesAverage,
     FieldValue notesAverageFieldValue,
     int? notesCount,
     FieldValue notesCountFieldValue,
@@ -601,7 +601,8 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             minAgeRequirementFieldValue,
       if (notesAverage != _sentinel)
         _$ApplicationModelFieldMap['notesAverage']!:
-            _$ApplicationModelPerFieldToJson.notesAverage(notesAverage as int?),
+            _$ApplicationModelPerFieldToJson
+                .notesAverage(notesAverage as double?),
       if (notesAverageFieldValue != null)
         _$ApplicationModelFieldMap['notesAverage']!: notesAverageFieldValue,
       if (notesCount != _sentinel)
@@ -959,7 +960,8 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             minAgeRequirementFieldValue,
       if (notesAverage != _sentinel)
         _$ApplicationModelFieldMap['notesAverage']!:
-            _$ApplicationModelPerFieldToJson.notesAverage(notesAverage as int?),
+            _$ApplicationModelPerFieldToJson
+                .notesAverage(notesAverage as double?),
       if (notesAverageFieldValue != null)
         _$ApplicationModelFieldMap['notesAverage']!: notesAverageFieldValue,
       if (notesCount != _sentinel)
@@ -1324,14 +1326,14 @@ abstract class ApplicationModelQuery
   });
 
   ApplicationModelQuery whereNotesAverage({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
-    List<int?>? whereIn,
-    List<int?>? whereNotIn,
+    double? isEqualTo,
+    double? isNotEqualTo,
+    double? isLessThan,
+    double? isLessThanOrEqualTo,
+    double? isGreaterThan,
+    double? isGreaterThanOrEqualTo,
+    List<double?>? whereIn,
+    List<double?>? whereNotIn,
     bool? isNull,
   });
 
@@ -1730,10 +1732,10 @@ abstract class ApplicationModelQuery
 
   ApplicationModelQuery orderByNotesAverage({
     bool descending = false,
-    int? startAt,
-    int? startAfter,
-    int? endAt,
-    int? endBefore,
+    double? startAt,
+    double? startAfter,
+    double? endAt,
+    double? endBefore,
     ApplicationModelDocumentSnapshot? startAtDocument,
     ApplicationModelDocumentSnapshot? endAtDocument,
     ApplicationModelDocumentSnapshot? endBeforeDocument,
@@ -2973,8 +2975,8 @@ class _$ApplicationModelQuery
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
     Object? isGreaterThanOrEqualTo,
-    List<int?>? whereIn,
-    List<int?>? whereNotIn,
+    List<double?>? whereIn,
+    List<double?>? whereNotIn,
     bool? isNull,
   }) {
     return _$ApplicationModelQuery(
@@ -2982,26 +2984,28 @@ class _$ApplicationModelQuery
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$ApplicationModelFieldMap['notesAverage']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.notesAverage(isEqualTo as int?)
+            ? _$ApplicationModelPerFieldToJson
+                .notesAverage(isEqualTo as double?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
             ? _$ApplicationModelPerFieldToJson
-                .notesAverage(isNotEqualTo as int?)
+                .notesAverage(isNotEqualTo as double?)
             : null,
         isLessThan: isLessThan != null
-            ? _$ApplicationModelPerFieldToJson.notesAverage(isLessThan as int?)
+            ? _$ApplicationModelPerFieldToJson
+                .notesAverage(isLessThan as double?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
             ? _$ApplicationModelPerFieldToJson
-                .notesAverage(isLessThanOrEqualTo as int?)
+                .notesAverage(isLessThanOrEqualTo as double?)
             : null,
         isGreaterThan: isGreaterThan != null
             ? _$ApplicationModelPerFieldToJson
-                .notesAverage(isGreaterThan as int?)
+                .notesAverage(isGreaterThan as double?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
             ? _$ApplicationModelPerFieldToJson
-                .notesAverage(isGreaterThanOrEqualTo as int?)
+                .notesAverage(isGreaterThanOrEqualTo as double?)
             : null,
         whereIn: whereIn
             ?.map((e) => _$ApplicationModelPerFieldToJson.notesAverage(e)),
@@ -7510,7 +7514,7 @@ ApplicationModel _$ApplicationModelFromJson(Map<String, dynamic> json) =>
       address: json['address'] as String?,
       appType: json['app_type'] as String? ?? 'app',
       coverImageRectUrl: json['cover_image_rect_url'] as String?,
-      notesAverage: json['notes_average'] as int?,
+      notesAverage: (json['notes_average'] as num?)?.toDouble(),
       notesCount: json['notes_count'] as int?,
       phone: json['phone'] as String?,
       price: (json['price'] as num?)?.toDouble(),
@@ -7600,7 +7604,7 @@ abstract class _$ApplicationModelPerFieldToJson {
   // ignore: unused_element
   static Object? minAgeRequirement(int instance) => instance;
   // ignore: unused_element
-  static Object? notesAverage(int? instance) => instance;
+  static Object? notesAverage(double? instance) => instance;
   // ignore: unused_element
   static Object? notesCount(int? instance) => instance;
   // ignore: unused_element

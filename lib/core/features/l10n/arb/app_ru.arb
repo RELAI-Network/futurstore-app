@@ -10,5 +10,12 @@
   "noAppsFoundInThisCategory": "В этой категории приложений нет.",
   "noGamesFoundInThisCategory": "В этой категории не найдено ни одной игры",
   "noBooksFoundInThisCategory": "В этой категории не найдено ни одной книги",
+  "adsSupported": "Поддерживается реклама",
+  "purchasesInAppsSupported": "Покупки в приложении",
+  "installApp": "Установить",
+  "appReviews": "Отзывы",
+  "ratedFor": "Для рейтинга",
+  "aboutThisGame": "Об этой игре",
+  "ratingsAndReview": "Рейтинг и отзывы",
   "apps": "Приложения"
 }

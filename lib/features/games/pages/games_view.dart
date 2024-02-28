@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:futurstore/core/data/models/item_category.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
-import 'package:futurstore/core/models/item_category.dart';
+import 'package:futurstore/core/presentation/views/loading_error_screen_view.dart';
 import 'package:futurstore/features/apps/widgets/categories_tab_bar.dart';
 import 'package:futurstore/features/apps/widgets/category_tab.dart';
-import 'package:futurstore/features/commons/views/loading_error_screen_view.dart';
 import 'package:futurstore/features/games/controllers/providers/games_state_provider.dart';
 import 'package:futurstore/features/games/controllers/providers/selected_category_provider.dart';
-import 'package:futurstore/features/games/widgets/game_card.dart';
+
+import 'games_grid_view.dart';
 
 class GamesView extends ConsumerStatefulWidget {
   const GamesView({
@@ -136,19 +137,9 @@ class _GamesViewState extends ConsumerState<GamesView>
                   );
                 }
 
-                return Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: GridView.count(
-                    controller: _controllers[category],
-                    crossAxisCount: 3,
-                    children: (appsState.state.apps[category] ?? []).map(
-                      (a) {
-                        return GameCard(
-                          data: a,
-                        );
-                      },
-                    ).toList(),
-                  ),
+                return GamesGridView(
+                  controller: _controllers[category],
+                  games: appsState.state.apps[category] ?? [],
                 );
               },
             ).toList(),

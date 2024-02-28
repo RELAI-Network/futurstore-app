@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
 import 'package:futurstore/features/apps/pages/apps_page.dart';
 
-import '../../../core/components/app_drawer.dart';
-import '../../../core/components/search.dart';
+import '../../../core/presentation/components/app_drawer.dart';
+import '../../../core/presentation/components/search.dart';
 import '../../books/pages/books_screen.dart';
 import '../../games/pages/games_page.dart';
 
