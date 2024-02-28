@@ -1,5 +1,10 @@
 /// Inspired of background_downloader DownloadTaskStatus.
 enum DownloadTaskStatus {
+  /// Initial state
+  ///
+  /// Download not started
+  initial,
+
   /// Task is enqueued on the native platform and waiting to start
   ///
   /// It may wait for resources, or for an appropriate network to become
@@ -50,6 +55,7 @@ enum DownloadTaskStatus {
       case DownloadTaskStatus.canceled:
         return true;
 
+      case DownloadTaskStatus.initial:
       case DownloadTaskStatus.enqueued:
       case DownloadTaskStatus.running:
       case DownloadTaskStatus.waitingToRetry:

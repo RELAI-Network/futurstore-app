@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 
-import '../models/file_install_function.dart';
+import '../models/typedefs/file_install_function.dart';
 import '../repo/i_package_file_installer.dart';
 
 class ApkFilePackageInstaller implements IPackageFileInstaller {

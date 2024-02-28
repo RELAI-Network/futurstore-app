@@ -3,8 +3,9 @@ import 'dart:io';
 import 'package:background_downloader/background_downloader.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:futurstore/features/packages/functions/utils.dart';
 
-import '../data/models/file_background_download_function.dart';
+import '../data/models/typedefs/file_background_download_function.dart';
 import '../data/repo/i_package_file_installer.dart';
 
 final fileDownloaderFuncProvider = Provider<FileBackgroundDownloadFunction>(
@@ -34,7 +35,7 @@ Future<File> backgroundDownloadApkFile(
       url: url,
       filename: '$packageName.apk',
       baseDirectory: BaseDirectory.temporary,
-      // directory: '',
+
       updates: Updates.statusAndProgress,
       // requiresWiFi: true,
       retries: 5,
@@ -53,7 +54,12 @@ Future<File> backgroundDownloadApkFile(
       },
     );
 
-    return File(await task.filePath());
+    // ignore: non_constant_identifier_names
+    final __ = await task.filePath();
+
+    final filePath = await getFilePathFromPackageName(packageName);
+
+    return File(filePath);
   } catch (e) {
     debugPrint(e.toString());
 

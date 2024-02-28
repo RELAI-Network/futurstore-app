@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:futurstore/core/data/models/item_category.dart';
 import 'package:futurstore/core/utils/extensions/safe_change_notifier.dart';
 import 'package:futurstore/features/apps/data/repo/i_apps.dart';
 import 'package:futurstore/features/apps/data/sources/firestore_apps.dart';
@@ -42,59 +41,28 @@ class AppsStateNotifier extends SafeChangeNotifier {
   }
 
   /// Feed requested
-  FutureOr<void> onAppsRequested(
-    ItemCategory? category,
-  ) async {
+  FutureOr<void> onAppsRequested() async {
     state = state.copyWith(status: AppsStatus.loading);
-    return _updateApps(category: category);
+    return _updateApps();
   }
 
   /// Feed resumed
-  FutureOr<void> onResumed(
-    ItemCategory? category,
-  ) async {
-    await Future.wait(
-      state.apps.keys.map(
-        (category) => _updateApps(category: category),
-      ),
-    );
+  FutureOr<void> onResumed() async {
+    await _updateApps();
     return null;
   }
 
-  Future<void> _updateApps({
-    ItemCategory? category,
-  }) async {
+  Future<void> _updateApps() async {
     try {
-      final categoryApps =
-          category == null ? state.forYou : (state.apps[category] ?? []);
-
       final response = await _appsService.getGames(
-        category: category,
-        // offset: categoryFeed.length,
+          // offset: 0,
+          );
+
+      state = state.copyWith(
+        status: AppsStatus.populated,
+        apps: [...state.games, ...response],
+        hasMoreApps: false,
       );
-
-      // Append fetched apps blocks to the list of apps blocks
-      // for the given category.
-      // final updatedCategoryFeed = [...categoryFeed, ...response.apps];
-      final updatedCategoryApps = [...categoryApps, ...response];
-      const hasMoreAppsForCategory = false;
-      // response.totalCount > updatedCategoryFeed.length;
-
-      if (category == null) {
-        state = state.copyWith(
-          status: AppsStatus.populated,
-          forYou: updatedCategoryApps,
-          hasMoreForYouApps: hasMoreAppsForCategory,
-        );
-      } else {
-        state = state.copyWith(
-          status: AppsStatus.populated,
-          apps: Map<ItemCategory, List<GameModel>>.from(state.apps)
-            ..addAll({category: updatedCategoryApps}),
-          hasMoreApps: Map<ItemCategory, bool>.from(state.hasMoreApps)
-            ..addAll({category: hasMoreAppsForCategory}),
-        );
-      }
     } on Exception catch (error, _) {
       state = state.copyWith(status: AppsStatus.failure);
       // addError(error, stackTrace);
@@ -102,37 +70,19 @@ class AppsStateNotifier extends SafeChangeNotifier {
   }
 
   /// Feed refresh requested
-  FutureOr<void> onAppsRefreshRequested(
-    ItemCategory? category,
-  ) async {
+  FutureOr<void> onAppsRefreshRequested() async {
     state = state.copyWith(status: AppsStatus.loading);
 
     try {
       final response = await _appsService.getGames(
-          // category: category,
           // offset: 0,
           );
 
-      // final refreshedCategoryFeed = response.apps;
-      final refreshedCategoryApps = response;
-      const hasMoreAppsForCategory = false;
-      // response.totalCount > refreshedCategoryFeed.length;
-
-      if (category == null) {
-        state = state.copyWith(
-          status: AppsStatus.populated,
-          forYou: refreshedCategoryApps,
-          hasMoreForYouApps: hasMoreAppsForCategory,
-        );
-      } else {
-        state = state.copyWith(
-          status: AppsStatus.populated,
-          apps: Map<ItemCategory, List<GameModel>>.of(state.apps)
-            ..addAll({category: refreshedCategoryApps}),
-          hasMoreApps: Map<ItemCategory, bool>.of(state.hasMoreApps)
-            ..addAll({category: hasMoreAppsForCategory}),
-        );
-      }
+      state = state.copyWith(
+        status: AppsStatus.populated,
+        apps: response,
+        hasMoreApps: false,
+      );
     } on Exception catch (error, _) {
       state = state.copyWith(status: AppsStatus.failure);
       // addError(error, stackTrace);
