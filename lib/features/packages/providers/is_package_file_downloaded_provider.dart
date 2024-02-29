@@ -15,10 +15,10 @@ final isPackageFileDownloadedFuncProvider =
 Future<bool> isPackageFileDownloadedFunc(
   String packageName,
 ) async {
-  // ignore: non_constant_identifier_names
-  final __ = await getFilePathFromPackageName(packageName);
+  // // ignore: non_constant_identifier_names
+  // final __ = await getFilePathFromPackageName(packageName);
 
-  final _ = File(await getFilePathFromPackageName(packageName)).existsSync();
+  // final _ = File(await getFilePathFromPackageName(packageName)).existsSync();
 
   return File(await getFilePathFromPackageName(packageName)).existsSync();
 }

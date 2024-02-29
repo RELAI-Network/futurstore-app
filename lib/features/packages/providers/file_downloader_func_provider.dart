@@ -54,9 +54,6 @@ Future<File> backgroundDownloadApkFile(
       },
     );
 
-    // ignore: non_constant_identifier_names
-    final __ = await task.filePath();
-
     final filePath = await getFilePathFromPackageName(packageName);
 
     return File(filePath);
