@@ -18,28 +18,23 @@ class GamesView extends ConsumerStatefulWidget {
 class _GamesViewState extends ConsumerState<GamesView>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      // ignore: discarded_futures
-      ref.read(gamesStateProvider).onResumed();
-    }
-  }
-
-  @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
 
     super.dispose();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      ref.read(gamesStateProvider).onAppsRefreshRequested();
-    });
   }
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+
+    WidgetsBinding.instance
+      ..addObserver(this)
+      ..addPostFrameCallback(
+        (_) async {
+          ref.read(gamesStateProvider).onAppsRefreshRequested();
+        },
+      );
   }
 
   @override

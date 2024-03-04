@@ -2,7 +2,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:futurstore/core/data/models/item_category.dart';
 import 'package:futurstore/features/apps/data/models/app.dart';
-import 'package:futurstore/features/books/models/book.dart';
+import 'package:futurstore/features/books/data/models/book.dart';
 
 import '../repo/i_categories.dart';
 

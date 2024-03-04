@@ -36,11 +36,13 @@ class _AppsViewState extends ConsumerState<AppsView>
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addObserver(this);
-
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      ref.read(appsStateProvider).onAppsRefreshRequested();
-    });
+    WidgetsBinding.instance
+      ..addObserver(this)
+      ..addPostFrameCallback(
+        (_) async {
+          ref.read(appsStateProvider).onAppsRefreshRequested();
+        },
+      );
   }
 
   @override

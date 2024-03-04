@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
 import 'package:futurstore/features/apps/pages/apps_page.dart';
+import 'package:futurstore/features/books/pages/books_page.dart';
 
 import '../../../core/presentation/components/app_drawer.dart';
 import '../../../core/presentation/components/search.dart';
-import '../../books/pages/books_screen.dart';
 import '../../games/pages/games_page.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final pages = const <Widget>[
     AppsPage(),
     GamesPage(),
-    BooksScreen(),
+    BooksPage(),
   ];
 
   @override

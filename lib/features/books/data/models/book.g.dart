@@ -129,36 +129,42 @@ abstract class BookModelDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    String? audioFormat,
-    FieldValue audioFormatFieldValue,
     List<String> authors,
     FieldValue authorsFieldValue,
-    String coverUrl,
-    FieldValue coverUrlFieldValue,
     String description,
     FieldValue descriptionFieldValue,
-    String gender,
-    FieldValue genderFieldValue,
+    String genre,
+    FieldValue genreFieldValue,
     String isbn,
     FieldValue isbnFieldValue,
     String language,
     FieldValue languageFieldValue,
     double price,
     FieldValue priceFieldValue,
+    String resume,
+    FieldValue resumeFieldValue,
+    String title,
+    FieldValue titleFieldValue,
+    String type,
+    FieldValue typeFieldValue,
+    String? audioFormat,
+    FieldValue audioFormatFieldValue,
+    String categoryId,
+    FieldValue categoryIdFieldValue,
+    String coverUrl,
+    FieldValue coverUrlFieldValue,
+    String fileExtension,
+    FieldValue fileExtensionFieldValue,
+    String fileMailUrl,
+    FieldValue fileMailUrlFieldValue,
     DateTime publishedAt,
     FieldValue publishedAtFieldValue,
     String publisherId,
     FieldValue publisherIdFieldValue,
     String publisherName,
     FieldValue publisherNameFieldValue,
-    String resume,
-    FieldValue resumeFieldValue,
     String? textFormat,
     FieldValue textFormatFieldValue,
-    String title,
-    FieldValue titleFieldValue,
-    String type,
-    FieldValue typeFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -166,36 +172,42 @@ abstract class BookModelDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    String? audioFormat,
-    FieldValue audioFormatFieldValue,
     List<String> authors,
     FieldValue authorsFieldValue,
-    String coverUrl,
-    FieldValue coverUrlFieldValue,
     String description,
     FieldValue descriptionFieldValue,
-    String gender,
-    FieldValue genderFieldValue,
+    String genre,
+    FieldValue genreFieldValue,
     String isbn,
     FieldValue isbnFieldValue,
     String language,
     FieldValue languageFieldValue,
     double price,
     FieldValue priceFieldValue,
+    String resume,
+    FieldValue resumeFieldValue,
+    String title,
+    FieldValue titleFieldValue,
+    String type,
+    FieldValue typeFieldValue,
+    String? audioFormat,
+    FieldValue audioFormatFieldValue,
+    String categoryId,
+    FieldValue categoryIdFieldValue,
+    String coverUrl,
+    FieldValue coverUrlFieldValue,
+    String fileExtension,
+    FieldValue fileExtensionFieldValue,
+    String fileMailUrl,
+    FieldValue fileMailUrlFieldValue,
     DateTime publishedAt,
     FieldValue publishedAtFieldValue,
     String publisherId,
     FieldValue publisherIdFieldValue,
     String publisherName,
     FieldValue publisherNameFieldValue,
-    String resume,
-    FieldValue resumeFieldValue,
     String? textFormat,
     FieldValue textFormatFieldValue,
-    String title,
-    FieldValue titleFieldValue,
-    String type,
-    FieldValue typeFieldValue,
   });
 }
 
@@ -228,56 +240,54 @@ class _$BookModelDocumentReference
   }
 
   Future<void> update({
-    Object? audioFormat = _sentinel,
-    FieldValue? audioFormatFieldValue,
     Object? authors = _sentinel,
     FieldValue? authorsFieldValue,
-    Object? coverUrl = _sentinel,
-    FieldValue? coverUrlFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
-    Object? gender = _sentinel,
-    FieldValue? genderFieldValue,
+    Object? genre = _sentinel,
+    FieldValue? genreFieldValue,
     Object? isbn = _sentinel,
     FieldValue? isbnFieldValue,
     Object? language = _sentinel,
     FieldValue? languageFieldValue,
     Object? price = _sentinel,
     FieldValue? priceFieldValue,
+    Object? resume = _sentinel,
+    FieldValue? resumeFieldValue,
+    Object? title = _sentinel,
+    FieldValue? titleFieldValue,
+    Object? type = _sentinel,
+    FieldValue? typeFieldValue,
+    Object? audioFormat = _sentinel,
+    FieldValue? audioFormatFieldValue,
+    Object? categoryId = _sentinel,
+    FieldValue? categoryIdFieldValue,
+    Object? coverUrl = _sentinel,
+    FieldValue? coverUrlFieldValue,
+    Object? fileExtension = _sentinel,
+    FieldValue? fileExtensionFieldValue,
+    Object? fileMailUrl = _sentinel,
+    FieldValue? fileMailUrlFieldValue,
     Object? publishedAt = _sentinel,
     FieldValue? publishedAtFieldValue,
     Object? publisherId = _sentinel,
     FieldValue? publisherIdFieldValue,
     Object? publisherName = _sentinel,
     FieldValue? publisherNameFieldValue,
-    Object? resume = _sentinel,
-    FieldValue? resumeFieldValue,
     Object? textFormat = _sentinel,
     FieldValue? textFormatFieldValue,
-    Object? title = _sentinel,
-    FieldValue? titleFieldValue,
-    Object? type = _sentinel,
-    FieldValue? typeFieldValue,
   }) async {
-    assert(
-      audioFormat == _sentinel || audioFormatFieldValue == null,
-      "Cannot specify both audioFormat and audioFormatFieldValue",
-    );
     assert(
       authors == _sentinel || authorsFieldValue == null,
       "Cannot specify both authors and authorsFieldValue",
-    );
-    assert(
-      coverUrl == _sentinel || coverUrlFieldValue == null,
-      "Cannot specify both coverUrl and coverUrlFieldValue",
     );
     assert(
       description == _sentinel || descriptionFieldValue == null,
       "Cannot specify both description and descriptionFieldValue",
     );
     assert(
-      gender == _sentinel || genderFieldValue == null,
-      "Cannot specify both gender and genderFieldValue",
+      genre == _sentinel || genreFieldValue == null,
+      "Cannot specify both genre and genreFieldValue",
     );
     assert(
       isbn == _sentinel || isbnFieldValue == null,
@@ -292,6 +302,38 @@ class _$BookModelDocumentReference
       "Cannot specify both price and priceFieldValue",
     );
     assert(
+      resume == _sentinel || resumeFieldValue == null,
+      "Cannot specify both resume and resumeFieldValue",
+    );
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      type == _sentinel || typeFieldValue == null,
+      "Cannot specify both type and typeFieldValue",
+    );
+    assert(
+      audioFormat == _sentinel || audioFormatFieldValue == null,
+      "Cannot specify both audioFormat and audioFormatFieldValue",
+    );
+    assert(
+      categoryId == _sentinel || categoryIdFieldValue == null,
+      "Cannot specify both categoryId and categoryIdFieldValue",
+    );
+    assert(
+      coverUrl == _sentinel || coverUrlFieldValue == null,
+      "Cannot specify both coverUrl and coverUrlFieldValue",
+    );
+    assert(
+      fileExtension == _sentinel || fileExtensionFieldValue == null,
+      "Cannot specify both fileExtension and fileExtensionFieldValue",
+    );
+    assert(
+      fileMailUrl == _sentinel || fileMailUrlFieldValue == null,
+      "Cannot specify both fileMailUrl and fileMailUrlFieldValue",
+    );
+    assert(
       publishedAt == _sentinel || publishedAtFieldValue == null,
       "Cannot specify both publishedAt and publishedAtFieldValue",
     );
@@ -304,47 +346,25 @@ class _$BookModelDocumentReference
       "Cannot specify both publisherName and publisherNameFieldValue",
     );
     assert(
-      resume == _sentinel || resumeFieldValue == null,
-      "Cannot specify both resume and resumeFieldValue",
-    );
-    assert(
       textFormat == _sentinel || textFormatFieldValue == null,
       "Cannot specify both textFormat and textFormatFieldValue",
     );
-    assert(
-      title == _sentinel || titleFieldValue == null,
-      "Cannot specify both title and titleFieldValue",
-    );
-    assert(
-      type == _sentinel || typeFieldValue == null,
-      "Cannot specify both type and typeFieldValue",
-    );
     final json = {
-      if (audioFormat != _sentinel)
-        _$BookModelFieldMap['audioFormat']!:
-            _$BookModelPerFieldToJson.audioFormat(audioFormat as String?),
-      if (audioFormatFieldValue != null)
-        _$BookModelFieldMap['audioFormat']!: audioFormatFieldValue,
       if (authors != _sentinel)
         _$BookModelFieldMap['authors']!:
             _$BookModelPerFieldToJson.authors(authors as List<String>),
       if (authorsFieldValue != null)
         _$BookModelFieldMap['authors']!: authorsFieldValue,
-      if (coverUrl != _sentinel)
-        _$BookModelFieldMap['coverUrl']!:
-            _$BookModelPerFieldToJson.coverUrl(coverUrl as String),
-      if (coverUrlFieldValue != null)
-        _$BookModelFieldMap['coverUrl']!: coverUrlFieldValue,
       if (description != _sentinel)
         _$BookModelFieldMap['description']!:
             _$BookModelPerFieldToJson.description(description as String),
       if (descriptionFieldValue != null)
         _$BookModelFieldMap['description']!: descriptionFieldValue,
-      if (gender != _sentinel)
-        _$BookModelFieldMap['gender']!:
-            _$BookModelPerFieldToJson.gender(gender as String),
-      if (genderFieldValue != null)
-        _$BookModelFieldMap['gender']!: genderFieldValue,
+      if (genre != _sentinel)
+        _$BookModelFieldMap['genre']!:
+            _$BookModelPerFieldToJson.genre(genre as String),
+      if (genreFieldValue != null)
+        _$BookModelFieldMap['genre']!: genreFieldValue,
       if (isbn != _sentinel)
         _$BookModelFieldMap['isbn']!:
             _$BookModelPerFieldToJson.isbn(isbn as String),
@@ -359,6 +379,45 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.price(price as double),
       if (priceFieldValue != null)
         _$BookModelFieldMap['price']!: priceFieldValue,
+      if (resume != _sentinel)
+        _$BookModelFieldMap['resume']!:
+            _$BookModelPerFieldToJson.resume(resume as String),
+      if (resumeFieldValue != null)
+        _$BookModelFieldMap['resume']!: resumeFieldValue,
+      if (title != _sentinel)
+        _$BookModelFieldMap['title']!:
+            _$BookModelPerFieldToJson.title(title as String),
+      if (titleFieldValue != null)
+        _$BookModelFieldMap['title']!: titleFieldValue,
+      if (type != _sentinel)
+        _$BookModelFieldMap['type']!:
+            _$BookModelPerFieldToJson.type(type as String),
+      if (typeFieldValue != null) _$BookModelFieldMap['type']!: typeFieldValue,
+      if (audioFormat != _sentinel)
+        _$BookModelFieldMap['audioFormat']!:
+            _$BookModelPerFieldToJson.audioFormat(audioFormat as String?),
+      if (audioFormatFieldValue != null)
+        _$BookModelFieldMap['audioFormat']!: audioFormatFieldValue,
+      if (categoryId != _sentinel)
+        _$BookModelFieldMap['categoryId']!:
+            _$BookModelPerFieldToJson.categoryId(categoryId as String),
+      if (categoryIdFieldValue != null)
+        _$BookModelFieldMap['categoryId']!: categoryIdFieldValue,
+      if (coverUrl != _sentinel)
+        _$BookModelFieldMap['coverUrl']!:
+            _$BookModelPerFieldToJson.coverUrl(coverUrl as String),
+      if (coverUrlFieldValue != null)
+        _$BookModelFieldMap['coverUrl']!: coverUrlFieldValue,
+      if (fileExtension != _sentinel)
+        _$BookModelFieldMap['fileExtension']!:
+            _$BookModelPerFieldToJson.fileExtension(fileExtension as String),
+      if (fileExtensionFieldValue != null)
+        _$BookModelFieldMap['fileExtension']!: fileExtensionFieldValue,
+      if (fileMailUrl != _sentinel)
+        _$BookModelFieldMap['fileMailUrl']!:
+            _$BookModelPerFieldToJson.fileMailUrl(fileMailUrl as String),
+      if (fileMailUrlFieldValue != null)
+        _$BookModelFieldMap['fileMailUrl']!: fileMailUrlFieldValue,
       if (publishedAt != _sentinel)
         _$BookModelFieldMap['publishedAt']!:
             _$BookModelPerFieldToJson.publishedAt(publishedAt as DateTime),
@@ -374,25 +433,11 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.publisherName(publisherName as String),
       if (publisherNameFieldValue != null)
         _$BookModelFieldMap['publisherName']!: publisherNameFieldValue,
-      if (resume != _sentinel)
-        _$BookModelFieldMap['resume']!:
-            _$BookModelPerFieldToJson.resume(resume as String),
-      if (resumeFieldValue != null)
-        _$BookModelFieldMap['resume']!: resumeFieldValue,
       if (textFormat != _sentinel)
         _$BookModelFieldMap['textFormat']!:
             _$BookModelPerFieldToJson.textFormat(textFormat as String?),
       if (textFormatFieldValue != null)
         _$BookModelFieldMap['textFormat']!: textFormatFieldValue,
-      if (title != _sentinel)
-        _$BookModelFieldMap['title']!:
-            _$BookModelPerFieldToJson.title(title as String),
-      if (titleFieldValue != null)
-        _$BookModelFieldMap['title']!: titleFieldValue,
-      if (type != _sentinel)
-        _$BookModelFieldMap['type']!:
-            _$BookModelPerFieldToJson.type(type as String),
-      if (typeFieldValue != null) _$BookModelFieldMap['type']!: typeFieldValue,
     };
 
     return reference.update(json);
@@ -400,56 +445,54 @@ class _$BookModelDocumentReference
 
   void transactionUpdate(
     Transaction transaction, {
-    Object? audioFormat = _sentinel,
-    FieldValue? audioFormatFieldValue,
     Object? authors = _sentinel,
     FieldValue? authorsFieldValue,
-    Object? coverUrl = _sentinel,
-    FieldValue? coverUrlFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
-    Object? gender = _sentinel,
-    FieldValue? genderFieldValue,
+    Object? genre = _sentinel,
+    FieldValue? genreFieldValue,
     Object? isbn = _sentinel,
     FieldValue? isbnFieldValue,
     Object? language = _sentinel,
     FieldValue? languageFieldValue,
     Object? price = _sentinel,
     FieldValue? priceFieldValue,
+    Object? resume = _sentinel,
+    FieldValue? resumeFieldValue,
+    Object? title = _sentinel,
+    FieldValue? titleFieldValue,
+    Object? type = _sentinel,
+    FieldValue? typeFieldValue,
+    Object? audioFormat = _sentinel,
+    FieldValue? audioFormatFieldValue,
+    Object? categoryId = _sentinel,
+    FieldValue? categoryIdFieldValue,
+    Object? coverUrl = _sentinel,
+    FieldValue? coverUrlFieldValue,
+    Object? fileExtension = _sentinel,
+    FieldValue? fileExtensionFieldValue,
+    Object? fileMailUrl = _sentinel,
+    FieldValue? fileMailUrlFieldValue,
     Object? publishedAt = _sentinel,
     FieldValue? publishedAtFieldValue,
     Object? publisherId = _sentinel,
     FieldValue? publisherIdFieldValue,
     Object? publisherName = _sentinel,
     FieldValue? publisherNameFieldValue,
-    Object? resume = _sentinel,
-    FieldValue? resumeFieldValue,
     Object? textFormat = _sentinel,
     FieldValue? textFormatFieldValue,
-    Object? title = _sentinel,
-    FieldValue? titleFieldValue,
-    Object? type = _sentinel,
-    FieldValue? typeFieldValue,
   }) {
-    assert(
-      audioFormat == _sentinel || audioFormatFieldValue == null,
-      "Cannot specify both audioFormat and audioFormatFieldValue",
-    );
     assert(
       authors == _sentinel || authorsFieldValue == null,
       "Cannot specify both authors and authorsFieldValue",
-    );
-    assert(
-      coverUrl == _sentinel || coverUrlFieldValue == null,
-      "Cannot specify both coverUrl and coverUrlFieldValue",
     );
     assert(
       description == _sentinel || descriptionFieldValue == null,
       "Cannot specify both description and descriptionFieldValue",
     );
     assert(
-      gender == _sentinel || genderFieldValue == null,
-      "Cannot specify both gender and genderFieldValue",
+      genre == _sentinel || genreFieldValue == null,
+      "Cannot specify both genre and genreFieldValue",
     );
     assert(
       isbn == _sentinel || isbnFieldValue == null,
@@ -464,6 +507,38 @@ class _$BookModelDocumentReference
       "Cannot specify both price and priceFieldValue",
     );
     assert(
+      resume == _sentinel || resumeFieldValue == null,
+      "Cannot specify both resume and resumeFieldValue",
+    );
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      type == _sentinel || typeFieldValue == null,
+      "Cannot specify both type and typeFieldValue",
+    );
+    assert(
+      audioFormat == _sentinel || audioFormatFieldValue == null,
+      "Cannot specify both audioFormat and audioFormatFieldValue",
+    );
+    assert(
+      categoryId == _sentinel || categoryIdFieldValue == null,
+      "Cannot specify both categoryId and categoryIdFieldValue",
+    );
+    assert(
+      coverUrl == _sentinel || coverUrlFieldValue == null,
+      "Cannot specify both coverUrl and coverUrlFieldValue",
+    );
+    assert(
+      fileExtension == _sentinel || fileExtensionFieldValue == null,
+      "Cannot specify both fileExtension and fileExtensionFieldValue",
+    );
+    assert(
+      fileMailUrl == _sentinel || fileMailUrlFieldValue == null,
+      "Cannot specify both fileMailUrl and fileMailUrlFieldValue",
+    );
+    assert(
       publishedAt == _sentinel || publishedAtFieldValue == null,
       "Cannot specify both publishedAt and publishedAtFieldValue",
     );
@@ -476,47 +551,25 @@ class _$BookModelDocumentReference
       "Cannot specify both publisherName and publisherNameFieldValue",
     );
     assert(
-      resume == _sentinel || resumeFieldValue == null,
-      "Cannot specify both resume and resumeFieldValue",
-    );
-    assert(
       textFormat == _sentinel || textFormatFieldValue == null,
       "Cannot specify both textFormat and textFormatFieldValue",
     );
-    assert(
-      title == _sentinel || titleFieldValue == null,
-      "Cannot specify both title and titleFieldValue",
-    );
-    assert(
-      type == _sentinel || typeFieldValue == null,
-      "Cannot specify both type and typeFieldValue",
-    );
     final json = {
-      if (audioFormat != _sentinel)
-        _$BookModelFieldMap['audioFormat']!:
-            _$BookModelPerFieldToJson.audioFormat(audioFormat as String?),
-      if (audioFormatFieldValue != null)
-        _$BookModelFieldMap['audioFormat']!: audioFormatFieldValue,
       if (authors != _sentinel)
         _$BookModelFieldMap['authors']!:
             _$BookModelPerFieldToJson.authors(authors as List<String>),
       if (authorsFieldValue != null)
         _$BookModelFieldMap['authors']!: authorsFieldValue,
-      if (coverUrl != _sentinel)
-        _$BookModelFieldMap['coverUrl']!:
-            _$BookModelPerFieldToJson.coverUrl(coverUrl as String),
-      if (coverUrlFieldValue != null)
-        _$BookModelFieldMap['coverUrl']!: coverUrlFieldValue,
       if (description != _sentinel)
         _$BookModelFieldMap['description']!:
             _$BookModelPerFieldToJson.description(description as String),
       if (descriptionFieldValue != null)
         _$BookModelFieldMap['description']!: descriptionFieldValue,
-      if (gender != _sentinel)
-        _$BookModelFieldMap['gender']!:
-            _$BookModelPerFieldToJson.gender(gender as String),
-      if (genderFieldValue != null)
-        _$BookModelFieldMap['gender']!: genderFieldValue,
+      if (genre != _sentinel)
+        _$BookModelFieldMap['genre']!:
+            _$BookModelPerFieldToJson.genre(genre as String),
+      if (genreFieldValue != null)
+        _$BookModelFieldMap['genre']!: genreFieldValue,
       if (isbn != _sentinel)
         _$BookModelFieldMap['isbn']!:
             _$BookModelPerFieldToJson.isbn(isbn as String),
@@ -531,6 +584,45 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.price(price as double),
       if (priceFieldValue != null)
         _$BookModelFieldMap['price']!: priceFieldValue,
+      if (resume != _sentinel)
+        _$BookModelFieldMap['resume']!:
+            _$BookModelPerFieldToJson.resume(resume as String),
+      if (resumeFieldValue != null)
+        _$BookModelFieldMap['resume']!: resumeFieldValue,
+      if (title != _sentinel)
+        _$BookModelFieldMap['title']!:
+            _$BookModelPerFieldToJson.title(title as String),
+      if (titleFieldValue != null)
+        _$BookModelFieldMap['title']!: titleFieldValue,
+      if (type != _sentinel)
+        _$BookModelFieldMap['type']!:
+            _$BookModelPerFieldToJson.type(type as String),
+      if (typeFieldValue != null) _$BookModelFieldMap['type']!: typeFieldValue,
+      if (audioFormat != _sentinel)
+        _$BookModelFieldMap['audioFormat']!:
+            _$BookModelPerFieldToJson.audioFormat(audioFormat as String?),
+      if (audioFormatFieldValue != null)
+        _$BookModelFieldMap['audioFormat']!: audioFormatFieldValue,
+      if (categoryId != _sentinel)
+        _$BookModelFieldMap['categoryId']!:
+            _$BookModelPerFieldToJson.categoryId(categoryId as String),
+      if (categoryIdFieldValue != null)
+        _$BookModelFieldMap['categoryId']!: categoryIdFieldValue,
+      if (coverUrl != _sentinel)
+        _$BookModelFieldMap['coverUrl']!:
+            _$BookModelPerFieldToJson.coverUrl(coverUrl as String),
+      if (coverUrlFieldValue != null)
+        _$BookModelFieldMap['coverUrl']!: coverUrlFieldValue,
+      if (fileExtension != _sentinel)
+        _$BookModelFieldMap['fileExtension']!:
+            _$BookModelPerFieldToJson.fileExtension(fileExtension as String),
+      if (fileExtensionFieldValue != null)
+        _$BookModelFieldMap['fileExtension']!: fileExtensionFieldValue,
+      if (fileMailUrl != _sentinel)
+        _$BookModelFieldMap['fileMailUrl']!:
+            _$BookModelPerFieldToJson.fileMailUrl(fileMailUrl as String),
+      if (fileMailUrlFieldValue != null)
+        _$BookModelFieldMap['fileMailUrl']!: fileMailUrlFieldValue,
       if (publishedAt != _sentinel)
         _$BookModelFieldMap['publishedAt']!:
             _$BookModelPerFieldToJson.publishedAt(publishedAt as DateTime),
@@ -546,25 +638,11 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.publisherName(publisherName as String),
       if (publisherNameFieldValue != null)
         _$BookModelFieldMap['publisherName']!: publisherNameFieldValue,
-      if (resume != _sentinel)
-        _$BookModelFieldMap['resume']!:
-            _$BookModelPerFieldToJson.resume(resume as String),
-      if (resumeFieldValue != null)
-        _$BookModelFieldMap['resume']!: resumeFieldValue,
       if (textFormat != _sentinel)
         _$BookModelFieldMap['textFormat']!:
             _$BookModelPerFieldToJson.textFormat(textFormat as String?),
       if (textFormatFieldValue != null)
         _$BookModelFieldMap['textFormat']!: textFormatFieldValue,
-      if (title != _sentinel)
-        _$BookModelFieldMap['title']!:
-            _$BookModelPerFieldToJson.title(title as String),
-      if (titleFieldValue != null)
-        _$BookModelFieldMap['title']!: titleFieldValue,
-      if (type != _sentinel)
-        _$BookModelFieldMap['type']!:
-            _$BookModelPerFieldToJson.type(type as String),
-      if (typeFieldValue != null) _$BookModelFieldMap['type']!: typeFieldValue,
     };
 
     transaction.update(reference, json);
@@ -634,18 +712,6 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
-  BookModelQuery whereAudioFormat({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  });
-
   BookModelQuery whereAuthors({
     List<String>? isEqualTo,
     List<String>? isNotEqualTo,
@@ -655,18 +721,6 @@ abstract class BookModelQuery
     List<String>? isGreaterThanOrEqualTo,
     String? arrayContains,
     List<String>? arrayContainsAny,
-    bool? isNull,
-  });
-
-  BookModelQuery whereCoverUrl({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
     bool? isNull,
   });
 
@@ -682,7 +736,7 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
-  BookModelQuery whereGender({
+  BookModelQuery whereGenre({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -730,6 +784,102 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
+  BookModelQuery whereResume({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereTitle({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereType({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereAudioFormat({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereCategoryId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereCoverUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereFileExtension({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereFileMailUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
   BookModelQuery wherePublishedAt({
     DateTime? isEqualTo,
     DateTime? isNotEqualTo,
@@ -766,18 +916,6 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
-  BookModelQuery whereResume({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  });
-
   BookModelQuery whereTextFormat({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -787,30 +925,6 @@ abstract class BookModelQuery
     String? isGreaterThanOrEqualTo,
     List<String?>? whereIn,
     List<String?>? whereNotIn,
-    bool? isNull,
-  });
-
-  BookModelQuery whereTitle({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  });
-
-  BookModelQuery whereType({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
     bool? isNull,
   });
 
@@ -859,36 +973,12 @@ abstract class BookModelQuery
     BookModelDocumentSnapshot? startAfterDocument,
   });
 
-  BookModelQuery orderByAudioFormat({
-    bool descending = false,
-    String? startAt,
-    String? startAfter,
-    String? endAt,
-    String? endBefore,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  });
-
   BookModelQuery orderByAuthors({
     bool descending = false,
     List<String> startAt,
     List<String> startAfter,
     List<String> endAt,
     List<String> endBefore,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  });
-
-  BookModelQuery orderByCoverUrl({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
     BookModelDocumentSnapshot? startAtDocument,
     BookModelDocumentSnapshot? endAtDocument,
     BookModelDocumentSnapshot? endBeforeDocument,
@@ -907,7 +997,7 @@ abstract class BookModelQuery
     BookModelDocumentSnapshot? startAfterDocument,
   });
 
-  BookModelQuery orderByGender({
+  BookModelQuery orderByGenre({
     bool descending = false,
     String startAt,
     String startAfter,
@@ -955,6 +1045,102 @@ abstract class BookModelQuery
     BookModelDocumentSnapshot? startAfterDocument,
   });
 
+  BookModelQuery orderByResume({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByTitle({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByType({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByAudioFormat({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByCategoryId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByCoverUrl({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByFileExtension({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByFileMailUrl({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
   BookModelQuery orderByPublishedAt({
     bool descending = false,
     DateTime startAt,
@@ -991,48 +1177,12 @@ abstract class BookModelQuery
     BookModelDocumentSnapshot? startAfterDocument,
   });
 
-  BookModelQuery orderByResume({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  });
-
   BookModelQuery orderByTextFormat({
     bool descending = false,
     String? startAt,
     String? startAfter,
     String? endAt,
     String? endBefore,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  });
-
-  BookModelQuery orderByTitle({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  });
-
-  BookModelQuery orderByType({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
     BookModelDocumentSnapshot? startAtDocument,
     BookModelDocumentSnapshot? endAtDocument,
     BookModelDocumentSnapshot? endBeforeDocument,
@@ -1153,53 +1303,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery whereAudioFormat({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$BookModelFieldMap['audioFormat']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.audioFormat(isEqualTo as String?)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.audioFormat(isNotEqualTo as String?)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$BookModelPerFieldToJson.audioFormat(isLessThan as String?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson
-                .audioFormat(isLessThanOrEqualTo as String?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$BookModelPerFieldToJson.audioFormat(isGreaterThan as String?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson
-                .audioFormat(isGreaterThanOrEqualTo as String?)
-            : null,
-        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.audioFormat(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$BookModelPerFieldToJson.audioFormat(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
   BookModelQuery whereAuthors({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -1244,52 +1347,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
             ? _$BookModelPerFieldToJson.authors(arrayContainsAny)
                 as Iterable<Object>?
             : null,
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  BookModelQuery whereCoverUrl({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$BookModelFieldMap['coverUrl']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.coverUrl(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.coverUrl(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$BookModelPerFieldToJson.coverUrl(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.coverUrl(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$BookModelPerFieldToJson.coverUrl(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson
-                .coverUrl(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.coverUrl(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$BookModelPerFieldToJson.coverUrl(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1346,7 +1403,7 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery whereGender({
+  BookModelQuery whereGenre({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -1360,27 +1417,27 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
     return _$BookModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$BookModelFieldMap['gender']!,
+        _$BookModelFieldMap['genre']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.gender(isEqualTo as String)
+            ? _$BookModelPerFieldToJson.genre(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.gender(isNotEqualTo as String)
+            ? _$BookModelPerFieldToJson.genre(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$BookModelPerFieldToJson.gender(isLessThan as String)
+            ? _$BookModelPerFieldToJson.genre(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.gender(isLessThanOrEqualTo as String)
+            ? _$BookModelPerFieldToJson.genre(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$BookModelPerFieldToJson.gender(isGreaterThan as String)
+            ? _$BookModelPerFieldToJson.genre(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.gender(isGreaterThanOrEqualTo as String)
+            ? _$BookModelPerFieldToJson.genre(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.gender(e)),
-        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.gender(e)),
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.genre(e)),
+        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.genre(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1515,6 +1572,373 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
             : null,
         whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.price(e)),
         whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.price(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereResume({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['resume']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.resume(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.resume(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.resume(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.resume(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.resume(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.resume(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.resume(e)),
+        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.resume(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereTitle({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['title']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.title(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.title(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.title(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.title(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.title(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.title(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.title(e)),
+        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.title(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereType({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['type']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.type(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.type(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.type(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.type(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.type(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.type(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.type(e)),
+        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.type(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereAudioFormat({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['audioFormat']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.audioFormat(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.audioFormat(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.audioFormat(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .audioFormat(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.audioFormat(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .audioFormat(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.audioFormat(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.audioFormat(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereCategoryId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['categoryId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.categoryId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.categoryId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.categoryId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .categoryId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.categoryId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .categoryId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.categoryId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.categoryId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereCoverUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['coverUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.coverUrl(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.coverUrl(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.coverUrl(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.coverUrl(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.coverUrl(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .coverUrl(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.coverUrl(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.coverUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereFileExtension({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['fileExtension']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.fileExtension(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.fileExtension(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.fileExtension(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .fileExtension(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.fileExtension(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .fileExtension(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$BookModelPerFieldToJson.fileExtension(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.fileExtension(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereFileMailUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['fileMailUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.fileMailUrl(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.fileMailUrl(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.fileMailUrl(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .fileMailUrl(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.fileMailUrl(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .fileMailUrl(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.fileMailUrl(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.fileMailUrl(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1666,50 +2090,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery whereResume({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$BookModelFieldMap['resume']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.resume(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.resume(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$BookModelPerFieldToJson.resume(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.resume(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$BookModelPerFieldToJson.resume(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.resume(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.resume(e)),
-        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.resume(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
   BookModelQuery whereTextFormat({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -1748,94 +2128,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
         whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.textFormat(e)),
         whereNotIn:
             whereNotIn?.map((e) => _$BookModelPerFieldToJson.textFormat(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  BookModelQuery whereTitle({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$BookModelFieldMap['title']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.title(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.title(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$BookModelPerFieldToJson.title(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.title(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$BookModelPerFieldToJson.title(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.title(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.title(e)),
-        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.title(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  BookModelQuery whereType({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$BookModelFieldMap['type']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.type(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.type(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$BookModelPerFieldToJson.type(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.type(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$BookModelPerFieldToJson.type(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.type(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.type(e)),
-        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.type(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1992,79 +2284,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery orderByAudioFormat({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$BookModelFieldMap['audioFormat']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
   BookModelQuery orderByAuthors({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2078,79 +2297,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }) {
     final query = $referenceWithoutCursor
         .orderBy(_$BookModelFieldMap['authors']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  BookModelQuery orderByCoverUrl({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$BookModelFieldMap['coverUrl']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2284,7 +2430,7 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery orderByGender({
+  BookModelQuery orderByGenre({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -2295,8 +2441,8 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
     BookModelDocumentSnapshot? endBeforeDocument,
     BookModelDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$BookModelFieldMap['gender']!, descending: descending);
+    final query = $referenceWithoutCursor.orderBy(_$BookModelFieldMap['genre']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2576,6 +2722,590 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
+  BookModelQuery orderByResume({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['resume']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByTitle({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(_$BookModelFieldMap['title']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByType({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(_$BookModelFieldMap['type']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByAudioFormat({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['audioFormat']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByCategoryId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['categoryId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByCoverUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['coverUrl']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByFileExtension({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['fileExtension']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByFileMailUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['fileMailUrl']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
   BookModelQuery orderByPublishedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2795,79 +3525,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery orderByResume({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$BookModelFieldMap['resume']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
   BookModelQuery orderByTextFormat({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2881,152 +3538,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }) {
     final query = $referenceWithoutCursor
         .orderBy(_$BookModelFieldMap['textFormat']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  BookModelQuery orderByTitle({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$BookModelFieldMap['title']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  BookModelQuery orderByType({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$BookModelFieldMap['type']!,
-        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -3187,63 +3698,81 @@ class BookModelQueryDocumentSnapshot
 BookModel _$BookModelFromJson(Map<String, dynamic> json) => BookModel(
       authors:
           (json['authors'] as List<dynamic>).map((e) => e as String).toList(),
-      coverUrl: json['coverUrl'] as String,
+      categoryId: json['category_id'] as String,
+      coverUrl: json['cover_url'] as String,
       description: json['description'] as String,
-      gender: json['gender'] as String,
+      fileExtension: json['file_extension'] as String,
+      fileMailUrl: json['file_main_url'] as String,
+      genre: json['genre'] as String,
       id: json['id'] as String,
       isbn: json['isbn'] as String,
       language: json['language'] as String,
       price: (json['price'] as num).toDouble(),
       publishedAt: const FirestoreDateTimeConverter()
-          .fromJson(json['publishedAt'] as Timestamp),
-      publisherId: json['publisherId'] as String,
-      publisherName: json['publisherName'] as String,
+          .fromJson(json['published_at'] as Timestamp),
+      publisherId: json['publisher_id'] as String,
+      publisherName: json['publisher_name'] as String,
       resume: json['resume'] as String,
       title: json['title'] as String,
       type: json['type'] as String,
-      audioFormat: json['audioFormat'] as String?,
-      textFormat: json['textFormat'] as String?,
+      audioFormat: json['audio_format'] as String?,
+      textFormat: json['text_format'] as String?,
     );
 
 const _$BookModelFieldMap = <String, String>{
-  'audioFormat': 'audioFormat',
   'authors': 'authors',
-  'coverUrl': 'coverUrl',
   'description': 'description',
-  'gender': 'gender',
-  'id': 'id',
+  'genre': 'genre',
   'isbn': 'isbn',
   'language': 'language',
   'price': 'price',
-  'publishedAt': 'publishedAt',
-  'publisherId': 'publisherId',
-  'publisherName': 'publisherName',
   'resume': 'resume',
-  'textFormat': 'textFormat',
   'title': 'title',
   'type': 'type',
+  'audioFormat': 'audio_format',
+  'categoryId': 'category_id',
+  'coverUrl': 'cover_url',
+  'fileExtension': 'file_extension',
+  'fileMailUrl': 'file_main_url',
+  'id': 'id',
+  'publishedAt': 'published_at',
+  'publisherId': 'publisher_id',
+  'publisherName': 'publisher_name',
+  'textFormat': 'text_format',
 };
 
 // ignore: unused_element
 abstract class _$BookModelPerFieldToJson {
   // ignore: unused_element
-  static Object? audioFormat(String? instance) => instance;
-  // ignore: unused_element
   static Object? authors(List<String> instance) => instance;
-  // ignore: unused_element
-  static Object? coverUrl(String instance) => instance;
   // ignore: unused_element
   static Object? description(String instance) => instance;
   // ignore: unused_element
-  static Object? gender(String instance) => instance;
-  // ignore: unused_element
-  static Object? id(String instance) => instance;
+  static Object? genre(String instance) => instance;
   // ignore: unused_element
   static Object? isbn(String instance) => instance;
   // ignore: unused_element
   static Object? language(String instance) => instance;
   // ignore: unused_element
   static Object? price(double instance) => instance;
+  // ignore: unused_element
+  static Object? resume(String instance) => instance;
+  // ignore: unused_element
+  static Object? title(String instance) => instance;
+  // ignore: unused_element
+  static Object? type(String instance) => instance;
+  // ignore: unused_element
+  static Object? audioFormat(String? instance) => instance;
+  // ignore: unused_element
+  static Object? categoryId(String instance) => instance;
+  // ignore: unused_element
+  static Object? coverUrl(String instance) => instance;
+  // ignore: unused_element
+  static Object? fileExtension(String instance) => instance;
+  // ignore: unused_element
+  static Object? fileMailUrl(String instance) => instance;
+  // ignore: unused_element
+  static Object? id(String instance) => instance;
   // ignore: unused_element
   static Object? publishedAt(DateTime instance) =>
       const FirestoreDateTimeConverter().toJson(instance);
@@ -3252,31 +3781,28 @@ abstract class _$BookModelPerFieldToJson {
   // ignore: unused_element
   static Object? publisherName(String instance) => instance;
   // ignore: unused_element
-  static Object? resume(String instance) => instance;
-  // ignore: unused_element
   static Object? textFormat(String? instance) => instance;
-  // ignore: unused_element
-  static Object? title(String instance) => instance;
-  // ignore: unused_element
-  static Object? type(String instance) => instance;
 }
 
 Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
-      'audioFormat': instance.audioFormat,
       'authors': instance.authors,
-      'coverUrl': instance.coverUrl,
       'description': instance.description,
-      'gender': instance.gender,
-      'id': instance.id,
+      'genre': instance.genre,
       'isbn': instance.isbn,
       'language': instance.language,
       'price': instance.price,
-      'publishedAt':
-          const FirestoreDateTimeConverter().toJson(instance.publishedAt),
-      'publisherId': instance.publisherId,
-      'publisherName': instance.publisherName,
       'resume': instance.resume,
-      'textFormat': instance.textFormat,
       'title': instance.title,
       'type': instance.type,
+      'audio_format': instance.audioFormat,
+      'category_id': instance.categoryId,
+      'cover_url': instance.coverUrl,
+      'file_extension': instance.fileExtension,
+      'file_main_url': instance.fileMailUrl,
+      'id': instance.id,
+      'published_at':
+          const FirestoreDateTimeConverter().toJson(instance.publishedAt),
+      'publisher_id': instance.publisherId,
+      'publisher_name': instance.publisherName,
+      'text_format': instance.textFormat,
     };
