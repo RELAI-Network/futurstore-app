@@ -7,9 +7,20 @@
   "noAppCategoriesFound": "No apps categories found",
   "noGamesCategoriesFound": "No games categories found",
   "noBooksCategoriesFound": "No books categories found",
+  "noAppsFound": "No apps found.",
+  "noGamesFound": "No games found.",
   "noAppsFoundInThisCategory": "No apps found in this category",
   "noGamesFoundInThisCategory": "No games found in this category",
   "noBooksFoundInThisCategory": "No books found in this category",
-  
+  "adsSupported": "Ad supported",
+  "purchasesInAppsSupported": "In app purchases",
+  "installApp": "Install",
+  "appReviews": "Reviews",
+  "ratedFor": "Rated for",
+  "aboutThisGame": "About this game",
+  "ratingsAndReview": "Ratings and reviews",
+  "cancelInstallation": "Cancel",
+  "openApp": "Open",
+  "downloadingPackage": "Downloading",
   "apps": "Apps"
 }

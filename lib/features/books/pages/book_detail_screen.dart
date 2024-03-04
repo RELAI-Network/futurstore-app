@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../models/book.dart';
+import '../data/models/book.dart';
+import '../widgets/get_book_button.dart';
 
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen(this.data, {super.key});
@@ -27,15 +28,8 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                   size: 40,
                 ),
                 title: Text(widget.data.title),
-                trailing: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.green),
-                    foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                  ),
-                  child: const Text('Get'),
+                trailing: GetBookButton(
+                  data: widget.data,
                 ),
               ),
               Padding(

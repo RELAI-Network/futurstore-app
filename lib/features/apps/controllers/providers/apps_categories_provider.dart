@@ -1,4 +1,4 @@
-import 'package:futurstore/core/models/item_category.dart';
+import 'package:futurstore/core/data/models/item_category.dart';
 import 'package:futurstore/features/apps/data/repo/i_categories.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

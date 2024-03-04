@@ -1,6 +1,6 @@
-import 'package:futurstore/core/models/item_category.dart';
+import 'package:futurstore/core/data/models/item_category.dart';
 import 'package:futurstore/features/apps/data/models/app.dart';
-import 'package:futurstore/features/books/models/book.dart';
+import 'package:futurstore/features/books/data/models/book.dart';
 
 abstract class ICategoriesRepo {
   Future<List<ApplicationModel>> fetchApps(ItemCategory category);

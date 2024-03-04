@@ -38,6 +38,8 @@
         "multiaddress",
         "polkadart",
         "russian",
-        "spanish"
+        "spanish",
+        "theming",
+        "typedefs"
     ]
 }
