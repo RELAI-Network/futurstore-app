@@ -22,7 +22,7 @@ class GamesGridView extends StatelessWidget {
         controller: controller,
         crossAxisCount: 3,
         mainAxisSpacing: 10,
-        childAspectRatio: 0.65,
+        childAspectRatio: 0.59,
         children: games.map(
           (a) {
             return GameCard(

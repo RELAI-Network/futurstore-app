@@ -14,9 +14,12 @@ final booksReference = BookModelCollectionReference();
 class BookModel {
   BookModel({
     required this.authors,
+    required this.categoryId,
     required this.coverUrl,
     required this.description,
-    required this.gender,
+    required this.fileExtension,
+    required this.fileMailUrl,
+    required this.genre,
     required this.id,
     required this.isbn,
     required this.language,
@@ -34,32 +37,57 @@ class BookModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   static const String collection = 'books';
 
-  final String? audioFormat;
   final List<String> authors;
-  final String coverUrl;
   final String description;
-  final String gender;
-  @Id()
-  final String id;
+  final String genre;
   final String isbn;
   final String language;
   final double price;
-  final DateTime publishedAt;
-  final String publisherId;
-  final String publisherName;
   final String resume;
-  final String? textFormat;
   final String title;
   final String type;
 
+  @JsonKey(name: 'audio_format')
+  final String? audioFormat;
+
+  @JsonKey(name: 'category_id')
+  final String categoryId;
+
+  @JsonKey(name: 'cover_url')
+  final String coverUrl;
+
+  @JsonKey(name: 'file_extension')
+  final String fileExtension;
+
+  @JsonKey(name: 'file_main_url')
+  final String fileMailUrl;
+
+  @Id()
+  final String id;
+
+  @JsonKey(name: 'published_at')
+  final DateTime publishedAt;
+
+  @JsonKey(name: 'publisher_id')
+  final String publisherId;
+
+  @JsonKey(name: 'publisher_name')
+  final String publisherName;
+
+  @JsonKey(name: 'text_format')
+  final String? textFormat;
+
+  String get publicationDate {
+    return DateFormat.yMMMd(publicationLanguageEnum.code).format(publishedAt);
+  }
+
+  String get publicationLanguage => publicationLanguageEnum.name.capitalize;
   PublicationLanguage get publicationLanguageEnum {
     return PublicationLanguage.values.firstWhereOrNull(
           (languageEnum) => languageEnum.name == language,
         ) ??
         PublicationLanguage.english;
   }
-
-  String get publicationLanguage => publicationLanguageEnum.name.capitalize;
 
   BookType get typeEnum {
     return BookType.values.firstWhereOrNull(
@@ -69,13 +97,9 @@ class BookModel {
   }
 
   String get typeName => typeEnum.name.capitalize;
-
-  String get publicationDate {
-    return DateFormat.yMMMd(publicationLanguageEnum.code).format(publishedAt);
-  }
 }
 
-enum BookGender {
+enum BookGenre {
   roman,
   essay,
   cartoon,

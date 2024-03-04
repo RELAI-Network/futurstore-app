@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../models/book.dart';
+import '../data/models/book.dart';
 import '../pages/book_detail_screen.dart';
 
 class BookCard extends StatelessWidget {
   const BookCard({required this.data, super.key});
+
   final BookModel data;
 
   @override
@@ -28,7 +29,7 @@ class BookCard extends StatelessWidget {
               padding: const EdgeInsets.only(top: 2),
               child: Text(
                 data.title,
-              ), // Assuming 'title' is a field in your AppModel
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 2),
@@ -36,7 +37,7 @@ class BookCard extends StatelessWidget {
                 data.price.toString(),
                 style: const TextStyle(),
                 maxLines: 1,
-              ), // Assuming 'size' is a field in your AppModel
+              ),
             ),
           ],
         ),
