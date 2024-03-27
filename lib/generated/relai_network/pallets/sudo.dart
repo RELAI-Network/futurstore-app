@@ -4,11 +4,11 @@ import 'dart:typed_data' as _i4;
 
 import 'package:polkadart/polkadart.dart' as _i1;
 
-import '..\types\pallet_sudo\pallet\call.dart' as _i6;
-import '..\types\relai_network_runtime\runtime_call.dart' as _i5;
-import '..\types\sp_core\crypto\account_id32.dart' as _i2;
-import '..\types\sp_runtime\multiaddress\multi_address.dart' as _i8;
-import '..\types\sp_weights\weight_v2\weight.dart' as _i7;
+import '../types/pallet_sudo/pallet/call.dart' as _i6;
+import '../types/relai_network_runtime/runtime_call.dart' as _i5;
+import '../types/sp_core/crypto/account_id32.dart' as _i2;
+import '../types/sp_runtime/multiaddress/multi_address.dart' as _i8;
+import '../types/sp_weights/weight_v2/weight.dart' as _i7;
 
 class Queries {
   const Queries(this.__api);

@@ -4,8 +4,8 @@ import 'dart:typed_data' as _i4;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i5;
 
-import '..\sp_consensus_grandpa\app\public.dart' as _i3;
-import '..\tuples_1.dart' as _i2;
+import '../sp_consensus_grandpa/app/public.dart' as _i3;
+import '../tuples_1.dart' as _i2;
 
 class StoredPendingChange {
   const StoredPendingChange({

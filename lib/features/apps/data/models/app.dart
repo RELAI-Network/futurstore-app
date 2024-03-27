@@ -37,10 +37,12 @@ class ApplicationModel {
     required this.publisherName,
     required this.packageName,
     required this.privacyPolicyLinkUrl,
+    required this.published,
     required this.releaseFileMainUrl,
     required this.screenshots,
     required this.tags,
     required this.version,
+    this.actualReleaseId,
     this.address,
     this.appType = 'app',
     this.coverImageRectUrl,
@@ -48,8 +50,12 @@ class ApplicationModel {
     this.notesCount,
     this.phone,
     this.price,
+    this.publishedAt,
+    this.status,
     this.trailerVideoUrl,
+    this.unPublishedAt,
     this.updatedAt,
+    this.versionCode,
     this.websiteUrl,
   });
 
@@ -63,8 +69,12 @@ class ApplicationModel {
   final String? phone;
   final double? price;
   final List<String> screenshots;
+  final String? status;
   final List<String> tags;
   final String version;
+
+  @JsonKey(name: 'actual_release_id')
+  final String? actualReleaseId;
 
   @JsonKey(name: 'app_type')
   final String appType;
@@ -75,7 +85,7 @@ class ApplicationModel {
   @JsonKey(name: 'category_name')
   final String categoryName;
 
-  @JsonKey(name: 'contains_ads')
+  @JsonKey(name: 'contains_ads', defaultValue: false)
   final bool containsAds;
 
   @JsonKey(name: 'cover_image_rect_url')
@@ -84,13 +94,13 @@ class ApplicationModel {
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
 
-  @JsonKey(name: 'app_download_size')
+  @JsonKey(name: 'app_download_size', defaultValue: 0)
   final int downloadSize;
 
-  @JsonKey(name: 'downloads_count')
+  @JsonKey(name: 'downloads_count', defaultValue: 0)
   final int downloadsCount;
 
-  @JsonKey(name: 'has_in_app_purchases')
+  @JsonKey(name: 'has_in_app_purchases', defaultValue: false)
   final bool hasInAppPurchases;
 
   @Id()
@@ -99,10 +109,10 @@ class ApplicationModel {
   @JsonKey(name: 'logo_image_square_url')
   final String logoImageSquareUrl;
 
-  @JsonKey(name: 'min_age_requirement')
+  @JsonKey(name: 'min_age_requirement', defaultValue: 18)
   final int minAgeRequirement;
 
-  @JsonKey(name: 'notes_average')
+  @JsonKey(name: 'notes_average', defaultValue: 0.0)
   final double? notesAverage;
 
   @JsonKey(name: 'notes_count')
@@ -114,7 +124,13 @@ class ApplicationModel {
   @JsonKey(name: 'privacy_policy_link_url')
   final String privacyPolicyLinkUrl;
 
-  @JsonKey(name: 'publisher_id')
+  @JsonKey(name: 'published', defaultValue: false)
+  final bool published;
+
+  @JsonKey(name: 'published_at')
+  final DateTime? publishedAt;
+
+  @JsonKey(name: 'publisher_id', fromJson: intToString)
   final String publisherId;
 
   @JsonKey(name: 'publisher_name')
@@ -126,8 +142,14 @@ class ApplicationModel {
   @JsonKey(name: 'trailer_video_url')
   final String? trailerVideoUrl;
 
+  @JsonKey(name: 'un_published_at')
+  final DateTime? unPublishedAt;
+
   @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
+
+  @JsonKey(name: 'version_code')
+  final int? versionCode;
 
   @JsonKey(name: 'website_url')
   final String? websiteUrl;
@@ -174,6 +196,12 @@ class ApplicationModel {
     String? trailerVideoUrl,
     DateTime? updatedAt,
     String? websiteUrl,
+    bool? published,
+    DateTime? publishedAt,
+    DateTime? unPublishedAt,
+    String? status,
+    String? actualReleaseId,
+    int? versionCode,
   }) {
     return ApplicationModel(
       address: address ?? this.address,
@@ -207,6 +235,12 @@ class ApplicationModel {
       trailerVideoUrl: trailerVideoUrl ?? this.trailerVideoUrl,
       updatedAt: updatedAt ?? this.updatedAt,
       websiteUrl: websiteUrl ?? this.websiteUrl,
+      published: published ?? this.published,
+      publishedAt: publishedAt ?? this.publishedAt,
+      unPublishedAt: unPublishedAt ?? this.unPublishedAt,
+      actualReleaseId: actualReleaseId ?? this.actualReleaseId,
+      status: status ?? this.status,
+      versionCode: versionCode ?? this.versionCode,
     );
   }
 }
@@ -220,20 +254,51 @@ enum ApplicationType {
 class ApplicationRelease {
   ApplicationRelease({
     required this.addedAt,
+    required this.applicationId,
+    required this.createdAt,
     required this.fileDownloadUrl,
     required this.id,
     required this.isBeta,
+    required this.published,
     required this.releasesNotes,
+    required this.size,
     required this.version,
+    this.downloadsCount,
+    this.logo,
+    this.publishedAt,
+    this.scanHash,
+    this.scanScore,
+    this.unPublishedAt,
+    this.versionCode,
   });
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   static const String collection = 'releases';
 
+  final String? logo;
+  final int size;
   final String version;
 
   @JsonKey(name: 'added_at')
   final DateTime addedAt;
+
+  @JsonKey(name: 'application_id')
+  final String applicationId;
+
+  @JsonKey(name: 'created_at')
+  final DateTime createdAt;
+
+  @JsonKey(name: 'published_at')
+  final DateTime? publishedAt;
+
+  @JsonKey(name: 'published', defaultValue: false)
+  final bool published;
+
+  @JsonKey(name: 'un_published_at')
+  final DateTime? unPublishedAt;
+
+  @JsonKey(name: 'downloads_count', defaultValue: 0)
+  final int? downloadsCount;
 
   @JsonKey(name: 'file_download_url')
   final String fileDownloadUrl;
@@ -246,6 +311,15 @@ class ApplicationRelease {
 
   @JsonKey(name: 'releases_notes')
   final String releasesNotes;
+
+  @JsonKey(name: 'scan_hash')
+  final String? scanHash;
+
+  @JsonKey(name: 'scan_score')
+  final int? scanScore;
+
+  @JsonKey(name: 'version_code')
+  final int? versionCode;
 }
 
 @firestoreSerializable

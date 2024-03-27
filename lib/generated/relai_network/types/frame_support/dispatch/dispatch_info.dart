@@ -3,7 +3,7 @@ import 'dart:typed_data' as _i5;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '..\..\sp_weights\weight_v2\weight.dart' as _i2;
+import '../../sp_weights/weight_v2/weight.dart' as _i2;
 import 'dispatch_class.dart' as _i3;
 import 'pays.dart' as _i4;
 

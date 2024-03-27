@@ -16,6 +16,13 @@ class FirestoreAppsRepo extends IAppsRepo {
   @override
   Future<List<ApplicationModel>> getApps({ItemCategory? category}) async {
     try {
+      return _appsService.get().then(
+            (value) => value.docs
+                .map((e) => e.data)
+                .where((app) => app.appType == ApplicationType.app.name)
+                .toList(),
+          );
+      // ignore: dead_code
       return (category == null
               ? (await _appsService
                   .whereAppType(isEqualTo: ApplicationType.app.name)
@@ -37,6 +44,14 @@ class FirestoreAppsRepo extends IAppsRepo {
   @override
   Future<List<GameModel>> getGames({ItemCategory? category}) async {
     try {
+      return _appsService.get().then(
+            (value) => value.docs
+                .map((e) => e.data)
+                .where((app) => app.appType == ApplicationType.game.name)
+                .map((e) => e.toGame())
+                .toList(),
+          );
+      // ignore: dead_code
       final docs = (category == null
               ? (await _appsService
                   // .whereAppType(isEqualTo: ApplicationType.game.name)

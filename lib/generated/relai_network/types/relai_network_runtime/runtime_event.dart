@@ -3,14 +3,14 @@ import 'dart:typed_data' as _i2;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '..\frame_system\pallet\event.dart' as _i3;
-import '..\futur_assets_reg\pallet\event.dart' as _i10;
-import '..\futur_creators_reg\pallet\event.dart' as _i9;
-import '..\nft\pallet\event.dart' as _i8;
-import '..\pallet_balances\pallet\event.dart' as _i5;
-import '..\pallet_grandpa\pallet\event.dart' as _i4;
-import '..\pallet_sudo\pallet\event.dart' as _i7;
-import '..\pallet_transaction_payment\pallet\event.dart' as _i6;
+import '../frame_system/pallet/event.dart' as _i3;
+import '../futur_assets_reg/pallet/event.dart' as _i10;
+import '../futur_creators_reg/pallet/event.dart' as _i9;
+import '../nft/pallet/event.dart' as _i8;
+import '../pallet_balances/pallet/event.dart' as _i5;
+import '../pallet_grandpa/pallet/event.dart' as _i4;
+import '../pallet_sudo/pallet/event.dart' as _i7;
+import '../pallet_transaction_payment/pallet/event.dart' as _i6;
 
 abstract class RuntimeEvent {
   const RuntimeEvent();

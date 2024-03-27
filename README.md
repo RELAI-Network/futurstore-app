@@ -11,3 +11,10 @@ Flutter Mobile app client for accessing the Futur Store Decentralized marketplac
 3. Run _flutter gen-l10n_ to generate dart translation files.
 
 Follow [setup](https://pub.dev/packages/arb_translate#installation) instructions, to make sure everything is setted up on your local machine.
+
+
+## Using Polkadart
+
+`dart run polkadart_cli:generate -v`
+
+This generation can [cause](https://github.com/dart-lang/code_builder/issues/383) [import issues](https://github.com/leonardocustodio/polkadart/issues/323). Running `sh .replace_backslash_in_dart_files.sh` should [resolve them](https://github.com/encointer/encointer-wallet-flutter/blob/5197562a9f0c2103e40f69ee4b09b52a4197f9ca/scripts/replace_backslash_in_dart_files.sh).

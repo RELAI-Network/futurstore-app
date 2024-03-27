@@ -3,7 +3,7 @@ import 'dart:typed_data' as _i2;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '..\sp_arithmetic\arithmetic_error.dart' as _i5;
+import '../sp_arithmetic/arithmetic_error.dart' as _i5;
 import 'module_error.dart' as _i3;
 import 'token_error.dart' as _i4;
 import 'transactional_error.dart' as _i6;

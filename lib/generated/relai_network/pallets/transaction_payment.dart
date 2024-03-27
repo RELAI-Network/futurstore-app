@@ -4,8 +4,8 @@ import 'dart:typed_data' as _i5;
 
 import 'package:polkadart/polkadart.dart' as _i1;
 
-import '..\types\pallet_transaction_payment\releases.dart' as _i3;
-import '..\types\sp_arithmetic\fixed_point\fixed_u128.dart' as _i2;
+import '../types/pallet_transaction_payment/releases.dart' as _i3;
+import '../types/sp_arithmetic/fixed_point/fixed_u128.dart' as _i2;
 
 class Queries {
   const Queries(this.__api);

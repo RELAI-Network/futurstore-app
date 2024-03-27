@@ -5,10 +5,10 @@ import 'dart:typed_data' as _i6;
 import 'package:polkadart/polkadart.dart' as _i1;
 import 'package:polkadart/scale_codec.dart' as _i2;
 
-import '..\types\futur_creators_reg\pallet\call.dart' as _i8;
-import '..\types\relai_network_runtime\runtime_call.dart' as _i7;
-import '..\types\relai_primitives\creatorsreg\dev_info.dart' as _i4;
-import '..\types\sp_core\crypto\account_id32.dart' as _i3;
+import '../types/futur_creators_reg/pallet/call.dart' as _i8;
+import '../types/relai_network_runtime/runtime_call.dart' as _i7;
+import '../types/relai_primitives/creatorsreg/dev_info.dart' as _i4;
+import '../types/sp_core/crypto/account_id32.dart' as _i3;
 
 class Queries {
   const Queries(this.__api);

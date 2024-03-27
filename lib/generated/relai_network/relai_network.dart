@@ -3,17 +3,17 @@ import 'dart:async' as _i13;
 
 import 'package:polkadart/polkadart.dart' as _i1;
 
-import 'pallets\aura.dart' as _i4;
-import 'pallets\balances.dart' as _i6;
-import 'pallets\futur_assets_reg.dart' as _i12;
-import 'pallets\futur_creators_reg.dart' as _i11;
-import 'pallets\grandpa.dart' as _i5;
-import 'pallets\nft.dart' as _i10;
-import 'pallets\orml_n_f_t.dart' as _i9;
-import 'pallets\sudo.dart' as _i8;
-import 'pallets\system.dart' as _i2;
-import 'pallets\timestamp.dart' as _i3;
-import 'pallets\transaction_payment.dart' as _i7;
+import 'pallets/aura.dart' as _i4;
+import 'pallets/balances.dart' as _i6;
+import 'pallets/futur_assets_reg.dart' as _i12;
+import 'pallets/futur_creators_reg.dart' as _i11;
+import 'pallets/grandpa.dart' as _i5;
+import 'pallets/nft.dart' as _i10;
+import 'pallets/orml_n_f_t.dart' as _i9;
+import 'pallets/sudo.dart' as _i8;
+import 'pallets/system.dart' as _i2;
+import 'pallets/timestamp.dart' as _i3;
+import 'pallets/transaction_payment.dart' as _i7;
 
 class Queries {
   Queries(_i1.StateApi api)

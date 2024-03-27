@@ -5,9 +5,9 @@ import 'dart:typed_data' as _i7;
 import 'package:polkadart/polkadart.dart' as _i1;
 import 'package:polkadart/scale_codec.dart' as _i2;
 
-import '..\types\orml_nft\class_info.dart' as _i3;
-import '..\types\orml_nft\token_info.dart' as _i4;
-import '..\types\sp_core\crypto\account_id32.dart' as _i5;
+import '../types/orml_nft/class_info.dart' as _i3;
+import '../types/orml_nft/token_info.dart' as _i4;
+import '../types/sp_core/crypto/account_id32.dart' as _i5;
 
 class Queries {
   const Queries(this.__api);

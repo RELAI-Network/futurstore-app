@@ -4,10 +4,10 @@ import 'dart:typed_data' as _i2;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i7;
 
-import '..\..\frame_support\dispatch\dispatch_info.dart' as _i3;
-import '..\..\primitive_types\h256.dart' as _i6;
-import '..\..\sp_core\crypto\account_id32.dart' as _i5;
-import '..\..\sp_runtime\dispatch_error.dart' as _i4;
+import '../../frame_support/dispatch/dispatch_info.dart' as _i3;
+import '../../primitive_types/h256.dart' as _i6;
+import '../../sp_core/crypto/account_id32.dart' as _i5;
+import '../../sp_runtime/dispatch_error.dart' as _i4;
 
 /// Event for the System pallet.
 abstract class Event {

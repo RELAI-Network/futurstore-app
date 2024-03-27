@@ -3,15 +3,15 @@ import 'dart:typed_data' as _i2;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '..\frame_system\pallet\call.dart' as _i3;
-import '..\futur_assets_reg\pallet\call.dart' as _i11;
-import '..\futur_creators_reg\pallet\call.dart' as _i10;
-import '..\nft\pallet\call.dart' as _i9;
-import '..\orml_nft\module\call.dart' as _i8;
-import '..\pallet_balances\pallet\call.dart' as _i6;
-import '..\pallet_grandpa\pallet\call.dart' as _i5;
-import '..\pallet_sudo\pallet\call.dart' as _i7;
-import '..\pallet_timestamp\pallet\call.dart' as _i4;
+import '../frame_system/pallet/call.dart' as _i3;
+import '../futur_assets_reg/pallet/call.dart' as _i11;
+import '../futur_creators_reg/pallet/call.dart' as _i10;
+import '../nft/pallet/call.dart' as _i9;
+import '../orml_nft/module/call.dart' as _i8;
+import '../pallet_balances/pallet/call.dart' as _i6;
+import '../pallet_grandpa/pallet/call.dart' as _i5;
+import '../pallet_sudo/pallet/call.dart' as _i7;
+import '../pallet_timestamp/pallet/call.dart' as _i4;
 
 abstract class RuntimeCall {
   const RuntimeCall();

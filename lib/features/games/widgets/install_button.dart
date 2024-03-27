@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
 import 'package:futurstore/core/utils/extensions/build_context.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
+import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/packages/data/models/index.dart';
 import 'package:futurstore/features/packages/providers/install_downloaded_package_file_func_provider.dart';
 import 'package:futurstore/features/packages/providers/is_package_file_downloaded_provider.dart';
@@ -14,12 +15,10 @@ import 'package:futurstore/features/packages/providers/is_package_installed_func
 import 'package:futurstore/features/packages/providers/package_file_installer_provider.dart';
 import 'package:futurstore/features/packages/providers/start_package_installed_func_provider.dart';
 
-import '../data/models/game.dart';
-
 class InstallGameButton extends ConsumerStatefulWidget {
   const InstallGameButton(this.data, {super.key});
 
-  final GameModel data;
+  final ApplicationModel data;
 
   @override
   ConsumerState<InstallGameButton> createState() => _InstallGameButtonState();

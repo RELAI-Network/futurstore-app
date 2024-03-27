@@ -4,7 +4,7 @@ import 'dart:typed_data' as _i3;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i4;
 
-import '..\primitive_types\h256.dart' as _i2;
+import '../primitive_types/h256.dart' as _i2;
 
 class Prevote {
   const Prevote({

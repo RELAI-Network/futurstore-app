@@ -3,8 +3,8 @@ import 'dart:typed_data' as _i2;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '..\..\sp_core\crypto\account_id32.dart' as _i4;
-import '..\..\sp_runtime\dispatch_error.dart' as _i3;
+import '../../sp_core/crypto/account_id32.dart' as _i4;
+import '../../sp_runtime/dispatch_error.dart' as _i3;
 
 /// The `Event` enum of this pallet
 abstract class Event {
@@ -103,7 +103,7 @@ class $EventCodec with _i1.Codec<Event> {
   }
 }
 
-/// A sudo just took place. \[result\]
+/// A sudo just took place. /[result/]
 class Sudid extends Event {
   const Sudid({required this.sudoResult});
 
@@ -159,7 +159,7 @@ class Sudid extends Event {
   int get hashCode => sudoResult.hashCode;
 }
 
-/// The \[sudoer\] just switched identity; the old key is supplied if one existed.
+/// The /[sudoer/] just switched identity; the old key is supplied if one existed.
 class KeyChanged extends Event {
   const KeyChanged({this.oldSudoer});
 
@@ -209,7 +209,7 @@ class KeyChanged extends Event {
   int get hashCode => oldSudoer.hashCode;
 }
 
-/// A sudo just took place. \[result\]
+/// A sudo just took place. /[result/]
 class SudoAsDone extends Event {
   const SudoAsDone({required this.sudoResult});
 

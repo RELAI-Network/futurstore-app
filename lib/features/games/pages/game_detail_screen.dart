@@ -9,16 +9,15 @@ import 'package:futurstore/core/presentation/theming/configs/app_colors.dart';
 import 'package:futurstore/core/presentation/theming/configs/app_spacing.dart';
 import 'package:futurstore/core/utils/extensions/build_context.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
+import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/games/widgets/install_button.dart';
-
-import '../data/models/game.dart';
 
 class GameDetailScreen extends StatefulWidget {
   const GameDetailScreen(this.data, {super.key});
 
   static const String id = 'game_details';
 
-  final GameModel data;
+  final ApplicationModel data;
 
   @override
   State<GameDetailScreen> createState() => _GameDetailScreenState();

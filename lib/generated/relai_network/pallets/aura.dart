@@ -5,8 +5,8 @@ import 'dart:typed_data' as _i6;
 import 'package:polkadart/polkadart.dart' as _i1;
 import 'package:polkadart/scale_codec.dart' as _i3;
 
-import '..\types\sp_consensus_aura\sr25519\app_sr25519\public.dart' as _i2;
-import '..\types\sp_consensus_slots\slot.dart' as _i4;
+import '../types/sp_consensus_aura/sr25519/app_sr25519/public.dart' as _i2;
+import '../types/sp_consensus_slots/slot.dart' as _i4;
 
 class Queries {
   const Queries(this.__api);

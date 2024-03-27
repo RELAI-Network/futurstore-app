@@ -3,7 +3,7 @@ import 'dart:typed_data' as _i3;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '..\pallet_balances\types\account_data.dart' as _i2;
+import '../pallet_balances/types/account_data.dart' as _i2;
 
 class AccountInfo {
   const AccountInfo({

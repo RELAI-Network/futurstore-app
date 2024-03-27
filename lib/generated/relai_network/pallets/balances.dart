@@ -5,14 +5,14 @@ import 'dart:typed_data' as _i9;
 import 'package:polkadart/polkadart.dart' as _i1;
 import 'package:polkadart/scale_codec.dart' as _i2;
 
-import '..\types\pallet_balances\pallet\call.dart' as _i12;
-import '..\types\pallet_balances\types\account_data.dart' as _i4;
-import '..\types\pallet_balances\types\balance_lock.dart' as _i5;
-import '..\types\pallet_balances\types\id_amount.dart' as _i7;
-import '..\types\pallet_balances\types\reserve_data.dart' as _i6;
-import '..\types\relai_network_runtime\runtime_call.dart' as _i10;
-import '..\types\sp_core\crypto\account_id32.dart' as _i3;
-import '..\types\sp_runtime\multiaddress\multi_address.dart' as _i11;
+import '../types/pallet_balances/pallet/call.dart' as _i12;
+import '../types/pallet_balances/types/account_data.dart' as _i4;
+import '../types/pallet_balances/types/balance_lock.dart' as _i5;
+import '../types/pallet_balances/types/id_amount.dart' as _i7;
+import '../types/pallet_balances/types/reserve_data.dart' as _i6;
+import '../types/relai_network_runtime/runtime_call.dart' as _i10;
+import '../types/sp_core/crypto/account_id32.dart' as _i3;
+import '../types/sp_runtime/multiaddress/multi_address.dart' as _i11;
 
 class Queries {
   const Queries(this.__api);

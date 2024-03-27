@@ -3,7 +3,7 @@ import 'dart:typed_data' as _i3;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '..\..\frame_system\limits\weights_per_class.dart' as _i2;
+import '../../frame_system/limits/weights_per_class.dart' as _i2;
 
 class PerDispatchClass {
   const PerDispatchClass({

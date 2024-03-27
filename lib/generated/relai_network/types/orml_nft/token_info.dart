@@ -4,7 +4,7 @@ import 'dart:typed_data' as _i3;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i4;
 
-import '..\sp_core\crypto\account_id32.dart' as _i2;
+import '../sp_core/crypto/account_id32.dart' as _i2;
 
 class TokenInfo {
   const TokenInfo({

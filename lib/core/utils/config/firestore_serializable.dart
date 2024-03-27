@@ -11,3 +11,22 @@ const firestoreSerializable = JsonSerializable(
   createFieldMap: true,
   createPerFieldToJson: true,
 );
+
+// ignore: avoid_annotating_with_dynamic
+String intToString(dynamic value) {
+  return value.toString();
+}
+
+int stringToInt(String value) {
+  return int.parse(value);
+}
+
+// ignore: avoid_annotating_with_dynamic
+double numberToInt(dynamic value) {
+  return double.parse(value.toString());
+}
+
+// ignore: avoid_annotating_with_dynamic
+String listOrStringToString(dynamic value) {
+  return value.toString();
+}

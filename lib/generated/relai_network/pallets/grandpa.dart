@@ -5,13 +5,13 @@ import 'dart:typed_data' as _i7;
 import 'package:polkadart/polkadart.dart' as _i1;
 import 'package:polkadart/scale_codec.dart' as _i4;
 
-import '..\types\pallet_grandpa\pallet\call.dart' as _i11;
-import '..\types\pallet_grandpa\stored_pending_change.dart' as _i3;
-import '..\types\pallet_grandpa\stored_state.dart' as _i2;
-import '..\types\relai_network_runtime\runtime_call.dart' as _i8;
-import '..\types\sp_consensus_grandpa\equivocation_proof.dart' as _i9;
-import '..\types\sp_core\void.dart' as _i10;
-import '..\types\tuples.dart' as _i5;
+import '../types/pallet_grandpa/pallet/call.dart' as _i11;
+import '../types/pallet_grandpa/stored_pending_change.dart' as _i3;
+import '../types/pallet_grandpa/stored_state.dart' as _i2;
+import '../types/relai_network_runtime/runtime_call.dart' as _i8;
+import '../types/sp_consensus_grandpa/equivocation_proof.dart' as _i9;
+import '../types/sp_core/void.dart' as _i10;
+import '../types/tuples.dart' as _i5;
 
 class Queries {
   const Queries(this.__api);
