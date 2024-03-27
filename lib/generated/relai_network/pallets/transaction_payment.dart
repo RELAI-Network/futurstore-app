@@ -1,11 +1,11 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes, lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 import 'dart:typed_data' as _i5;
 
 import 'package:polkadart/polkadart.dart' as _i1;
 
-import '../types/pallet_transaction_payment/releases.dart' as _i3;
-import '../types/sp_arithmetic/fixed_point/fixed_u128.dart' as _i2;
+import '..\types\pallet_transaction_payment\releases.dart' as _i3;
+import '..\types\sp_arithmetic\fixed_point\fixed_u128.dart' as _i2;
 
 class Queries {
   const Queries(this.__api);

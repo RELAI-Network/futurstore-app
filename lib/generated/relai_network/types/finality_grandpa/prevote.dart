@@ -4,7 +4,7 @@ import 'dart:typed_data' as _i3;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i4;
 
-import '../primitive_types/h256.dart' as _i2;
+import '..\primitive_types\h256.dart' as _i2;
 
 class Prevote {
   const Prevote({
@@ -81,7 +81,7 @@ class $PrevoteCodec with _i1.Codec<Prevote> {
 
   @override
   int sizeHint(Prevote obj) {
-    var size = 0;
+    int size = 0;
     size = size + const _i2.H256Codec().sizeHint(obj.targetHash);
     size = size + _i1.U32Codec.codec.sizeHint(obj.targetNumber);
     return size;

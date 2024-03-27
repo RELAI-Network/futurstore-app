@@ -4,8 +4,8 @@ import 'dart:typed_data' as _i3;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i4;
 
-import '../cow.dart' as _i2;
-import '../tuples.dart' as _i5;
+import '..\cow.dart' as _i2;
+import '..\tuples.dart' as _i5;
 
 class RuntimeVersion {
   const RuntimeVersion({

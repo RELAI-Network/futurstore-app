@@ -3,7 +3,7 @@ import 'dart:typed_data' as _i3;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '../../sp_weights/weight_v2/weight.dart' as _i2;
+import '..\..\sp_weights\weight_v2\weight.dart' as _i2;
 
 class PerDispatchClass {
   const PerDispatchClass({
@@ -89,7 +89,7 @@ class $PerDispatchClassCodec with _i1.Codec<PerDispatchClass> {
 
   @override
   int sizeHint(PerDispatchClass obj) {
-    var size = 0;
+    int size = 0;
     size = size + _i2.Weight.codec.sizeHint(obj.normal);
     size = size + _i2.Weight.codec.sizeHint(obj.operational);
     size = size + _i2.Weight.codec.sizeHint(obj.mandatory);

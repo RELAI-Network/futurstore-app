@@ -66,7 +66,7 @@ class $DigestItem {
   }
 
   RuntimeEnvironmentUpdated runtimeEnvironmentUpdated() {
-    return const RuntimeEnvironmentUpdated();
+    return RuntimeEnvironmentUpdated();
   }
 }
 
@@ -100,18 +100,22 @@ class $DigestItemCodec with _i1.Codec<DigestItem> {
     switch (value.runtimeType) {
       case PreRuntime:
         (value as PreRuntime).encodeTo(output);
+        break;
       case Consensus:
         (value as Consensus).encodeTo(output);
+        break;
       case Seal:
         (value as Seal).encodeTo(output);
+        break;
       case Other:
         (value as Other).encodeTo(output);
+        break;
       case RuntimeEnvironmentUpdated:
         (value as RuntimeEnvironmentUpdated).encodeTo(output);
+        break;
       default:
         throw Exception(
-          'DigestItem: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'DigestItem: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 
@@ -130,8 +134,7 @@ class $DigestItemCodec with _i1.Codec<DigestItem> {
         return 1;
       default:
         throw Exception(
-          'DigestItem: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'DigestItem: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 }
@@ -160,11 +163,11 @@ class PreRuntime extends DigestItem {
         'PreRuntime': [
           value0.toList(),
           value1,
-        ],
+        ]
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i1.U8ArrayCodec(4).sizeHint(value0);
     size = size + _i1.U8SequenceCodec.codec.sizeHint(value1);
     return size;
@@ -232,11 +235,11 @@ class Consensus extends DigestItem {
         'Consensus': [
           value0.toList(),
           value1,
-        ],
+        ]
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i1.U8ArrayCodec(4).sizeHint(value0);
     size = size + _i1.U8SequenceCodec.codec.sizeHint(value1);
     return size;
@@ -304,11 +307,11 @@ class Seal extends DigestItem {
         'Seal': [
           value0.toList(),
           value1,
-        ],
+        ]
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i1.U8ArrayCodec(4).sizeHint(value0);
     size = size + _i1.U8SequenceCodec.codec.sizeHint(value1);
     return size;
@@ -366,7 +369,7 @@ class Other extends DigestItem {
   Map<String, List<int>> toJson() => {'Other': value0};
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U8SequenceCodec.codec.sizeHint(value0);
     return size;
   }

@@ -1,30 +1,30 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes, lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i12;
 import 'dart:typed_data' as _i15;
 
 import 'package:polkadart/polkadart.dart' as _i1;
 import 'package:polkadart/scale_codec.dart' as _i4;
 
-import '../types/frame_support/dispatch/per_dispatch_class_1.dart' as _i5;
-import '../types/frame_support/dispatch/per_dispatch_class_2.dart' as _i19;
-import '../types/frame_support/dispatch/per_dispatch_class_3.dart' as _i22;
-import '../types/frame_system/account_info.dart' as _i3;
-import '../types/frame_system/event_record.dart' as _i8;
-import '../types/frame_system/last_runtime_upgrade_info.dart' as _i10;
-import '../types/frame_system/limits/block_length.dart' as _i21;
-import '../types/frame_system/limits/block_weights.dart' as _i18;
-import '../types/frame_system/limits/weights_per_class.dart' as _i20;
-import '../types/frame_system/pallet/call.dart' as _i17;
-import '../types/frame_system/phase.dart' as _i11;
-import '../types/pallet_balances/types/account_data.dart' as _i13;
-import '../types/primitive_types/h256.dart' as _i6;
-import '../types/relai_network_runtime/runtime_call.dart' as _i16;
-import '../types/sp_core/crypto/account_id32.dart' as _i2;
-import '../types/sp_runtime/generic/digest/digest.dart' as _i7;
-import '../types/sp_version/runtime_version.dart' as _i24;
-import '../types/sp_weights/runtime_db_weight.dart' as _i23;
-import '../types/sp_weights/weight_v2/weight.dart' as _i14;
-import '../types/tuples.dart' as _i9;
+import '..\types\frame_support\dispatch\per_dispatch_class_1.dart' as _i5;
+import '..\types\frame_support\dispatch\per_dispatch_class_2.dart' as _i19;
+import '..\types\frame_support\dispatch\per_dispatch_class_3.dart' as _i22;
+import '..\types\frame_system\account_info.dart' as _i3;
+import '..\types\frame_system\event_record.dart' as _i8;
+import '..\types\frame_system\last_runtime_upgrade_info.dart' as _i10;
+import '..\types\frame_system\limits\block_length.dart' as _i21;
+import '..\types\frame_system\limits\block_weights.dart' as _i18;
+import '..\types\frame_system\limits\weights_per_class.dart' as _i20;
+import '..\types\frame_system\pallet\call.dart' as _i17;
+import '..\types\frame_system\phase.dart' as _i11;
+import '..\types\pallet_balances\types\account_data.dart' as _i13;
+import '..\types\primitive_types\h256.dart' as _i6;
+import '..\types\relai_network_runtime\runtime_call.dart' as _i16;
+import '..\types\sp_core\crypto\account_id32.dart' as _i2;
+import '..\types\sp_runtime\generic\digest\digest.dart' as _i7;
+import '..\types\sp_version\runtime_version.dart' as _i24;
+import '..\types\sp_weights\runtime_db_weight.dart' as _i23;
+import '..\types\sp_weights\weight_v2\weight.dart' as _i14;
+import '..\types\tuples.dart' as _i9;
 
 class Queries {
   const Queries(this.__api);
@@ -111,12 +111,11 @@ class Queries {
       const _i1.StorageMap<_i6.H256, List<_i9.Tuple2<int, int>>>(
     prefix: 'System',
     storage: 'EventTopics',
-    valueCodec: _i4.SequenceCodec<_i9.Tuple2<int, int>>(
-      _i9.Tuple2Codec<int, int>(
-        _i4.U32Codec.codec,
-        _i4.U32Codec.codec,
-      ),
-    ),
+    valueCodec:
+        _i4.SequenceCodec<_i9.Tuple2<int, int>>(_i9.Tuple2Codec<int, int>(
+      _i4.U32Codec.codec,
+      _i4.U32Codec.codec,
+    )),
     hasher: _i1.StorageHasher.blake2b128Concat(_i6.H256Codec()),
   );
 
@@ -246,6 +245,7 @@ class Queries {
     return List<int>.filled(
       32,
       0,
+      growable: false,
     ); /* Default */
   }
 
@@ -295,6 +295,7 @@ class Queries {
     return List<int>.filled(
       32,
       0,
+      growable: false,
     ); /* Default */
   }
 
@@ -308,7 +309,7 @@ class Queries {
     if (bytes != null) {
       return _digest.decodeValue(bytes);
     }
-    return const _i7.Digest(logs: []); /* Default */
+    return _i7.Digest(logs: []); /* Default */
   }
 
   /// Events deposited for the current block.
@@ -369,9 +370,8 @@ class Queries {
   }
 
   /// Stores the `spec_version` and `spec_name` of when the last runtime upgrade happened.
-  _i12.Future<_i10.LastRuntimeUpgradeInfo?> lastRuntimeUpgrade({
-    _i1.BlockHash? at,
-  }) async {
+  _i12.Future<_i10.LastRuntimeUpgradeInfo?> lastRuntimeUpgrade(
+      {_i1.BlockHash? at}) async {
     final hashedKey = _lastRuntimeUpgrade.hashedKey();
     final bytes = await __api.getStorage(
       hashedKey,
@@ -549,40 +549,39 @@ class Txs {
 
   /// See [`Pallet::remark`].
   _i16.RuntimeCall remark({required List<int> remark}) {
-    final call = _i17.Call.values.remark(remark: remark);
-    return _i16.RuntimeCall.values.system(call);
+    final _call = _i17.Call.values.remark(remark: remark);
+    return _i16.RuntimeCall.values.system(_call);
   }
 
   /// See [`Pallet::set_heap_pages`].
   _i16.RuntimeCall setHeapPages({required BigInt pages}) {
-    final call = _i17.Call.values.setHeapPages(pages: pages);
-    return _i16.RuntimeCall.values.system(call);
+    final _call = _i17.Call.values.setHeapPages(pages: pages);
+    return _i16.RuntimeCall.values.system(_call);
   }
 
   /// See [`Pallet::set_code`].
   _i16.RuntimeCall setCode({required List<int> code}) {
-    final call = _i17.Call.values.setCode(code: code);
-    return _i16.RuntimeCall.values.system(call);
+    final _call = _i17.Call.values.setCode(code: code);
+    return _i16.RuntimeCall.values.system(_call);
   }
 
   /// See [`Pallet::set_code_without_checks`].
   _i16.RuntimeCall setCodeWithoutChecks({required List<int> code}) {
-    final call = _i17.Call.values.setCodeWithoutChecks(code: code);
-    return _i16.RuntimeCall.values.system(call);
+    final _call = _i17.Call.values.setCodeWithoutChecks(code: code);
+    return _i16.RuntimeCall.values.system(_call);
   }
 
   /// See [`Pallet::set_storage`].
-  _i16.RuntimeCall setStorage({
-    required List<_i9.Tuple2<List<int>, List<int>>> items,
-  }) {
-    final call = _i17.Call.values.setStorage(items: items);
-    return _i16.RuntimeCall.values.system(call);
+  _i16.RuntimeCall setStorage(
+      {required List<_i9.Tuple2<List<int>, List<int>>> items}) {
+    final _call = _i17.Call.values.setStorage(items: items);
+    return _i16.RuntimeCall.values.system(_call);
   }
 
   /// See [`Pallet::kill_storage`].
   _i16.RuntimeCall killStorage({required List<List<int>> keys}) {
-    final call = _i17.Call.values.killStorage(keys: keys);
-    return _i16.RuntimeCall.values.system(call);
+    final _call = _i17.Call.values.killStorage(keys: keys);
+    return _i16.RuntimeCall.values.system(_call);
   }
 
   /// See [`Pallet::kill_prefix`].
@@ -590,17 +589,17 @@ class Txs {
     required List<int> prefix,
     required int subkeys,
   }) {
-    final call = _i17.Call.values.killPrefix(
+    final _call = _i17.Call.values.killPrefix(
       prefix: prefix,
       subkeys: subkeys,
     );
-    return _i16.RuntimeCall.values.system(call);
+    return _i16.RuntimeCall.values.system(_call);
   }
 
   /// See [`Pallet::remark_with_event`].
   _i16.RuntimeCall remarkWithEvent({required List<int> remark}) {
-    final call = _i17.Call.values.remarkWithEvent(remark: remark);
-    return _i16.RuntimeCall.values.system(call);
+    final _call = _i17.Call.values.remarkWithEvent(remark: remark);
+    return _i16.RuntimeCall.values.system(_call);
   }
 }
 
@@ -677,18 +676,20 @@ class Constants {
           refTime: BigInt.from(124414000),
           proofSize: BigInt.zero,
         ),
+        maxExtrinsic: null,
+        maxTotal: null,
+        reserved: null,
       ),
     ),
   );
 
   /// The maximum length of a block (in bytes).
   final _i21.BlockLength blockLength = const _i21.BlockLength(
-    max: _i22.PerDispatchClass(
-      normal: 3932160,
-      operational: 5242880,
-      mandatory: 5242880,
-    ),
-  );
+      max: _i22.PerDispatchClass(
+    normal: 3932160,
+    operational: 5242880,
+    mandatory: 5242880,
+  ));
 
   /// Maximum number of block number to block hash mappings to keep (oldest pruned first).
   final int blockHashCount = 2400;

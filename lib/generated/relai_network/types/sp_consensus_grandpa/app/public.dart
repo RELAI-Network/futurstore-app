@@ -1,7 +1,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:polkadart/scale_codec.dart' as _i2;
 
-import '../../sp_core/ed25519/public.dart' as _i1;
+import '..\..\sp_core\ed25519\public.dart' as _i1;
 
 typedef Public = _i1.Public;
 

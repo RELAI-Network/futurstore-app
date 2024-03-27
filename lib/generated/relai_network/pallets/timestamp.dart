@@ -1,12 +1,12 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes, lines_longer_than_80_chars
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 import 'dart:typed_data' as _i4;
 
 import 'package:polkadart/polkadart.dart' as _i1;
 import 'package:polkadart/scale_codec.dart' as _i2;
 
-import '../types/pallet_timestamp/pallet/call.dart' as _i6;
-import '../types/relai_network_runtime/runtime_call.dart' as _i5;
+import '..\types\pallet_timestamp\pallet\call.dart' as _i6;
+import '..\types\relai_network_runtime\runtime_call.dart' as _i5;
 
 class Queries {
   const Queries(this.__api);
@@ -69,8 +69,8 @@ class Txs {
 
   /// See [`Pallet::set`].
   _i5.RuntimeCall set({required BigInt now}) {
-    final call = _i6.Call.values.set(now: now);
-    return _i5.RuntimeCall.values.timestamp(call);
+    final _call = _i6.Call.values.set(now: now);
+    return _i5.RuntimeCall.values.timestamp(_call);
   }
 }
 

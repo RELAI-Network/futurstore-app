@@ -3,8 +3,8 @@ import 'dart:typed_data' as _i2;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '../../sp_core/crypto/account_id32.dart' as _i4;
-import '../../sp_runtime/dispatch_error.dart' as _i3;
+import '..\..\sp_core\crypto\account_id32.dart' as _i4;
+import '..\..\sp_runtime\dispatch_error.dart' as _i3;
 
 /// The `Event` enum of this pallet
 abstract class Event {

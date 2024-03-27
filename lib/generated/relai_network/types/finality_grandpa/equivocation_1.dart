@@ -3,9 +3,9 @@ import 'dart:typed_data' as _i6;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '../sp_consensus_grandpa/app/public.dart' as _i2;
-import '../sp_consensus_grandpa/app/signature.dart' as _i5;
-import '../tuples.dart' as _i3;
+import '..\sp_consensus_grandpa\app\public.dart' as _i2;
+import '..\sp_consensus_grandpa\app\signature.dart' as _i5;
+import '..\tuples.dart' as _i3;
 import 'prevote.dart' as _i4;
 
 class Equivocation {
@@ -77,29 +77,29 @@ class $EquivocationCodec with _i1.Codec<Equivocation> {
 
   @override
   void encodeTo(
-    Equivocation value,
+    Equivocation obj,
     _i1.Output output,
   ) {
     _i1.U64Codec.codec.encodeTo(
-      value.roundNumber,
+      obj.roundNumber,
       output,
     );
     const _i1.U8ArrayCodec(32).encodeTo(
-      value.identity,
+      obj.identity,
       output,
     );
     const _i3.Tuple2Codec<_i4.Prevote, _i5.Signature>(
       _i4.Prevote.codec,
       _i5.SignatureCodec(),
     ).encodeTo(
-      value.first,
+      obj.first,
       output,
     );
     const _i3.Tuple2Codec<_i4.Prevote, _i5.Signature>(
       _i4.Prevote.codec,
       _i5.SignatureCodec(),
     ).encodeTo(
-      value.second,
+      obj.second,
       output,
     );
   }
@@ -121,20 +121,20 @@ class $EquivocationCodec with _i1.Codec<Equivocation> {
   }
 
   @override
-  int sizeHint(Equivocation value) {
-    var size = 0;
-    size = size + _i1.U64Codec.codec.sizeHint(value.roundNumber);
-    size = size + const _i2.PublicCodec().sizeHint(value.identity);
+  int sizeHint(Equivocation obj) {
+    int size = 0;
+    size = size + _i1.U64Codec.codec.sizeHint(obj.roundNumber);
+    size = size + const _i2.PublicCodec().sizeHint(obj.identity);
     size = size +
         const _i3.Tuple2Codec<_i4.Prevote, _i5.Signature>(
           _i4.Prevote.codec,
           _i5.SignatureCodec(),
-        ).sizeHint(value.first);
+        ).sizeHint(obj.first);
     size = size +
         const _i3.Tuple2Codec<_i4.Prevote, _i5.Signature>(
           _i4.Prevote.codec,
           _i5.SignatureCodec(),
-        ).sizeHint(value.second);
+        ).sizeHint(obj.second);
     return size;
   }
 }

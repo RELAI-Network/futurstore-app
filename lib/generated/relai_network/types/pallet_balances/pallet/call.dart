@@ -4,8 +4,8 @@ import 'dart:typed_data' as _i2;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i5;
 
-import '../../sp_core/crypto/account_id32.dart' as _i4;
-import '../../sp_runtime/multiaddress/multi_address.dart' as _i3;
+import '..\..\sp_core\crypto\account_id32.dart' as _i4;
+import '..\..\sp_runtime\multiaddress\multi_address.dart' as _i3;
 
 /// Contains a variant per dispatchable extrinsic that this pallet has.
 abstract class Call {
@@ -162,26 +162,34 @@ class $CallCodec with _i1.Codec<Call> {
     switch (value.runtimeType) {
       case TransferAllowDeath:
         (value as TransferAllowDeath).encodeTo(output);
+        break;
       case SetBalanceDeprecated:
         (value as SetBalanceDeprecated).encodeTo(output);
+        break;
       case ForceTransfer:
         (value as ForceTransfer).encodeTo(output);
+        break;
       case TransferKeepAlive:
         (value as TransferKeepAlive).encodeTo(output);
+        break;
       case TransferAll:
         (value as TransferAll).encodeTo(output);
+        break;
       case ForceUnreserve:
         (value as ForceUnreserve).encodeTo(output);
+        break;
       case UpgradeAccounts:
         (value as UpgradeAccounts).encodeTo(output);
+        break;
       case Transfer:
         (value as Transfer).encodeTo(output);
+        break;
       case ForceSetBalance:
         (value as ForceSetBalance).encodeTo(output);
+        break;
       default:
         throw Exception(
-          'Call: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'Call: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 
@@ -208,8 +216,7 @@ class $CallCodec with _i1.Codec<Call> {
         return (value as ForceSetBalance)._sizeHint();
       default:
         throw Exception(
-          'Call: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'Call: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 }
@@ -239,11 +246,11 @@ class TransferAllowDeath extends Call {
         'transfer_allow_death': {
           'dest': dest.toJson(),
           'value': value,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.MultiAddress.codec.sizeHint(dest);
     size = size + _i1.CompactBigIntCodec.codec.sizeHint(value);
     return size;
@@ -310,11 +317,11 @@ class SetBalanceDeprecated extends Call {
           'who': who.toJson(),
           'newFree': newFree,
           'oldReserved': oldReserved,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.MultiAddress.codec.sizeHint(who);
     size = size + _i1.CompactBigIntCodec.codec.sizeHint(newFree);
     size = size + _i1.CompactBigIntCodec.codec.sizeHint(oldReserved);
@@ -390,11 +397,11 @@ class ForceTransfer extends Call {
           'source': source.toJson(),
           'dest': dest.toJson(),
           'value': value,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.MultiAddress.codec.sizeHint(source);
     size = size + _i3.MultiAddress.codec.sizeHint(dest);
     size = size + _i1.CompactBigIntCodec.codec.sizeHint(value);
@@ -464,11 +471,11 @@ class TransferKeepAlive extends Call {
         'transfer_keep_alive': {
           'dest': dest.toJson(),
           'value': value,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.MultiAddress.codec.sizeHint(dest);
     size = size + _i1.CompactBigIntCodec.codec.sizeHint(value);
     return size;
@@ -529,11 +536,11 @@ class TransferAll extends Call {
         'transfer_all': {
           'dest': dest.toJson(),
           'keepAlive': keepAlive,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.MultiAddress.codec.sizeHint(dest);
     size = size + _i1.BoolCodec.codec.sizeHint(keepAlive);
     return size;
@@ -596,11 +603,11 @@ class ForceUnreserve extends Call {
         'force_unreserve': {
           'who': who.toJson(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.MultiAddress.codec.sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -642,9 +649,8 @@ class UpgradeAccounts extends Call {
 
   factory UpgradeAccounts._decode(_i1.Input input) {
     return UpgradeAccounts(
-      who: const _i1.SequenceCodec<_i4.AccountId32>(_i4.AccountId32Codec())
-          .decode(input),
-    );
+        who: const _i1.SequenceCodec<_i4.AccountId32>(_i4.AccountId32Codec())
+            .decode(input));
   }
 
   /// Vec<T::AccountId>
@@ -652,13 +658,11 @@ class UpgradeAccounts extends Call {
 
   @override
   Map<String, Map<String, List<List<int>>>> toJson() => {
-        'upgrade_accounts': {
-          'who': who.map((value) => value.toList()).toList(),
-        },
+        'upgrade_accounts': {'who': who.map((value) => value.toList()).toList()}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size +
         const _i1.SequenceCodec<_i4.AccountId32>(_i4.AccountId32Codec())
             .sizeHint(who);
@@ -717,11 +721,11 @@ class Transfer extends Call {
         'transfer': {
           'dest': dest.toJson(),
           'value': value,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.MultiAddress.codec.sizeHint(dest);
     size = size + _i1.CompactBigIntCodec.codec.sizeHint(value);
     return size;
@@ -782,11 +786,11 @@ class ForceSetBalance extends Call {
         'force_set_balance': {
           'who': who.toJson(),
           'newFree': newFree,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.MultiAddress.codec.sizeHint(who);
     size = size + _i1.CompactBigIntCodec.codec.sizeHint(newFree);
     return size;

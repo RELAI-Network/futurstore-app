@@ -3,9 +3,9 @@ import 'dart:typed_data' as _i6;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '../sp_consensus_grandpa/app/public.dart' as _i2;
-import '../sp_consensus_grandpa/app/signature.dart' as _i5;
-import '../tuples.dart' as _i3;
+import '..\sp_consensus_grandpa\app\public.dart' as _i2;
+import '..\sp_consensus_grandpa\app\signature.dart' as _i5;
+import '..\tuples.dart' as _i3;
 import 'precommit.dart' as _i4;
 
 class Equivocation {
@@ -122,7 +122,7 @@ class $EquivocationCodec with _i1.Codec<Equivocation> {
 
   @override
   int sizeHint(Equivocation obj) {
-    var size = 0;
+    int size = 0;
     size = size + _i1.U64Codec.codec.sizeHint(obj.roundNumber);
     size = size + const _i2.PublicCodec().sizeHint(obj.identity);
     size = size +

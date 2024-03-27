@@ -3,7 +3,7 @@ import 'dart:typed_data' as _i5;
 
 import 'package:polkadart/scale_codec.dart' as _i1;
 
-import '../../sp_weights/weight_v2/weight.dart' as _i2;
+import '..\..\sp_weights\weight_v2\weight.dart' as _i2;
 import 'dispatch_class.dart' as _i3;
 import 'pays.dart' as _i4;
 
@@ -91,7 +91,7 @@ class $DispatchInfoCodec with _i1.Codec<DispatchInfo> {
 
   @override
   int sizeHint(DispatchInfo obj) {
-    var size = 0;
+    int size = 0;
     size = size + _i2.Weight.codec.sizeHint(obj.weight);
     size = size + _i3.DispatchClass.codec.sizeHint(obj.class_);
     size = size + _i4.Pays.codec.sizeHint(obj.paysFee);

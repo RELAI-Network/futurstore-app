@@ -1,15 +1,19 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes, strict_raw_type
-import 'dart:async' as _i9;
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:async' as _i13;
 
 import 'package:polkadart/polkadart.dart' as _i1;
 
-import 'pallets/aura.dart' as _i4;
-import 'pallets/balances.dart' as _i6;
-import 'pallets/grandpa.dart' as _i5;
-import 'pallets/sudo.dart' as _i8;
-import 'pallets/system.dart' as _i2;
-import 'pallets/timestamp.dart' as _i3;
-import 'pallets/transaction_payment.dart' as _i7;
+import 'pallets\aura.dart' as _i4;
+import 'pallets\balances.dart' as _i6;
+import 'pallets\futur_assets_reg.dart' as _i12;
+import 'pallets\futur_creators_reg.dart' as _i11;
+import 'pallets\grandpa.dart' as _i5;
+import 'pallets\nft.dart' as _i10;
+import 'pallets\orml_n_f_t.dart' as _i9;
+import 'pallets\sudo.dart' as _i8;
+import 'pallets\system.dart' as _i2;
+import 'pallets\timestamp.dart' as _i3;
+import 'pallets\transaction_payment.dart' as _i7;
 
 class Queries {
   Queries(_i1.StateApi api)
@@ -19,7 +23,11 @@ class Queries {
         grandpa = _i5.Queries(api),
         balances = _i6.Queries(api),
         transactionPayment = _i7.Queries(api),
-        sudo = _i8.Queries(api);
+        sudo = _i8.Queries(api),
+        ormlNFT = _i9.Queries(api),
+        nft = _i10.Queries(api),
+        futurCreatorsReg = _i11.Queries(api),
+        futurAssetsReg = _i12.Queries(api);
 
   final _i2.Queries system;
 
@@ -34,20 +42,34 @@ class Queries {
   final _i7.Queries transactionPayment;
 
   final _i8.Queries sudo;
+
+  final _i9.Queries ormlNFT;
+
+  final _i10.Queries nft;
+
+  final _i11.Queries futurCreatorsReg;
+
+  final _i12.Queries futurAssetsReg;
 }
 
 class Extrinsics {
   Extrinsics();
 
-  final _i2.Txs system = const _i2.Txs();
+  final _i2.Txs system = _i2.Txs();
 
-  final _i3.Txs timestamp = const _i3.Txs();
+  final _i3.Txs timestamp = _i3.Txs();
 
-  final _i5.Txs grandpa = const _i5.Txs();
+  final _i5.Txs grandpa = _i5.Txs();
 
-  final _i6.Txs balances = const _i6.Txs();
+  final _i6.Txs balances = _i6.Txs();
 
-  final _i8.Txs sudo = const _i8.Txs();
+  final _i8.Txs sudo = _i8.Txs();
+
+  final _i10.Txs nft = _i10.Txs();
+
+  final _i11.Txs futurCreatorsReg = _i11.Txs();
+
+  final _i12.Txs futurAssetsReg = _i12.Txs();
 }
 
 class Constants {
@@ -80,21 +102,29 @@ class Registry {
 
   final int extrinsicVersion = 4;
 
-  List<String> getSignedExtensionTypes() {
+  List getSignedExtensionTypes() {
     return ['CheckMortality', 'CheckNonce', 'ChargeTransactionPayment'];
   }
 
-  List<String> getSignedExtensionExtra() {
+  List getSignedExtensionExtra() {
     return [
       'CheckSpecVersion',
       'CheckTxVersion',
       'CheckGenesis',
-      'CheckMortality',
+      'CheckMortality'
     ];
   }
 }
 
 class RelaiNetwork {
+  RelaiNetwork._(
+    this._provider,
+    this.rpc,
+  )   : query = Queries(rpc.state),
+        constant = Constants(),
+        tx = Extrinsics(),
+        registry = Registry();
+
   factory RelaiNetwork(_i1.Provider provider) {
     final rpc = Rpc(
       state: _i1.StateApi(provider),
@@ -105,13 +135,6 @@ class RelaiNetwork {
       rpc,
     );
   }
-  RelaiNetwork._(
-    this._provider,
-    this.rpc,
-  )   : query = Queries(rpc.state),
-        constant = Constants(),
-        tx = Extrinsics(),
-        registry = Registry();
 
   factory RelaiNetwork.url(Uri url) {
     final provider = _i1.Provider.fromUri(url);
@@ -130,11 +153,11 @@ class RelaiNetwork {
 
   final Registry registry;
 
-  _i9.Future connect() {
-    return _provider.connect();
+  _i13.Future connect() async {
+    return await _provider.connect();
   }
 
-  _i9.Future disconnect() {
-    return _provider.disconnect();
+  _i13.Future disconnect() async {
+    return await _provider.disconnect();
   }
 }

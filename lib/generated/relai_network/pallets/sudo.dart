@@ -1,15 +1,14 @@
-// ignore: lines_longer_than_80_chars
-// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 import 'dart:typed_data' as _i4;
 
 import 'package:polkadart/polkadart.dart' as _i1;
 
-import '../types/pallet_sudo/pallet/call.dart' as _i6;
-import '../types/relai_network_runtime/runtime_call.dart' as _i5;
-import '../types/sp_core/crypto/account_id32.dart' as _i2;
-import '../types/sp_runtime/multiaddress/multi_address.dart' as _i8;
-import '../types/sp_weights/weight_v2/weight.dart' as _i7;
+import '..\types\pallet_sudo\pallet\call.dart' as _i6;
+import '..\types\relai_network_runtime\runtime_call.dart' as _i5;
+import '..\types\sp_core\crypto\account_id32.dart' as _i2;
+import '..\types\sp_runtime\multiaddress\multi_address.dart' as _i8;
+import '..\types\sp_weights\weight_v2\weight.dart' as _i7;
 
 class Queries {
   const Queries(this.__api);
@@ -48,8 +47,8 @@ class Txs {
 
   /// See [`Pallet::sudo`].
   _i5.RuntimeCall sudo({required _i5.RuntimeCall call}) {
-    final call0 = _i6.Call.values.sudo(call: call);
-    return _i5.RuntimeCall.values.sudo(call0);
+    final _call = _i6.Call.values.sudo(call: call);
+    return _i5.RuntimeCall.values.sudo(_call);
   }
 
   /// See [`Pallet::sudo_unchecked_weight`].
@@ -57,17 +56,17 @@ class Txs {
     required _i5.RuntimeCall call,
     required _i7.Weight weight,
   }) {
-    final call0 = _i6.Call.values.sudoUncheckedWeight(
+    final _call = _i6.Call.values.sudoUncheckedWeight(
       call: call,
       weight: weight,
     );
-    return _i5.RuntimeCall.values.sudo(call0);
+    return _i5.RuntimeCall.values.sudo(_call);
   }
 
   /// See [`Pallet::set_key`].
   _i5.RuntimeCall setKey({required _i8.MultiAddress new_}) {
-    final call = _i6.Call.values.setKey(new_: new_);
-    return _i5.RuntimeCall.values.sudo(call);
+    final _call = _i6.Call.values.setKey(new_: new_);
+    return _i5.RuntimeCall.values.sudo(_call);
   }
 
   /// See [`Pallet::sudo_as`].
@@ -75,10 +74,10 @@ class Txs {
     required _i8.MultiAddress who,
     required _i5.RuntimeCall call,
   }) {
-    final call0 = _i6.Call.values.sudoAs(
+    final _call = _i6.Call.values.sudoAs(
       who: who,
       call: call,
     );
-    return _i5.RuntimeCall.values.sudo(call0);
+    return _i5.RuntimeCall.values.sudo(_call);
   }
 }

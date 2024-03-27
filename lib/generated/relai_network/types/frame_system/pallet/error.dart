@@ -9,8 +9,7 @@ enum Error {
   /// and the new runtime.
   invalidSpecName('InvalidSpecName', 0),
 
-  /// The specification version is not allowed to decrease between the current
-  /// runtime
+  /// The specification version is not allowed to decrease between the current runtime
   /// and the new runtime.
   specVersionNeedsToIncrease('SpecVersionNeedsToIncrease', 1),
 
@@ -22,8 +21,7 @@ enum Error {
   /// Suicide called when the account has non-default composite data.
   nonDefaultComposite('NonDefaultComposite', 3),
 
-  /// There is a non-zero reference count preventing the account from being
-  /// purged.
+  /// There is a non-zero reference count preventing the account from being purged.
   nonZeroRefCount('NonZeroRefCount', 4),
 
   /// The origin filter prevent the call to be dispatched.

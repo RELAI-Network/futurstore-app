@@ -4,8 +4,8 @@ import 'dart:typed_data' as _i2;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i5;
 
-import '../../frame_support/traits/tokens/misc/balance_status.dart' as _i4;
-import '../../sp_core/crypto/account_id32.dart' as _i3;
+import '..\..\frame_support\traits\tokens\misc\balance_status.dart' as _i4;
+import '..\..\sp_core\crypto\account_id32.dart' as _i3;
 
 /// The `Event` enum of this pallet
 abstract class Event {
@@ -296,50 +296,70 @@ class $EventCodec with _i1.Codec<Event> {
     switch (value.runtimeType) {
       case Endowed:
         (value as Endowed).encodeTo(output);
+        break;
       case DustLost:
         (value as DustLost).encodeTo(output);
+        break;
       case Transfer:
         (value as Transfer).encodeTo(output);
+        break;
       case BalanceSet:
         (value as BalanceSet).encodeTo(output);
+        break;
       case Reserved:
         (value as Reserved).encodeTo(output);
+        break;
       case Unreserved:
         (value as Unreserved).encodeTo(output);
+        break;
       case ReserveRepatriated:
         (value as ReserveRepatriated).encodeTo(output);
+        break;
       case Deposit:
         (value as Deposit).encodeTo(output);
+        break;
       case Withdraw:
         (value as Withdraw).encodeTo(output);
+        break;
       case Slashed:
         (value as Slashed).encodeTo(output);
+        break;
       case Minted:
         (value as Minted).encodeTo(output);
+        break;
       case Burned:
         (value as Burned).encodeTo(output);
+        break;
       case Suspended:
         (value as Suspended).encodeTo(output);
+        break;
       case Restored:
         (value as Restored).encodeTo(output);
+        break;
       case Upgraded:
         (value as Upgraded).encodeTo(output);
+        break;
       case Issued:
         (value as Issued).encodeTo(output);
+        break;
       case Rescinded:
         (value as Rescinded).encodeTo(output);
+        break;
       case Locked:
         (value as Locked).encodeTo(output);
+        break;
       case Unlocked:
         (value as Unlocked).encodeTo(output);
+        break;
       case Frozen:
         (value as Frozen).encodeTo(output);
+        break;
       case Thawed:
         (value as Thawed).encodeTo(output);
+        break;
       default:
         throw Exception(
-          'Event: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'Event: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 
@@ -390,8 +410,7 @@ class $EventCodec with _i1.Codec<Event> {
         return (value as Thawed)._sizeHint();
       default:
         throw Exception(
-          'Event: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'Event: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 }
@@ -421,11 +440,11 @@ class Endowed extends Event {
         'Endowed': {
           'account': account.toList(),
           'freeBalance': freeBalance,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(account);
     size = size + _i1.U128Codec.codec.sizeHint(freeBalance);
     return size;
@@ -466,8 +485,7 @@ class Endowed extends Event {
       );
 }
 
-/// An account was removed whose balance was non-zero but below
-/// ExistentialDeposit,
+/// An account was removed whose balance was non-zero but below ExistentialDeposit,
 /// resulting in an outright loss.
 class DustLost extends Event {
   const DustLost({
@@ -493,11 +511,11 @@ class DustLost extends Event {
         'DustLost': {
           'account': account.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(account);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -569,11 +587,11 @@ class Transfer extends Event {
           'from': from.toList(),
           'to': to.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(from);
     size = size + const _i3.AccountId32Codec().sizeHint(to);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
@@ -649,11 +667,11 @@ class BalanceSet extends Event {
         'BalanceSet': {
           'who': who.toList(),
           'free': free,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(free);
     return size;
@@ -719,11 +737,11 @@ class Reserved extends Event {
         'Reserved': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -789,11 +807,11 @@ class Unreserved extends Event {
         'Unreserved': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -834,8 +852,7 @@ class Unreserved extends Event {
       );
 }
 
-/// Some balance was moved from the reserve of the first account to the second
-/// account.
+/// Some balance was moved from the reserve of the first account to the second account.
 /// Final argument indicates the destination balance type.
 class ReserveRepatriated extends Event {
   const ReserveRepatriated({
@@ -873,11 +890,11 @@ class ReserveRepatriated extends Event {
           'to': to.toList(),
           'amount': amount,
           'destinationStatus': destinationStatus.toJson(),
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(from);
     size = size + const _i3.AccountId32Codec().sizeHint(to);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
@@ -960,11 +977,11 @@ class Deposit extends Event {
         'Deposit': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1030,11 +1047,11 @@ class Withdraw extends Event {
         'Withdraw': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1100,11 +1117,11 @@ class Slashed extends Event {
         'Slashed': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1170,11 +1187,11 @@ class Minted extends Event {
         'Minted': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1240,11 +1257,11 @@ class Burned extends Event {
         'Burned': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1310,11 +1327,11 @@ class Suspended extends Event {
         'Suspended': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1380,11 +1397,11 @@ class Restored extends Event {
         'Restored': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1438,11 +1455,11 @@ class Upgraded extends Event {
 
   @override
   Map<String, Map<String, List<int>>> toJson() => {
-        'Upgraded': {'who': who.toList()},
+        'Upgraded': {'who': who.toList()}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     return size;
   }
@@ -1487,11 +1504,11 @@ class Issued extends Event {
 
   @override
   Map<String, Map<String, BigInt>> toJson() => {
-        'Issued': {'amount': amount},
+        'Issued': {'amount': amount}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
   }
@@ -1532,11 +1549,11 @@ class Rescinded extends Event {
 
   @override
   Map<String, Map<String, BigInt>> toJson() => {
-        'Rescinded': {'amount': amount},
+        'Rescinded': {'amount': amount}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
   }
@@ -1589,11 +1606,11 @@ class Locked extends Event {
         'Locked': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1659,11 +1676,11 @@ class Unlocked extends Event {
         'Unlocked': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1729,11 +1746,11 @@ class Frozen extends Event {
         'Frozen': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;
@@ -1799,11 +1816,11 @@ class Thawed extends Event {
         'Thawed': {
           'who': who.toList(),
           'amount': amount,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + const _i3.AccountId32Codec().sizeHint(who);
     size = size + _i1.U128Codec.codec.sizeHint(amount);
     return size;

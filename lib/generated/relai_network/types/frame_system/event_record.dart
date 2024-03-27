@@ -4,8 +4,8 @@ import 'dart:typed_data' as _i5;
 import 'package:polkadart/scale_codec.dart' as _i1;
 import 'package:quiver/collection.dart' as _i6;
 
-import '../primitive_types/h256.dart' as _i4;
-import '../relai_network_runtime/runtime_event.dart' as _i3;
+import '..\primitive_types\h256.dart' as _i4;
+import '..\relai_network_runtime\runtime_event.dart' as _i3;
 import 'phase.dart' as _i2;
 
 class EventRecord {

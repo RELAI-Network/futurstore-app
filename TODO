@@ -16,3 +16,27 @@ Improvements :
     A sa Wallet connecté (Livres achetés et Téléchargées en local)
     N'a pas sa Wallet connecté ()
   Console - React | Flutter Web
+
+
+_________________________________________________________________________________________________________________________
+  Connection avec le Wallet : peut avoir plusieurs comptes.
+
+  Télécharger une application / ou un jeu (buyAsset) $RL (avec l'id généré après le submitAsset)
+  
+  Télécharger le fichier : firestorage (peut installer l'application, le jeu), si c'est un book on lance Kaggu.
+  
+  Ajouter un commentaire ou une note (doit avoir téléchargé l'application, avec le même compte).
+  
+  
+  _______________________________________________________
+  
+  Kaggu : 
+    Connexion avec sa Wallet
+      Ouverture d'un Ebook depuis FuturStore
+  
+      Accueil : livres téléchargés
+  
+          Autres Ebooks
+  
+    
+    

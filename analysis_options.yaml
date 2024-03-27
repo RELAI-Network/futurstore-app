@@ -10,6 +10,7 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - "bin/cache/**"
+    - "lib/generated/**"
   errors:
     always_declare_return_types: error
     # This is a readability vs succintness tradeoff. I prefer succintness.
