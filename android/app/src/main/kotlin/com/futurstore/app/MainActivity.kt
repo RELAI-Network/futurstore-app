@@ -1,4 +1,4 @@
-package com.example.futurstore
+package com.futurstore.app
 
 import io.flutter.embedding.android.FlutterActivity
 

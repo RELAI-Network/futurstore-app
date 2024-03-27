@@ -1,7 +1,7 @@
 name: futurstore
 description: "Futur Store Decentralized App store"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 0.0.1+1
+version: 0.0.3+9
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
@@ -37,6 +37,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.8
+  change_app_package_name: ^1.1.0
   cloud_firestore_odm_generator: ^1.0.0-dev.83
   custom_lint: ^0.6.2
   flutter_test:
