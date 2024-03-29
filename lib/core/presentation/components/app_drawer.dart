@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../features/wallets/pages/wallet_generator_screen.dart';
+import 'package:futurstore/features/wallets/pages/account_page.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
@@ -50,12 +49,15 @@ class _AppDrawerState extends State<AppDrawer> {
                   await Navigator.push(
                     context,
                     MaterialPageRoute<Object>(
-                      builder: (context) => const WalletManagerScreen(),
+                      builder: (context) => const AccountPage(),
                     ),
                   );
                 },
-                leading:
-                    const Icon(Icons.wallet, size: 20, color: Colors.black54),
+                leading: const Icon(
+                  Icons.wallet,
+                  size: 20,
+                  color: Colors.black54,
+                ),
                 title: const Text('Manage Wallets'),
               ),
               ListTile(

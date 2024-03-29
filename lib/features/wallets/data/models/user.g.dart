@@ -115,6 +115,11 @@ abstract class UserModelDocumentReference
     return _$UserModelCollectionReference(reference.firestore);
   }
 
+  late final Web3WalletAccountCollectionReference wallets =
+      _$Web3WalletAccountCollectionReference(
+    reference,
+  );
+
   @override
   Stream<UserModelDocumentSnapshot> snapshots();
 
@@ -129,28 +134,16 @@ abstract class UserModelDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    String name,
-    FieldValue nameFieldValue,
-    String role,
-    FieldValue roleFieldValue,
-    String uid,
-    FieldValue uidFieldValue,
-    List<String> assetsIds,
-    FieldValue assetsIdsFieldValue,
+    String uuid,
+    FieldValue uuidFieldValue,
     DateTime? createdAt,
     FieldValue createdAtFieldValue,
     String? deviceId,
     FieldValue deviceIdFieldValue,
     DateTime? lastConnection,
     FieldValue lastConnectionFieldValue,
-    String? web3AccountAddress,
-    FieldValue web3AccountAddressFieldValue,
-    String? web3AccountId,
-    FieldValue web3AccountIdFieldValue,
-    String? web3AccountName,
-    FieldValue web3AccountNameFieldValue,
-    String? web3AccountSource,
-    FieldValue web3AccountSourceFieldValue,
+    String role,
+    FieldValue roleFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -158,28 +151,16 @@ abstract class UserModelDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    String name,
-    FieldValue nameFieldValue,
-    String role,
-    FieldValue roleFieldValue,
-    String uid,
-    FieldValue uidFieldValue,
-    List<String> assetsIds,
-    FieldValue assetsIdsFieldValue,
+    String uuid,
+    FieldValue uuidFieldValue,
     DateTime? createdAt,
     FieldValue createdAtFieldValue,
     String? deviceId,
     FieldValue deviceIdFieldValue,
     DateTime? lastConnection,
     FieldValue lastConnectionFieldValue,
-    String? web3AccountAddress,
-    FieldValue web3AccountAddressFieldValue,
-    String? web3AccountId,
-    FieldValue web3AccountIdFieldValue,
-    String? web3AccountName,
-    FieldValue web3AccountNameFieldValue,
-    String? web3AccountSource,
-    FieldValue web3AccountSourceFieldValue,
+    String role,
+    FieldValue roleFieldValue,
   });
 }
 
@@ -195,6 +176,11 @@ class _$UserModelDocumentReference
   UserModelCollectionReference get parent {
     return _$UserModelCollectionReference(reference.firestore);
   }
+
+  late final Web3WalletAccountCollectionReference wallets =
+      _$Web3WalletAccountCollectionReference(
+    reference,
+  );
 
   @override
   Stream<UserModelDocumentSnapshot> snapshots() {
@@ -212,44 +198,20 @@ class _$UserModelDocumentReference
   }
 
   Future<void> update({
-    Object? name = _sentinel,
-    FieldValue? nameFieldValue,
-    Object? role = _sentinel,
-    FieldValue? roleFieldValue,
-    Object? uid = _sentinel,
-    FieldValue? uidFieldValue,
-    Object? assetsIds = _sentinel,
-    FieldValue? assetsIdsFieldValue,
+    Object? uuid = _sentinel,
+    FieldValue? uuidFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? deviceId = _sentinel,
     FieldValue? deviceIdFieldValue,
     Object? lastConnection = _sentinel,
     FieldValue? lastConnectionFieldValue,
-    Object? web3AccountAddress = _sentinel,
-    FieldValue? web3AccountAddressFieldValue,
-    Object? web3AccountId = _sentinel,
-    FieldValue? web3AccountIdFieldValue,
-    Object? web3AccountName = _sentinel,
-    FieldValue? web3AccountNameFieldValue,
-    Object? web3AccountSource = _sentinel,
-    FieldValue? web3AccountSourceFieldValue,
+    Object? role = _sentinel,
+    FieldValue? roleFieldValue,
   }) async {
     assert(
-      name == _sentinel || nameFieldValue == null,
-      "Cannot specify both name and nameFieldValue",
-    );
-    assert(
-      role == _sentinel || roleFieldValue == null,
-      "Cannot specify both role and roleFieldValue",
-    );
-    assert(
-      uid == _sentinel || uidFieldValue == null,
-      "Cannot specify both uid and uidFieldValue",
-    );
-    assert(
-      assetsIds == _sentinel || assetsIdsFieldValue == null,
-      "Cannot specify both assetsIds and assetsIdsFieldValue",
+      uuid == _sentinel || uuidFieldValue == null,
+      "Cannot specify both uuid and uuidFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -264,39 +226,14 @@ class _$UserModelDocumentReference
       "Cannot specify both lastConnection and lastConnectionFieldValue",
     );
     assert(
-      web3AccountAddress == _sentinel || web3AccountAddressFieldValue == null,
-      "Cannot specify both web3AccountAddress and web3AccountAddressFieldValue",
-    );
-    assert(
-      web3AccountId == _sentinel || web3AccountIdFieldValue == null,
-      "Cannot specify both web3AccountId and web3AccountIdFieldValue",
-    );
-    assert(
-      web3AccountName == _sentinel || web3AccountNameFieldValue == null,
-      "Cannot specify both web3AccountName and web3AccountNameFieldValue",
-    );
-    assert(
-      web3AccountSource == _sentinel || web3AccountSourceFieldValue == null,
-      "Cannot specify both web3AccountSource and web3AccountSourceFieldValue",
+      role == _sentinel || roleFieldValue == null,
+      "Cannot specify both role and roleFieldValue",
     );
     final json = {
-      if (name != _sentinel)
-        _$UserModelFieldMap['name']!:
-            _$UserModelPerFieldToJson.name(name as String),
-      if (nameFieldValue != null) _$UserModelFieldMap['name']!: nameFieldValue,
-      if (role != _sentinel)
-        _$UserModelFieldMap['role']!:
-            _$UserModelPerFieldToJson.role(role as String),
-      if (roleFieldValue != null) _$UserModelFieldMap['role']!: roleFieldValue,
-      if (uid != _sentinel)
-        _$UserModelFieldMap['uid']!:
-            _$UserModelPerFieldToJson.uid(uid as String),
-      if (uidFieldValue != null) _$UserModelFieldMap['uid']!: uidFieldValue,
-      if (assetsIds != _sentinel)
-        _$UserModelFieldMap['assetsIds']!:
-            _$UserModelPerFieldToJson.assetsIds(assetsIds as List<String>),
-      if (assetsIdsFieldValue != null)
-        _$UserModelFieldMap['assetsIds']!: assetsIdsFieldValue,
+      if (uuid != _sentinel)
+        _$UserModelFieldMap['uuid']!:
+            _$UserModelPerFieldToJson.uuid(uuid as String),
+      if (uuidFieldValue != null) _$UserModelFieldMap['uuid']!: uuidFieldValue,
       if (createdAt != _sentinel)
         _$UserModelFieldMap['createdAt']!:
             _$UserModelPerFieldToJson.createdAt(createdAt as DateTime?),
@@ -312,27 +249,10 @@ class _$UserModelDocumentReference
             .lastConnection(lastConnection as DateTime?),
       if (lastConnectionFieldValue != null)
         _$UserModelFieldMap['lastConnection']!: lastConnectionFieldValue,
-      if (web3AccountAddress != _sentinel)
-        _$UserModelFieldMap['web3AccountAddress']!: _$UserModelPerFieldToJson
-            .web3AccountAddress(web3AccountAddress as String?),
-      if (web3AccountAddressFieldValue != null)
-        _$UserModelFieldMap['web3AccountAddress']!:
-            web3AccountAddressFieldValue,
-      if (web3AccountId != _sentinel)
-        _$UserModelFieldMap['web3AccountId']!:
-            _$UserModelPerFieldToJson.web3AccountId(web3AccountId as String?),
-      if (web3AccountIdFieldValue != null)
-        _$UserModelFieldMap['web3AccountId']!: web3AccountIdFieldValue,
-      if (web3AccountName != _sentinel)
-        _$UserModelFieldMap['web3AccountName']!: _$UserModelPerFieldToJson
-            .web3AccountName(web3AccountName as String?),
-      if (web3AccountNameFieldValue != null)
-        _$UserModelFieldMap['web3AccountName']!: web3AccountNameFieldValue,
-      if (web3AccountSource != _sentinel)
-        _$UserModelFieldMap['web3AccountSource']!: _$UserModelPerFieldToJson
-            .web3AccountSource(web3AccountSource as String?),
-      if (web3AccountSourceFieldValue != null)
-        _$UserModelFieldMap['web3AccountSource']!: web3AccountSourceFieldValue,
+      if (role != _sentinel)
+        _$UserModelFieldMap['role']!:
+            _$UserModelPerFieldToJson.role(role as String),
+      if (roleFieldValue != null) _$UserModelFieldMap['role']!: roleFieldValue,
     };
 
     return reference.update(json);
@@ -340,44 +260,20 @@ class _$UserModelDocumentReference
 
   void transactionUpdate(
     Transaction transaction, {
-    Object? name = _sentinel,
-    FieldValue? nameFieldValue,
-    Object? role = _sentinel,
-    FieldValue? roleFieldValue,
-    Object? uid = _sentinel,
-    FieldValue? uidFieldValue,
-    Object? assetsIds = _sentinel,
-    FieldValue? assetsIdsFieldValue,
+    Object? uuid = _sentinel,
+    FieldValue? uuidFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? deviceId = _sentinel,
     FieldValue? deviceIdFieldValue,
     Object? lastConnection = _sentinel,
     FieldValue? lastConnectionFieldValue,
-    Object? web3AccountAddress = _sentinel,
-    FieldValue? web3AccountAddressFieldValue,
-    Object? web3AccountId = _sentinel,
-    FieldValue? web3AccountIdFieldValue,
-    Object? web3AccountName = _sentinel,
-    FieldValue? web3AccountNameFieldValue,
-    Object? web3AccountSource = _sentinel,
-    FieldValue? web3AccountSourceFieldValue,
+    Object? role = _sentinel,
+    FieldValue? roleFieldValue,
   }) {
     assert(
-      name == _sentinel || nameFieldValue == null,
-      "Cannot specify both name and nameFieldValue",
-    );
-    assert(
-      role == _sentinel || roleFieldValue == null,
-      "Cannot specify both role and roleFieldValue",
-    );
-    assert(
-      uid == _sentinel || uidFieldValue == null,
-      "Cannot specify both uid and uidFieldValue",
-    );
-    assert(
-      assetsIds == _sentinel || assetsIdsFieldValue == null,
-      "Cannot specify both assetsIds and assetsIdsFieldValue",
+      uuid == _sentinel || uuidFieldValue == null,
+      "Cannot specify both uuid and uuidFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -392,39 +288,14 @@ class _$UserModelDocumentReference
       "Cannot specify both lastConnection and lastConnectionFieldValue",
     );
     assert(
-      web3AccountAddress == _sentinel || web3AccountAddressFieldValue == null,
-      "Cannot specify both web3AccountAddress and web3AccountAddressFieldValue",
-    );
-    assert(
-      web3AccountId == _sentinel || web3AccountIdFieldValue == null,
-      "Cannot specify both web3AccountId and web3AccountIdFieldValue",
-    );
-    assert(
-      web3AccountName == _sentinel || web3AccountNameFieldValue == null,
-      "Cannot specify both web3AccountName and web3AccountNameFieldValue",
-    );
-    assert(
-      web3AccountSource == _sentinel || web3AccountSourceFieldValue == null,
-      "Cannot specify both web3AccountSource and web3AccountSourceFieldValue",
+      role == _sentinel || roleFieldValue == null,
+      "Cannot specify both role and roleFieldValue",
     );
     final json = {
-      if (name != _sentinel)
-        _$UserModelFieldMap['name']!:
-            _$UserModelPerFieldToJson.name(name as String),
-      if (nameFieldValue != null) _$UserModelFieldMap['name']!: nameFieldValue,
-      if (role != _sentinel)
-        _$UserModelFieldMap['role']!:
-            _$UserModelPerFieldToJson.role(role as String),
-      if (roleFieldValue != null) _$UserModelFieldMap['role']!: roleFieldValue,
-      if (uid != _sentinel)
-        _$UserModelFieldMap['uid']!:
-            _$UserModelPerFieldToJson.uid(uid as String),
-      if (uidFieldValue != null) _$UserModelFieldMap['uid']!: uidFieldValue,
-      if (assetsIds != _sentinel)
-        _$UserModelFieldMap['assetsIds']!:
-            _$UserModelPerFieldToJson.assetsIds(assetsIds as List<String>),
-      if (assetsIdsFieldValue != null)
-        _$UserModelFieldMap['assetsIds']!: assetsIdsFieldValue,
+      if (uuid != _sentinel)
+        _$UserModelFieldMap['uuid']!:
+            _$UserModelPerFieldToJson.uuid(uuid as String),
+      if (uuidFieldValue != null) _$UserModelFieldMap['uuid']!: uuidFieldValue,
       if (createdAt != _sentinel)
         _$UserModelFieldMap['createdAt']!:
             _$UserModelPerFieldToJson.createdAt(createdAt as DateTime?),
@@ -440,27 +311,10 @@ class _$UserModelDocumentReference
             .lastConnection(lastConnection as DateTime?),
       if (lastConnectionFieldValue != null)
         _$UserModelFieldMap['lastConnection']!: lastConnectionFieldValue,
-      if (web3AccountAddress != _sentinel)
-        _$UserModelFieldMap['web3AccountAddress']!: _$UserModelPerFieldToJson
-            .web3AccountAddress(web3AccountAddress as String?),
-      if (web3AccountAddressFieldValue != null)
-        _$UserModelFieldMap['web3AccountAddress']!:
-            web3AccountAddressFieldValue,
-      if (web3AccountId != _sentinel)
-        _$UserModelFieldMap['web3AccountId']!:
-            _$UserModelPerFieldToJson.web3AccountId(web3AccountId as String?),
-      if (web3AccountIdFieldValue != null)
-        _$UserModelFieldMap['web3AccountId']!: web3AccountIdFieldValue,
-      if (web3AccountName != _sentinel)
-        _$UserModelFieldMap['web3AccountName']!: _$UserModelPerFieldToJson
-            .web3AccountName(web3AccountName as String?),
-      if (web3AccountNameFieldValue != null)
-        _$UserModelFieldMap['web3AccountName']!: web3AccountNameFieldValue,
-      if (web3AccountSource != _sentinel)
-        _$UserModelFieldMap['web3AccountSource']!: _$UserModelPerFieldToJson
-            .web3AccountSource(web3AccountSource as String?),
-      if (web3AccountSourceFieldValue != null)
-        _$UserModelFieldMap['web3AccountSource']!: web3AccountSourceFieldValue,
+      if (role != _sentinel)
+        _$UserModelFieldMap['role']!:
+            _$UserModelPerFieldToJson.role(role as String),
+      if (roleFieldValue != null) _$UserModelFieldMap['role']!: roleFieldValue,
     };
 
     transaction.update(reference, json);
@@ -530,7 +384,7 @@ abstract class UserModelQuery
     bool? isNull,
   });
 
-  UserModelQuery whereName({
+  UserModelQuery whereUuid({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -539,42 +393,6 @@ abstract class UserModelQuery
     String? isGreaterThanOrEqualTo,
     List<String>? whereIn,
     List<String>? whereNotIn,
-    bool? isNull,
-  });
-
-  UserModelQuery whereRole({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  });
-
-  UserModelQuery whereUid({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  });
-
-  UserModelQuery whereAssetsIds({
-    List<String>? isEqualTo,
-    List<String>? isNotEqualTo,
-    List<String>? isLessThan,
-    List<String>? isLessThanOrEqualTo,
-    List<String>? isGreaterThan,
-    List<String>? isGreaterThanOrEqualTo,
-    String? arrayContains,
-    List<String>? arrayContainsAny,
     bool? isNull,
   });
 
@@ -614,51 +432,15 @@ abstract class UserModelQuery
     bool? isNull,
   });
 
-  UserModelQuery whereWeb3AccountAddress({
+  UserModelQuery whereRole({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
     String? isLessThanOrEqualTo,
     String? isGreaterThan,
     String? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  });
-
-  UserModelQuery whereWeb3AccountId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  });
-
-  UserModelQuery whereWeb3AccountName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  });
-
-  UserModelQuery whereWeb3AccountSource({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
     bool? isNull,
   });
 
@@ -707,48 +489,12 @@ abstract class UserModelQuery
     UserModelDocumentSnapshot? startAfterDocument,
   });
 
-  UserModelQuery orderByName({
+  UserModelQuery orderByUuid({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  });
-
-  UserModelQuery orderByRole({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  });
-
-  UserModelQuery orderByUid({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  });
-
-  UserModelQuery orderByAssetsIds({
-    bool descending = false,
-    List<String> startAt,
-    List<String> startAfter,
-    List<String> endAt,
-    List<String> endBefore,
     UserModelDocumentSnapshot? startAtDocument,
     UserModelDocumentSnapshot? endAtDocument,
     UserModelDocumentSnapshot? endBeforeDocument,
@@ -791,48 +537,12 @@ abstract class UserModelQuery
     UserModelDocumentSnapshot? startAfterDocument,
   });
 
-  UserModelQuery orderByWeb3AccountAddress({
+  UserModelQuery orderByRole({
     bool descending = false,
-    String? startAt,
-    String? startAfter,
-    String? endAt,
-    String? endBefore,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  });
-
-  UserModelQuery orderByWeb3AccountId({
-    bool descending = false,
-    String? startAt,
-    String? startAfter,
-    String? endAt,
-    String? endBefore,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  });
-
-  UserModelQuery orderByWeb3AccountName({
-    bool descending = false,
-    String? startAt,
-    String? startAfter,
-    String? endAt,
-    String? endBefore,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  });
-
-  UserModelQuery orderByWeb3AccountSource({
-    bool descending = false,
-    String? startAt,
-    String? startAfter,
-    String? endAt,
-    String? endBefore,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
     UserModelDocumentSnapshot? startAtDocument,
     UserModelDocumentSnapshot? endAtDocument,
     UserModelDocumentSnapshot? endBeforeDocument,
@@ -953,7 +663,7 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
   }
 
   @override
-  UserModelQuery whereName({
+  UserModelQuery whereUuid({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
@@ -967,168 +677,27 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
     return _$UserModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$UserModelFieldMap['name']!,
+        _$UserModelFieldMap['uuid']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.name(isEqualTo as String)
+            ? _$UserModelPerFieldToJson.uuid(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.name(isNotEqualTo as String)
+            ? _$UserModelPerFieldToJson.uuid(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$UserModelPerFieldToJson.name(isLessThan as String)
+            ? _$UserModelPerFieldToJson.uuid(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson.name(isLessThanOrEqualTo as String)
+            ? _$UserModelPerFieldToJson.uuid(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$UserModelPerFieldToJson.name(isGreaterThan as String)
+            ? _$UserModelPerFieldToJson.uuid(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson.name(isGreaterThanOrEqualTo as String)
+            ? _$UserModelPerFieldToJson.uuid(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn?.map((e) => _$UserModelPerFieldToJson.name(e)),
-        whereNotIn: whereNotIn?.map((e) => _$UserModelPerFieldToJson.name(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery whereRole({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$UserModelFieldMap['role']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.role(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.role(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$UserModelPerFieldToJson.role(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson.role(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$UserModelPerFieldToJson.role(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson.role(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn: whereIn?.map((e) => _$UserModelPerFieldToJson.role(e)),
-        whereNotIn: whereNotIn?.map((e) => _$UserModelPerFieldToJson.role(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery whereUid({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$UserModelFieldMap['uid']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.uid(isEqualTo as String)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.uid(isNotEqualTo as String)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$UserModelPerFieldToJson.uid(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson.uid(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$UserModelPerFieldToJson.uid(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson.uid(isGreaterThanOrEqualTo as String)
-            : null,
-        whereIn: whereIn?.map((e) => _$UserModelPerFieldToJson.uid(e)),
-        whereNotIn: whereNotIn?.map((e) => _$UserModelPerFieldToJson.uid(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery whereAssetsIds({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains = _sentinel,
-    List<String>? arrayContainsAny,
-    bool? isNull,
-  }) {
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$UserModelFieldMap['assetsIds']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.assetsIds(isEqualTo as List<String>)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.assetsIds(isNotEqualTo as List<String>)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$UserModelPerFieldToJson.assetsIds(isLessThan as List<String>)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .assetsIds(isLessThanOrEqualTo as List<String>)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$UserModelPerFieldToJson.assetsIds(isGreaterThan as List<String>)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .assetsIds(isGreaterThanOrEqualTo as List<String>)
-            : null,
-        arrayContains: arrayContains != null
-            ? (_$UserModelPerFieldToJson.assetsIds([arrayContains as String])
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$UserModelPerFieldToJson.assetsIds(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
+        whereIn: whereIn?.map((e) => _$UserModelPerFieldToJson.uuid(e)),
+        whereNotIn: whereNotIn?.map((e) => _$UserModelPerFieldToJson.uuid(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1281,195 +850,41 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
   }
 
   @override
-  UserModelQuery whereWeb3AccountAddress({
+  UserModelQuery whereRole({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
     Object? isLessThan,
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
     Object? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
     bool? isNull,
   }) {
     return _$UserModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$UserModelFieldMap['web3AccountAddress']!,
+        _$UserModelFieldMap['role']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.web3AccountAddress(isEqualTo as String?)
+            ? _$UserModelPerFieldToJson.role(isEqualTo as String)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson
-                .web3AccountAddress(isNotEqualTo as String?)
+            ? _$UserModelPerFieldToJson.role(isNotEqualTo as String)
             : null,
         isLessThan: isLessThan != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountAddress(isLessThan as String?)
+            ? _$UserModelPerFieldToJson.role(isLessThan as String)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountAddress(isLessThanOrEqualTo as String?)
+            ? _$UserModelPerFieldToJson.role(isLessThanOrEqualTo as String)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountAddress(isGreaterThan as String?)
+            ? _$UserModelPerFieldToJson.role(isGreaterThan as String)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountAddress(isGreaterThanOrEqualTo as String?)
+            ? _$UserModelPerFieldToJson.role(isGreaterThanOrEqualTo as String)
             : null,
-        whereIn: whereIn
-            ?.map((e) => _$UserModelPerFieldToJson.web3AccountAddress(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$UserModelPerFieldToJson.web3AccountAddress(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery whereWeb3AccountId({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$UserModelFieldMap['web3AccountId']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.web3AccountId(isEqualTo as String?)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.web3AccountId(isNotEqualTo as String?)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$UserModelPerFieldToJson.web3AccountId(isLessThan as String?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountId(isLessThanOrEqualTo as String?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$UserModelPerFieldToJson.web3AccountId(isGreaterThan as String?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountId(isGreaterThanOrEqualTo as String?)
-            : null,
-        whereIn:
-            whereIn?.map((e) => _$UserModelPerFieldToJson.web3AccountId(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$UserModelPerFieldToJson.web3AccountId(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery whereWeb3AccountName({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$UserModelFieldMap['web3AccountName']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.web3AccountName(isEqualTo as String?)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.web3AccountName(isNotEqualTo as String?)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$UserModelPerFieldToJson.web3AccountName(isLessThan as String?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountName(isLessThanOrEqualTo as String?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountName(isGreaterThan as String?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountName(isGreaterThanOrEqualTo as String?)
-            : null,
-        whereIn:
-            whereIn?.map((e) => _$UserModelPerFieldToJson.web3AccountName(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$UserModelPerFieldToJson.web3AccountName(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery whereWeb3AccountSource({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$UserModelFieldMap['web3AccountSource']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson.web3AccountSource(isEqualTo as String?)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$UserModelPerFieldToJson
-                .web3AccountSource(isNotEqualTo as String?)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$UserModelPerFieldToJson.web3AccountSource(isLessThan as String?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountSource(isLessThanOrEqualTo as String?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountSource(isGreaterThan as String?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$UserModelPerFieldToJson
-                .web3AccountSource(isGreaterThanOrEqualTo as String?)
-            : null,
-        whereIn:
-            whereIn?.map((e) => _$UserModelPerFieldToJson.web3AccountSource(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$UserModelPerFieldToJson.web3AccountSource(e)),
+        whereIn: whereIn?.map((e) => _$UserModelPerFieldToJson.role(e)),
+        whereNotIn: whereNotIn?.map((e) => _$UserModelPerFieldToJson.role(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1626,7 +1041,7 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
   }
 
   @override
-  UserModelQuery orderByName({
+  UserModelQuery orderByUuid({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -1637,227 +1052,8 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
     UserModelDocumentSnapshot? endBeforeDocument,
     UserModelDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor.orderBy(_$UserModelFieldMap['name']!,
+    final query = $referenceWithoutCursor.orderBy(_$UserModelFieldMap['uuid']!,
         descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery orderByRole({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$UserModelFieldMap['role']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery orderByUid({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$UserModelFieldMap['uid']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery orderByAssetsIds({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$UserModelFieldMap['assetsIds']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2138,7 +1334,7 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
   }
 
   @override
-  UserModelQuery orderByWeb3AccountAddress({
+  UserModelQuery orderByRole({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -2149,229 +1345,7 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
     UserModelDocumentSnapshot? endBeforeDocument,
     UserModelDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$UserModelFieldMap['web3AccountAddress']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery orderByWeb3AccountId({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$UserModelFieldMap['web3AccountId']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery orderByWeb3AccountName({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$UserModelFieldMap['web3AccountName']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$UserModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  UserModelQuery orderByWeb3AccountSource({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    UserModelDocumentSnapshot? startAtDocument,
-    UserModelDocumentSnapshot? endAtDocument,
-    UserModelDocumentSnapshot? endBeforeDocument,
-    UserModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$UserModelFieldMap['web3AccountSource']!,
+    final query = $referenceWithoutCursor.orderBy(_$UserModelFieldMap['role']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -2526,55 +1500,1410 @@ class UserModelQueryDocumentSnapshot
   }
 }
 
+/// A collection reference object can be used for adding documents,
+/// getting document references, and querying for documents
+/// (using the methods inherited from Query).
+abstract class Web3WalletAccountCollectionReference
+    implements
+        Web3WalletAccountQuery,
+        FirestoreCollectionReference<Web3WalletAccount,
+            Web3WalletAccountQuerySnapshot> {
+  factory Web3WalletAccountCollectionReference(
+    DocumentReference<UserModel> parent,
+  ) = _$Web3WalletAccountCollectionReference;
+
+  static Web3WalletAccount fromFirestore(
+    DocumentSnapshot<Map<String, Object?>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return _$Web3WalletAccountFromJson(snapshot.data()!);
+  }
+
+  static Map<String, Object?> toFirestore(
+    Web3WalletAccount value,
+    SetOptions? options,
+  ) {
+    return _$Web3WalletAccountToJson(value);
+  }
+
+  @override
+  CollectionReference<Web3WalletAccount> get reference;
+
+  /// A reference to the containing [UserModelDocumentReference] if this is a subcollection.
+  UserModelDocumentReference get parent;
+
+  @override
+  Web3WalletAccountDocumentReference doc([String? id]);
+
+  /// Add a new document to this collection with the specified data,
+  /// assigning it a document ID automatically.
+  Future<Web3WalletAccountDocumentReference> add(Web3WalletAccount value);
+}
+
+class _$Web3WalletAccountCollectionReference extends _$Web3WalletAccountQuery
+    implements Web3WalletAccountCollectionReference {
+  factory _$Web3WalletAccountCollectionReference(
+    DocumentReference<UserModel> parent,
+  ) {
+    return _$Web3WalletAccountCollectionReference._(
+      UserModelDocumentReference(parent),
+      parent.collection('wallets').withConverter(
+            fromFirestore: Web3WalletAccountCollectionReference.fromFirestore,
+            toFirestore: Web3WalletAccountCollectionReference.toFirestore,
+          ),
+    );
+  }
+
+  _$Web3WalletAccountCollectionReference._(
+    this.parent,
+    CollectionReference<Web3WalletAccount> reference,
+  ) : super(reference, $referenceWithoutCursor: reference);
+
+  @override
+  final UserModelDocumentReference parent;
+
+  String get path => reference.path;
+
+  @override
+  CollectionReference<Web3WalletAccount> get reference =>
+      super.reference as CollectionReference<Web3WalletAccount>;
+
+  @override
+  Web3WalletAccountDocumentReference doc([String? id]) {
+    assert(
+      id == null || id.split('/').length == 1,
+      'The document ID cannot be from a different collection',
+    );
+    return Web3WalletAccountDocumentReference(
+      reference.doc(id),
+    );
+  }
+
+  @override
+  Future<Web3WalletAccountDocumentReference> add(Web3WalletAccount value) {
+    return reference
+        .add(value)
+        .then((ref) => Web3WalletAccountDocumentReference(ref));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$Web3WalletAccountCollectionReference &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+abstract class Web3WalletAccountDocumentReference
+    extends FirestoreDocumentReference<Web3WalletAccount,
+        Web3WalletAccountDocumentSnapshot> {
+  factory Web3WalletAccountDocumentReference(
+          DocumentReference<Web3WalletAccount> reference) =
+      _$Web3WalletAccountDocumentReference;
+
+  DocumentReference<Web3WalletAccount> get reference;
+
+  /// A reference to the [Web3WalletAccountCollectionReference] containing this document.
+  Web3WalletAccountCollectionReference get parent {
+    return _$Web3WalletAccountCollectionReference(
+      reference.parent.parent!.withConverter<UserModel>(
+        fromFirestore: UserModelCollectionReference.fromFirestore,
+        toFirestore: UserModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<Web3WalletAccountDocumentSnapshot> snapshots();
+
+  @override
+  Future<Web3WalletAccountDocumentSnapshot> get([GetOptions? options]);
+
+  @override
+  Future<void> delete();
+
+  /// Updates data on the document. Data will be merged with any existing
+  /// document data.
+  ///
+  /// If no document exists yet, the update will fail.
+  Future<void> update({
+    String userUuid,
+    FieldValue userUuidFieldValue,
+    String web3AccountAddress,
+    FieldValue web3AccountAddressFieldValue,
+    String? web3AccountName,
+    FieldValue web3AccountNameFieldValue,
+    String? web3AccountSource,
+    FieldValue web3AccountSourceFieldValue,
+  });
+
+  /// Updates fields in the current document using the transaction API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void transactionUpdate(
+    Transaction transaction, {
+    String userUuid,
+    FieldValue userUuidFieldValue,
+    String web3AccountAddress,
+    FieldValue web3AccountAddressFieldValue,
+    String? web3AccountName,
+    FieldValue web3AccountNameFieldValue,
+    String? web3AccountSource,
+    FieldValue web3AccountSourceFieldValue,
+  });
+}
+
+class _$Web3WalletAccountDocumentReference extends FirestoreDocumentReference<
+        Web3WalletAccount, Web3WalletAccountDocumentSnapshot>
+    implements Web3WalletAccountDocumentReference {
+  _$Web3WalletAccountDocumentReference(this.reference);
+
+  @override
+  final DocumentReference<Web3WalletAccount> reference;
+
+  /// A reference to the [Web3WalletAccountCollectionReference] containing this document.
+  Web3WalletAccountCollectionReference get parent {
+    return _$Web3WalletAccountCollectionReference(
+      reference.parent.parent!.withConverter<UserModel>(
+        fromFirestore: UserModelCollectionReference.fromFirestore,
+        toFirestore: UserModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<Web3WalletAccountDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(Web3WalletAccountDocumentSnapshot._);
+  }
+
+  @override
+  Future<Web3WalletAccountDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(Web3WalletAccountDocumentSnapshot._);
+  }
+
+  @override
+  Future<Web3WalletAccountDocumentSnapshot> transactionGet(
+      Transaction transaction) {
+    return transaction.get(reference).then(Web3WalletAccountDocumentSnapshot._);
+  }
+
+  Future<void> update({
+    Object? userUuid = _sentinel,
+    FieldValue? userUuidFieldValue,
+    Object? web3AccountAddress = _sentinel,
+    FieldValue? web3AccountAddressFieldValue,
+    Object? web3AccountName = _sentinel,
+    FieldValue? web3AccountNameFieldValue,
+    Object? web3AccountSource = _sentinel,
+    FieldValue? web3AccountSourceFieldValue,
+  }) async {
+    assert(
+      userUuid == _sentinel || userUuidFieldValue == null,
+      "Cannot specify both userUuid and userUuidFieldValue",
+    );
+    assert(
+      web3AccountAddress == _sentinel || web3AccountAddressFieldValue == null,
+      "Cannot specify both web3AccountAddress and web3AccountAddressFieldValue",
+    );
+    assert(
+      web3AccountName == _sentinel || web3AccountNameFieldValue == null,
+      "Cannot specify both web3AccountName and web3AccountNameFieldValue",
+    );
+    assert(
+      web3AccountSource == _sentinel || web3AccountSourceFieldValue == null,
+      "Cannot specify both web3AccountSource and web3AccountSourceFieldValue",
+    );
+    final json = {
+      if (userUuid != _sentinel)
+        _$Web3WalletAccountFieldMap['userUuid']!:
+            _$Web3WalletAccountPerFieldToJson.userUuid(userUuid as String),
+      if (userUuidFieldValue != null)
+        _$Web3WalletAccountFieldMap['userUuid']!: userUuidFieldValue,
+      if (web3AccountAddress != _sentinel)
+        _$Web3WalletAccountFieldMap['web3AccountAddress']!:
+            _$Web3WalletAccountPerFieldToJson
+                .web3AccountAddress(web3AccountAddress as String),
+      if (web3AccountAddressFieldValue != null)
+        _$Web3WalletAccountFieldMap['web3AccountAddress']!:
+            web3AccountAddressFieldValue,
+      if (web3AccountName != _sentinel)
+        _$Web3WalletAccountFieldMap['web3AccountName']!:
+            _$Web3WalletAccountPerFieldToJson
+                .web3AccountName(web3AccountName as String?),
+      if (web3AccountNameFieldValue != null)
+        _$Web3WalletAccountFieldMap['web3AccountName']!:
+            web3AccountNameFieldValue,
+      if (web3AccountSource != _sentinel)
+        _$Web3WalletAccountFieldMap['web3AccountSource']!:
+            _$Web3WalletAccountPerFieldToJson
+                .web3AccountSource(web3AccountSource as String?),
+      if (web3AccountSourceFieldValue != null)
+        _$Web3WalletAccountFieldMap['web3AccountSource']!:
+            web3AccountSourceFieldValue,
+    };
+
+    return reference.update(json);
+  }
+
+  void transactionUpdate(
+    Transaction transaction, {
+    Object? userUuid = _sentinel,
+    FieldValue? userUuidFieldValue,
+    Object? web3AccountAddress = _sentinel,
+    FieldValue? web3AccountAddressFieldValue,
+    Object? web3AccountName = _sentinel,
+    FieldValue? web3AccountNameFieldValue,
+    Object? web3AccountSource = _sentinel,
+    FieldValue? web3AccountSourceFieldValue,
+  }) {
+    assert(
+      userUuid == _sentinel || userUuidFieldValue == null,
+      "Cannot specify both userUuid and userUuidFieldValue",
+    );
+    assert(
+      web3AccountAddress == _sentinel || web3AccountAddressFieldValue == null,
+      "Cannot specify both web3AccountAddress and web3AccountAddressFieldValue",
+    );
+    assert(
+      web3AccountName == _sentinel || web3AccountNameFieldValue == null,
+      "Cannot specify both web3AccountName and web3AccountNameFieldValue",
+    );
+    assert(
+      web3AccountSource == _sentinel || web3AccountSourceFieldValue == null,
+      "Cannot specify both web3AccountSource and web3AccountSourceFieldValue",
+    );
+    final json = {
+      if (userUuid != _sentinel)
+        _$Web3WalletAccountFieldMap['userUuid']!:
+            _$Web3WalletAccountPerFieldToJson.userUuid(userUuid as String),
+      if (userUuidFieldValue != null)
+        _$Web3WalletAccountFieldMap['userUuid']!: userUuidFieldValue,
+      if (web3AccountAddress != _sentinel)
+        _$Web3WalletAccountFieldMap['web3AccountAddress']!:
+            _$Web3WalletAccountPerFieldToJson
+                .web3AccountAddress(web3AccountAddress as String),
+      if (web3AccountAddressFieldValue != null)
+        _$Web3WalletAccountFieldMap['web3AccountAddress']!:
+            web3AccountAddressFieldValue,
+      if (web3AccountName != _sentinel)
+        _$Web3WalletAccountFieldMap['web3AccountName']!:
+            _$Web3WalletAccountPerFieldToJson
+                .web3AccountName(web3AccountName as String?),
+      if (web3AccountNameFieldValue != null)
+        _$Web3WalletAccountFieldMap['web3AccountName']!:
+            web3AccountNameFieldValue,
+      if (web3AccountSource != _sentinel)
+        _$Web3WalletAccountFieldMap['web3AccountSource']!:
+            _$Web3WalletAccountPerFieldToJson
+                .web3AccountSource(web3AccountSource as String?),
+      if (web3AccountSourceFieldValue != null)
+        _$Web3WalletAccountFieldMap['web3AccountSource']!:
+            web3AccountSourceFieldValue,
+    };
+
+    transaction.update(reference, json);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is Web3WalletAccountDocumentReference &&
+        other.runtimeType == runtimeType &&
+        other.parent == parent &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, id);
+}
+
+abstract class Web3WalletAccountQuery
+    implements
+        QueryReference<Web3WalletAccount, Web3WalletAccountQuerySnapshot> {
+  @override
+  Web3WalletAccountQuery limit(int limit);
+
+  @override
+  Web3WalletAccountQuery limitToLast(int limit);
+
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  Web3WalletAccountQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  Web3WalletAccountQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  Web3WalletAccountQuery whereUserUuid({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  Web3WalletAccountQuery whereWeb3AccountAddress({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  Web3WalletAccountQuery whereWeb3AccountName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  Web3WalletAccountQuery whereWeb3AccountSource({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  /// Perform an order query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of order queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```
+  Web3WalletAccountQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  });
+
+  Web3WalletAccountQuery orderByDocumentId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  });
+
+  Web3WalletAccountQuery orderByUserUuid({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  });
+
+  Web3WalletAccountQuery orderByWeb3AccountAddress({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  });
+
+  Web3WalletAccountQuery orderByWeb3AccountName({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  });
+
+  Web3WalletAccountQuery orderByWeb3AccountSource({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  });
+}
+
+class _$Web3WalletAccountQuery
+    extends QueryReference<Web3WalletAccount, Web3WalletAccountQuerySnapshot>
+    implements Web3WalletAccountQuery {
+  _$Web3WalletAccountQuery(
+    this._collection, {
+    required Query<Web3WalletAccount> $referenceWithoutCursor,
+    $QueryCursor $queryCursor = const $QueryCursor(),
+  }) : super(
+          $referenceWithoutCursor: $referenceWithoutCursor,
+          $queryCursor: $queryCursor,
+        );
+
+  final CollectionReference<Object?> _collection;
+
+  @override
+  Stream<Web3WalletAccountQuerySnapshot> snapshots([SnapshotOptions? options]) {
+    return reference
+        .snapshots()
+        .map(Web3WalletAccountQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Future<Web3WalletAccountQuerySnapshot> get([GetOptions? options]) {
+    return reference
+        .get(options)
+        .then(Web3WalletAccountQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Web3WalletAccountQuery limit(int limit) {
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery limitToLast(int limit) {
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery whereUserUuid({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$Web3WalletAccountFieldMap['userUuid']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$Web3WalletAccountPerFieldToJson.userUuid(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$Web3WalletAccountPerFieldToJson.userUuid(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$Web3WalletAccountPerFieldToJson.userUuid(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .userUuid(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .userUuid(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .userUuid(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$Web3WalletAccountPerFieldToJson.userUuid(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$Web3WalletAccountPerFieldToJson.userUuid(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery whereWeb3AccountAddress({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$Web3WalletAccountFieldMap['web3AccountAddress']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountAddress(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountAddress(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountAddress(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountAddress(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountAddress(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountAddress(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map(
+            (e) => _$Web3WalletAccountPerFieldToJson.web3AccountAddress(e)),
+        whereNotIn: whereNotIn?.map(
+            (e) => _$Web3WalletAccountPerFieldToJson.web3AccountAddress(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery whereWeb3AccountName({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$Web3WalletAccountFieldMap['web3AccountName']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountName(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountName(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountName(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountName(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountName(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountName(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$Web3WalletAccountPerFieldToJson.web3AccountName(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$Web3WalletAccountPerFieldToJson.web3AccountName(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery whereWeb3AccountSource({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$Web3WalletAccountFieldMap['web3AccountSource']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountSource(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountSource(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountSource(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountSource(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountSource(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$Web3WalletAccountPerFieldToJson
+                .web3AccountSource(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn?.map(
+            (e) => _$Web3WalletAccountPerFieldToJson.web3AccountSource(e)),
+        whereNotIn: whereNotIn?.map(
+            (e) => _$Web3WalletAccountPerFieldToJson.web3AccountSource(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  }) {
+    final query =
+        $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery orderByDocumentId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery orderByUserUuid({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$Web3WalletAccountFieldMap['userUuid']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery orderByWeb3AccountAddress({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$Web3WalletAccountFieldMap['web3AccountAddress']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery orderByWeb3AccountName({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$Web3WalletAccountFieldMap['web3AccountName']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  Web3WalletAccountQuery orderByWeb3AccountSource({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    Web3WalletAccountDocumentSnapshot? startAtDocument,
+    Web3WalletAccountDocumentSnapshot? endAtDocument,
+    Web3WalletAccountDocumentSnapshot? endBeforeDocument,
+    Web3WalletAccountDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$Web3WalletAccountFieldMap['web3AccountSource']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$Web3WalletAccountQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$Web3WalletAccountQuery &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+class Web3WalletAccountDocumentSnapshot
+    extends FirestoreDocumentSnapshot<Web3WalletAccount> {
+  Web3WalletAccountDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<Web3WalletAccount> snapshot;
+
+  @override
+  Web3WalletAccountDocumentReference get reference {
+    return Web3WalletAccountDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final Web3WalletAccount? data;
+}
+
+class Web3WalletAccountQuerySnapshot extends FirestoreQuerySnapshot<
+    Web3WalletAccount, Web3WalletAccountQueryDocumentSnapshot> {
+  Web3WalletAccountQuerySnapshot._(
+    this.snapshot,
+    this.docs,
+    this.docChanges,
+  );
+
+  factory Web3WalletAccountQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<Web3WalletAccount> snapshot,
+  ) {
+    final docs =
+        snapshot.docs.map(Web3WalletAccountQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        Web3WalletAccountDocumentSnapshot._,
+      );
+    }).toList();
+
+    return Web3WalletAccountQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<Web3WalletAccountDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    Web3WalletAccountDocumentSnapshot Function(DocumentSnapshot<T> doc)
+        decodeDoc,
+  ) {
+    return FirestoreDocumentChange<Web3WalletAccountDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
+
+  final QuerySnapshot<Web3WalletAccount> snapshot;
+
+  @override
+  final List<Web3WalletAccountQueryDocumentSnapshot> docs;
+
+  @override
+  final List<FirestoreDocumentChange<Web3WalletAccountDocumentSnapshot>>
+      docChanges;
+}
+
+class Web3WalletAccountQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<Web3WalletAccount>
+    implements Web3WalletAccountDocumentSnapshot {
+  Web3WalletAccountQueryDocumentSnapshot._(this.snapshot)
+      : data = snapshot.data();
+
+  @override
+  final QueryDocumentSnapshot<Web3WalletAccount> snapshot;
+
+  @override
+  final Web3WalletAccount data;
+
+  @override
+  Web3WalletAccountDocumentReference get reference {
+    return Web3WalletAccountDocumentReference(snapshot.reference);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
-      assetsIds: (json['assets_ids'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
       id: json['id'] as String,
-      name: json['name'] as String,
-      role: json['role'] as String,
-      uid: json['uid'] as String,
+      role: json['role'] as String? ?? 'user',
+      uuid: json['uuid'] as String,
       createdAt: _$JsonConverterFromJson<Timestamp, DateTime>(
           json['created_at'], const FirestoreDateTimeConverter().fromJson),
       deviceId: json['device_id'] as String?,
       lastConnection: _$JsonConverterFromJson<Timestamp, DateTime>(
           json['last_connection'], const FirestoreDateTimeConverter().fromJson),
-      web3AccountAddress: json['web3_account_address'] as String?,
-      web3AccountId: json['web3_account_id'] as String?,
-      web3AccountName: json['web3_account_name'] as String?,
-      web3AccountSource: json['web3_account_source'] as String? ?? 'android',
     );
 
 const _$UserModelFieldMap = <String, String>{
-  'name': 'name',
-  'role': 'role',
-  'uid': 'uid',
-  'assetsIds': 'assets_ids',
+  'uuid': 'uuid',
   'createdAt': 'created_at',
   'deviceId': 'device_id',
   'id': 'id',
   'lastConnection': 'last_connection',
-  'web3AccountAddress': 'web3_account_address',
-  'web3AccountId': 'web3_account_id',
-  'web3AccountName': 'web3_account_name',
-  'web3AccountSource': 'web3_account_source',
+  'role': 'role',
 };
 
 // ignore: unused_element
 abstract class _$UserModelPerFieldToJson {
   // ignore: unused_element
-  static Object? name(String instance) => instance;
-  // ignore: unused_element
-  static Object? role(String instance) => instance;
-  // ignore: unused_element
-  static Object? uid(String instance) => instance;
-  // ignore: unused_element
-  static Object? assetsIds(List<String> instance) => instance;
+  static Object? uuid(String instance) => instance;
   // ignore: unused_element
   static Object? createdAt(DateTime? instance) =>
       _$JsonConverterToJson<Timestamp, DateTime>(
@@ -2588,30 +2917,18 @@ abstract class _$UserModelPerFieldToJson {
       _$JsonConverterToJson<Timestamp, DateTime>(
           instance, const FirestoreDateTimeConverter().toJson);
   // ignore: unused_element
-  static Object? web3AccountAddress(String? instance) => instance;
-  // ignore: unused_element
-  static Object? web3AccountId(String? instance) => instance;
-  // ignore: unused_element
-  static Object? web3AccountName(String? instance) => instance;
-  // ignore: unused_element
-  static Object? web3AccountSource(String? instance) => instance;
+  static Object? role(String instance) => instance;
 }
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
-      'name': instance.name,
-      'role': instance.role,
-      'uid': instance.uid,
-      'assets_ids': instance.assetsIds,
+      'uuid': instance.uuid,
       'created_at': _$JsonConverterToJson<Timestamp, DateTime>(
           instance.createdAt, const FirestoreDateTimeConverter().toJson),
       'device_id': instance.deviceId,
       'id': instance.id,
       'last_connection': _$JsonConverterToJson<Timestamp, DateTime>(
           instance.lastConnection, const FirestoreDateTimeConverter().toJson),
-      'web3_account_address': instance.web3AccountAddress,
-      'web3_account_id': instance.web3AccountId,
-      'web3_account_name': instance.web3AccountName,
-      'web3_account_source': instance.web3AccountSource,
+      'role': instance.role,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(
@@ -2625,3 +2942,38 @@ Json? _$JsonConverterToJson<Json, Value>(
   Json? Function(Value value) toJson,
 ) =>
     value == null ? null : toJson(value);
+
+Web3WalletAccount _$Web3WalletAccountFromJson(Map<String, dynamic> json) =>
+    Web3WalletAccount(
+      userUuid: json['user_uuid'] as String,
+      web3AccountAddress: json['web3_account_address'] as String,
+      web3AccountName: json['web3_account_name'] as String?,
+      web3AccountSource: json['web3_account_source'] as String? ?? 'android',
+    );
+
+const _$Web3WalletAccountFieldMap = <String, String>{
+  'userUuid': 'user_uuid',
+  'web3AccountAddress': 'web3_account_address',
+  'web3AccountName': 'web3_account_name',
+  'web3AccountSource': 'web3_account_source',
+};
+
+// ignore: unused_element
+abstract class _$Web3WalletAccountPerFieldToJson {
+  // ignore: unused_element
+  static Object? userUuid(String instance) => instance;
+  // ignore: unused_element
+  static Object? web3AccountAddress(String instance) => instance;
+  // ignore: unused_element
+  static Object? web3AccountName(String? instance) => instance;
+  // ignore: unused_element
+  static Object? web3AccountSource(String? instance) => instance;
+}
+
+Map<String, dynamic> _$Web3WalletAccountToJson(Web3WalletAccount instance) =>
+    <String, dynamic>{
+      'user_uuid': instance.userUuid,
+      'web3_account_address': instance.web3AccountAddress,
+      'web3_account_name': instance.web3AccountName,
+      'web3_account_source': instance.web3AccountSource,
+    };
