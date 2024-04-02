@@ -28,6 +28,7 @@ dependencies:
   flutter_riverpod: ^2.4.10
   flutter_secure_storage: ^9.0.0
   flutter_svg: ^2.0.10+1
+  http: ^1.2.1
   installed_apps: ^1.5.0
   intl: ^0.18.1
   jdenticon_dart: ^2.0.0

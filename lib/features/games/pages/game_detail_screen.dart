@@ -19,7 +19,7 @@ import 'package:futurstore/core/utils/mixins/form_mixin.dart';
 import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/games/widgets/install_button.dart';
 
-import '../../wallets/controllers/services/reviews.dart';
+import '../../wallets/controllers/services/app_reviews.dart';
 
 class GameDetailScreen extends StatefulWidget {
   const GameDetailScreen(this.data, {super.key});
@@ -264,7 +264,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                   ],
                 ),
                 const _Gap(),
-                ReviewRatingBar(
+                _ReviewRatingBar(
                   applicationId: widget.data.id,
                 ),
                 const _Gap(),
@@ -277,19 +277,18 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   }
 }
 
-class ReviewRatingBar extends ConsumerStatefulWidget {
-  const ReviewRatingBar({
+class _ReviewRatingBar extends ConsumerStatefulWidget {
+  const _ReviewRatingBar({
     required this.applicationId,
-    super.key,
   });
 
   final String applicationId;
 
   @override
-  ConsumerState<ReviewRatingBar> createState() => _ReviewRatingBarState();
+  ConsumerState<_ReviewRatingBar> createState() => _ReviewRatingBarState();
 }
 
-class _ReviewRatingBarState extends ConsumerState<ReviewRatingBar> {
+class _ReviewRatingBarState extends ConsumerState<_ReviewRatingBar> {
   AppReview? _review;
 
   bool _loadingReview = true;
@@ -486,7 +485,7 @@ class __AddReviewFormState extends ConsumerState<_AddReviewForm>
 
                         try {
                           final result = await ref.watch(
-                            addReviewProvider(
+                            addAppReviewProvider(
                               applicationId: widget.applicationId,
                               rating: value<double>('rating') ?? widget.rating,
                               comment: value<String>('comment')?.trim(),

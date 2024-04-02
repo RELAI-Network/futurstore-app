@@ -11,6 +11,7 @@ import 'package:futurstore/core/utils/extensions/navigator.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
 import 'package:futurstore/core/utils/mixins/form_mixin.dart';
 import 'package:futurstore/features/wallets/controllers/services/connect_to_wallet.dart';
+import 'package:futurstore/features/wallets/controllers/services/tokens.dart';
 import 'package:futurstore/features/wallets/controllers/services/transactions.dart';
 
 import '../controllers/providers/connected_wallet_provider.dart';
@@ -333,6 +334,9 @@ class _WalletTile extends ConsumerWidget {
                     if (data.hasError) {
                       return Text(data.error.toString());
                     }
+                    final balance = (data.data!.toDouble()) / 10000000000;
+
+                    // debugPrint(data.data!.toDouble().toString());
 
                     return Column(
                       children: [
@@ -343,35 +347,25 @@ class _WalletTile extends ConsumerWidget {
                           visualDensity: VisualDensity.compact,
                           leading: const Icon(Icons.account_balance_wallet),
                           title: Text(
-                            'Balance',
+                            context.l10n.balance,
                             style: context.textTheme.bodyMedium?.copyWith(
                               color: context.theme.colorScheme.onSurface
                                   .withOpacity(0.5),
                             ),
                           ),
                           subtitle: Text(
-                            '''${((data.data!.toDouble()) / 1000000000000000).toStringAsFixed(2)} $kRelaiTokenSymbol''',
+                            '''${balance.toStringAsFixed(2)} $kRelaiTokenSymbol''',
                             style: context.textTheme.bodyLarge,
                           ),
                         ),
-                        // ListTile(
-                        //   contentPadding: const EdgeInsets.symmetric(
-                        //     horizontal: AppSpacing.md,
-                        //   ),
-                        //   visualDensity: VisualDensity.compact,
-                        //   leading: const Icon(Icons.date_range),
-                        //   title: Text(
-                        //     'Addet at',
-                        //     style: context.textTheme.bodyLarge,
-                        //   ),
-                        //   subtitle: Text(
-                        //     DateFormat.yMMMMEEEEd().format(address.addedAt),
-                        //     style: context.textTheme.bodyMedium?.copyWith(
-                        //       color: context.theme.colorScheme.onSurface
-                        //           .withOpacity(0.5),
-                        //     ),
-                        //   ),
-                        // ),
+                        if (balance < 10) ...[
+                          const Gap(),
+                          SizedBox(
+                            width: context.width * 0.59,
+                            child: const _ClaimsTokensButton(),
+                          ),
+                          const Gap(),
+                        ],
                       ],
                     );
                   },
@@ -381,6 +375,43 @@ class _WalletTile extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ClaimsTokensButton extends ConsumerStatefulWidget {
+  const _ClaimsTokensButton();
+
+  @override
+  ConsumerState<_ClaimsTokensButton> createState() =>
+      _ClaimsTokensButtonState();
+}
+
+class _ClaimsTokensButtonState extends ConsumerState<_ClaimsTokensButton>
+    with FormMixin {
+  Future<void> _claimsTokens() async {
+    try {
+      loading = true;
+
+      await ref.read(claimTokensProvider.future);
+
+      loading = false;
+    } catch (e) {
+      debugPrint(e.toString());
+
+      loading = false;
+
+      error = e.toString();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: _claimsTokens,
+      child: loading
+          ? const Center(child: CircularProgressIndicator.adaptive())
+          : Text(context.l10n.claimTokens),
     );
   }
 }

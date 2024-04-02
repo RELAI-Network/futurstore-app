@@ -12,16 +12,20 @@ class BooksGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 3,
-      children: books.map((a) {
-        return Padding(
-          padding: const EdgeInsets.all(8),
-          child: BookCard(
-            data: a,
-          ),
-        );
-      }).toList(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: GridView.count(
+        crossAxisCount: 3,
+        childAspectRatio: 0.5,
+        children: books.map((a) {
+          return Padding(
+            padding: const EdgeInsets.all(8),
+            child: BookCard(
+              data: a,
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }

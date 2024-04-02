@@ -11,6 +11,9 @@ part 'book.g.dart';
 @Collection<BookModelEdition>(
   '${BookModel.collection}/*/${BookModelEdition.collection}',
 )
+@Collection<BookReview>(
+  '${BookModel.collection}/*/${BookReview.collection}',
+)
 final booksReference = BookModelCollectionReference();
 
 @firestoreSerializable
@@ -201,6 +204,52 @@ class BookModelEdition {
   }
 
   String get typeName => typeEnum.name.capitalize;
+}
+
+@firestoreSerializable
+class BookReview {
+  BookReview({
+    required this.addedAt,
+    required this.address,
+    required this.bookId,
+    required this.assetId,
+    required this.deviceId,
+    required this.id,
+    required this.hash,
+    required this.userId,
+    required this.rating,
+    this.comment,
+    this.userProfilePictureUrl,
+  });
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  static const String collection = 'reviews';
+
+  final String address;
+  final String? comment;
+  final String hash;
+  final double rating;
+
+  @JsonKey(name: 'added_at')
+  final DateTime addedAt;
+
+  @JsonKey(name: 'asset_id')
+  final String assetId;
+
+  @JsonKey(name: 'book_id')
+  final String bookId;
+
+  @JsonKey(name: 'device_id')
+  final String deviceId;
+
+  @Id()
+  final String id;
+
+  @JsonKey(name: 'user_id')
+  final String userId;
+
+  @JsonKey(name: 'user_profile_picture_url')
+  final String? userProfilePictureUrl;
 }
 
 enum BookGenre {

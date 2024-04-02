@@ -1,7 +1,7 @@
 import 'package:dart_utils/dart_utils.dart';
 import 'package:flutter/foundation.dart';
-import 'package:futurstore/features/apps/controllers/providers/apps_state_provider.dart';
-import 'package:futurstore/features/apps/data/models/app.dart';
+import 'package:futurstore/features/books/controllers/providers/books_repo_provider.dart';
+import 'package:futurstore/features/books/data/models/book.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../providers/connected_wallet_provider.dart';
@@ -9,12 +9,12 @@ import '../providers/uniq_id_provider.dart';
 import '../providers/user_uniq_identifier_provider.dart';
 import 'assets.dart';
 
-part 'reviews.g.dart';
+part 'book_reviews.g.dart';
 
 @riverpod
-Future<({String? error, bool success, AppReview? data})> addReview(
-  AddReviewRef ref, {
-  required String applicationId,
+Future<({String? error, bool success, BookReview? data})> addBookReview(
+  AddBookReviewRef ref, {
+  required String bookId,
   required double rating,
   String? comment,
 }) async {
@@ -25,11 +25,11 @@ Future<({String? error, bool success, AppReview? data})> addReview(
       throw Exception('No connected wallet');
     }
 
-    final appsRepo = ref.read(appsRepoProvider);
+    final booksRepo = ref.read(booksRepoProvider);
 
-    final application = await appsRepo.findApp(applicationId);
+    final book = await booksRepo.findBook(bookId);
 
-    if (application == null || application.assetId == null) {
+    if (book == null || book.assetId == null) {
       return (
         error: 'Unable to add review at this time.'.hardcoded,
         success: false,
@@ -39,7 +39,7 @@ Future<({String? error, bool success, AppReview? data})> addReview(
 
     if (!await ref.read(
       verifyAssetPurchaseProvider(
-        assetId: int.parse(application.assetId!),
+        assetId: int.parse(book.assetId!),
         address: wallet.value!.address,
       ).future,
     )) {
@@ -52,10 +52,10 @@ Future<({String? error, bool success, AppReview? data})> addReview(
       );
     }
 
-    if (await appsRepo.haveAddedReview(applicationId, wallet.value!.address)) {
+    if (await booksRepo.haveAddedReview(bookId, wallet.value!.address)) {
       return (
         error:
-            '''User with this address have already added review for this application.'''
+            '''User with this address have already added review for this book.'''
                 .hardcoded,
         success: false,
         data: null,
@@ -64,7 +64,7 @@ Future<({String? error, bool success, AppReview? data})> addReview(
 
     final hash = await ref.read(
       addReviewHashProvider(
-        assetId: int.parse(application.assetId!),
+        assetId: int.parse(book.assetId!),
         note: rating.toString(),
       ).future,
     );
@@ -73,12 +73,12 @@ Future<({String? error, bool success, AppReview? data})> addReview(
 
     final uuid = await ref.read(userUniqIdentifierProvider);
 
-    await appsRepo.addReview(
+    await booksRepo.addReview(
       uuid,
       deviceId,
       wallet.value!.address,
-      applicationId,
-      application.assetId!,
+      bookId,
+      book.assetId!,
       hash!,
       rating,
       comment,
@@ -88,7 +88,7 @@ Future<({String? error, bool success, AppReview? data})> addReview(
     return (
       error: null,
       success: true,
-      data: await appsRepo.myReview(applicationId, wallet.value!.address),
+      data: await booksRepo.myReview(bookId, wallet.value!.address),
     );
   } catch (e) {
     debugPrint(e.toString());
@@ -102,9 +102,9 @@ Future<({String? error, bool success, AppReview? data})> addReview(
 }
 
 @riverpod
-Future<bool> haveAddedReview(
-  HaveAddedReviewRef ref, {
-  required String applicationId,
+Future<bool> haveAddedBookReview(
+  HaveAddedBookReviewRef ref, {
+  required String bookId,
 }) async {
   try {
     final wallet = ref.read(connectedWalletProvider);
@@ -113,9 +113,9 @@ Future<bool> haveAddedReview(
       throw Exception('No connected wallet');
     }
 
-    final appsRepo = ref.read(appsRepoProvider);
+    final booksRepo = ref.read(booksRepoProvider);
 
-    return appsRepo.haveAddedReview(applicationId, wallet.value!.address);
+    return booksRepo.haveAddedReview(bookId, wallet.value!.address);
   } catch (e) {
     debugPrint(e.toString());
 
@@ -124,9 +124,9 @@ Future<bool> haveAddedReview(
 }
 
 @riverpod
-Future<AppReview?> myAppReview(
-  MyAppReviewRef ref, {
-  required String applicationId,
+Future<BookReview?> myBookReview(
+  MyBookReviewRef ref, {
+  required String bookId,
 }) async {
   try {
     final wallet = ref.read(connectedWalletProvider);
@@ -135,9 +135,9 @@ Future<AppReview?> myAppReview(
       throw Exception('No connected wallet');
     }
 
-    final appsRepo = ref.read(appsRepoProvider);
+    final booksRepo = ref.read(booksRepoProvider);
 
-    return appsRepo.myReview(applicationId, wallet.value!.address);
+    return booksRepo.myReview(bookId, wallet.value!.address);
   } catch (e) {
     debugPrint(e.toString());
 

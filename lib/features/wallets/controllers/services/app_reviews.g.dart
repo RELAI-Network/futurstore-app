@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'reviews.dart';
+part of 'app_reviews.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addReviewHash() => r'5c418b5db68dd2e246240c3e03ac969a8895f48f';
+String _$addAppReviewHash() => r'6dd48146d4ffde208e1ac350bb866409694fc225';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,23 +29,23 @@ class _SystemHash {
   }
 }
 
-/// See also [addReview].
-@ProviderFor(addReview)
-const addReviewProvider = AddReviewFamily();
+/// See also [addAppReview].
+@ProviderFor(addAppReview)
+const addAppReviewProvider = AddAppReviewFamily();
 
-/// See also [addReview].
-class AddReviewFamily extends Family<
+/// See also [addAppReview].
+class AddAppReviewFamily extends Family<
     AsyncValue<({String? error, bool success, AppReview? data})>> {
-  /// See also [addReview].
-  const AddReviewFamily();
+  /// See also [addAppReview].
+  const AddAppReviewFamily();
 
-  /// See also [addReview].
-  AddReviewProvider call({
+  /// See also [addAppReview].
+  AddAppReviewProvider call({
     required String applicationId,
     required double rating,
     String? comment,
   }) {
-    return AddReviewProvider(
+    return AddAppReviewProvider(
       applicationId: applicationId,
       rating: rating,
       comment: comment,
@@ -53,8 +53,8 @@ class AddReviewFamily extends Family<
   }
 
   @override
-  AddReviewProvider getProviderOverride(
-    covariant AddReviewProvider provider,
+  AddAppReviewProvider getProviderOverride(
+    covariant AddAppReviewProvider provider,
   ) {
     return call(
       applicationId: provider.applicationId,
@@ -75,38 +75,39 @@ class AddReviewFamily extends Family<
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'addReviewProvider';
+  String? get name => r'addAppReviewProvider';
 }
 
-/// See also [addReview].
-class AddReviewProvider extends AutoDisposeFutureProvider<
+/// See also [addAppReview].
+class AddAppReviewProvider extends AutoDisposeFutureProvider<
     ({String? error, bool success, AppReview? data})> {
-  /// See also [addReview].
-  AddReviewProvider({
+  /// See also [addAppReview].
+  AddAppReviewProvider({
     required String applicationId,
     required double rating,
     String? comment,
   }) : this._internal(
-          (ref) => addReview(
-            ref as AddReviewRef,
+          (ref) => addAppReview(
+            ref as AddAppReviewRef,
             applicationId: applicationId,
             rating: rating,
             comment: comment,
           ),
-          from: addReviewProvider,
-          name: r'addReviewProvider',
+          from: addAppReviewProvider,
+          name: r'addAppReviewProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$addReviewHash,
-          dependencies: AddReviewFamily._dependencies,
-          allTransitiveDependencies: AddReviewFamily._allTransitiveDependencies,
+                  : _$addAppReviewHash,
+          dependencies: AddAppReviewFamily._dependencies,
+          allTransitiveDependencies:
+              AddAppReviewFamily._allTransitiveDependencies,
           applicationId: applicationId,
           rating: rating,
           comment: comment,
         );
 
-  AddReviewProvider._internal(
+  AddAppReviewProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -125,13 +126,13 @@ class AddReviewProvider extends AutoDisposeFutureProvider<
   @override
   Override overrideWith(
     FutureOr<({String? error, bool success, AppReview? data})> Function(
-            AddReviewRef provider)
+            AddAppReviewRef provider)
         create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: AddReviewProvider._internal(
-        (ref) => create(ref as AddReviewRef),
+      override: AddAppReviewProvider._internal(
+        (ref) => create(ref as AddAppReviewRef),
         from: from,
         name: null,
         dependencies: null,
@@ -147,12 +148,12 @@ class AddReviewProvider extends AutoDisposeFutureProvider<
   @override
   AutoDisposeFutureProviderElement<
       ({String? error, bool success, AppReview? data})> createElement() {
-    return _AddReviewProviderElement(this);
+    return _AddAppReviewProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is AddReviewProvider &&
+    return other is AddAppReviewProvider &&
         other.applicationId == applicationId &&
         other.rating == rating &&
         other.comment == comment;
@@ -169,7 +170,7 @@ class AddReviewProvider extends AutoDisposeFutureProvider<
   }
 }
 
-mixin AddReviewRef on AutoDisposeFutureProviderRef<
+mixin AddAppReviewRef on AutoDisposeFutureProviderRef<
     ({String? error, bool success, AppReview? data})> {
   /// The parameter `applicationId` of this provider.
   String get applicationId;
@@ -181,41 +182,42 @@ mixin AddReviewRef on AutoDisposeFutureProviderRef<
   String? get comment;
 }
 
-class _AddReviewProviderElement extends AutoDisposeFutureProviderElement<
-    ({String? error, bool success, AppReview? data})> with AddReviewRef {
-  _AddReviewProviderElement(super.provider);
+class _AddAppReviewProviderElement extends AutoDisposeFutureProviderElement<
+    ({String? error, bool success, AppReview? data})> with AddAppReviewRef {
+  _AddAppReviewProviderElement(super.provider);
 
   @override
-  String get applicationId => (origin as AddReviewProvider).applicationId;
+  String get applicationId => (origin as AddAppReviewProvider).applicationId;
   @override
-  double get rating => (origin as AddReviewProvider).rating;
+  double get rating => (origin as AddAppReviewProvider).rating;
   @override
-  String? get comment => (origin as AddReviewProvider).comment;
+  String? get comment => (origin as AddAppReviewProvider).comment;
 }
 
-String _$haveAddedReviewHash() => r'd52b90da44130878e858dd48b4f39a8f41132689';
+String _$haveAddedAppReviewHash() =>
+    r'58909f732977fd856a267407b407e653d7a14796';
 
-/// See also [haveAddedReview].
-@ProviderFor(haveAddedReview)
-const haveAddedReviewProvider = HaveAddedReviewFamily();
+/// See also [haveAddedAppReview].
+@ProviderFor(haveAddedAppReview)
+const haveAddedAppReviewProvider = HaveAddedAppReviewFamily();
 
-/// See also [haveAddedReview].
-class HaveAddedReviewFamily extends Family<AsyncValue<bool>> {
-  /// See also [haveAddedReview].
-  const HaveAddedReviewFamily();
+/// See also [haveAddedAppReview].
+class HaveAddedAppReviewFamily extends Family<AsyncValue<bool>> {
+  /// See also [haveAddedAppReview].
+  const HaveAddedAppReviewFamily();
 
-  /// See also [haveAddedReview].
-  HaveAddedReviewProvider call({
+  /// See also [haveAddedAppReview].
+  HaveAddedAppReviewProvider call({
     required String applicationId,
   }) {
-    return HaveAddedReviewProvider(
+    return HaveAddedAppReviewProvider(
       applicationId: applicationId,
     );
   }
 
   @override
-  HaveAddedReviewProvider getProviderOverride(
-    covariant HaveAddedReviewProvider provider,
+  HaveAddedAppReviewProvider getProviderOverride(
+    covariant HaveAddedAppReviewProvider provider,
   ) {
     return call(
       applicationId: provider.applicationId,
@@ -234,32 +236,32 @@ class HaveAddedReviewFamily extends Family<AsyncValue<bool>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'haveAddedReviewProvider';
+  String? get name => r'haveAddedAppReviewProvider';
 }
 
-/// See also [haveAddedReview].
-class HaveAddedReviewProvider extends AutoDisposeFutureProvider<bool> {
-  /// See also [haveAddedReview].
-  HaveAddedReviewProvider({
+/// See also [haveAddedAppReview].
+class HaveAddedAppReviewProvider extends AutoDisposeFutureProvider<bool> {
+  /// See also [haveAddedAppReview].
+  HaveAddedAppReviewProvider({
     required String applicationId,
   }) : this._internal(
-          (ref) => haveAddedReview(
-            ref as HaveAddedReviewRef,
+          (ref) => haveAddedAppReview(
+            ref as HaveAddedAppReviewRef,
             applicationId: applicationId,
           ),
-          from: haveAddedReviewProvider,
-          name: r'haveAddedReviewProvider',
+          from: haveAddedAppReviewProvider,
+          name: r'haveAddedAppReviewProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$haveAddedReviewHash,
-          dependencies: HaveAddedReviewFamily._dependencies,
+                  : _$haveAddedAppReviewHash,
+          dependencies: HaveAddedAppReviewFamily._dependencies,
           allTransitiveDependencies:
-              HaveAddedReviewFamily._allTransitiveDependencies,
+              HaveAddedAppReviewFamily._allTransitiveDependencies,
           applicationId: applicationId,
         );
 
-  HaveAddedReviewProvider._internal(
+  HaveAddedAppReviewProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -273,12 +275,12 @@ class HaveAddedReviewProvider extends AutoDisposeFutureProvider<bool> {
 
   @override
   Override overrideWith(
-    FutureOr<bool> Function(HaveAddedReviewRef provider) create,
+    FutureOr<bool> Function(HaveAddedAppReviewRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: HaveAddedReviewProvider._internal(
-        (ref) => create(ref as HaveAddedReviewRef),
+      override: HaveAddedAppReviewProvider._internal(
+        (ref) => create(ref as HaveAddedAppReviewRef),
         from: from,
         name: null,
         dependencies: null,
@@ -291,12 +293,12 @@ class HaveAddedReviewProvider extends AutoDisposeFutureProvider<bool> {
 
   @override
   AutoDisposeFutureProviderElement<bool> createElement() {
-    return _HaveAddedReviewProviderElement(this);
+    return _HaveAddedAppReviewProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is HaveAddedReviewProvider &&
+    return other is HaveAddedAppReviewProvider &&
         other.applicationId == applicationId;
   }
 
@@ -309,17 +311,18 @@ class HaveAddedReviewProvider extends AutoDisposeFutureProvider<bool> {
   }
 }
 
-mixin HaveAddedReviewRef on AutoDisposeFutureProviderRef<bool> {
+mixin HaveAddedAppReviewRef on AutoDisposeFutureProviderRef<bool> {
   /// The parameter `applicationId` of this provider.
   String get applicationId;
 }
 
-class _HaveAddedReviewProviderElement
-    extends AutoDisposeFutureProviderElement<bool> with HaveAddedReviewRef {
-  _HaveAddedReviewProviderElement(super.provider);
+class _HaveAddedAppReviewProviderElement
+    extends AutoDisposeFutureProviderElement<bool> with HaveAddedAppReviewRef {
+  _HaveAddedAppReviewProviderElement(super.provider);
 
   @override
-  String get applicationId => (origin as HaveAddedReviewProvider).applicationId;
+  String get applicationId =>
+      (origin as HaveAddedAppReviewProvider).applicationId;
 }
 
 String _$myAppReviewHash() => r'f59544169b79b575067436d2bc596d96eff04037';
