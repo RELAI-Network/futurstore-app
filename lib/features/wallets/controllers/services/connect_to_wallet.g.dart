@@ -7,7 +7,7 @@ part of 'connect_to_wallet.dart';
 // **************************************************************************
 
 String _$connectToWalletFromMnemonicHash() =>
-    r'af0acf07012c84669a5ce9866ae8aca7ddd642cc';
+    r'098baf43fb701c61603dba3eb61eda6917183a3b';
 
 /// Copied from Dart SDK
 class _SystemHash {

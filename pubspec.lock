@@ -572,6 +572,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  flutter_svg:
+    dependency: "direct main"
+    description:
+      name: flutter_svg
+      sha256: "7b4ca6cf3304575fe9c8ec64813c8d02ee41d2afe60bcfe0678bcb5375d596a2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.10+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -686,6 +694,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  jdenticon_dart:
+    dependency: "direct main"
+    description:
+      name: jdenticon_dart
+      sha256: c08cf43635c3cffaa757110cb58e56ceb1f5d9a1474557dacee09782d18eb285
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   js:
     dependency: transitive
     description:
@@ -821,6 +837,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      sha256: e3e67b1629e6f7e8100b367d3db6ba6af4b1f0bb80f64db18ef1fbabd2fa9ccf
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   path_provider:
     dependency: transitive
     description:
@@ -869,6 +893,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.1"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      sha256: c15605cd28af66339f8eb6fbe0e541bfe2d1b72d5825efc6598f3e0a31b9ad27
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.2"
   platform:
     dependency: transitive
     description:
@@ -889,42 +921,42 @@ packages:
     dependency: transitive
     description:
       name: pointycastle
-      sha256: "7c1e5f0d23c9016c5bbd8b1473d0d3fb3fc851b876046039509e18e0c7485f2c"
+      sha256: "43ac87de6e10afabc85c445745a7b799e04de84cebaa4fd7bf55a5e1e9604d29"
       url: "https://pub.dev"
     source: hosted
-    version: "3.7.3"
+    version: "3.7.4"
   polkadart:
     dependency: "direct main"
     description:
       name: polkadart
-      sha256: f3a9e6c7c0f45bf49ac8ee277bdb8fe0ef78d3900d9b3eb0c94ef931f4ea694d
+      sha256: "4be169198d7938aec035eacead499b469795ccc9797589bb2df5b2ec6bd52535"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.2"
+    version: "0.4.3"
   polkadart_cli:
     dependency: "direct main"
     description:
       name: polkadart_cli
-      sha256: "58e9e33b5363eae93ee553fa5e28622858cffeeeaba27937ae4a716844a425e8"
+      sha256: a0c82811e7ed935208afc7a8e0ef04446574d53f0a1855694ec5ad0792decef1
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.2"
+    version: "0.4.2"
   polkadart_keyring:
     dependency: "direct main"
     description:
       name: polkadart_keyring
-      sha256: "9c5c6bd24bcf6346989c214dcbaa78085c1d92336927d06ad5b430cc8af0ac0c"
+      sha256: "10cdd75e3319169ca7a4bb49745d85fab3f56bba2eafda35655c4f278a4c5e07"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.4.3"
   polkadart_scale_codec:
     dependency: transitive
     description:
       name: polkadart_scale_codec
-      sha256: "75289b2f53c6cf997dd68945d959fee596c1e47bba3dedba22a6e95646df893c"
+      sha256: fab60c739f6ebcc812796e56378656dca57179cec46e92c23614db6fd9ed0f86
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.2"
+    version: "1.2.0"
   pool:
     dependency: transitive
     description:
@@ -1029,6 +1061,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
+  secp256k1_ecdsa:
+    dependency: transitive
+    description:
+      name: secp256k1_ecdsa
+      sha256: "87008b4fd164d861b94b0edf2e01ffadd6f06769e1f0382e19bb091daecc0576"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -1158,12 +1198,12 @@ packages:
     dependency: transitive
     description:
       name: sr25519
-      sha256: b26343af32bc934d86fac7e3f6dda42770db3ffafa79db564c49db2f7ade4ac9
+      sha256: "266f7b2a4dd2d6a41a49924d41e80665f3b8340c157deff172f2b0cf64657a27"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.1"
+    version: "0.4.0"
   ss58:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: ss58
       sha256: b24d2713597b83708ef30daea5a565dba8bc9129031b30c025069e168301ae5e
@@ -1222,18 +1262,18 @@ packages:
     dependency: transitive
     description:
       name: substrate_bip39
-      sha256: "78b45e9959c3394ecc9b56d9bfb07e11f93db70d273eccd93e3e4d84b28f11c0"
+      sha256: "29548105e939d1fb213aba96686eb5c5aae472249fa12b8dda58b252d23f492c"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.4.0"
   substrate_metadata:
     dependency: transitive
     description:
       name: substrate_metadata
-      sha256: "48c96aed0ef8f38dd99e80e592c7774c30fc13a80d62a5f777b56b22801c3fa0"
+      sha256: "4557950c7dcea17cdf7e1224ac7822ab38dd9658f000be6d58b4a41b0a8126d4"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.2"
+    version: "1.2.0"
   synchronized:
     dependency: transitive
     description:
@@ -1306,6 +1346,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.3.3"
+  vector_graphics:
+    dependency: transitive
+    description:
+      name: vector_graphics
+      sha256: "32c3c684e02f9bc0afb0ae0aa653337a2fe022e8ab064bcd7ffda27a74e288e3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.11+1"
+  vector_graphics_codec:
+    dependency: transitive
+    description:
+      name: vector_graphics_codec
+      sha256: c86987475f162fadff579e7320c7ddda04cd2fdeffbe1129227a85d9ac9e03da
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.11+1"
+  vector_graphics_compiler:
+    dependency: transitive
+    description:
+      name: vector_graphics_compiler
+      sha256: "12faff3f73b1741a36ca7e31b292ddeb629af819ca9efe9953b70bd63fc8cd81"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.11+1"
   vector_math:
     dependency: transitive
     description:
@@ -1362,6 +1426,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      sha256: b015a8ad1c488f66851d762d3090a21c600e479dc75e68328c52774040cf9226
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.5.0"
   yaml:
     dependency: transitive
     description:

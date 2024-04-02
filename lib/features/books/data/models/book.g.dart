@@ -152,6 +152,8 @@ abstract class BookModelDocumentReference
     FieldValue typeFieldValue,
     String? actualEditionId,
     FieldValue actualEditionIdFieldValue,
+    String? assetId,
+    FieldValue assetIdFieldValue,
     String? audioFormat,
     FieldValue audioFormatFieldValue,
     String authors,
@@ -205,6 +207,8 @@ abstract class BookModelDocumentReference
     FieldValue typeFieldValue,
     String? actualEditionId,
     FieldValue actualEditionIdFieldValue,
+    String? assetId,
+    FieldValue assetIdFieldValue,
     String? audioFormat,
     FieldValue audioFormatFieldValue,
     String authors,
@@ -288,6 +292,8 @@ class _$BookModelDocumentReference
     FieldValue? typeFieldValue,
     Object? actualEditionId = _sentinel,
     FieldValue? actualEditionIdFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
     Object? audioFormat = _sentinel,
     FieldValue? audioFormatFieldValue,
     Object? authors = _sentinel,
@@ -352,6 +358,10 @@ class _$BookModelDocumentReference
     assert(
       actualEditionId == _sentinel || actualEditionIdFieldValue == null,
       "Cannot specify both actualEditionId and actualEditionIdFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
     );
     assert(
       audioFormat == _sentinel || audioFormatFieldValue == null,
@@ -453,6 +463,11 @@ class _$BookModelDocumentReference
             .actualEditionId(actualEditionId as String?),
       if (actualEditionIdFieldValue != null)
         _$BookModelFieldMap['actualEditionId']!: actualEditionIdFieldValue,
+      if (assetId != _sentinel)
+        _$BookModelFieldMap['assetId']!:
+            _$BookModelPerFieldToJson.assetId(assetId as String?),
+      if (assetIdFieldValue != null)
+        _$BookModelFieldMap['assetId']!: assetIdFieldValue,
       if (audioFormat != _sentinel)
         _$BookModelFieldMap['audioFormat']!:
             _$BookModelPerFieldToJson.audioFormat(audioFormat as String?),
@@ -548,6 +563,8 @@ class _$BookModelDocumentReference
     FieldValue? typeFieldValue,
     Object? actualEditionId = _sentinel,
     FieldValue? actualEditionIdFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
     Object? audioFormat = _sentinel,
     FieldValue? audioFormatFieldValue,
     Object? authors = _sentinel,
@@ -612,6 +629,10 @@ class _$BookModelDocumentReference
     assert(
       actualEditionId == _sentinel || actualEditionIdFieldValue == null,
       "Cannot specify both actualEditionId and actualEditionIdFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
     );
     assert(
       audioFormat == _sentinel || audioFormatFieldValue == null,
@@ -713,6 +734,11 @@ class _$BookModelDocumentReference
             .actualEditionId(actualEditionId as String?),
       if (actualEditionIdFieldValue != null)
         _$BookModelFieldMap['actualEditionId']!: actualEditionIdFieldValue,
+      if (assetId != _sentinel)
+        _$BookModelFieldMap['assetId']!:
+            _$BookModelPerFieldToJson.assetId(assetId as String?),
+      if (assetIdFieldValue != null)
+        _$BookModelFieldMap['assetId']!: assetIdFieldValue,
       if (audioFormat != _sentinel)
         _$BookModelFieldMap['audioFormat']!:
             _$BookModelPerFieldToJson.audioFormat(audioFormat as String?),
@@ -949,6 +975,18 @@ abstract class BookModelQuery
   });
 
   BookModelQuery whereActualEditionId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereAssetId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1270,6 +1308,18 @@ abstract class BookModelQuery
   });
 
   BookModelQuery orderByActualEditionId({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByAssetId({
     bool descending = false,
     String? startAt,
     String? startAfter,
@@ -1961,6 +2011,52 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
             whereIn?.map((e) => _$BookModelPerFieldToJson.actualEditionId(e)),
         whereNotIn: whereNotIn
             ?.map((e) => _$BookModelPerFieldToJson.actualEditionId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereAssetId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['assetId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.assetId(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.assetId(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.assetId(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.assetId(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.assetId(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .assetId(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.assetId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.assetId(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3369,6 +3465,79 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
     final query = $referenceWithoutCursor.orderBy(
         _$BookModelFieldMap['actualEditionId']!,
         descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByAssetId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['assetId']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -7474,6 +7643,7 @@ BookModel _$BookModelFromJson(Map<String, dynamic> json) => BookModel(
       title: json['title'] as String,
       type: json['type'] as String,
       actualEditionId: json['actual_edition_id'] as String?,
+      assetId: json['asset_id'] as String?,
       audioFormat: json['audio_format'] as String?,
       createdAt: _$JsonConverterFromJson<Timestamp, DateTime>(
           json['created_at'], const FirestoreDateTimeConverter().fromJson),
@@ -7493,6 +7663,7 @@ const _$BookModelFieldMap = <String, String>{
   'title': 'title',
   'type': 'type',
   'actualEditionId': 'actual_edition_id',
+  'assetId': 'asset_id',
   'audioFormat': 'audio_format',
   'authors': 'authors',
   'categoryId': 'category_id',
@@ -7530,6 +7701,8 @@ abstract class _$BookModelPerFieldToJson {
   static Object? type(String instance) => instance;
   // ignore: unused_element
   static Object? actualEditionId(String? instance) => instance;
+  // ignore: unused_element
+  static Object? assetId(String? instance) => instance;
   // ignore: unused_element
   static Object? audioFormat(String? instance) => instance;
   // ignore: unused_element
@@ -7577,6 +7750,7 @@ Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
       'title': instance.title,
       'type': instance.type,
       'actual_edition_id': instance.actualEditionId,
+      'asset_id': instance.assetId,
       'audio_format': instance.audioFormat,
       'authors': instance.authors,
       'category_id': instance.categoryId,

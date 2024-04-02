@@ -6,7 +6,8 @@ import 'package:polkadart/scale_codec.dart' as _i1;
 /// The `Error` enum of this pallet.
 enum Error {
   assetNotFound('AssetNotFound', 0),
-  assetNotUnpublished('AssetNotUnpublished', 1);
+  assetIsPublished('AssetIsPublished', 1),
+  assetNotOwnedByCaller('AssetNotOwnedByCaller', 2);
 
   const Error(
     this.variantName,
@@ -39,7 +40,9 @@ class $ErrorCodec with _i1.Codec<Error> {
       case 0:
         return Error.assetNotFound;
       case 1:
-        return Error.assetNotUnpublished;
+        return Error.assetIsPublished;
+      case 2:
+        return Error.assetNotOwnedByCaller;
       default:
         throw Exception('Error: Invalid variant index: "$index"');
     }

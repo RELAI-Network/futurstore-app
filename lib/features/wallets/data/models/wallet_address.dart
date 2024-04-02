@@ -6,7 +6,7 @@ import 'package:equatable/equatable.dart';
 class WalletAddress extends Equatable {
   WalletAddress({
     required this.address,
-    required this.mnemonicOrSeed,
+    required this.mnemonic,
     required this.name,
     DateTime? addedAt,
   }) : addedAt = addedAt ?? DateTime.now();
@@ -21,13 +21,13 @@ class WalletAddress extends Equatable {
           : DateTime.parse((map['added_at'] ?? '') as String),
       address: (map['address'] ?? '') as String,
       name: (map['name'] ?? '') as String,
-      mnemonicOrSeed: (map['secret'] ?? '') as String,
+      mnemonic: (map['secret'] ?? '') as String,
     );
   }
 
   final DateTime addedAt;
   final String address;
-  final String mnemonicOrSeed;
+  final String mnemonic;
   final String name;
 
   String toJson() => json.encode(toMap());
@@ -37,10 +37,10 @@ class WalletAddress extends Equatable {
       'added_at': addedAt.toIso8601String(),
       'address': address,
       'name': name,
-      'secret': mnemonicOrSeed,
+      'secret': mnemonic,
     };
   }
 
   @override
-  List<Object> get props => [addedAt, address, mnemonicOrSeed, name];
+  List<Object> get props => [addedAt, address, mnemonic, name];
 }

@@ -3,4 +3,4 @@ import 'package:futurstore/features/wallets/data/repo/i_users_firestore_impl.dar
 
 import '../../data/repo/i_users.dart';
 
-final usersServiceProvider = Provider<IUsers>((ref) => UsersFirestoreImpl());
+final usersRepoProvider = Provider<IUsers>((ref) => UsersFirestoreImpl());

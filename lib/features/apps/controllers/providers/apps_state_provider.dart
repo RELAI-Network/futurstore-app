@@ -57,7 +57,8 @@ class AppsStateNotifier extends SafeChangeNotifier {
           // offset: 0,
           );
 
-      final updatedApps = [...state.apps, ...response];
+      // final updatedApps = [...state.apps, ...response];
+      final updatedApps = response;
       const hasMoreApps = false;
 
       state = state.copyWith(
@@ -66,8 +67,9 @@ class AppsStateNotifier extends SafeChangeNotifier {
         hasMoreApps: hasMoreApps,
       );
     } on Exception catch (error, _) {
-      state = state.copyWith(status: AppsStatus.failure);
-      // addError(error, stackTrace);
+      state = state
+          .copyWith(status: AppsStatus.failure)
+          .withError(error.toString());
     }
   }
 

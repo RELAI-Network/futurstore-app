@@ -150,18 +150,18 @@ abstract class ApplicationModelDocumentReference
     FieldValue nameFieldValue,
     String? phone,
     FieldValue phoneFieldValue,
-    double? price,
-    FieldValue priceFieldValue,
     List<String> screenshots,
     FieldValue screenshotsFieldValue,
     String? status,
     FieldValue statusFieldValue,
     List<String> tags,
     FieldValue tagsFieldValue,
-    String version,
+    String? version,
     FieldValue versionFieldValue,
     String? actualReleaseId,
     FieldValue actualReleaseIdFieldValue,
+    String? assetId,
+    FieldValue assetIdFieldValue,
     String appType,
     FieldValue appTypeFieldValue,
     String categoryId,
@@ -190,6 +190,8 @@ abstract class ApplicationModelDocumentReference
     FieldValue notesCountFieldValue,
     String packageName,
     FieldValue packageNameFieldValue,
+    double price,
+    FieldValue priceFieldValue,
     String privacyPolicyLinkUrl,
     FieldValue privacyPolicyLinkUrlFieldValue,
     bool published,
@@ -200,7 +202,7 @@ abstract class ApplicationModelDocumentReference
     FieldValue publisherIdFieldValue,
     String publisherName,
     FieldValue publisherNameFieldValue,
-    String releaseFileMainUrl,
+    String? releaseFileMainUrl,
     FieldValue releaseFileMainUrlFieldValue,
     String? trailerVideoUrl,
     FieldValue trailerVideoUrlFieldValue,
@@ -229,18 +231,18 @@ abstract class ApplicationModelDocumentReference
     FieldValue nameFieldValue,
     String? phone,
     FieldValue phoneFieldValue,
-    double? price,
-    FieldValue priceFieldValue,
     List<String> screenshots,
     FieldValue screenshotsFieldValue,
     String? status,
     FieldValue statusFieldValue,
     List<String> tags,
     FieldValue tagsFieldValue,
-    String version,
+    String? version,
     FieldValue versionFieldValue,
     String? actualReleaseId,
     FieldValue actualReleaseIdFieldValue,
+    String? assetId,
+    FieldValue assetIdFieldValue,
     String appType,
     FieldValue appTypeFieldValue,
     String categoryId,
@@ -269,6 +271,8 @@ abstract class ApplicationModelDocumentReference
     FieldValue notesCountFieldValue,
     String packageName,
     FieldValue packageNameFieldValue,
+    double price,
+    FieldValue priceFieldValue,
     String privacyPolicyLinkUrl,
     FieldValue privacyPolicyLinkUrlFieldValue,
     bool published,
@@ -279,7 +283,7 @@ abstract class ApplicationModelDocumentReference
     FieldValue publisherIdFieldValue,
     String publisherName,
     FieldValue publisherNameFieldValue,
-    String releaseFileMainUrl,
+    String? releaseFileMainUrl,
     FieldValue releaseFileMainUrlFieldValue,
     String? trailerVideoUrl,
     FieldValue trailerVideoUrlFieldValue,
@@ -339,8 +343,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? nameFieldValue,
     Object? phone = _sentinel,
     FieldValue? phoneFieldValue,
-    Object? price = _sentinel,
-    FieldValue? priceFieldValue,
     Object? screenshots = _sentinel,
     FieldValue? screenshotsFieldValue,
     Object? status = _sentinel,
@@ -351,6 +353,8 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? versionFieldValue,
     Object? actualReleaseId = _sentinel,
     FieldValue? actualReleaseIdFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
     Object? appType = _sentinel,
     FieldValue? appTypeFieldValue,
     Object? categoryId = _sentinel,
@@ -379,6 +383,8 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? notesCountFieldValue,
     Object? packageName = _sentinel,
     FieldValue? packageNameFieldValue,
+    Object? price = _sentinel,
+    FieldValue? priceFieldValue,
     Object? privacyPolicyLinkUrl = _sentinel,
     FieldValue? privacyPolicyLinkUrlFieldValue,
     Object? published = _sentinel,
@@ -423,10 +429,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both phone and phoneFieldValue",
     );
     assert(
-      price == _sentinel || priceFieldValue == null,
-      "Cannot specify both price and priceFieldValue",
-    );
-    assert(
       screenshots == _sentinel || screenshotsFieldValue == null,
       "Cannot specify both screenshots and screenshotsFieldValue",
     );
@@ -445,6 +447,10 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     assert(
       actualReleaseId == _sentinel || actualReleaseIdFieldValue == null,
       "Cannot specify both actualReleaseId and actualReleaseIdFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
     );
     assert(
       appType == _sentinel || appTypeFieldValue == null,
@@ -501,6 +507,10 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     assert(
       packageName == _sentinel || packageNameFieldValue == null,
       "Cannot specify both packageName and packageNameFieldValue",
+    );
+    assert(
+      price == _sentinel || priceFieldValue == null,
+      "Cannot specify both price and priceFieldValue",
     );
     assert(
       privacyPolicyLinkUrl == _sentinel ||
@@ -573,11 +583,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             _$ApplicationModelPerFieldToJson.phone(phone as String?),
       if (phoneFieldValue != null)
         _$ApplicationModelFieldMap['phone']!: phoneFieldValue,
-      if (price != _sentinel)
-        _$ApplicationModelFieldMap['price']!:
-            _$ApplicationModelPerFieldToJson.price(price as double?),
-      if (priceFieldValue != null)
-        _$ApplicationModelFieldMap['price']!: priceFieldValue,
       if (screenshots != _sentinel)
         _$ApplicationModelFieldMap['screenshots']!:
             _$ApplicationModelPerFieldToJson
@@ -596,7 +601,7 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
         _$ApplicationModelFieldMap['tags']!: tagsFieldValue,
       if (version != _sentinel)
         _$ApplicationModelFieldMap['version']!:
-            _$ApplicationModelPerFieldToJson.version(version as String),
+            _$ApplicationModelPerFieldToJson.version(version as String?),
       if (versionFieldValue != null)
         _$ApplicationModelFieldMap['version']!: versionFieldValue,
       if (actualReleaseId != _sentinel)
@@ -606,6 +611,11 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       if (actualReleaseIdFieldValue != null)
         _$ApplicationModelFieldMap['actualReleaseId']!:
             actualReleaseIdFieldValue,
+      if (assetId != _sentinel)
+        _$ApplicationModelFieldMap['assetId']!:
+            _$ApplicationModelPerFieldToJson.assetId(assetId as String?),
+      if (assetIdFieldValue != null)
+        _$ApplicationModelFieldMap['assetId']!: assetIdFieldValue,
       if (appType != _sentinel)
         _$ApplicationModelFieldMap['appType']!:
             _$ApplicationModelPerFieldToJson.appType(appType as String),
@@ -687,6 +697,11 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             _$ApplicationModelPerFieldToJson.packageName(packageName as String),
       if (packageNameFieldValue != null)
         _$ApplicationModelFieldMap['packageName']!: packageNameFieldValue,
+      if (price != _sentinel)
+        _$ApplicationModelFieldMap['price']!:
+            _$ApplicationModelPerFieldToJson.price(price as double),
+      if (priceFieldValue != null)
+        _$ApplicationModelFieldMap['price']!: priceFieldValue,
       if (privacyPolicyLinkUrl != _sentinel)
         _$ApplicationModelFieldMap['privacyPolicyLinkUrl']!:
             _$ApplicationModelPerFieldToJson
@@ -719,7 +734,7 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       if (releaseFileMainUrl != _sentinel)
         _$ApplicationModelFieldMap['releaseFileMainUrl']!:
             _$ApplicationModelPerFieldToJson
-                .releaseFileMainUrl(releaseFileMainUrl as String),
+                .releaseFileMainUrl(releaseFileMainUrl as String?),
       if (releaseFileMainUrlFieldValue != null)
         _$ApplicationModelFieldMap['releaseFileMainUrl']!:
             releaseFileMainUrlFieldValue,
@@ -768,8 +783,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? nameFieldValue,
     Object? phone = _sentinel,
     FieldValue? phoneFieldValue,
-    Object? price = _sentinel,
-    FieldValue? priceFieldValue,
     Object? screenshots = _sentinel,
     FieldValue? screenshotsFieldValue,
     Object? status = _sentinel,
@@ -780,6 +793,8 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? versionFieldValue,
     Object? actualReleaseId = _sentinel,
     FieldValue? actualReleaseIdFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
     Object? appType = _sentinel,
     FieldValue? appTypeFieldValue,
     Object? categoryId = _sentinel,
@@ -808,6 +823,8 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? notesCountFieldValue,
     Object? packageName = _sentinel,
     FieldValue? packageNameFieldValue,
+    Object? price = _sentinel,
+    FieldValue? priceFieldValue,
     Object? privacyPolicyLinkUrl = _sentinel,
     FieldValue? privacyPolicyLinkUrlFieldValue,
     Object? published = _sentinel,
@@ -852,10 +869,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both phone and phoneFieldValue",
     );
     assert(
-      price == _sentinel || priceFieldValue == null,
-      "Cannot specify both price and priceFieldValue",
-    );
-    assert(
       screenshots == _sentinel || screenshotsFieldValue == null,
       "Cannot specify both screenshots and screenshotsFieldValue",
     );
@@ -874,6 +887,10 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     assert(
       actualReleaseId == _sentinel || actualReleaseIdFieldValue == null,
       "Cannot specify both actualReleaseId and actualReleaseIdFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
     );
     assert(
       appType == _sentinel || appTypeFieldValue == null,
@@ -930,6 +947,10 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     assert(
       packageName == _sentinel || packageNameFieldValue == null,
       "Cannot specify both packageName and packageNameFieldValue",
+    );
+    assert(
+      price == _sentinel || priceFieldValue == null,
+      "Cannot specify both price and priceFieldValue",
     );
     assert(
       privacyPolicyLinkUrl == _sentinel ||
@@ -1002,11 +1023,6 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             _$ApplicationModelPerFieldToJson.phone(phone as String?),
       if (phoneFieldValue != null)
         _$ApplicationModelFieldMap['phone']!: phoneFieldValue,
-      if (price != _sentinel)
-        _$ApplicationModelFieldMap['price']!:
-            _$ApplicationModelPerFieldToJson.price(price as double?),
-      if (priceFieldValue != null)
-        _$ApplicationModelFieldMap['price']!: priceFieldValue,
       if (screenshots != _sentinel)
         _$ApplicationModelFieldMap['screenshots']!:
             _$ApplicationModelPerFieldToJson
@@ -1025,7 +1041,7 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
         _$ApplicationModelFieldMap['tags']!: tagsFieldValue,
       if (version != _sentinel)
         _$ApplicationModelFieldMap['version']!:
-            _$ApplicationModelPerFieldToJson.version(version as String),
+            _$ApplicationModelPerFieldToJson.version(version as String?),
       if (versionFieldValue != null)
         _$ApplicationModelFieldMap['version']!: versionFieldValue,
       if (actualReleaseId != _sentinel)
@@ -1035,6 +1051,11 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       if (actualReleaseIdFieldValue != null)
         _$ApplicationModelFieldMap['actualReleaseId']!:
             actualReleaseIdFieldValue,
+      if (assetId != _sentinel)
+        _$ApplicationModelFieldMap['assetId']!:
+            _$ApplicationModelPerFieldToJson.assetId(assetId as String?),
+      if (assetIdFieldValue != null)
+        _$ApplicationModelFieldMap['assetId']!: assetIdFieldValue,
       if (appType != _sentinel)
         _$ApplicationModelFieldMap['appType']!:
             _$ApplicationModelPerFieldToJson.appType(appType as String),
@@ -1116,6 +1137,11 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
             _$ApplicationModelPerFieldToJson.packageName(packageName as String),
       if (packageNameFieldValue != null)
         _$ApplicationModelFieldMap['packageName']!: packageNameFieldValue,
+      if (price != _sentinel)
+        _$ApplicationModelFieldMap['price']!:
+            _$ApplicationModelPerFieldToJson.price(price as double),
+      if (priceFieldValue != null)
+        _$ApplicationModelFieldMap['price']!: priceFieldValue,
       if (privacyPolicyLinkUrl != _sentinel)
         _$ApplicationModelFieldMap['privacyPolicyLinkUrl']!:
             _$ApplicationModelPerFieldToJson
@@ -1148,7 +1174,7 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       if (releaseFileMainUrl != _sentinel)
         _$ApplicationModelFieldMap['releaseFileMainUrl']!:
             _$ApplicationModelPerFieldToJson
-                .releaseFileMainUrl(releaseFileMainUrl as String),
+                .releaseFileMainUrl(releaseFileMainUrl as String?),
       if (releaseFileMainUrlFieldValue != null)
         _$ApplicationModelFieldMap['releaseFileMainUrl']!:
             releaseFileMainUrlFieldValue,
@@ -1309,18 +1335,6 @@ abstract class ApplicationModelQuery
     bool? isNull,
   });
 
-  ApplicationModelQuery wherePrice({
-    double? isEqualTo,
-    double? isNotEqualTo,
-    double? isLessThan,
-    double? isLessThanOrEqualTo,
-    double? isGreaterThan,
-    double? isGreaterThanOrEqualTo,
-    List<double?>? whereIn,
-    List<double?>? whereNotIn,
-    bool? isNull,
-  });
-
   ApplicationModelQuery whereScreenshots({
     List<String>? isEqualTo,
     List<String>? isNotEqualTo,
@@ -1364,12 +1378,24 @@ abstract class ApplicationModelQuery
     String? isLessThanOrEqualTo,
     String? isGreaterThan,
     String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
     bool? isNull,
   });
 
   ApplicationModelQuery whereActualReleaseId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationModelQuery whereAssetId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1549,6 +1575,18 @@ abstract class ApplicationModelQuery
     bool? isNull,
   });
 
+  ApplicationModelQuery wherePrice({
+    double? isEqualTo,
+    double? isNotEqualTo,
+    double? isLessThan,
+    double? isLessThanOrEqualTo,
+    double? isGreaterThan,
+    double? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  });
+
   ApplicationModelQuery wherePrivacyPolicyLinkUrl({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -1616,8 +1654,8 @@ abstract class ApplicationModelQuery
     String? isLessThanOrEqualTo,
     String? isGreaterThan,
     String? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
     bool? isNull,
   });
 
@@ -1786,18 +1824,6 @@ abstract class ApplicationModelQuery
     ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  ApplicationModelQuery orderByPrice({
-    bool descending = false,
-    double? startAt,
-    double? startAfter,
-    double? endAt,
-    double? endBefore,
-    ApplicationModelDocumentSnapshot? startAtDocument,
-    ApplicationModelDocumentSnapshot? endAtDocument,
-    ApplicationModelDocumentSnapshot? endBeforeDocument,
-    ApplicationModelDocumentSnapshot? startAfterDocument,
-  });
-
   ApplicationModelQuery orderByScreenshots({
     bool descending = false,
     List<String> startAt,
@@ -1836,10 +1862,10 @@ abstract class ApplicationModelQuery
 
   ApplicationModelQuery orderByVersion({
     bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     ApplicationModelDocumentSnapshot? startAtDocument,
     ApplicationModelDocumentSnapshot? endAtDocument,
     ApplicationModelDocumentSnapshot? endBeforeDocument,
@@ -1847,6 +1873,18 @@ abstract class ApplicationModelQuery
   });
 
   ApplicationModelQuery orderByActualReleaseId({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationModelQuery orderByAssetId({
     bool descending = false,
     String? startAt,
     String? startAfter,
@@ -2026,6 +2064,18 @@ abstract class ApplicationModelQuery
     ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
+  ApplicationModelQuery orderByPrice({
+    bool descending = false,
+    double startAt,
+    double startAfter,
+    double endAt,
+    double endBefore,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  });
+
   ApplicationModelQuery orderByPrivacyPolicyLinkUrl({
     bool descending = false,
     String startAt,
@@ -2088,10 +2138,10 @@ abstract class ApplicationModelQuery
 
   ApplicationModelQuery orderByReleaseFileMainUrl({
     bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     ApplicationModelDocumentSnapshot? startAtDocument,
     ApplicationModelDocumentSnapshot? endAtDocument,
     ApplicationModelDocumentSnapshot? endBeforeDocument,
@@ -2514,53 +2564,6 @@ class _$ApplicationModelQuery
   }
 
   @override
-  ApplicationModelQuery wherePrice({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<double?>? whereIn,
-    List<double?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ApplicationModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ApplicationModelFieldMap['price']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.price(isEqualTo as double?)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.price(isNotEqualTo as double?)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$ApplicationModelPerFieldToJson.price(isLessThan as double?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ApplicationModelPerFieldToJson
-                .price(isLessThanOrEqualTo as double?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ApplicationModelPerFieldToJson.price(isGreaterThan as double?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ApplicationModelPerFieldToJson
-                .price(isGreaterThanOrEqualTo as double?)
-            : null,
-        whereIn: whereIn?.map((e) => _$ApplicationModelPerFieldToJson.price(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.price(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
   ApplicationModelQuery whereScreenshots({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -2728,8 +2731,8 @@ class _$ApplicationModelQuery
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
     Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
     bool? isNull,
   }) {
     return _$ApplicationModelQuery(
@@ -2737,24 +2740,24 @@ class _$ApplicationModelQuery
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$ApplicationModelFieldMap['version']!,
         isEqualTo: isEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.version(isEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.version(isEqualTo as String?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.version(isNotEqualTo as String)
+            ? _$ApplicationModelPerFieldToJson.version(isNotEqualTo as String?)
             : null,
         isLessThan: isLessThan != null
-            ? _$ApplicationModelPerFieldToJson.version(isLessThan as String)
+            ? _$ApplicationModelPerFieldToJson.version(isLessThan as String?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
             ? _$ApplicationModelPerFieldToJson
-                .version(isLessThanOrEqualTo as String)
+                .version(isLessThanOrEqualTo as String?)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$ApplicationModelPerFieldToJson.version(isGreaterThan as String)
+            ? _$ApplicationModelPerFieldToJson.version(isGreaterThan as String?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
             ? _$ApplicationModelPerFieldToJson
-                .version(isGreaterThanOrEqualTo as String)
+                .version(isGreaterThanOrEqualTo as String?)
             : null,
         whereIn:
             whereIn?.map((e) => _$ApplicationModelPerFieldToJson.version(e)),
@@ -2812,6 +2815,54 @@ class _$ApplicationModelQuery
             ?.map((e) => _$ApplicationModelPerFieldToJson.actualReleaseId(e)),
         whereNotIn: whereNotIn
             ?.map((e) => _$ApplicationModelPerFieldToJson.actualReleaseId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery whereAssetId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationModelFieldMap['assetId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.assetId(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.assetId(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationModelPerFieldToJson.assetId(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .assetId(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationModelPerFieldToJson.assetId(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .assetId(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.assetId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.assetId(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -3526,6 +3577,53 @@ class _$ApplicationModelQuery
   }
 
   @override
+  ApplicationModelQuery wherePrice({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationModelFieldMap['price']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.price(isEqualTo as double)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.price(isNotEqualTo as double)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationModelPerFieldToJson.price(isLessThan as double)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .price(isLessThanOrEqualTo as double)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationModelPerFieldToJson.price(isGreaterThan as double)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .price(isGreaterThanOrEqualTo as double)
+            : null,
+        whereIn: whereIn?.map((e) => _$ApplicationModelPerFieldToJson.price(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.price(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   ApplicationModelQuery wherePrivacyPolicyLinkUrl({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -3787,8 +3885,8 @@ class _$ApplicationModelQuery
     Object? isLessThanOrEqualTo,
     Object? isGreaterThan,
     Object? isGreaterThanOrEqualTo,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
     bool? isNull,
   }) {
     return _$ApplicationModelQuery(
@@ -3797,27 +3895,27 @@ class _$ApplicationModelQuery
         _$ApplicationModelFieldMap['releaseFileMainUrl']!,
         isEqualTo: isEqualTo != _sentinel
             ? _$ApplicationModelPerFieldToJson
-                .releaseFileMainUrl(isEqualTo as String)
+                .releaseFileMainUrl(isEqualTo as String?)
             : null,
         isNotEqualTo: isNotEqualTo != _sentinel
             ? _$ApplicationModelPerFieldToJson
-                .releaseFileMainUrl(isNotEqualTo as String)
+                .releaseFileMainUrl(isNotEqualTo as String?)
             : null,
         isLessThan: isLessThan != null
             ? _$ApplicationModelPerFieldToJson
-                .releaseFileMainUrl(isLessThan as String)
+                .releaseFileMainUrl(isLessThan as String?)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
             ? _$ApplicationModelPerFieldToJson
-                .releaseFileMainUrl(isLessThanOrEqualTo as String)
+                .releaseFileMainUrl(isLessThanOrEqualTo as String?)
             : null,
         isGreaterThan: isGreaterThan != null
             ? _$ApplicationModelPerFieldToJson
-                .releaseFileMainUrl(isGreaterThan as String)
+                .releaseFileMainUrl(isGreaterThan as String?)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
             ? _$ApplicationModelPerFieldToJson
-                .releaseFileMainUrl(isGreaterThanOrEqualTo as String)
+                .releaseFileMainUrl(isGreaterThanOrEqualTo as String?)
             : null,
         whereIn: whereIn?.map(
             (e) => _$ApplicationModelPerFieldToJson.releaseFileMainUrl(e)),
@@ -4600,79 +4698,6 @@ class _$ApplicationModelQuery
   }
 
   @override
-  ApplicationModelQuery orderByPrice({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    ApplicationModelDocumentSnapshot? startAtDocument,
-    ApplicationModelDocumentSnapshot? endAtDocument,
-    ApplicationModelDocumentSnapshot? endBeforeDocument,
-    ApplicationModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$ApplicationModelFieldMap['price']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$ApplicationModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
   ApplicationModelQuery orderByScreenshots({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -4980,6 +5005,80 @@ class _$ApplicationModelQuery
   }) {
     final query = $referenceWithoutCursor.orderBy(
         _$ApplicationModelFieldMap['actualReleaseId']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByAssetId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationModelFieldMap['assetId']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -6017,6 +6116,79 @@ class _$ApplicationModelQuery
     final query = $referenceWithoutCursor.orderBy(
         _$ApplicationModelFieldMap['packageName']!,
         descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery orderByPrice({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$ApplicationModelFieldMap['price']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -7132,24 +7304,24 @@ abstract class ApplicationReleaseDocumentReference
     FieldValue applicationIdFieldValue,
     DateTime createdAt,
     FieldValue createdAtFieldValue,
-    DateTime? publishedAt,
-    FieldValue publishedAtFieldValue,
-    bool published,
-    FieldValue publishedFieldValue,
-    DateTime? unPublishedAt,
-    FieldValue unPublishedAtFieldValue,
     int? downloadsCount,
     FieldValue downloadsCountFieldValue,
     String fileDownloadUrl,
     FieldValue fileDownloadUrlFieldValue,
     bool isBeta,
     FieldValue isBetaFieldValue,
+    bool published,
+    FieldValue publishedFieldValue,
+    DateTime? publishedAt,
+    FieldValue publishedAtFieldValue,
     String releasesNotes,
     FieldValue releasesNotesFieldValue,
     String? scanHash,
     FieldValue scanHashFieldValue,
     int? scanScore,
     FieldValue scanScoreFieldValue,
+    DateTime? unPublishedAt,
+    FieldValue unPublishedAtFieldValue,
     int? versionCode,
     FieldValue versionCodeFieldValue,
   });
@@ -7171,24 +7343,24 @@ abstract class ApplicationReleaseDocumentReference
     FieldValue applicationIdFieldValue,
     DateTime createdAt,
     FieldValue createdAtFieldValue,
-    DateTime? publishedAt,
-    FieldValue publishedAtFieldValue,
-    bool published,
-    FieldValue publishedFieldValue,
-    DateTime? unPublishedAt,
-    FieldValue unPublishedAtFieldValue,
     int? downloadsCount,
     FieldValue downloadsCountFieldValue,
     String fileDownloadUrl,
     FieldValue fileDownloadUrlFieldValue,
     bool isBeta,
     FieldValue isBetaFieldValue,
+    bool published,
+    FieldValue publishedFieldValue,
+    DateTime? publishedAt,
+    FieldValue publishedAtFieldValue,
     String releasesNotes,
     FieldValue releasesNotesFieldValue,
     String? scanHash,
     FieldValue scanHashFieldValue,
     int? scanScore,
     FieldValue scanScoreFieldValue,
+    DateTime? unPublishedAt,
+    FieldValue unPublishedAtFieldValue,
     int? versionCode,
     FieldValue versionCodeFieldValue,
   });
@@ -7243,24 +7415,24 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
     FieldValue? applicationIdFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
-    Object? publishedAt = _sentinel,
-    FieldValue? publishedAtFieldValue,
-    Object? published = _sentinel,
-    FieldValue? publishedFieldValue,
-    Object? unPublishedAt = _sentinel,
-    FieldValue? unPublishedAtFieldValue,
     Object? downloadsCount = _sentinel,
     FieldValue? downloadsCountFieldValue,
     Object? fileDownloadUrl = _sentinel,
     FieldValue? fileDownloadUrlFieldValue,
     Object? isBeta = _sentinel,
     FieldValue? isBetaFieldValue,
+    Object? published = _sentinel,
+    FieldValue? publishedFieldValue,
+    Object? publishedAt = _sentinel,
+    FieldValue? publishedAtFieldValue,
     Object? releasesNotes = _sentinel,
     FieldValue? releasesNotesFieldValue,
     Object? scanHash = _sentinel,
     FieldValue? scanHashFieldValue,
     Object? scanScore = _sentinel,
     FieldValue? scanScoreFieldValue,
+    Object? unPublishedAt = _sentinel,
+    FieldValue? unPublishedAtFieldValue,
     Object? versionCode = _sentinel,
     FieldValue? versionCodeFieldValue,
   }) async {
@@ -7289,18 +7461,6 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both createdAt and createdAtFieldValue",
     );
     assert(
-      publishedAt == _sentinel || publishedAtFieldValue == null,
-      "Cannot specify both publishedAt and publishedAtFieldValue",
-    );
-    assert(
-      published == _sentinel || publishedFieldValue == null,
-      "Cannot specify both published and publishedFieldValue",
-    );
-    assert(
-      unPublishedAt == _sentinel || unPublishedAtFieldValue == null,
-      "Cannot specify both unPublishedAt and unPublishedAtFieldValue",
-    );
-    assert(
       downloadsCount == _sentinel || downloadsCountFieldValue == null,
       "Cannot specify both downloadsCount and downloadsCountFieldValue",
     );
@@ -7313,6 +7473,14 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both isBeta and isBetaFieldValue",
     );
     assert(
+      published == _sentinel || publishedFieldValue == null,
+      "Cannot specify both published and publishedFieldValue",
+    );
+    assert(
+      publishedAt == _sentinel || publishedAtFieldValue == null,
+      "Cannot specify both publishedAt and publishedAtFieldValue",
+    );
+    assert(
       releasesNotes == _sentinel || releasesNotesFieldValue == null,
       "Cannot specify both releasesNotes and releasesNotesFieldValue",
     );
@@ -7323,6 +7491,10 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
     assert(
       scanScore == _sentinel || scanScoreFieldValue == null,
       "Cannot specify both scanScore and scanScoreFieldValue",
+    );
+    assert(
+      unPublishedAt == _sentinel || unPublishedAtFieldValue == null,
+      "Cannot specify both unPublishedAt and unPublishedAtFieldValue",
     );
     assert(
       versionCode == _sentinel || versionCodeFieldValue == null,
@@ -7360,23 +7532,6 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
             _$ApplicationReleasePerFieldToJson.createdAt(createdAt as DateTime),
       if (createdAtFieldValue != null)
         _$ApplicationReleaseFieldMap['createdAt']!: createdAtFieldValue,
-      if (publishedAt != _sentinel)
-        _$ApplicationReleaseFieldMap['publishedAt']!:
-            _$ApplicationReleasePerFieldToJson
-                .publishedAt(publishedAt as DateTime?),
-      if (publishedAtFieldValue != null)
-        _$ApplicationReleaseFieldMap['publishedAt']!: publishedAtFieldValue,
-      if (published != _sentinel)
-        _$ApplicationReleaseFieldMap['published']!:
-            _$ApplicationReleasePerFieldToJson.published(published as bool),
-      if (publishedFieldValue != null)
-        _$ApplicationReleaseFieldMap['published']!: publishedFieldValue,
-      if (unPublishedAt != _sentinel)
-        _$ApplicationReleaseFieldMap['unPublishedAt']!:
-            _$ApplicationReleasePerFieldToJson
-                .unPublishedAt(unPublishedAt as DateTime?),
-      if (unPublishedAtFieldValue != null)
-        _$ApplicationReleaseFieldMap['unPublishedAt']!: unPublishedAtFieldValue,
       if (downloadsCount != _sentinel)
         _$ApplicationReleaseFieldMap['downloadsCount']!:
             _$ApplicationReleasePerFieldToJson
@@ -7396,6 +7551,17 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
             _$ApplicationReleasePerFieldToJson.isBeta(isBeta as bool),
       if (isBetaFieldValue != null)
         _$ApplicationReleaseFieldMap['isBeta']!: isBetaFieldValue,
+      if (published != _sentinel)
+        _$ApplicationReleaseFieldMap['published']!:
+            _$ApplicationReleasePerFieldToJson.published(published as bool),
+      if (publishedFieldValue != null)
+        _$ApplicationReleaseFieldMap['published']!: publishedFieldValue,
+      if (publishedAt != _sentinel)
+        _$ApplicationReleaseFieldMap['publishedAt']!:
+            _$ApplicationReleasePerFieldToJson
+                .publishedAt(publishedAt as DateTime?),
+      if (publishedAtFieldValue != null)
+        _$ApplicationReleaseFieldMap['publishedAt']!: publishedAtFieldValue,
       if (releasesNotes != _sentinel)
         _$ApplicationReleaseFieldMap['releasesNotes']!:
             _$ApplicationReleasePerFieldToJson
@@ -7412,6 +7578,12 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
             _$ApplicationReleasePerFieldToJson.scanScore(scanScore as int?),
       if (scanScoreFieldValue != null)
         _$ApplicationReleaseFieldMap['scanScore']!: scanScoreFieldValue,
+      if (unPublishedAt != _sentinel)
+        _$ApplicationReleaseFieldMap['unPublishedAt']!:
+            _$ApplicationReleasePerFieldToJson
+                .unPublishedAt(unPublishedAt as DateTime?),
+      if (unPublishedAtFieldValue != null)
+        _$ApplicationReleaseFieldMap['unPublishedAt']!: unPublishedAtFieldValue,
       if (versionCode != _sentinel)
         _$ApplicationReleaseFieldMap['versionCode']!:
             _$ApplicationReleasePerFieldToJson.versionCode(versionCode as int?),
@@ -7436,24 +7608,24 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
     FieldValue? applicationIdFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
-    Object? publishedAt = _sentinel,
-    FieldValue? publishedAtFieldValue,
-    Object? published = _sentinel,
-    FieldValue? publishedFieldValue,
-    Object? unPublishedAt = _sentinel,
-    FieldValue? unPublishedAtFieldValue,
     Object? downloadsCount = _sentinel,
     FieldValue? downloadsCountFieldValue,
     Object? fileDownloadUrl = _sentinel,
     FieldValue? fileDownloadUrlFieldValue,
     Object? isBeta = _sentinel,
     FieldValue? isBetaFieldValue,
+    Object? published = _sentinel,
+    FieldValue? publishedFieldValue,
+    Object? publishedAt = _sentinel,
+    FieldValue? publishedAtFieldValue,
     Object? releasesNotes = _sentinel,
     FieldValue? releasesNotesFieldValue,
     Object? scanHash = _sentinel,
     FieldValue? scanHashFieldValue,
     Object? scanScore = _sentinel,
     FieldValue? scanScoreFieldValue,
+    Object? unPublishedAt = _sentinel,
+    FieldValue? unPublishedAtFieldValue,
     Object? versionCode = _sentinel,
     FieldValue? versionCodeFieldValue,
   }) {
@@ -7482,18 +7654,6 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both createdAt and createdAtFieldValue",
     );
     assert(
-      publishedAt == _sentinel || publishedAtFieldValue == null,
-      "Cannot specify both publishedAt and publishedAtFieldValue",
-    );
-    assert(
-      published == _sentinel || publishedFieldValue == null,
-      "Cannot specify both published and publishedFieldValue",
-    );
-    assert(
-      unPublishedAt == _sentinel || unPublishedAtFieldValue == null,
-      "Cannot specify both unPublishedAt and unPublishedAtFieldValue",
-    );
-    assert(
       downloadsCount == _sentinel || downloadsCountFieldValue == null,
       "Cannot specify both downloadsCount and downloadsCountFieldValue",
     );
@@ -7506,6 +7666,14 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both isBeta and isBetaFieldValue",
     );
     assert(
+      published == _sentinel || publishedFieldValue == null,
+      "Cannot specify both published and publishedFieldValue",
+    );
+    assert(
+      publishedAt == _sentinel || publishedAtFieldValue == null,
+      "Cannot specify both publishedAt and publishedAtFieldValue",
+    );
+    assert(
       releasesNotes == _sentinel || releasesNotesFieldValue == null,
       "Cannot specify both releasesNotes and releasesNotesFieldValue",
     );
@@ -7516,6 +7684,10 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
     assert(
       scanScore == _sentinel || scanScoreFieldValue == null,
       "Cannot specify both scanScore and scanScoreFieldValue",
+    );
+    assert(
+      unPublishedAt == _sentinel || unPublishedAtFieldValue == null,
+      "Cannot specify both unPublishedAt and unPublishedAtFieldValue",
     );
     assert(
       versionCode == _sentinel || versionCodeFieldValue == null,
@@ -7553,23 +7725,6 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
             _$ApplicationReleasePerFieldToJson.createdAt(createdAt as DateTime),
       if (createdAtFieldValue != null)
         _$ApplicationReleaseFieldMap['createdAt']!: createdAtFieldValue,
-      if (publishedAt != _sentinel)
-        _$ApplicationReleaseFieldMap['publishedAt']!:
-            _$ApplicationReleasePerFieldToJson
-                .publishedAt(publishedAt as DateTime?),
-      if (publishedAtFieldValue != null)
-        _$ApplicationReleaseFieldMap['publishedAt']!: publishedAtFieldValue,
-      if (published != _sentinel)
-        _$ApplicationReleaseFieldMap['published']!:
-            _$ApplicationReleasePerFieldToJson.published(published as bool),
-      if (publishedFieldValue != null)
-        _$ApplicationReleaseFieldMap['published']!: publishedFieldValue,
-      if (unPublishedAt != _sentinel)
-        _$ApplicationReleaseFieldMap['unPublishedAt']!:
-            _$ApplicationReleasePerFieldToJson
-                .unPublishedAt(unPublishedAt as DateTime?),
-      if (unPublishedAtFieldValue != null)
-        _$ApplicationReleaseFieldMap['unPublishedAt']!: unPublishedAtFieldValue,
       if (downloadsCount != _sentinel)
         _$ApplicationReleaseFieldMap['downloadsCount']!:
             _$ApplicationReleasePerFieldToJson
@@ -7589,6 +7744,17 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
             _$ApplicationReleasePerFieldToJson.isBeta(isBeta as bool),
       if (isBetaFieldValue != null)
         _$ApplicationReleaseFieldMap['isBeta']!: isBetaFieldValue,
+      if (published != _sentinel)
+        _$ApplicationReleaseFieldMap['published']!:
+            _$ApplicationReleasePerFieldToJson.published(published as bool),
+      if (publishedFieldValue != null)
+        _$ApplicationReleaseFieldMap['published']!: publishedFieldValue,
+      if (publishedAt != _sentinel)
+        _$ApplicationReleaseFieldMap['publishedAt']!:
+            _$ApplicationReleasePerFieldToJson
+                .publishedAt(publishedAt as DateTime?),
+      if (publishedAtFieldValue != null)
+        _$ApplicationReleaseFieldMap['publishedAt']!: publishedAtFieldValue,
       if (releasesNotes != _sentinel)
         _$ApplicationReleaseFieldMap['releasesNotes']!:
             _$ApplicationReleasePerFieldToJson
@@ -7605,6 +7771,12 @@ class _$ApplicationReleaseDocumentReference extends FirestoreDocumentReference<
             _$ApplicationReleasePerFieldToJson.scanScore(scanScore as int?),
       if (scanScoreFieldValue != null)
         _$ApplicationReleaseFieldMap['scanScore']!: scanScoreFieldValue,
+      if (unPublishedAt != _sentinel)
+        _$ApplicationReleaseFieldMap['unPublishedAt']!:
+            _$ApplicationReleasePerFieldToJson
+                .unPublishedAt(unPublishedAt as DateTime?),
+      if (unPublishedAtFieldValue != null)
+        _$ApplicationReleaseFieldMap['unPublishedAt']!: unPublishedAtFieldValue,
       if (versionCode != _sentinel)
         _$ApplicationReleaseFieldMap['versionCode']!:
             _$ApplicationReleasePerFieldToJson.versionCode(versionCode as int?),
@@ -7752,42 +7924,6 @@ abstract class ApplicationReleaseQuery
     bool? isNull,
   });
 
-  ApplicationReleaseQuery wherePublishedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-    bool? isNull,
-  });
-
-  ApplicationReleaseQuery wherePublished({
-    bool? isEqualTo,
-    bool? isNotEqualTo,
-    bool? isLessThan,
-    bool? isLessThanOrEqualTo,
-    bool? isGreaterThan,
-    bool? isGreaterThanOrEqualTo,
-    List<bool>? whereIn,
-    List<bool>? whereNotIn,
-    bool? isNull,
-  });
-
-  ApplicationReleaseQuery whereUnPublishedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-    bool? isNull,
-  });
-
   ApplicationReleaseQuery whereDownloadsCount({
     int? isEqualTo,
     int? isNotEqualTo,
@@ -7824,6 +7960,30 @@ abstract class ApplicationReleaseQuery
     bool? isNull,
   });
 
+  ApplicationReleaseQuery wherePublished({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationReleaseQuery wherePublishedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  });
+
   ApplicationReleaseQuery whereReleasesNotes({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -7857,6 +8017,18 @@ abstract class ApplicationReleaseQuery
     int? isGreaterThanOrEqualTo,
     List<int?>? whereIn,
     List<int?>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationReleaseQuery whereUnPublishedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
     bool? isNull,
   });
 
@@ -7989,42 +8161,6 @@ abstract class ApplicationReleaseQuery
     ApplicationReleaseDocumentSnapshot? startAfterDocument,
   });
 
-  ApplicationReleaseQuery orderByPublishedAt({
-    bool descending = false,
-    DateTime? startAt,
-    DateTime? startAfter,
-    DateTime? endAt,
-    DateTime? endBefore,
-    ApplicationReleaseDocumentSnapshot? startAtDocument,
-    ApplicationReleaseDocumentSnapshot? endAtDocument,
-    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
-    ApplicationReleaseDocumentSnapshot? startAfterDocument,
-  });
-
-  ApplicationReleaseQuery orderByPublished({
-    bool descending = false,
-    bool startAt,
-    bool startAfter,
-    bool endAt,
-    bool endBefore,
-    ApplicationReleaseDocumentSnapshot? startAtDocument,
-    ApplicationReleaseDocumentSnapshot? endAtDocument,
-    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
-    ApplicationReleaseDocumentSnapshot? startAfterDocument,
-  });
-
-  ApplicationReleaseQuery orderByUnPublishedAt({
-    bool descending = false,
-    DateTime? startAt,
-    DateTime? startAfter,
-    DateTime? endAt,
-    DateTime? endBefore,
-    ApplicationReleaseDocumentSnapshot? startAtDocument,
-    ApplicationReleaseDocumentSnapshot? endAtDocument,
-    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
-    ApplicationReleaseDocumentSnapshot? startAfterDocument,
-  });
-
   ApplicationReleaseQuery orderByDownloadsCount({
     bool descending = false,
     int? startAt,
@@ -8061,6 +8197,30 @@ abstract class ApplicationReleaseQuery
     ApplicationReleaseDocumentSnapshot? startAfterDocument,
   });
 
+  ApplicationReleaseQuery orderByPublished({
+    bool descending = false,
+    bool startAt,
+    bool startAfter,
+    bool endAt,
+    bool endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationReleaseQuery orderByPublishedAt({
+    bool descending = false,
+    DateTime? startAt,
+    DateTime? startAfter,
+    DateTime? endAt,
+    DateTime? endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
   ApplicationReleaseQuery orderByReleasesNotes({
     bool descending = false,
     String startAt,
@@ -8091,6 +8251,18 @@ abstract class ApplicationReleaseQuery
     int? startAfter,
     int? endAt,
     int? endBefore,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationReleaseQuery orderByUnPublishedAt({
+    bool descending = false,
+    DateTime? startAt,
+    DateTime? startAfter,
+    DateTime? endAt,
+    DateTime? endBefore,
     ApplicationReleaseDocumentSnapshot? startAtDocument,
     ApplicationReleaseDocumentSnapshot? endAtDocument,
     ApplicationReleaseDocumentSnapshot? endBeforeDocument,
@@ -8526,159 +8698,6 @@ class _$ApplicationReleaseQuery
   }
 
   @override
-  ApplicationReleaseQuery wherePublishedAt({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ApplicationReleaseQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ApplicationReleaseFieldMap['publishedAt']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$ApplicationReleasePerFieldToJson
-                .publishedAt(isEqualTo as DateTime?)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$ApplicationReleasePerFieldToJson
-                .publishedAt(isNotEqualTo as DateTime?)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$ApplicationReleasePerFieldToJson
-                .publishedAt(isLessThan as DateTime?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ApplicationReleasePerFieldToJson
-                .publishedAt(isLessThanOrEqualTo as DateTime?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ApplicationReleasePerFieldToJson
-                .publishedAt(isGreaterThan as DateTime?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ApplicationReleasePerFieldToJson
-                .publishedAt(isGreaterThanOrEqualTo as DateTime?)
-            : null,
-        whereIn: whereIn
-            ?.map((e) => _$ApplicationReleasePerFieldToJson.publishedAt(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$ApplicationReleasePerFieldToJson.publishedAt(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  ApplicationReleaseQuery wherePublished({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<bool>? whereIn,
-    List<bool>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ApplicationReleaseQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ApplicationReleaseFieldMap['published']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$ApplicationReleasePerFieldToJson.published(isEqualTo as bool)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$ApplicationReleasePerFieldToJson.published(isNotEqualTo as bool)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$ApplicationReleasePerFieldToJson.published(isLessThan as bool)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ApplicationReleasePerFieldToJson
-                .published(isLessThanOrEqualTo as bool)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ApplicationReleasePerFieldToJson
-                .published(isGreaterThan as bool)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ApplicationReleasePerFieldToJson
-                .published(isGreaterThanOrEqualTo as bool)
-            : null,
-        whereIn: whereIn
-            ?.map((e) => _$ApplicationReleasePerFieldToJson.published(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$ApplicationReleasePerFieldToJson.published(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  ApplicationReleaseQuery whereUnPublishedAt({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ApplicationReleaseQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ApplicationReleaseFieldMap['unPublishedAt']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$ApplicationReleasePerFieldToJson
-                .unPublishedAt(isEqualTo as DateTime?)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$ApplicationReleasePerFieldToJson
-                .unPublishedAt(isNotEqualTo as DateTime?)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$ApplicationReleasePerFieldToJson
-                .unPublishedAt(isLessThan as DateTime?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ApplicationReleasePerFieldToJson
-                .unPublishedAt(isLessThanOrEqualTo as DateTime?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ApplicationReleasePerFieldToJson
-                .unPublishedAt(isGreaterThan as DateTime?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ApplicationReleasePerFieldToJson
-                .unPublishedAt(isGreaterThanOrEqualTo as DateTime?)
-            : null,
-        whereIn: whereIn
-            ?.map((e) => _$ApplicationReleasePerFieldToJson.unPublishedAt(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$ApplicationReleasePerFieldToJson.unPublishedAt(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
   ApplicationReleaseQuery whereDownloadsCount({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -8831,6 +8850,107 @@ class _$ApplicationReleaseQuery
   }
 
   @override
+  ApplicationReleaseQuery wherePublished({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationReleaseFieldMap['published']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson.published(isEqualTo as bool)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson.published(isNotEqualTo as bool)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationReleasePerFieldToJson.published(isLessThan as bool)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .published(isLessThanOrEqualTo as bool)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .published(isGreaterThan as bool)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .published(isGreaterThanOrEqualTo as bool)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.published(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.published(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery wherePublishedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationReleaseFieldMap['publishedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .publishedAt(isEqualTo as DateTime?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .publishedAt(isNotEqualTo as DateTime?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .publishedAt(isLessThan as DateTime?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .publishedAt(isLessThanOrEqualTo as DateTime?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .publishedAt(isGreaterThan as DateTime?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .publishedAt(isGreaterThanOrEqualTo as DateTime?)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.publishedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.publishedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   ApplicationReleaseQuery whereReleasesNotes({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -8973,6 +9093,58 @@ class _$ApplicationReleaseQuery
             ?.map((e) => _$ApplicationReleasePerFieldToJson.scanScore(e)),
         whereNotIn: whereNotIn
             ?.map((e) => _$ApplicationReleasePerFieldToJson.scanScore(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery whereUnPublishedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationReleaseFieldMap['unPublishedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .unPublishedAt(isEqualTo as DateTime?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationReleasePerFieldToJson
+                .unPublishedAt(isNotEqualTo as DateTime?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .unPublishedAt(isLessThan as DateTime?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .unPublishedAt(isLessThanOrEqualTo as DateTime?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationReleasePerFieldToJson
+                .unPublishedAt(isGreaterThan as DateTime?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationReleasePerFieldToJson
+                .unPublishedAt(isGreaterThanOrEqualTo as DateTime?)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.unPublishedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$ApplicationReleasePerFieldToJson.unPublishedAt(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -9621,228 +9793,6 @@ class _$ApplicationReleaseQuery
   }
 
   @override
-  ApplicationReleaseQuery orderByPublishedAt({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    ApplicationReleaseDocumentSnapshot? startAtDocument,
-    ApplicationReleaseDocumentSnapshot? endAtDocument,
-    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
-    ApplicationReleaseDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$ApplicationReleaseFieldMap['publishedAt']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$ApplicationReleaseQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  ApplicationReleaseQuery orderByPublished({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    ApplicationReleaseDocumentSnapshot? startAtDocument,
-    ApplicationReleaseDocumentSnapshot? endAtDocument,
-    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
-    ApplicationReleaseDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$ApplicationReleaseFieldMap['published']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$ApplicationReleaseQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  ApplicationReleaseQuery orderByUnPublishedAt({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    ApplicationReleaseDocumentSnapshot? startAtDocument,
-    ApplicationReleaseDocumentSnapshot? endAtDocument,
-    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
-    ApplicationReleaseDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(
-        _$ApplicationReleaseFieldMap['unPublishedAt']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$ApplicationReleaseQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
   ApplicationReleaseQuery orderByDownloadsCount({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -10004,6 +9954,154 @@ class _$ApplicationReleaseQuery
   }) {
     final query = $referenceWithoutCursor.orderBy(
         _$ApplicationReleaseFieldMap['isBeta']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByPublished({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationReleaseFieldMap['published']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  ApplicationReleaseQuery orderByPublishedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationReleaseFieldMap['publishedAt']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -10287,6 +10385,80 @@ class _$ApplicationReleaseQuery
   }
 
   @override
+  ApplicationReleaseQuery orderByUnPublishedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ApplicationReleaseDocumentSnapshot? startAtDocument,
+    ApplicationReleaseDocumentSnapshot? endAtDocument,
+    ApplicationReleaseDocumentSnapshot? endBeforeDocument,
+    ApplicationReleaseDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$ApplicationReleaseFieldMap['unPublishedAt']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ApplicationReleaseQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
   ApplicationReleaseQuery orderByVersionCode({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -10484,20 +10656,21 @@ ApplicationModel _$ApplicationModelFromJson(Map<String, dynamic> json) =>
       packageName: json['package_name'] as String,
       privacyPolicyLinkUrl: json['privacy_policy_link_url'] as String,
       published: json['published'] as bool? ?? false,
-      releaseFileMainUrl: json['release_file_main_url'] as String,
+      releaseFileMainUrl: json['release_file_main_url'] as String?,
       screenshots: (json['screenshots'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
-      version: json['version'] as String,
+      version: json['version'] as String?,
+      price: stringToDouble(json['price']),
       actualReleaseId: json['actual_release_id'] as String?,
       address: json['address'] as String?,
       appType: json['app_type'] as String? ?? 'app',
+      assetId: json['asset_id'] as String?,
       coverImageRectUrl: json['cover_image_rect_url'] as String?,
       notesAverage: (json['notes_average'] as num?)?.toDouble() ?? 0.0,
       notesCount: json['notes_count'] as int?,
       phone: json['phone'] as String?,
-      price: (json['price'] as num?)?.toDouble(),
       publishedAt: _$JsonConverterFromJson<Timestamp, DateTime>(
           json['published_at'], const FirestoreDateTimeConverter().fromJson),
       status: json['status'] as String?,
@@ -10516,12 +10689,12 @@ const _$ApplicationModelFieldMap = <String, String>{
   'email': 'email',
   'name': 'name',
   'phone': 'phone',
-  'price': 'price',
   'screenshots': 'screenshots',
   'status': 'status',
   'tags': 'tags',
   'version': 'version',
   'actualReleaseId': 'actual_release_id',
+  'assetId': 'asset_id',
   'appType': 'app_type',
   'categoryId': 'category_id',
   'categoryName': 'category_name',
@@ -10537,6 +10710,7 @@ const _$ApplicationModelFieldMap = <String, String>{
   'notesAverage': 'notes_average',
   'notesCount': 'notes_count',
   'packageName': 'package_name',
+  'price': 'price',
   'privacyPolicyLinkUrl': 'privacy_policy_link_url',
   'published': 'published',
   'publishedAt': 'published_at',
@@ -10563,17 +10737,17 @@ abstract class _$ApplicationModelPerFieldToJson {
   // ignore: unused_element
   static Object? phone(String? instance) => instance;
   // ignore: unused_element
-  static Object? price(double? instance) => instance;
-  // ignore: unused_element
   static Object? screenshots(List<String> instance) => instance;
   // ignore: unused_element
   static Object? status(String? instance) => instance;
   // ignore: unused_element
   static Object? tags(List<String> instance) => instance;
   // ignore: unused_element
-  static Object? version(String instance) => instance;
+  static Object? version(String? instance) => instance;
   // ignore: unused_element
   static Object? actualReleaseId(String? instance) => instance;
+  // ignore: unused_element
+  static Object? assetId(String? instance) => instance;
   // ignore: unused_element
   static Object? appType(String instance) => instance;
   // ignore: unused_element
@@ -10606,6 +10780,8 @@ abstract class _$ApplicationModelPerFieldToJson {
   // ignore: unused_element
   static Object? packageName(String instance) => instance;
   // ignore: unused_element
+  static Object? price(double instance) => instance;
+  // ignore: unused_element
   static Object? privacyPolicyLinkUrl(String instance) => instance;
   // ignore: unused_element
   static Object? published(bool instance) => instance;
@@ -10618,7 +10794,7 @@ abstract class _$ApplicationModelPerFieldToJson {
   // ignore: unused_element
   static Object? publisherName(String instance) => instance;
   // ignore: unused_element
-  static Object? releaseFileMainUrl(String instance) => instance;
+  static Object? releaseFileMainUrl(String? instance) => instance;
   // ignore: unused_element
   static Object? trailerVideoUrl(String? instance) => instance;
   // ignore: unused_element
@@ -10642,12 +10818,12 @@ Map<String, dynamic> _$ApplicationModelToJson(ApplicationModel instance) =>
       'email': instance.email,
       'name': instance.name,
       'phone': instance.phone,
-      'price': instance.price,
       'screenshots': instance.screenshots,
       'status': instance.status,
       'tags': instance.tags,
       'version': instance.version,
       'actual_release_id': instance.actualReleaseId,
+      'asset_id': instance.assetId,
       'app_type': instance.appType,
       'category_id': instance.categoryId,
       'category_name': instance.categoryName,
@@ -10664,6 +10840,7 @@ Map<String, dynamic> _$ApplicationModelToJson(ApplicationModel instance) =>
       'notes_average': instance.notesAverage,
       'notes_count': instance.notesCount,
       'package_name': instance.packageName,
+      'price': instance.price,
       'privacy_policy_link_url': instance.privacyPolicyLinkUrl,
       'published': instance.published,
       'published_at': _$JsonConverterToJson<Timestamp, DateTime>(
@@ -10724,16 +10901,16 @@ const _$ApplicationReleaseFieldMap = <String, String>{
   'addedAt': 'added_at',
   'applicationId': 'application_id',
   'createdAt': 'created_at',
-  'publishedAt': 'published_at',
-  'published': 'published',
-  'unPublishedAt': 'un_published_at',
   'downloadsCount': 'downloads_count',
   'fileDownloadUrl': 'file_download_url',
   'id': 'id',
   'isBeta': 'is_beta',
+  'published': 'published',
+  'publishedAt': 'published_at',
   'releasesNotes': 'releases_notes',
   'scanHash': 'scan_hash',
   'scanScore': 'scan_score',
+  'unPublishedAt': 'un_published_at',
   'versionCode': 'version_code',
 };
 
@@ -10754,16 +10931,6 @@ abstract class _$ApplicationReleasePerFieldToJson {
   static Object? createdAt(DateTime instance) =>
       const FirestoreDateTimeConverter().toJson(instance);
   // ignore: unused_element
-  static Object? publishedAt(DateTime? instance) =>
-      _$JsonConverterToJson<Timestamp, DateTime>(
-          instance, const FirestoreDateTimeConverter().toJson);
-  // ignore: unused_element
-  static Object? published(bool instance) => instance;
-  // ignore: unused_element
-  static Object? unPublishedAt(DateTime? instance) =>
-      _$JsonConverterToJson<Timestamp, DateTime>(
-          instance, const FirestoreDateTimeConverter().toJson);
-  // ignore: unused_element
   static Object? downloadsCount(int? instance) => instance;
   // ignore: unused_element
   static Object? fileDownloadUrl(String instance) => instance;
@@ -10772,11 +10939,21 @@ abstract class _$ApplicationReleasePerFieldToJson {
   // ignore: unused_element
   static Object? isBeta(bool instance) => instance;
   // ignore: unused_element
+  static Object? published(bool instance) => instance;
+  // ignore: unused_element
+  static Object? publishedAt(DateTime? instance) =>
+      _$JsonConverterToJson<Timestamp, DateTime>(
+          instance, const FirestoreDateTimeConverter().toJson);
+  // ignore: unused_element
   static Object? releasesNotes(String instance) => instance;
   // ignore: unused_element
   static Object? scanHash(String? instance) => instance;
   // ignore: unused_element
   static Object? scanScore(int? instance) => instance;
+  // ignore: unused_element
+  static Object? unPublishedAt(DateTime? instance) =>
+      _$JsonConverterToJson<Timestamp, DateTime>(
+          instance, const FirestoreDateTimeConverter().toJson);
   // ignore: unused_element
   static Object? versionCode(int? instance) => instance;
 }
@@ -10790,18 +10967,18 @@ Map<String, dynamic> _$ApplicationReleaseToJson(ApplicationRelease instance) =>
       'application_id': instance.applicationId,
       'created_at':
           const FirestoreDateTimeConverter().toJson(instance.createdAt),
-      'published_at': _$JsonConverterToJson<Timestamp, DateTime>(
-          instance.publishedAt, const FirestoreDateTimeConverter().toJson),
-      'published': instance.published,
-      'un_published_at': _$JsonConverterToJson<Timestamp, DateTime>(
-          instance.unPublishedAt, const FirestoreDateTimeConverter().toJson),
       'downloads_count': instance.downloadsCount,
       'file_download_url': instance.fileDownloadUrl,
       'id': instance.id,
       'is_beta': instance.isBeta,
+      'published': instance.published,
+      'published_at': _$JsonConverterToJson<Timestamp, DateTime>(
+          instance.publishedAt, const FirestoreDateTimeConverter().toJson),
       'releases_notes': instance.releasesNotes,
       'scan_hash': instance.scanHash,
       'scan_score': instance.scanScore,
+      'un_published_at': _$JsonConverterToJson<Timestamp, DateTime>(
+          instance.unPublishedAt, const FirestoreDateTimeConverter().toJson),
       'version_code': instance.versionCode,
     };
 

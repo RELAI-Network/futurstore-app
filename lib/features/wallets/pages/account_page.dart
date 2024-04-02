@@ -13,7 +13,7 @@ class AccountPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final wallets = ref.watch(walletsAddressesProvider);
 
-    final connectedWallet = ref.watch(localConnectedWallet);
+    final connectedWallet = ref.watch(connectedWalletProvider);
 
     if (wallets.initializing || connectedWallet.initializing) {
       return Material(

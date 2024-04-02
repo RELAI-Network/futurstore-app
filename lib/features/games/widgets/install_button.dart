@@ -5,15 +5,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
+import 'package:futurstore/core/utils/constants.dart';
 import 'package:futurstore/core/utils/extensions/build_context.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
 import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/packages/data/models/index.dart';
+import 'package:futurstore/features/packages/providers/get_package_installed_info_func_provider.dart';
 import 'package:futurstore/features/packages/providers/install_downloaded_package_file_func_provider.dart';
 import 'package:futurstore/features/packages/providers/is_package_file_downloaded_provider.dart';
 import 'package:futurstore/features/packages/providers/is_package_installed_func_provider.dart';
 import 'package:futurstore/features/packages/providers/package_file_installer_provider.dart';
 import 'package:futurstore/features/packages/providers/start_package_installed_func_provider.dart';
+
+import '../../wallets/controllers/services/assets.dart';
 
 class InstallGameButton extends ConsumerStatefulWidget {
   const InstallGameButton(this.data, {super.key});
@@ -33,13 +37,39 @@ class _InstallGameButtonState extends ConsumerState<InstallGameButton> {
 
   InstallTaskStatus _installStatus = InstallTaskStatus.waitingForDownload;
 
+  PackageInstalledInfo? _packageInstalledInfo;
+
   Future<bool> _isPackageInstalled() async {
     try {
-      return await ref.read(
+      final installed = await ref.read(
         isPackageInstalledProvider(
           widget.data.packageName,
         ).future,
       );
+
+      if (installed) {
+        _packageInstalledInfo = await ref.read(
+          getPackageInstalledInfoFuncProvider,
+        )(widget.data.packageName);
+      }
+      return installed;
+    } catch (e) {
+      debugPrint(e.toString());
+
+      return false;
+    }
+  }
+
+  Future<bool> _buyAsset() async {
+    try {
+      await ref.read(
+        buyAssetProvider(
+          assetId: int.parse(widget.data.assetId!),
+          assetType: widget.data.appType,
+        ).future,
+      );
+
+      return true;
     } catch (e) {
       debugPrint(e.toString());
 
@@ -99,7 +129,7 @@ class _InstallGameButtonState extends ConsumerState<InstallGameButton> {
 
       await ref.read(
         applicationFileInstallProvider(
-          widget.data.releaseFileMainUrl,
+          widget.data.releaseFileMainUrl!,
           widget.data.packageName,
           onDownloadStatus: (status) {
             setState(
@@ -210,9 +240,19 @@ class _InstallGameButtonState extends ConsumerState<InstallGameButton> {
                       ),
                     )
                   : ElevatedButton(
-                      onPressed: _start,
+                      onPressed: () async {
+                        if (!await _buyAsset()) {
+                          return;
+                        }
+
+                        await _start();
+                      },
                       child: Text(
-                        l10n.installApp,
+                        _packageInstalledInfo == null
+                            ? (widget.data.price <= 0
+                                ? l10n.installApp
+                                : '''${l10n.getApp} (${widget.data.price}$kRelaiTokenSymbol)''')
+                            : l10n.updateApp,
                       ),
                     ),
             ),

@@ -10,7 +10,7 @@ import '../../data/models/wallet_address.dart';
 
 part 'connected_wallet_provider.g.dart';
 
-final localConnectedWallet = ChangeNotifierProvider(
+final connectedWalletProvider = ChangeNotifierProvider(
   (ref) => AppLocalSettingProvider<WalletAddress?>(
     ref.watch(localStorageProvider),
     defaultValue: null,
@@ -49,7 +49,7 @@ Future<void> connectToWallet(
     Future.delayed(
       const Duration(seconds: 1),
       () {
-        ref.read(localConnectedWallet.notifier).value = address;
+        ref.read(connectedWalletProvider.notifier).value = address;
 
         wallets.value = [...wallets.value, address];
       },

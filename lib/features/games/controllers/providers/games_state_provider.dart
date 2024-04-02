@@ -60,12 +60,15 @@ class AppsStateNotifier extends SafeChangeNotifier {
 
       state = state.copyWith(
         status: AppsStatus.populated,
-        apps: [...state.games, ...response],
+        // apps: [...state.games, ...response],
+        apps: response,
         hasMoreGames: false,
       );
     } on Exception catch (error, _) {
-      state = state.copyWith(status: AppsStatus.failure);
-      // addError(error, stackTrace);
+      state = state.copyWith(
+        status: AppsStatus.failure,
+        error: error.toString(),
+      );
     }
   }
 
@@ -88,8 +91,6 @@ class AppsStateNotifier extends SafeChangeNotifier {
         status: AppsStatus.failure,
         error: error.toString(),
       );
-      // addError(error, stackTrace);
     }
-    return null;
   }
 }

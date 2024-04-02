@@ -26,16 +26,19 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.4.10
   flutter_secure_storage: ^9.0.0
+  flutter_svg: ^2.0.10+1
   installed_apps: ^1.5.0
   intl: ^0.18.1
+  jdenticon_dart: ^2.0.0
   json_annotation: ^4.8.1
   local_storage:
     path: packages/local_storage
-  polkadart: ^0.3.2
-  polkadart_cli: ^0.3.2
-  polkadart_keyring: ^0.3.0
+  polkadart: ^0.4.3
+  polkadart_cli: ^0.4.2
+  polkadart_keyring: ^0.4.3
   riverpod_annotation: ^2.3.4
   shared_preferences: ^2.2.2
+  ss58: ^1.1.2
 
 dev_dependencies:
   build_runner: ^2.4.8
@@ -52,6 +55,9 @@ flutter:
   uses-material-design: true
   # Flutter Localization : https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization
   generate: true
+
+  assets:
+    - assets/images/
 
 polkadart:
   output_dir: lib/generated

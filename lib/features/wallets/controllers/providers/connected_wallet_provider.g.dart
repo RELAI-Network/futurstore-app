@@ -6,7 +6,7 @@ part of 'connected_wallet_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$connectToWalletHash() => r'4f90d82a8fcd1f74ace04b4e83ba665dee2c7783';
+String _$connectToWalletHash() => r'01a967967ef2bcacc55a2186e4fc9db1cc164376';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -35,6 +35,7 @@ class BookModel {
     required this.title,
     required this.type,
     this.actualEditionId,
+    this.assetId,
     this.audioFormat,
     this.createdAt,
     this.status,
@@ -56,6 +57,9 @@ class BookModel {
 
   @JsonKey(name: 'actual_edition_id')
   final String? actualEditionId;
+
+  @JsonKey(name: 'asset_id')
+  final String? assetId;
 
   @JsonKey(name: 'audio_format')
   final String? audioFormat;

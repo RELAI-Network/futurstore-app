@@ -35,8 +35,10 @@ Future<({String? error, bool success, WalletAddress? data})>
 
     final wallet = WalletAddress(
       address: keyPair.address,
-      name: walletName ?? 'Wallet #${wallets.value.length + 1}',
-      mnemonicOrSeed: walletMnemonicOrSeed,
+      name: (walletName == null || walletName.trim().isEmpty)
+          ? 'Wallet #${wallets.value.length + 1}'
+          : walletName,
+      mnemonic: walletMnemonicOrSeed,
     );
 
     if (wallets.value.any((w) => w.address == wallet.address)) {
@@ -51,7 +53,7 @@ Future<({String? error, bool success, WalletAddress? data})>
 
     final uuid = await ref.read(userUniqIdentifierProvider);
 
-    await ref.read(usersServiceProvider).addWallet(wallet, uuid, deviceId);
+    await ref.read(usersRepoProvider).addWallet(wallet, uuid, deviceId);
 
     await ref.read(
       connectToWalletProvider(

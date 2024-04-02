@@ -42,14 +42,15 @@ class ApplicationModel {
     required this.screenshots,
     required this.tags,
     required this.version,
+    required this.price,
     this.actualReleaseId,
     this.address,
     this.appType = 'app',
+    this.assetId,
     this.coverImageRectUrl,
     this.notesAverage,
     this.notesCount,
     this.phone,
-    this.price,
     this.publishedAt,
     this.status,
     this.trailerVideoUrl,
@@ -67,14 +68,16 @@ class ApplicationModel {
   final String email;
   final String name;
   final String? phone;
-  final double? price;
   final List<String> screenshots;
   final String? status;
   final List<String> tags;
-  final String version;
+  final String? version;
 
   @JsonKey(name: 'actual_release_id')
   final String? actualReleaseId;
+
+  @JsonKey(name: 'asset_id')
+  final String? assetId;
 
   @JsonKey(name: 'app_type')
   final String appType;
@@ -121,6 +124,9 @@ class ApplicationModel {
   @JsonKey(name: 'package_name')
   final String packageName;
 
+  @JsonKey(fromJson: stringToDouble)
+  final double price;
+
   @JsonKey(name: 'privacy_policy_link_url')
   final String privacyPolicyLinkUrl;
 
@@ -137,7 +143,7 @@ class ApplicationModel {
   final String publisherName;
 
   @JsonKey(name: 'release_file_main_url')
-  final String releaseFileMainUrl;
+  final String? releaseFileMainUrl;
 
   @JsonKey(name: 'trailer_video_url')
   final String? trailerVideoUrl;
@@ -155,11 +161,12 @@ class ApplicationModel {
   final String? websiteUrl;
 
   String get appSize {
-    if (downloadSize > 1000) {
-      return '${(downloadSize / 1000).toStringAsFixed(2)} MB';
+    return '${(downloadSize / 1000000).toStringAsFixed(2)} MB';
+    /* if (downloadSize > 1000000) {
+      return '${(downloadSize / 1000000).toStringAsFixed(2)} MB';
     } else {
       return '$downloadSize KB';
-    }
+    } */
   }
 
   String get title => name;
@@ -288,15 +295,6 @@ class ApplicationRelease {
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
 
-  @JsonKey(name: 'published_at')
-  final DateTime? publishedAt;
-
-  @JsonKey(name: 'published', defaultValue: false)
-  final bool published;
-
-  @JsonKey(name: 'un_published_at')
-  final DateTime? unPublishedAt;
-
   @JsonKey(name: 'downloads_count', defaultValue: 0)
   final int? downloadsCount;
 
@@ -309,6 +307,12 @@ class ApplicationRelease {
   @JsonKey(name: 'is_beta')
   final bool isBeta;
 
+  @JsonKey(name: 'published', defaultValue: false)
+  final bool published;
+
+  @JsonKey(name: 'published_at')
+  final DateTime? publishedAt;
+
   @JsonKey(name: 'releases_notes')
   final String releasesNotes;
 
@@ -317,6 +321,9 @@ class ApplicationRelease {
 
   @JsonKey(name: 'scan_score')
   final int? scanScore;
+
+  @JsonKey(name: 'un_published_at')
+  final DateTime? unPublishedAt;
 
   @JsonKey(name: 'version_code')
   final int? versionCode;

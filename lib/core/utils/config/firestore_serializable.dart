@@ -22,6 +22,11 @@ int stringToInt(String value) {
 }
 
 // ignore: avoid_annotating_with_dynamic
+double stringToDouble(dynamic value) {
+  return double.tryParse(value?.toString() ?? '') ?? 0;
+}
+
+// ignore: avoid_annotating_with_dynamic
 double numberToInt(dynamic value) {
   return double.parse(value.toString());
 }

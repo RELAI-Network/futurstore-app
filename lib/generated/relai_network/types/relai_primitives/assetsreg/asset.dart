@@ -12,8 +12,9 @@ class Asset {
     required this.creator,
     required this.assetType,
     required this.name,
-    this.price,
-    required this.meta,
+    required this.price,
+    required this.hash,
+    required this.published,
   });
 
   factory Asset.decode(_i1.Input input) {
@@ -29,11 +30,14 @@ class Asset {
   /// CommonMeta
   final List<int> name;
 
-  /// Option<Balance>
-  final BigInt? price;
+  /// Balance
+  final BigInt price;
 
-  /// CommonMeta
-  final List<int> meta;
+  /// [u8; 32]
+  final List<int> hash;
+
+  /// bool
+  final bool published;
 
   static const $AssetCodec codec = $AssetCodec();
 
@@ -46,7 +50,8 @@ class Asset {
         'assetType': assetType.toJson(),
         'name': name,
         'price': price,
-        'meta': meta,
+        'hash': hash.toList(),
+        'published': published,
       };
 
   @override
@@ -67,9 +72,10 @@ class Asset {
           ) &&
           other.price == price &&
           _i5.listsEqual(
-            other.meta,
-            meta,
-          );
+            other.hash,
+            hash,
+          ) &&
+          other.published == published;
 
   @override
   int get hashCode => Object.hash(
@@ -77,7 +83,8 @@ class Asset {
         assetType,
         name,
         price,
-        meta,
+        hash,
+        published,
       );
 }
 
@@ -101,12 +108,16 @@ class $AssetCodec with _i1.Codec<Asset> {
       obj.name,
       output,
     );
-    const _i1.OptionCodec<BigInt>(_i1.U128Codec.codec).encodeTo(
+    _i1.U128Codec.codec.encodeTo(
       obj.price,
       output,
     );
-    _i1.U8SequenceCodec.codec.encodeTo(
-      obj.meta,
+    const _i1.U8ArrayCodec(32).encodeTo(
+      obj.hash,
+      output,
+    );
+    _i1.BoolCodec.codec.encodeTo(
+      obj.published,
       output,
     );
   }
@@ -117,8 +128,9 @@ class $AssetCodec with _i1.Codec<Asset> {
       creator: const _i1.U8ArrayCodec(32).decode(input),
       assetType: _i3.AssetType.codec.decode(input),
       name: _i1.U8SequenceCodec.codec.decode(input),
-      price: const _i1.OptionCodec<BigInt>(_i1.U128Codec.codec).decode(input),
-      meta: _i1.U8SequenceCodec.codec.decode(input),
+      price: _i1.U128Codec.codec.decode(input),
+      hash: const _i1.U8ArrayCodec(32).decode(input),
+      published: _i1.BoolCodec.codec.decode(input),
     );
   }
 
@@ -128,9 +140,9 @@ class $AssetCodec with _i1.Codec<Asset> {
     size = size + const _i2.AccountId32Codec().sizeHint(obj.creator);
     size = size + _i3.AssetType.codec.sizeHint(obj.assetType);
     size = size + _i1.U8SequenceCodec.codec.sizeHint(obj.name);
-    size = size +
-        const _i1.OptionCodec<BigInt>(_i1.U128Codec.codec).sizeHint(obj.price);
-    size = size + _i1.U8SequenceCodec.codec.sizeHint(obj.meta);
+    size = size + _i1.U128Codec.codec.sizeHint(obj.price);
+    size = size + const _i1.U8ArrayCodec(32).sizeHint(obj.hash);
+    size = size + _i1.BoolCodec.codec.sizeHint(obj.published);
     return size;
   }
 }

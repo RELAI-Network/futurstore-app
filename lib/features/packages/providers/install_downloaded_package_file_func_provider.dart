@@ -1,10 +1,13 @@
 import 'package:background_downloader/background_downloader.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../data/models/index.dart';
 import '../functions/utils.dart';
 
 part 'install_downloaded_package_file_func_provider.g.dart';
+
+typedef InstallDownloadedPackageFileFunc = Future<bool> Function(
+  String packageName,
+);
 
 final installDownloadedPackageFileFuncProvider =
     Provider<InstallDownloadedPackageFileFunc>(

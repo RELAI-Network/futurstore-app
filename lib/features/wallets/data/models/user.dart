@@ -9,6 +9,9 @@ part 'user.g.dart';
 @Collection<Web3WalletAccount>(
   '${UserModel.collection}/*/${Web3WalletAccount.collection}',
 )
+@Collection<UserAsset>(
+  '${UserModel.collection}/*/${UserAsset.collection}',
+)
 final usersReference = UserModelCollectionReference();
 
 @firestoreSerializable
@@ -67,8 +70,32 @@ class Web3WalletAccount {
   @JsonKey(name: 'web3_account_source', defaultValue: 'android')
   final String? web3AccountSource;
 }
-///androidId, acccountId, 
-///
-///buyAsset, on enregistre l'information
-///
-///Quand il fait des achats on l'indique dans Firebase
+
+@firestoreSerializable
+class UserAsset {
+  UserAsset({
+    required this.accountAddress,
+    required this.assetId,
+    required this.assetType,
+    required this.deviceId,
+    required this.paidAt,
+  });
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  static const String collection = 'assets';
+
+  @JsonKey(name: 'account_address')
+  final String accountAddress;
+
+  @JsonKey(name: 'asset_id')
+  final String assetId;
+
+  @JsonKey(name: 'asset_type')
+  final String? assetType;
+
+  @JsonKey(name: 'device_id')
+  final String deviceId;
+
+  @JsonKey(name: 'paid_at')
+  final DateTime? paidAt;
+}

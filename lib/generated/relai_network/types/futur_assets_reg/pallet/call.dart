@@ -33,22 +33,18 @@ abstract class Call {
 class $Call {
   const $Call();
 
-  SubmitAsset submitAsset({
-    required _i3.Asset asset,
-    required bool toPublish,
+  SubmitAsset submitAsset({required _i3.Asset asset}) {
+    return SubmitAsset(asset: asset);
+  }
+
+  PubUnpubAsset pubUnpubAsset({
+    required int assetId,
+    required bool pubUnpub,
   }) {
-    return SubmitAsset(
-      asset: asset,
-      toPublish: toPublish,
+    return PubUnpubAsset(
+      assetId: assetId,
+      pubUnpub: pubUnpub,
     );
-  }
-
-  PublishAsset publishAsset({required int assetId}) {
-    return PublishAsset(assetId: assetId);
-  }
-
-  UnPublishAsset unPublishAsset({required int assetId}) {
-    return UnPublishAsset(assetId: assetId);
   }
 
   DeleteAsset deleteAsset({required int assetId}) {
@@ -57,6 +53,16 @@ class $Call {
 
   BuyAsset buyAsset({required int assetId}) {
     return BuyAsset(assetId: assetId);
+  }
+
+  UpdateAsset updateAsset({
+    required int assetId,
+    required _i3.Asset asset,
+  }) {
+    return UpdateAsset(
+      assetId: assetId,
+      asset: asset,
+    );
   }
 }
 
@@ -69,14 +75,14 @@ class $CallCodec with _i1.Codec<Call> {
     switch (index) {
       case 0:
         return SubmitAsset._decode(input);
-      case 1:
-        return PublishAsset._decode(input);
       case 2:
-        return UnPublishAsset._decode(input);
+        return PubUnpubAsset._decode(input);
       case 3:
         return DeleteAsset._decode(input);
       case 4:
         return BuyAsset._decode(input);
+      case 5:
+        return UpdateAsset._decode(input);
       default:
         throw Exception('Call: Invalid variant index: "$index"');
     }
@@ -91,17 +97,17 @@ class $CallCodec with _i1.Codec<Call> {
       case SubmitAsset:
         (value as SubmitAsset).encodeTo(output);
         break;
-      case PublishAsset:
-        (value as PublishAsset).encodeTo(output);
-        break;
-      case UnPublishAsset:
-        (value as UnPublishAsset).encodeTo(output);
+      case PubUnpubAsset:
+        (value as PubUnpubAsset).encodeTo(output);
         break;
       case DeleteAsset:
         (value as DeleteAsset).encodeTo(output);
         break;
       case BuyAsset:
         (value as BuyAsset).encodeTo(output);
+        break;
+      case UpdateAsset:
+        (value as UpdateAsset).encodeTo(output);
         break;
       default:
         throw Exception(
@@ -114,14 +120,14 @@ class $CallCodec with _i1.Codec<Call> {
     switch (value.runtimeType) {
       case SubmitAsset:
         return (value as SubmitAsset)._sizeHint();
-      case PublishAsset:
-        return (value as PublishAsset)._sizeHint();
-      case UnPublishAsset:
-        return (value as UnPublishAsset)._sizeHint();
+      case PubUnpubAsset:
+        return (value as PubUnpubAsset)._sizeHint();
       case DeleteAsset:
         return (value as DeleteAsset)._sizeHint();
       case BuyAsset:
         return (value as BuyAsset)._sizeHint();
+      case UpdateAsset:
+        return (value as UpdateAsset)._sizeHint();
       default:
         throw Exception(
             'Call: Unsupported "$value" of type "${value.runtimeType}"');
@@ -131,36 +137,23 @@ class $CallCodec with _i1.Codec<Call> {
 
 /// See [`Pallet::submit_asset`].
 class SubmitAsset extends Call {
-  const SubmitAsset({
-    required this.asset,
-    required this.toPublish,
-  });
+  const SubmitAsset({required this.asset});
 
   factory SubmitAsset._decode(_i1.Input input) {
-    return SubmitAsset(
-      asset: _i3.Asset.codec.decode(input),
-      toPublish: _i1.BoolCodec.codec.decode(input),
-    );
+    return SubmitAsset(asset: _i3.Asset.codec.decode(input));
   }
 
   /// Asset<T::AccountId, BalanceOf<T>>
   final _i3.Asset asset;
 
-  /// bool
-  final bool toPublish;
-
   @override
-  Map<String, Map<String, dynamic>> toJson() => {
-        'submit_asset': {
-          'asset': asset.toJson(),
-          'toPublish': toPublish,
-        }
+  Map<String, Map<String, Map<String, dynamic>>> toJson() => {
+        'submit_asset': {'asset': asset.toJson()}
       };
 
   int _sizeHint() {
     int size = 1;
     size = size + _i3.Asset.codec.sizeHint(asset);
-    size = size + _i1.BoolCodec.codec.sizeHint(toPublish);
     return size;
   }
 
@@ -173,10 +166,6 @@ class SubmitAsset extends Call {
       asset,
       output,
     );
-    _i1.BoolCodec.codec.encodeTo(
-      toPublish,
-      output,
-    );
   }
 
   @override
@@ -185,81 +174,44 @@ class SubmitAsset extends Call {
         this,
         other,
       ) ||
-      other is SubmitAsset &&
-          other.asset == asset &&
-          other.toPublish == toPublish;
+      other is SubmitAsset && other.asset == asset;
 
   @override
-  int get hashCode => Object.hash(
-        asset,
-        toPublish,
-      );
+  int get hashCode => asset.hashCode;
 }
 
-/// See [`Pallet::publish_asset`].
-class PublishAsset extends Call {
-  const PublishAsset({required this.assetId});
+/// See [`Pallet::pub_unpub_asset`].
+class PubUnpubAsset extends Call {
+  const PubUnpubAsset({
+    required this.assetId,
+    required this.pubUnpub,
+  });
 
-  factory PublishAsset._decode(_i1.Input input) {
-    return PublishAsset(assetId: _i1.U32Codec.codec.decode(input));
+  factory PubUnpubAsset._decode(_i1.Input input) {
+    return PubUnpubAsset(
+      assetId: _i1.U32Codec.codec.decode(input),
+      pubUnpub: _i1.BoolCodec.codec.decode(input),
+    );
   }
 
   /// AssetId
   final int assetId;
 
+  /// bool
+  final bool pubUnpub;
+
   @override
-  Map<String, Map<String, int>> toJson() => {
-        'publish_asset': {'assetId': assetId}
+  Map<String, Map<String, dynamic>> toJson() => {
+        'pub_unpub_asset': {
+          'assetId': assetId,
+          'pubUnpub': pubUnpub,
+        }
       };
 
   int _sizeHint() {
     int size = 1;
     size = size + _i1.U32Codec.codec.sizeHint(assetId);
-    return size;
-  }
-
-  void encodeTo(_i1.Output output) {
-    _i1.U8Codec.codec.encodeTo(
-      1,
-      output,
-    );
-    _i1.U32Codec.codec.encodeTo(
-      assetId,
-      output,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(
-        this,
-        other,
-      ) ||
-      other is PublishAsset && other.assetId == assetId;
-
-  @override
-  int get hashCode => assetId.hashCode;
-}
-
-/// See [`Pallet::un_publish_asset`].
-class UnPublishAsset extends Call {
-  const UnPublishAsset({required this.assetId});
-
-  factory UnPublishAsset._decode(_i1.Input input) {
-    return UnPublishAsset(assetId: _i1.U32Codec.codec.decode(input));
-  }
-
-  /// AssetId
-  final int assetId;
-
-  @override
-  Map<String, Map<String, int>> toJson() => {
-        'un_publish_asset': {'assetId': assetId}
-      };
-
-  int _sizeHint() {
-    int size = 1;
-    size = size + _i1.U32Codec.codec.sizeHint(assetId);
+    size = size + _i1.BoolCodec.codec.sizeHint(pubUnpub);
     return size;
   }
 
@@ -272,6 +224,10 @@ class UnPublishAsset extends Call {
       assetId,
       output,
     );
+    _i1.BoolCodec.codec.encodeTo(
+      pubUnpub,
+      output,
+    );
   }
 
   @override
@@ -280,10 +236,15 @@ class UnPublishAsset extends Call {
         this,
         other,
       ) ||
-      other is UnPublishAsset && other.assetId == assetId;
+      other is PubUnpubAsset &&
+          other.assetId == assetId &&
+          other.pubUnpub == pubUnpub;
 
   @override
-  int get hashCode => assetId.hashCode;
+  int get hashCode => Object.hash(
+        assetId,
+        pubUnpub,
+      );
 }
 
 /// See [`Pallet::delete_asset`].
@@ -374,4 +335,69 @@ class BuyAsset extends Call {
 
   @override
   int get hashCode => assetId.hashCode;
+}
+
+/// See [`Pallet::update_asset`].
+class UpdateAsset extends Call {
+  const UpdateAsset({
+    required this.assetId,
+    required this.asset,
+  });
+
+  factory UpdateAsset._decode(_i1.Input input) {
+    return UpdateAsset(
+      assetId: _i1.U32Codec.codec.decode(input),
+      asset: _i3.Asset.codec.decode(input),
+    );
+  }
+
+  /// AssetId
+  final int assetId;
+
+  /// Asset<T::AccountId, BalanceOf<T>>
+  final _i3.Asset asset;
+
+  @override
+  Map<String, Map<String, dynamic>> toJson() => {
+        'update_asset': {
+          'assetId': assetId,
+          'asset': asset.toJson(),
+        }
+      };
+
+  int _sizeHint() {
+    int size = 1;
+    size = size + _i1.U32Codec.codec.sizeHint(assetId);
+    size = size + _i3.Asset.codec.sizeHint(asset);
+    return size;
+  }
+
+  void encodeTo(_i1.Output output) {
+    _i1.U8Codec.codec.encodeTo(
+      5,
+      output,
+    );
+    _i1.U32Codec.codec.encodeTo(
+      assetId,
+      output,
+    );
+    _i3.Asset.codec.encodeTo(
+      asset,
+      output,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(
+        this,
+        other,
+      ) ||
+      other is UpdateAsset && other.assetId == assetId && other.asset == asset;
+
+  @override
+  int get hashCode => Object.hash(
+        assetId,
+        asset,
+      );
 }

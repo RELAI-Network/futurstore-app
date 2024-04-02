@@ -64,14 +64,8 @@ class $Event {
     );
   }
 
-  AssetDeleted assetDeleted({
-    required _i3.AccountId32 creator,
-    required int id,
-  }) {
-    return AssetDeleted(
-      creator: creator,
-      id: id,
-    );
+  AssetDeleted assetDeleted({required int id}) {
+    return AssetDeleted(id: id);
   }
 
   AssetBought assetBought({
@@ -82,6 +76,10 @@ class $Event {
       buyer: buyer,
       id: id,
     );
+  }
+
+  AssetUpdated assetUpdated({required int id}) {
+    return AssetUpdated(id: id);
   }
 }
 
@@ -102,6 +100,8 @@ class $EventCodec with _i1.Codec<Event> {
         return AssetDeleted._decode(input);
       case 4:
         return AssetBought._decode(input);
+      case 5:
+        return AssetUpdated._decode(input);
       default:
         throw Exception('Event: Invalid variant index: "$index"');
     }
@@ -128,6 +128,9 @@ class $EventCodec with _i1.Codec<Event> {
       case AssetBought:
         (value as AssetBought).encodeTo(output);
         break;
+      case AssetUpdated:
+        (value as AssetUpdated).encodeTo(output);
+        break;
       default:
         throw Exception(
             'Event: Unsupported "$value" of type "${value.runtimeType}"');
@@ -147,6 +150,8 @@ class $EventCodec with _i1.Codec<Event> {
         return (value as AssetDeleted)._sizeHint();
       case AssetBought:
         return (value as AssetBought)._sizeHint();
+      case AssetUpdated:
+        return (value as AssetUpdated)._sizeHint();
       default:
         throw Exception(
             'Event: Unsupported "$value" of type "${value.runtimeType}"');
@@ -362,35 +367,22 @@ class AssetUnPublished extends Event {
 }
 
 class AssetDeleted extends Event {
-  const AssetDeleted({
-    required this.creator,
-    required this.id,
-  });
+  const AssetDeleted({required this.id});
 
   factory AssetDeleted._decode(_i1.Input input) {
-    return AssetDeleted(
-      creator: const _i1.U8ArrayCodec(32).decode(input),
-      id: _i1.U32Codec.codec.decode(input),
-    );
+    return AssetDeleted(id: _i1.U32Codec.codec.decode(input));
   }
-
-  /// T::AccountId
-  final _i3.AccountId32 creator;
 
   /// AssetId
   final int id;
 
   @override
-  Map<String, Map<String, dynamic>> toJson() => {
-        'AssetDeleted': {
-          'creator': creator.toList(),
-          'id': id,
-        }
+  Map<String, Map<String, int>> toJson() => {
+        'AssetDeleted': {'id': id}
       };
 
   int _sizeHint() {
     int size = 1;
-    size = size + const _i3.AccountId32Codec().sizeHint(creator);
     size = size + _i1.U32Codec.codec.sizeHint(id);
     return size;
   }
@@ -398,10 +390,6 @@ class AssetDeleted extends Event {
   void encodeTo(_i1.Output output) {
     _i1.U8Codec.codec.encodeTo(
       3,
-      output,
-    );
-    const _i1.U8ArrayCodec(32).encodeTo(
-      creator,
       output,
     );
     _i1.U32Codec.codec.encodeTo(
@@ -416,18 +404,10 @@ class AssetDeleted extends Event {
         this,
         other,
       ) ||
-      other is AssetDeleted &&
-          _i4.listsEqual(
-            other.creator,
-            creator,
-          ) &&
-          other.id == id;
+      other is AssetDeleted && other.id == id;
 
   @override
-  int get hashCode => Object.hash(
-        creator,
-        id,
-      );
+  int get hashCode => id.hashCode;
 }
 
 class AssetBought extends Event {
@@ -497,4 +477,48 @@ class AssetBought extends Event {
         buyer,
         id,
       );
+}
+
+class AssetUpdated extends Event {
+  const AssetUpdated({required this.id});
+
+  factory AssetUpdated._decode(_i1.Input input) {
+    return AssetUpdated(id: _i1.U32Codec.codec.decode(input));
+  }
+
+  /// AssetId
+  final int id;
+
+  @override
+  Map<String, Map<String, int>> toJson() => {
+        'AssetUpdated': {'id': id}
+      };
+
+  int _sizeHint() {
+    int size = 1;
+    size = size + _i1.U32Codec.codec.sizeHint(id);
+    return size;
+  }
+
+  void encodeTo(_i1.Output output) {
+    _i1.U8Codec.codec.encodeTo(
+      5,
+      output,
+    );
+    _i1.U32Codec.codec.encodeTo(
+      id,
+      output,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(
+        this,
+        other,
+      ) ||
+      other is AssetUpdated && other.id == id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
