@@ -20,6 +20,7 @@ import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/games/widgets/install_button.dart';
 
 import '../../wallets/controllers/services/app_reviews.dart';
+import '../../wallets/controllers/services/assets.dart';
 
 class GameDetailScreen extends StatefulWidget {
   const GameDetailScreen(this.data, {super.key});
@@ -57,7 +58,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 75,
+                  height: 100,
                   child: Row(
                     children: [
                       SizedBox(
@@ -82,15 +83,21 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            widget.data.title,
-                            style: context.textTheme.headlineSmall?.copyWith(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
+                          SizedBox(
+                            width: context.width * 0.7,
+                            child: Text(
+                              widget.data.title,
+                              style: context.textTheme.headlineSmall?.copyWith(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
+                          const Gap(),
                           Text(
                             widget.data.publisherName,
                             style: context.textTheme.bodySmall?.copyWith(
@@ -266,6 +273,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 const _Gap(),
                 _ReviewRatingBar(
                   applicationId: widget.data.id,
+                  assetId: widget.data.assetId,
                 ),
                 const _Gap(),
               ],
@@ -280,9 +288,11 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
 class _ReviewRatingBar extends ConsumerStatefulWidget {
   const _ReviewRatingBar({
     required this.applicationId,
+    required this.assetId,
   });
 
   final String applicationId;
+  final String? assetId;
 
   @override
   ConsumerState<_ReviewRatingBar> createState() => _ReviewRatingBarState();
@@ -291,6 +301,7 @@ class _ReviewRatingBar extends ConsumerStatefulWidget {
 class _ReviewRatingBarState extends ConsumerState<_ReviewRatingBar> {
   AppReview? _review;
 
+  bool _boughtThisAsset = false;
   bool _loadingReview = true;
 
   Future<AppReview?> _haveAddedReview() async {
@@ -307,16 +318,42 @@ class _ReviewRatingBarState extends ConsumerState<_ReviewRatingBar> {
     }
   }
 
+  Future<bool> _hasThisAsset() async {
+    try {
+      return ref.read(
+        hasThisAssetProvider(
+          assetId: int.parse(widget.assetId!),
+        ).future,
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+
+      return false;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
 
     unawaited(
-      _haveAddedReview().then((value) {
+      _hasThisAsset().then((value) {
+        setState(() {
+          _boughtThisAsset = value;
+        });
+
+        if (value) {
+          _haveAddedReview().then((value) {
+            setState(() {
+              _loadingReview = false;
+
+              _review = value;
+            });
+          });
+        }
+
         setState(() {
           _loadingReview = false;
-
-          _review = value;
         });
       }),
     );
@@ -383,7 +420,7 @@ class _ReviewRatingBarState extends ConsumerState<_ReviewRatingBar> {
         : Column(
             children: [
               RatingBar.builder(
-                ignoreGestures: _review != null,
+                ignoreGestures: _review != null || !_boughtThisAsset,
                 initialRating: _review?.rating ?? 0,
                 minRating: 1,
                 direction: Axis.horizontal,

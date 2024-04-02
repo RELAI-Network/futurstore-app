@@ -88,6 +88,9 @@ class FirestoreBooksRepo extends IBooksRepo {
               : (await _service.whereCategoryId(isEqualTo: category.id).get()))
           .docs
           .map((e) => e.data)
+          .where(
+            (book) => book.published && book.assetId != null,
+          )
           .toList();
     } catch (e) {
       debugPrint(e.toString());

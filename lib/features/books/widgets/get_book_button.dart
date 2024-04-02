@@ -90,13 +90,11 @@ class _GetBookButtonState extends ConsumerState<GetBookButton> {
 
   Future<bool> _hasThisAsset() async {
     try {
-      await ref.read(
+      return ref.read(
         hasThisAssetProvider(
           assetId: int.parse(widget.data.assetId!),
         ).future,
       );
-
-      return true;
     } catch (e) {
       debugPrint(e.toString());
 
@@ -190,7 +188,7 @@ class _GetBookButtonState extends ConsumerState<GetBookButton> {
             child: const Text('Open'),
           )
         : downloading
-            ? const CircularProgressIndicator.adaptive()
+            ? const Center(child: CircularProgressIndicator.adaptive())
             : ElevatedButton(
                 onPressed: _buyAsset,
                 style: ButtonStyle(

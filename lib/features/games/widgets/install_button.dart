@@ -96,13 +96,11 @@ class _InstallGameButtonState extends ConsumerState<InstallGameButton> {
 
   Future<bool> _hasThisAsset() async {
     try {
-      await ref.read(
+      return ref.read(
         hasThisAssetProvider(
           assetId: int.parse(widget.data.assetId!),
         ).future,
       );
-
-      return true;
     } catch (e) {
       debugPrint(e.toString());
 

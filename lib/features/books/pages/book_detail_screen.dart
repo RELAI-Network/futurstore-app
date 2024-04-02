@@ -13,6 +13,7 @@ import 'package:futurstore/core/utils/extensions/navigator.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
 import 'package:futurstore/core/utils/mixins/form_mixin.dart';
 
+import '../../wallets/controllers/services/assets.dart';
 import '../../wallets/controllers/services/book_reviews.dart';
 import '../data/models/book.dart';
 import '../widgets/get_book_button.dart';
@@ -225,6 +226,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
               const Gap(),
               _ReviewRatingBar(
                 bookId: widget.data.id,
+                assetId: widget.data.assetId,
               ),
               const Gap(
                 height: AppSpacing.xxlg,
@@ -267,9 +269,11 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
 class _ReviewRatingBar extends ConsumerStatefulWidget {
   const _ReviewRatingBar({
     required this.bookId,
+    required this.assetId,
   });
 
   final String bookId;
+  final String? assetId;
 
   @override
   ConsumerState<_ReviewRatingBar> createState() => _ReviewRatingBarState();
@@ -277,7 +281,7 @@ class _ReviewRatingBar extends ConsumerStatefulWidget {
 
 class _ReviewRatingBarState extends ConsumerState<_ReviewRatingBar> {
   BookReview? _review;
-
+  bool _boughtThisAsset = false;
   bool _loadingReview = true;
 
   Future<BookReview?> _haveAddedReview() async {
@@ -294,16 +298,42 @@ class _ReviewRatingBarState extends ConsumerState<_ReviewRatingBar> {
     }
   }
 
+  Future<bool> _hasThisAsset() async {
+    try {
+      return ref.read(
+        hasThisAssetProvider(
+          assetId: int.parse(widget.assetId!),
+        ).future,
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+
+      return false;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
 
     unawaited(
-      _haveAddedReview().then((value) {
+      _hasThisAsset().then((value) {
+        setState(() {
+          _boughtThisAsset = value;
+        });
+
+        if (value) {
+          _haveAddedReview().then((value) {
+            setState(() {
+              _loadingReview = false;
+
+              _review = value;
+            });
+          });
+        }
+
         setState(() {
           _loadingReview = false;
-
-          _review = value;
         });
       }),
     );
@@ -368,7 +398,7 @@ class _ReviewRatingBarState extends ConsumerState<_ReviewRatingBar> {
         : Column(
             children: [
               RatingBar.builder(
-                ignoreGestures: _review != null,
+                ignoreGestures: _review != null || !_boughtThisAsset,
                 initialRating: _review?.rating ?? 0,
                 minRating: 1,
                 allowHalfRating: true,
