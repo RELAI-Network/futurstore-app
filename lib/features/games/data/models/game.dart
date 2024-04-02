@@ -39,6 +39,7 @@ class GameModel extends ApplicationModel {
     super.updatedAt,
     super.versionCode,
     super.websiteUrl,
+    super.assetId,
   }) : super(
           appType: 'game',
         );
@@ -85,5 +86,6 @@ extension ToGameClass on ApplicationModel {
         unPublishedAt: unPublishedAt,
         versionCode: versionCode,
         published: published,
+        assetId: assetId,
       );
 }

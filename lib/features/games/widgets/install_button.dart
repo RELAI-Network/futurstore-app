@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
+import 'package:futurstore/core/presentation/theming/configs/app_spacing.dart';
 import 'package:futurstore/core/utils/constants.dart';
 import 'package:futurstore/core/utils/extensions/build_context.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
@@ -30,6 +31,9 @@ class InstallGameButton extends ConsumerStatefulWidget {
 
 class _InstallGameButtonState extends ConsumerState<InstallGameButton> {
   bool _started = false;
+  bool _buyingAsset = false;
+
+  bool _boughtThisAsset = false;
 
   double _downloadProgress = 0;
 
@@ -60,12 +64,41 @@ class _InstallGameButtonState extends ConsumerState<InstallGameButton> {
     }
   }
 
-  Future<bool> _buyAsset() async {
+  Future<void> _buyAsset() async {
+    setState(() {
+      _buyingAsset = true;
+    });
+
     try {
       await ref.read(
         buyAssetProvider(
           assetId: int.parse(widget.data.assetId!),
           assetType: widget.data.appType,
+          onSuccess: (_, alreadyPaid) async {
+            setState(() {
+              _buyingAsset = false;
+
+              _boughtThisAsset = true;
+            });
+
+            await _start();
+          },
+        ).future,
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+
+      setState(() {
+        _buyingAsset = false;
+      });
+    }
+  }
+
+  Future<bool> _hasThisAsset() async {
+    try {
+      await ref.read(
+        hasThisAssetProvider(
+          assetId: int.parse(widget.data.assetId!),
         ).future,
       );
 
@@ -186,6 +219,14 @@ class _InstallGameButtonState extends ConsumerState<InstallGameButton> {
             _downloadStatus = DownloadTaskStatus.complete;
 
             _installStatus = InstallTaskStatus.success;
+
+            _boughtThisAsset = true;
+          } else {
+            _hasThisAsset().then((value) {
+              setState(() {
+                _boughtThisAsset = value;
+              });
+            });
           }
         });
       }),
@@ -239,20 +280,31 @@ class _InstallGameButtonState extends ConsumerState<InstallGameButton> {
                         l10n.openApp,
                       ),
                     )
-                  : ElevatedButton(
-                      onPressed: () async {
-                        if (!await _buyAsset()) {
-                          return;
-                        }
-
-                        await _start();
-                      },
-                      child: Text(
-                        _packageInstalledInfo == null
-                            ? (widget.data.price <= 0
-                                ? l10n.installApp
-                                : '''${l10n.getApp} (${widget.data.price}$kRelaiTokenSymbol)''')
-                            : l10n.updateApp,
+                  : SizedBox(
+                      width: context.width * 0.9,
+                      height: AppSpacing.xxlg,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () async {
+                              await _buyAsset();
+                            },
+                            child: Text(
+                              _packageInstalledInfo == null
+                                  ? (widget.data.price <= 0 || _boughtThisAsset
+                                      ? l10n.installApp
+                                      : '''${l10n.getApp} (${widget.data.price}$kRelaiTokenSymbol)''')
+                                  : l10n.updateApp,
+                            ),
+                          ),
+                          if (_buyingAsset)
+                            const Positioned.fill(
+                              child: Center(
+                                child: CircularProgressIndicator.adaptive(),
+                              ),
+                            ),
+                        ],
                       ),
                     ),
             ),

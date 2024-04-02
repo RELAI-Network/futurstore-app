@@ -10,6 +10,9 @@ part 'app.g.dart';
 @Collection<ApplicationRelease>(
   '${ApplicationModel.collection}/*/${ApplicationRelease.collection}',
 )
+@Collection<AppReview>(
+  '${ApplicationModel.collection}/*/${AppReview.collection}',
+)
 final appsReferences = ApplicationModelCollectionReference();
 // @Collection<ApplicationModel>(ApplicationModel.collection)
 // @Collection<ItemNote>(
@@ -76,11 +79,11 @@ class ApplicationModel {
   @JsonKey(name: 'actual_release_id')
   final String? actualReleaseId;
 
-  @JsonKey(name: 'asset_id')
-  final String? assetId;
-
   @JsonKey(name: 'app_type')
   final String appType;
+
+  @JsonKey(name: 'asset_id')
+  final String? assetId;
 
   @JsonKey(name: 'category_id')
   final String categoryId;
@@ -330,47 +333,47 @@ class ApplicationRelease {
 }
 
 @firestoreSerializable
-class ItemNote {
-  ItemNote({
+class AppReview {
+  AppReview({
     required this.addedAt,
-    required this.comment,
-    required this.downVotesCount,
+    required this.address,
+    required this.applicationId,
+    required this.assetId,
+    required this.deviceId,
     required this.id,
-    required this.updatedAt,
-    required this.upVotesCount,
+    required this.hash,
     required this.userId,
-    required this.userName,
-    required this.userProfilePictureUrl,
-    required this.value,
+    required this.rating,
+    this.comment,
+    this.userProfilePictureUrl,
   });
 
   @JsonKey(includeFromJson: false, includeToJson: false)
-  static const String collection = 'notes';
+  static const String collection = 'reviews';
 
-  final String comment;
-  final double value;
+  final String address;
+  final String? comment;
+  final String hash;
+  final double rating;
 
   @JsonKey(name: 'added_at')
   final DateTime addedAt;
 
-  @JsonKey(name: 'down_votes_count')
-  final int downVotesCount;
+  @JsonKey(name: 'asset_id')
+  final String assetId;
+
+  @JsonKey(name: 'application_id')
+  final String applicationId;
+
+  @JsonKey(name: 'device_id')
+  final String deviceId;
 
   @Id()
   final String id;
 
-  @JsonKey(name: 'up_votes_count')
-  final int upVotesCount;
-
-  @JsonKey(name: 'updated_at')
-  final DateTime updatedAt;
-
   @JsonKey(name: 'user_id')
   final String userId;
 
-  @JsonKey(name: 'user_name')
-  final String userName;
-
   @JsonKey(name: 'user_profile_picture_url')
-  final String userProfilePictureUrl;
+  final String? userProfilePictureUrl;
 }

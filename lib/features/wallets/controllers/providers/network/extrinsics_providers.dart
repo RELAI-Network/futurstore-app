@@ -133,7 +133,7 @@ typedef GetHashFromReviewInformationFunc = Future<String> Function(
   String mnemonic,
   String deviceId,
   int assetId,
-  int note,
+  String note,
   String? content,
 );
 

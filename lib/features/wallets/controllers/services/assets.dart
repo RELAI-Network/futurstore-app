@@ -17,7 +17,7 @@ Future<void> buyAsset(
   BuyAssetRef ref, {
   required int assetId,
   required String assetType,
-  void Function(String)? onSuccess,
+  Future<void> Function(String?, bool)? onSuccess,
 }) async {
   try {
     final wallet = ref.read(connectedWalletProvider);
@@ -32,7 +32,19 @@ Future<void> buyAsset(
         address: wallet.value!.address,
       ).future,
     )) {
-      debugPrint('verifyAssetPurchaseProvider');
+      final deviceId = await ref.read(deviceUniqIdProvider);
+
+      final uuid = await ref.read(userUniqIdentifierProvider);
+
+      await ref.read(usersRepoProvider).buyAsset(
+            uuid,
+            deviceId,
+            wallet.value!.address,
+            assetId,
+            assetType,
+          );
+
+      await onSuccess?.call(null, true);
       return;
     }
 
@@ -62,7 +74,7 @@ Future<void> buyAsset(
                 assetType,
               );
 
-          onSuccess?.call(data.value.toString());
+          await onSuccess?.call(data.value.toString(), false);
         }
       },
     );
@@ -92,10 +104,36 @@ Future<bool> verifyAssetPurchase(
 }
 
 @riverpod
-Future<void> addReviewHash(
+Future<bool> hasThisAsset(
+  HasThisAssetRef ref, {
+  required int assetId,
+}) async {
+  try {
+    final wallet = ref.read(connectedWalletProvider);
+
+    if (wallet.value == null) {
+      throw Exception('No connected wallet');
+    }
+
+    final uuid = await ref.read(userUniqIdentifierProvider);
+
+    return ref.read(usersRepoProvider).haveThisAsset(
+          uuid,
+          wallet.value!.address,
+          assetId.toString(),
+        );
+  } catch (e) {
+    debugPrint(e.toString());
+
+    rethrow;
+  }
+}
+
+@riverpod
+Future<String?> addReviewHash(
   AddReviewHashRef ref, {
   required int assetId,
-  required int note,
+  required String note,
   String? content,
 }) async {
   try {
@@ -120,6 +158,8 @@ Future<void> addReviewHash(
           assetId.toString(),
           hash,
         );
+
+    return hash;
   } catch (e) {
     debugPrint(e.toString());
 

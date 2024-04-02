@@ -26,7 +26,7 @@ class BookCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 2),
+              padding: const EdgeInsets.all(1),
               child: Text(
                 data.title,
               ),

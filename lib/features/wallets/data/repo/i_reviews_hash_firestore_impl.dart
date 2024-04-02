@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/review_hash.dart';
@@ -19,9 +18,8 @@ class ReviewsHashFirestoreImpl extends IReviewsHashRepo {
         if (!value.exists) {
           _service.doc('queue').set(ReviewHash(list: doc));
         } else {
-          _service.doc('queue').update(
-                list: value.data?.list ?? [],
-                listFieldValue: FieldValue.arrayUnion(doc),
+          _service.doc('queue').set(
+                ReviewHash(list: [...doc, ...value.data?.list ?? []]),
               );
         }
       });

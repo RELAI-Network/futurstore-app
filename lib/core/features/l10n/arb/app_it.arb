@@ -15,6 +15,8 @@
   "walletTitle": "Gestione portafogli",
   "connectToWalletBtnTex": "Connetti al Wallet",
   "addNewWalletFormTitle": "Aggiungi nuovo portafoglio",
+  "addReviewApp": "Aggiungi una recensione",
+  "submitReview": "Invia",
   "pleaseEnterWalletMnemonicOrSeed": "Inserisci la frase mnemonica o il seed del portafoglio",
   "pleaseEnterYourWalletName": "Inserisci il nome del portafoglio.",
   "noWalletsInStorage": "Non hai connesso nessun portafoglio su questo dispositivo.",

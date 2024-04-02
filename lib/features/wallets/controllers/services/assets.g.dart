@@ -6,7 +6,7 @@ part of 'assets.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$buyAssetHash() => r'8cad2c3dc9bdc396014b7b6c156a68300ed5a4a0';
+String _$buyAssetHash() => r'96c671ae6553eb116ac75f97778be677f6321e5f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -42,7 +42,7 @@ class BuyAssetFamily extends Family<AsyncValue<void>> {
   BuyAssetProvider call({
     required int assetId,
     required String assetType,
-    void Function(String)? onSuccess,
+    Future<void> Function(String?, bool)? onSuccess,
   }) {
     return BuyAssetProvider(
       assetId: assetId,
@@ -83,7 +83,7 @@ class BuyAssetProvider extends AutoDisposeFutureProvider<void> {
   BuyAssetProvider({
     required int assetId,
     required String assetType,
-    void Function(String)? onSuccess,
+    Future<void> Function(String?, bool)? onSuccess,
   }) : this._internal(
           (ref) => buyAsset(
             ref as BuyAssetRef,
@@ -118,7 +118,7 @@ class BuyAssetProvider extends AutoDisposeFutureProvider<void> {
 
   final int assetId;
   final String assetType;
-  final void Function(String)? onSuccess;
+  final Future<void> Function(String?, bool)? onSuccess;
 
   @override
   Override overrideWith(
@@ -172,7 +172,7 @@ mixin BuyAssetRef on AutoDisposeFutureProviderRef<void> {
   String get assetType;
 
   /// The parameter `onSuccess` of this provider.
-  void Function(String)? get onSuccess;
+  Future<void> Function(String?, bool)? get onSuccess;
 }
 
 class _BuyAssetProviderElement extends AutoDisposeFutureProviderElement<void>
@@ -184,7 +184,7 @@ class _BuyAssetProviderElement extends AutoDisposeFutureProviderElement<void>
   @override
   String get assetType => (origin as BuyAssetProvider).assetType;
   @override
-  void Function(String)? get onSuccess =>
+  Future<void> Function(String?, bool)? get onSuccess =>
       (origin as BuyAssetProvider).onSuccess;
 }
 
@@ -334,21 +334,149 @@ class _VerifyAssetPurchaseProviderElement
   String get address => (origin as VerifyAssetPurchaseProvider).address;
 }
 
-String _$addReviewHashHash() => r'72e130b4bbefd973b9aac3ff5e2a107ef03a4c1a';
+String _$hasThisAssetHash() => r'c276c1e73f2f01344354345a660ebf5331affb0f';
+
+/// See also [hasThisAsset].
+@ProviderFor(hasThisAsset)
+const hasThisAssetProvider = HasThisAssetFamily();
+
+/// See also [hasThisAsset].
+class HasThisAssetFamily extends Family<AsyncValue<bool>> {
+  /// See also [hasThisAsset].
+  const HasThisAssetFamily();
+
+  /// See also [hasThisAsset].
+  HasThisAssetProvider call({
+    required int assetId,
+  }) {
+    return HasThisAssetProvider(
+      assetId: assetId,
+    );
+  }
+
+  @override
+  HasThisAssetProvider getProviderOverride(
+    covariant HasThisAssetProvider provider,
+  ) {
+    return call(
+      assetId: provider.assetId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'hasThisAssetProvider';
+}
+
+/// See also [hasThisAsset].
+class HasThisAssetProvider extends AutoDisposeFutureProvider<bool> {
+  /// See also [hasThisAsset].
+  HasThisAssetProvider({
+    required int assetId,
+  }) : this._internal(
+          (ref) => hasThisAsset(
+            ref as HasThisAssetRef,
+            assetId: assetId,
+          ),
+          from: hasThisAssetProvider,
+          name: r'hasThisAssetProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$hasThisAssetHash,
+          dependencies: HasThisAssetFamily._dependencies,
+          allTransitiveDependencies:
+              HasThisAssetFamily._allTransitiveDependencies,
+          assetId: assetId,
+        );
+
+  HasThisAssetProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.assetId,
+  }) : super.internal();
+
+  final int assetId;
+
+  @override
+  Override overrideWith(
+    FutureOr<bool> Function(HasThisAssetRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: HasThisAssetProvider._internal(
+        (ref) => create(ref as HasThisAssetRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        assetId: assetId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<bool> createElement() {
+    return _HasThisAssetProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is HasThisAssetProvider && other.assetId == assetId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, assetId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin HasThisAssetRef on AutoDisposeFutureProviderRef<bool> {
+  /// The parameter `assetId` of this provider.
+  int get assetId;
+}
+
+class _HasThisAssetProviderElement
+    extends AutoDisposeFutureProviderElement<bool> with HasThisAssetRef {
+  _HasThisAssetProviderElement(super.provider);
+
+  @override
+  int get assetId => (origin as HasThisAssetProvider).assetId;
+}
+
+String _$addReviewHashHash() => r'2e776c8c820d291928003b1a2284b1d19bfc0a0f';
 
 /// See also [addReviewHash].
 @ProviderFor(addReviewHash)
 const addReviewHashProvider = AddReviewHashFamily();
 
 /// See also [addReviewHash].
-class AddReviewHashFamily extends Family<AsyncValue<void>> {
+class AddReviewHashFamily extends Family<AsyncValue<String?>> {
   /// See also [addReviewHash].
   const AddReviewHashFamily();
 
   /// See also [addReviewHash].
   AddReviewHashProvider call({
     required int assetId,
-    required int note,
+    required String note,
     String? content,
   }) {
     return AddReviewHashProvider(
@@ -385,11 +513,11 @@ class AddReviewHashFamily extends Family<AsyncValue<void>> {
 }
 
 /// See also [addReviewHash].
-class AddReviewHashProvider extends AutoDisposeFutureProvider<void> {
+class AddReviewHashProvider extends AutoDisposeFutureProvider<String?> {
   /// See also [addReviewHash].
   AddReviewHashProvider({
     required int assetId,
-    required int note,
+    required String note,
     String? content,
   }) : this._internal(
           (ref) => addReviewHash(
@@ -425,12 +553,12 @@ class AddReviewHashProvider extends AutoDisposeFutureProvider<void> {
   }) : super.internal();
 
   final int assetId;
-  final int note;
+  final String note;
   final String? content;
 
   @override
   Override overrideWith(
-    FutureOr<void> Function(AddReviewHashRef provider) create,
+    FutureOr<String?> Function(AddReviewHashRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -449,7 +577,7 @@ class AddReviewHashProvider extends AutoDisposeFutureProvider<void> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<void> createElement() {
+  AutoDisposeFutureProviderElement<String?> createElement() {
     return _AddReviewHashProviderElement(this);
   }
 
@@ -472,25 +600,25 @@ class AddReviewHashProvider extends AutoDisposeFutureProvider<void> {
   }
 }
 
-mixin AddReviewHashRef on AutoDisposeFutureProviderRef<void> {
+mixin AddReviewHashRef on AutoDisposeFutureProviderRef<String?> {
   /// The parameter `assetId` of this provider.
   int get assetId;
 
   /// The parameter `note` of this provider.
-  int get note;
+  String get note;
 
   /// The parameter `content` of this provider.
   String? get content;
 }
 
 class _AddReviewHashProviderElement
-    extends AutoDisposeFutureProviderElement<void> with AddReviewHashRef {
+    extends AutoDisposeFutureProviderElement<String?> with AddReviewHashRef {
   _AddReviewHashProviderElement(super.provider);
 
   @override
   int get assetId => (origin as AddReviewHashProvider).assetId;
   @override
-  int get note => (origin as AddReviewHashProvider).note;
+  String get note => (origin as AddReviewHashProvider).note;
   @override
   String? get content => (origin as AddReviewHashProvider).content;
 }

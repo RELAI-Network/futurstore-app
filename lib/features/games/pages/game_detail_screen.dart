@@ -1,16 +1,25 @@
 // ignore_for_file: avoid_redundant_argument_values
 
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:futurstore/core/features/l10n/l10n.dart';
+import 'package:futurstore/core/presentation/components/gap.dart';
 import 'package:futurstore/core/presentation/components/vertical_divider.dart';
 import 'package:futurstore/core/presentation/theming/configs/app_colors.dart';
 import 'package:futurstore/core/presentation/theming/configs/app_spacing.dart';
 import 'package:futurstore/core/utils/extensions/build_context.dart';
+import 'package:futurstore/core/utils/extensions/navigator.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
+import 'package:futurstore/core/utils/mixins/form_mixin.dart';
 import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/games/widgets/install_button.dart';
+
+import '../../wallets/controllers/services/reviews.dart';
 
 class GameDetailScreen extends StatefulWidget {
   const GameDetailScreen(this.data, {super.key});
@@ -255,19 +264,260 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                   ],
                 ),
                 const _Gap(),
+                ReviewRatingBar(
+                  applicationId: widget.data.id,
+                ),
                 const _Gap(),
-                const Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Text('Version: X'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('Size: ${widget.data.appSize}'),
-                ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ReviewRatingBar extends ConsumerStatefulWidget {
+  const ReviewRatingBar({
+    required this.applicationId,
+    super.key,
+  });
+
+  final String applicationId;
+
+  @override
+  ConsumerState<ReviewRatingBar> createState() => _ReviewRatingBarState();
+}
+
+class _ReviewRatingBarState extends ConsumerState<ReviewRatingBar> {
+  AppReview? _review;
+
+  bool _loadingReview = true;
+
+  Future<AppReview?> _haveAddedReview() async {
+    try {
+      return ref.read(
+        myAppReviewProvider(
+          applicationId: widget.applicationId,
+        ).future,
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+
+      return null;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    unawaited(
+      _haveAddedReview().then((value) {
+        setState(() {
+          _loadingReview = false;
+
+          _review = value;
+        });
+      }),
+    );
+  }
+
+  Future<void> _openReviewForm(double rating) async {
+    final appReview = await showModalBottomSheet<AppReview>(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: BottomSheet(
+          onClosing: () {},
+          builder: (_) {
+            final l10n = _.l10n;
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.lg,
+                vertical: AppSpacing.lg,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        l10n.addReviewApp,
+                        style: context.textTheme.titleLarge,
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          context.pop();
+                        },
+                        icon: const Icon(Icons.close),
+                      ),
+                    ],
+                  ),
+                  _AddReviewForm(
+                    widget.applicationId,
+                    rating,
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
+
+    setState(() {
+      _review = appReview;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _loadingReview
+        ? const Center(child: CircularProgressIndicator.adaptive())
+        : Column(
+            children: [
+              RatingBar.builder(
+                ignoreGestures: _review != null,
+                initialRating: _review?.rating ?? 0,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: const EdgeInsets.symmetric(horizontal: 10),
+                itemBuilder: (context, _) => const Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
+                onRatingUpdate: _openReviewForm,
+              ),
+              if (_review != null && _review!.comment != null) ...[
+                const _Gap(
+                  height: 10,
+                ),
+                Text(
+                  _review!.comment!,
+                  style: context.textTheme.labelLarge,
+                ),
+              ],
+            ],
+          );
+  }
+}
+
+class _AddReviewForm extends ConsumerStatefulWidget {
+  // ignore: unused_element
+  const _AddReviewForm(this.applicationId, this.rating);
+
+  final String applicationId;
+  final double rating;
+
+  @override
+  ConsumerState<_AddReviewForm> createState() => __AddReviewFormState();
+}
+
+class __AddReviewFormState extends ConsumerState<_AddReviewForm>
+    with FormMixin {
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          const Gap(
+            height: AppSpacing.xlg,
+          ),
+          RatingBar.builder(
+            initialRating: widget.rating,
+            minRating: 1,
+            direction: Axis.horizontal,
+            allowHalfRating: true,
+            itemCount: 5,
+            itemPadding: const EdgeInsets.symmetric(horizontal: 5),
+            itemBuilder: (context, _) => const Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+            onRatingUpdate: (rating) => onChange<double>('rating', rating),
+          ),
+          const Gap(),
+          TextFormField(
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Comment',
+            ),
+            minLines: 3,
+            maxLines: 6,
+            onChanged: (value) {
+              onChange<String>('comment', value);
+            },
+          ),
+          const Gap(),
+          if (hasError)
+            Column(
+              children: [
+                Text(
+                  errorMessage,
+                  style: context.textTheme.bodySmall?.copyWith(
+                    color: context.theme.colorScheme.error,
+                  ),
+                ),
+                const Gap(),
+              ],
+            ),
+          SizedBox(
+            width: double.infinity,
+            child: loading
+                ? const Center(child: CircularProgressIndicator.adaptive())
+                : ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState?.validate() ?? false) {
+                        loading = true;
+
+                        try {
+                          final result = await ref.watch(
+                            addReviewProvider(
+                              applicationId: widget.applicationId,
+                              rating: value<double>('rating') ?? widget.rating,
+                              comment: value<String>('comment')?.trim(),
+                            ).future,
+                          );
+
+                          if (result.success) {
+                            if (context.mounted) {
+                              context.pop(result.data);
+                            }
+
+                            loading = false;
+                          } else {
+                            loading = false;
+                            error = result.error!;
+                          }
+                        } catch (e) {
+                          loading = false;
+
+                          debugPrint(e.toString());
+
+                          error = l10n.unknownError;
+                        }
+                      }
+                    },
+                    child: Text(
+                      l10n.submitReview,
+                    ),
+                  ),
+          ),
+        ],
       ),
     );
   }

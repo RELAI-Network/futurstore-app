@@ -165,7 +165,7 @@ class UsersFirestoreImpl extends IUsers {
         assetId.toString(),
       )) return;
 
-      await docRef.assets.doc(walletAddress).set(
+      await docRef.assets.doc(assetId.toString()).set(
             UserAsset(
               deviceId: deviceId,
               accountAddress: walletAddress,

@@ -126,6 +126,11 @@ abstract class ApplicationModelDocumentReference
     reference,
   );
 
+  late final AppReviewCollectionReference reviews =
+      _$AppReviewCollectionReference(
+    reference,
+  );
+
   @override
   Stream<ApplicationModelDocumentSnapshot> snapshots();
 
@@ -160,10 +165,10 @@ abstract class ApplicationModelDocumentReference
     FieldValue versionFieldValue,
     String? actualReleaseId,
     FieldValue actualReleaseIdFieldValue,
-    String? assetId,
-    FieldValue assetIdFieldValue,
     String appType,
     FieldValue appTypeFieldValue,
+    String? assetId,
+    FieldValue assetIdFieldValue,
     String categoryId,
     FieldValue categoryIdFieldValue,
     String categoryName,
@@ -241,10 +246,10 @@ abstract class ApplicationModelDocumentReference
     FieldValue versionFieldValue,
     String? actualReleaseId,
     FieldValue actualReleaseIdFieldValue,
-    String? assetId,
-    FieldValue assetIdFieldValue,
     String appType,
     FieldValue appTypeFieldValue,
+    String? assetId,
+    FieldValue assetIdFieldValue,
     String categoryId,
     FieldValue categoryIdFieldValue,
     String categoryName,
@@ -316,6 +321,11 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     reference,
   );
 
+  late final AppReviewCollectionReference reviews =
+      _$AppReviewCollectionReference(
+    reference,
+  );
+
   @override
   Stream<ApplicationModelDocumentSnapshot> snapshots() {
     return reference.snapshots().map(ApplicationModelDocumentSnapshot._);
@@ -353,10 +363,10 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? versionFieldValue,
     Object? actualReleaseId = _sentinel,
     FieldValue? actualReleaseIdFieldValue,
-    Object? assetId = _sentinel,
-    FieldValue? assetIdFieldValue,
     Object? appType = _sentinel,
     FieldValue? appTypeFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
     Object? categoryId = _sentinel,
     FieldValue? categoryIdFieldValue,
     Object? categoryName = _sentinel,
@@ -449,12 +459,12 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both actualReleaseId and actualReleaseIdFieldValue",
     );
     assert(
-      assetId == _sentinel || assetIdFieldValue == null,
-      "Cannot specify both assetId and assetIdFieldValue",
-    );
-    assert(
       appType == _sentinel || appTypeFieldValue == null,
       "Cannot specify both appType and appTypeFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
     );
     assert(
       categoryId == _sentinel || categoryIdFieldValue == null,
@@ -611,16 +621,16 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       if (actualReleaseIdFieldValue != null)
         _$ApplicationModelFieldMap['actualReleaseId']!:
             actualReleaseIdFieldValue,
-      if (assetId != _sentinel)
-        _$ApplicationModelFieldMap['assetId']!:
-            _$ApplicationModelPerFieldToJson.assetId(assetId as String?),
-      if (assetIdFieldValue != null)
-        _$ApplicationModelFieldMap['assetId']!: assetIdFieldValue,
       if (appType != _sentinel)
         _$ApplicationModelFieldMap['appType']!:
             _$ApplicationModelPerFieldToJson.appType(appType as String),
       if (appTypeFieldValue != null)
         _$ApplicationModelFieldMap['appType']!: appTypeFieldValue,
+      if (assetId != _sentinel)
+        _$ApplicationModelFieldMap['assetId']!:
+            _$ApplicationModelPerFieldToJson.assetId(assetId as String?),
+      if (assetIdFieldValue != null)
+        _$ApplicationModelFieldMap['assetId']!: assetIdFieldValue,
       if (categoryId != _sentinel)
         _$ApplicationModelFieldMap['categoryId']!:
             _$ApplicationModelPerFieldToJson.categoryId(categoryId as String),
@@ -793,10 +803,10 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
     FieldValue? versionFieldValue,
     Object? actualReleaseId = _sentinel,
     FieldValue? actualReleaseIdFieldValue,
-    Object? assetId = _sentinel,
-    FieldValue? assetIdFieldValue,
     Object? appType = _sentinel,
     FieldValue? appTypeFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
     Object? categoryId = _sentinel,
     FieldValue? categoryIdFieldValue,
     Object? categoryName = _sentinel,
@@ -889,12 +899,12 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both actualReleaseId and actualReleaseIdFieldValue",
     );
     assert(
-      assetId == _sentinel || assetIdFieldValue == null,
-      "Cannot specify both assetId and assetIdFieldValue",
-    );
-    assert(
       appType == _sentinel || appTypeFieldValue == null,
       "Cannot specify both appType and appTypeFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
     );
     assert(
       categoryId == _sentinel || categoryIdFieldValue == null,
@@ -1051,16 +1061,16 @@ class _$ApplicationModelDocumentReference extends FirestoreDocumentReference<
       if (actualReleaseIdFieldValue != null)
         _$ApplicationModelFieldMap['actualReleaseId']!:
             actualReleaseIdFieldValue,
-      if (assetId != _sentinel)
-        _$ApplicationModelFieldMap['assetId']!:
-            _$ApplicationModelPerFieldToJson.assetId(assetId as String?),
-      if (assetIdFieldValue != null)
-        _$ApplicationModelFieldMap['assetId']!: assetIdFieldValue,
       if (appType != _sentinel)
         _$ApplicationModelFieldMap['appType']!:
             _$ApplicationModelPerFieldToJson.appType(appType as String),
       if (appTypeFieldValue != null)
         _$ApplicationModelFieldMap['appType']!: appTypeFieldValue,
+      if (assetId != _sentinel)
+        _$ApplicationModelFieldMap['assetId']!:
+            _$ApplicationModelPerFieldToJson.assetId(assetId as String?),
+      if (assetIdFieldValue != null)
+        _$ApplicationModelFieldMap['assetId']!: assetIdFieldValue,
       if (categoryId != _sentinel)
         _$ApplicationModelFieldMap['categoryId']!:
             _$ApplicationModelPerFieldToJson.categoryId(categoryId as String),
@@ -1395,18 +1405,6 @@ abstract class ApplicationModelQuery
     bool? isNull,
   });
 
-  ApplicationModelQuery whereAssetId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  });
-
   ApplicationModelQuery whereAppType({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -1416,6 +1414,18 @@ abstract class ApplicationModelQuery
     String? isGreaterThanOrEqualTo,
     List<String>? whereIn,
     List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  ApplicationModelQuery whereAssetId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
     bool? isNull,
   });
 
@@ -1884,24 +1894,24 @@ abstract class ApplicationModelQuery
     ApplicationModelDocumentSnapshot? startAfterDocument,
   });
 
-  ApplicationModelQuery orderByAssetId({
-    bool descending = false,
-    String? startAt,
-    String? startAfter,
-    String? endAt,
-    String? endBefore,
-    ApplicationModelDocumentSnapshot? startAtDocument,
-    ApplicationModelDocumentSnapshot? endAtDocument,
-    ApplicationModelDocumentSnapshot? endBeforeDocument,
-    ApplicationModelDocumentSnapshot? startAfterDocument,
-  });
-
   ApplicationModelQuery orderByAppType({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
+    ApplicationModelDocumentSnapshot? startAtDocument,
+    ApplicationModelDocumentSnapshot? endAtDocument,
+    ApplicationModelDocumentSnapshot? endBeforeDocument,
+    ApplicationModelDocumentSnapshot? startAfterDocument,
+  });
+
+  ApplicationModelQuery orderByAssetId({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     ApplicationModelDocumentSnapshot? startAtDocument,
     ApplicationModelDocumentSnapshot? endAtDocument,
     ApplicationModelDocumentSnapshot? endBeforeDocument,
@@ -2824,54 +2834,6 @@ class _$ApplicationModelQuery
   }
 
   @override
-  ApplicationModelQuery whereAssetId({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$ApplicationModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ApplicationModelFieldMap['assetId']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.assetId(isEqualTo as String?)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$ApplicationModelPerFieldToJson.assetId(isNotEqualTo as String?)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$ApplicationModelPerFieldToJson.assetId(isLessThan as String?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$ApplicationModelPerFieldToJson
-                .assetId(isLessThanOrEqualTo as String?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$ApplicationModelPerFieldToJson.assetId(isGreaterThan as String?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$ApplicationModelPerFieldToJson
-                .assetId(isGreaterThanOrEqualTo as String?)
-            : null,
-        whereIn:
-            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.assetId(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.assetId(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
   ApplicationModelQuery whereAppType({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -2911,6 +2873,54 @@ class _$ApplicationModelQuery
             whereIn?.map((e) => _$ApplicationModelPerFieldToJson.appType(e)),
         whereNotIn:
             whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.appType(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  ApplicationModelQuery whereAssetId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$ApplicationModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ApplicationModelFieldMap['assetId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.assetId(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$ApplicationModelPerFieldToJson.assetId(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$ApplicationModelPerFieldToJson.assetId(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .assetId(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$ApplicationModelPerFieldToJson.assetId(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$ApplicationModelPerFieldToJson
+                .assetId(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$ApplicationModelPerFieldToJson.assetId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$ApplicationModelPerFieldToJson.assetId(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -5066,7 +5076,7 @@ class _$ApplicationModelQuery
   }
 
   @override
-  ApplicationModelQuery orderByAssetId({
+  ApplicationModelQuery orderByAppType({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -5078,7 +5088,7 @@ class _$ApplicationModelQuery
     ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$ApplicationModelFieldMap['assetId']!,
+        _$ApplicationModelFieldMap['appType']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -5140,7 +5150,7 @@ class _$ApplicationModelQuery
   }
 
   @override
-  ApplicationModelQuery orderByAppType({
+  ApplicationModelQuery orderByAssetId({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -5152,7 +5162,7 @@ class _$ApplicationModelQuery
     ApplicationModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(
-        _$ApplicationModelFieldMap['appType']!,
+        _$ApplicationModelFieldMap['assetId']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -10631,6 +10641,2349 @@ class ApplicationReleaseQueryDocumentSnapshot
   }
 }
 
+/// A collection reference object can be used for adding documents,
+/// getting document references, and querying for documents
+/// (using the methods inherited from Query).
+abstract class AppReviewCollectionReference
+    implements
+        AppReviewQuery,
+        FirestoreCollectionReference<AppReview, AppReviewQuerySnapshot> {
+  factory AppReviewCollectionReference(
+    DocumentReference<ApplicationModel> parent,
+  ) = _$AppReviewCollectionReference;
+
+  static AppReview fromFirestore(
+    DocumentSnapshot<Map<String, Object?>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return _$AppReviewFromJson({'id': snapshot.id, ...?snapshot.data()});
+  }
+
+  static Map<String, Object?> toFirestore(
+    AppReview value,
+    SetOptions? options,
+  ) {
+    return {..._$AppReviewToJson(value)}..remove('id');
+  }
+
+  @override
+  CollectionReference<AppReview> get reference;
+
+  /// A reference to the containing [ApplicationModelDocumentReference] if this is a subcollection.
+  ApplicationModelDocumentReference get parent;
+
+  @override
+  AppReviewDocumentReference doc([String? id]);
+
+  /// Add a new document to this collection with the specified data,
+  /// assigning it a document ID automatically.
+  Future<AppReviewDocumentReference> add(AppReview value);
+}
+
+class _$AppReviewCollectionReference extends _$AppReviewQuery
+    implements AppReviewCollectionReference {
+  factory _$AppReviewCollectionReference(
+    DocumentReference<ApplicationModel> parent,
+  ) {
+    return _$AppReviewCollectionReference._(
+      ApplicationModelDocumentReference(parent),
+      parent.collection('reviews').withConverter(
+            fromFirestore: AppReviewCollectionReference.fromFirestore,
+            toFirestore: AppReviewCollectionReference.toFirestore,
+          ),
+    );
+  }
+
+  _$AppReviewCollectionReference._(
+    this.parent,
+    CollectionReference<AppReview> reference,
+  ) : super(reference, $referenceWithoutCursor: reference);
+
+  @override
+  final ApplicationModelDocumentReference parent;
+
+  String get path => reference.path;
+
+  @override
+  CollectionReference<AppReview> get reference =>
+      super.reference as CollectionReference<AppReview>;
+
+  @override
+  AppReviewDocumentReference doc([String? id]) {
+    assert(
+      id == null || id.split('/').length == 1,
+      'The document ID cannot be from a different collection',
+    );
+    return AppReviewDocumentReference(
+      reference.doc(id),
+    );
+  }
+
+  @override
+  Future<AppReviewDocumentReference> add(AppReview value) {
+    return reference.add(value).then((ref) => AppReviewDocumentReference(ref));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$AppReviewCollectionReference &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+abstract class AppReviewDocumentReference
+    extends FirestoreDocumentReference<AppReview, AppReviewDocumentSnapshot> {
+  factory AppReviewDocumentReference(DocumentReference<AppReview> reference) =
+      _$AppReviewDocumentReference;
+
+  DocumentReference<AppReview> get reference;
+
+  /// A reference to the [AppReviewCollectionReference] containing this document.
+  AppReviewCollectionReference get parent {
+    return _$AppReviewCollectionReference(
+      reference.parent.parent!.withConverter<ApplicationModel>(
+        fromFirestore: ApplicationModelCollectionReference.fromFirestore,
+        toFirestore: ApplicationModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<AppReviewDocumentSnapshot> snapshots();
+
+  @override
+  Future<AppReviewDocumentSnapshot> get([GetOptions? options]);
+
+  @override
+  Future<void> delete();
+
+  /// Updates data on the document. Data will be merged with any existing
+  /// document data.
+  ///
+  /// If no document exists yet, the update will fail.
+  Future<void> update({
+    String address,
+    FieldValue addressFieldValue,
+    String? comment,
+    FieldValue commentFieldValue,
+    String hash,
+    FieldValue hashFieldValue,
+    double rating,
+    FieldValue ratingFieldValue,
+    DateTime addedAt,
+    FieldValue addedAtFieldValue,
+    String assetId,
+    FieldValue assetIdFieldValue,
+    String applicationId,
+    FieldValue applicationIdFieldValue,
+    String deviceId,
+    FieldValue deviceIdFieldValue,
+    String userId,
+    FieldValue userIdFieldValue,
+    String? userProfilePictureUrl,
+    FieldValue userProfilePictureUrlFieldValue,
+  });
+
+  /// Updates fields in the current document using the transaction API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void transactionUpdate(
+    Transaction transaction, {
+    String address,
+    FieldValue addressFieldValue,
+    String? comment,
+    FieldValue commentFieldValue,
+    String hash,
+    FieldValue hashFieldValue,
+    double rating,
+    FieldValue ratingFieldValue,
+    DateTime addedAt,
+    FieldValue addedAtFieldValue,
+    String assetId,
+    FieldValue assetIdFieldValue,
+    String applicationId,
+    FieldValue applicationIdFieldValue,
+    String deviceId,
+    FieldValue deviceIdFieldValue,
+    String userId,
+    FieldValue userIdFieldValue,
+    String? userProfilePictureUrl,
+    FieldValue userProfilePictureUrlFieldValue,
+  });
+}
+
+class _$AppReviewDocumentReference
+    extends FirestoreDocumentReference<AppReview, AppReviewDocumentSnapshot>
+    implements AppReviewDocumentReference {
+  _$AppReviewDocumentReference(this.reference);
+
+  @override
+  final DocumentReference<AppReview> reference;
+
+  /// A reference to the [AppReviewCollectionReference] containing this document.
+  AppReviewCollectionReference get parent {
+    return _$AppReviewCollectionReference(
+      reference.parent.parent!.withConverter<ApplicationModel>(
+        fromFirestore: ApplicationModelCollectionReference.fromFirestore,
+        toFirestore: ApplicationModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<AppReviewDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(AppReviewDocumentSnapshot._);
+  }
+
+  @override
+  Future<AppReviewDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(AppReviewDocumentSnapshot._);
+  }
+
+  @override
+  Future<AppReviewDocumentSnapshot> transactionGet(Transaction transaction) {
+    return transaction.get(reference).then(AppReviewDocumentSnapshot._);
+  }
+
+  Future<void> update({
+    Object? address = _sentinel,
+    FieldValue? addressFieldValue,
+    Object? comment = _sentinel,
+    FieldValue? commentFieldValue,
+    Object? hash = _sentinel,
+    FieldValue? hashFieldValue,
+    Object? rating = _sentinel,
+    FieldValue? ratingFieldValue,
+    Object? addedAt = _sentinel,
+    FieldValue? addedAtFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
+    Object? applicationId = _sentinel,
+    FieldValue? applicationIdFieldValue,
+    Object? deviceId = _sentinel,
+    FieldValue? deviceIdFieldValue,
+    Object? userId = _sentinel,
+    FieldValue? userIdFieldValue,
+    Object? userProfilePictureUrl = _sentinel,
+    FieldValue? userProfilePictureUrlFieldValue,
+  }) async {
+    assert(
+      address == _sentinel || addressFieldValue == null,
+      "Cannot specify both address and addressFieldValue",
+    );
+    assert(
+      comment == _sentinel || commentFieldValue == null,
+      "Cannot specify both comment and commentFieldValue",
+    );
+    assert(
+      hash == _sentinel || hashFieldValue == null,
+      "Cannot specify both hash and hashFieldValue",
+    );
+    assert(
+      rating == _sentinel || ratingFieldValue == null,
+      "Cannot specify both rating and ratingFieldValue",
+    );
+    assert(
+      addedAt == _sentinel || addedAtFieldValue == null,
+      "Cannot specify both addedAt and addedAtFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
+    );
+    assert(
+      applicationId == _sentinel || applicationIdFieldValue == null,
+      "Cannot specify both applicationId and applicationIdFieldValue",
+    );
+    assert(
+      deviceId == _sentinel || deviceIdFieldValue == null,
+      "Cannot specify both deviceId and deviceIdFieldValue",
+    );
+    assert(
+      userId == _sentinel || userIdFieldValue == null,
+      "Cannot specify both userId and userIdFieldValue",
+    );
+    assert(
+      userProfilePictureUrl == _sentinel ||
+          userProfilePictureUrlFieldValue == null,
+      "Cannot specify both userProfilePictureUrl and userProfilePictureUrlFieldValue",
+    );
+    final json = {
+      if (address != _sentinel)
+        _$AppReviewFieldMap['address']!:
+            _$AppReviewPerFieldToJson.address(address as String),
+      if (addressFieldValue != null)
+        _$AppReviewFieldMap['address']!: addressFieldValue,
+      if (comment != _sentinel)
+        _$AppReviewFieldMap['comment']!:
+            _$AppReviewPerFieldToJson.comment(comment as String?),
+      if (commentFieldValue != null)
+        _$AppReviewFieldMap['comment']!: commentFieldValue,
+      if (hash != _sentinel)
+        _$AppReviewFieldMap['hash']!:
+            _$AppReviewPerFieldToJson.hash(hash as String),
+      if (hashFieldValue != null) _$AppReviewFieldMap['hash']!: hashFieldValue,
+      if (rating != _sentinel)
+        _$AppReviewFieldMap['rating']!:
+            _$AppReviewPerFieldToJson.rating(rating as double),
+      if (ratingFieldValue != null)
+        _$AppReviewFieldMap['rating']!: ratingFieldValue,
+      if (addedAt != _sentinel)
+        _$AppReviewFieldMap['addedAt']!:
+            _$AppReviewPerFieldToJson.addedAt(addedAt as DateTime),
+      if (addedAtFieldValue != null)
+        _$AppReviewFieldMap['addedAt']!: addedAtFieldValue,
+      if (assetId != _sentinel)
+        _$AppReviewFieldMap['assetId']!:
+            _$AppReviewPerFieldToJson.assetId(assetId as String),
+      if (assetIdFieldValue != null)
+        _$AppReviewFieldMap['assetId']!: assetIdFieldValue,
+      if (applicationId != _sentinel)
+        _$AppReviewFieldMap['applicationId']!:
+            _$AppReviewPerFieldToJson.applicationId(applicationId as String),
+      if (applicationIdFieldValue != null)
+        _$AppReviewFieldMap['applicationId']!: applicationIdFieldValue,
+      if (deviceId != _sentinel)
+        _$AppReviewFieldMap['deviceId']!:
+            _$AppReviewPerFieldToJson.deviceId(deviceId as String),
+      if (deviceIdFieldValue != null)
+        _$AppReviewFieldMap['deviceId']!: deviceIdFieldValue,
+      if (userId != _sentinel)
+        _$AppReviewFieldMap['userId']!:
+            _$AppReviewPerFieldToJson.userId(userId as String),
+      if (userIdFieldValue != null)
+        _$AppReviewFieldMap['userId']!: userIdFieldValue,
+      if (userProfilePictureUrl != _sentinel)
+        _$AppReviewFieldMap['userProfilePictureUrl']!: _$AppReviewPerFieldToJson
+            .userProfilePictureUrl(userProfilePictureUrl as String?),
+      if (userProfilePictureUrlFieldValue != null)
+        _$AppReviewFieldMap['userProfilePictureUrl']!:
+            userProfilePictureUrlFieldValue,
+    };
+
+    return reference.update(json);
+  }
+
+  void transactionUpdate(
+    Transaction transaction, {
+    Object? address = _sentinel,
+    FieldValue? addressFieldValue,
+    Object? comment = _sentinel,
+    FieldValue? commentFieldValue,
+    Object? hash = _sentinel,
+    FieldValue? hashFieldValue,
+    Object? rating = _sentinel,
+    FieldValue? ratingFieldValue,
+    Object? addedAt = _sentinel,
+    FieldValue? addedAtFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
+    Object? applicationId = _sentinel,
+    FieldValue? applicationIdFieldValue,
+    Object? deviceId = _sentinel,
+    FieldValue? deviceIdFieldValue,
+    Object? userId = _sentinel,
+    FieldValue? userIdFieldValue,
+    Object? userProfilePictureUrl = _sentinel,
+    FieldValue? userProfilePictureUrlFieldValue,
+  }) {
+    assert(
+      address == _sentinel || addressFieldValue == null,
+      "Cannot specify both address and addressFieldValue",
+    );
+    assert(
+      comment == _sentinel || commentFieldValue == null,
+      "Cannot specify both comment and commentFieldValue",
+    );
+    assert(
+      hash == _sentinel || hashFieldValue == null,
+      "Cannot specify both hash and hashFieldValue",
+    );
+    assert(
+      rating == _sentinel || ratingFieldValue == null,
+      "Cannot specify both rating and ratingFieldValue",
+    );
+    assert(
+      addedAt == _sentinel || addedAtFieldValue == null,
+      "Cannot specify both addedAt and addedAtFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
+    );
+    assert(
+      applicationId == _sentinel || applicationIdFieldValue == null,
+      "Cannot specify both applicationId and applicationIdFieldValue",
+    );
+    assert(
+      deviceId == _sentinel || deviceIdFieldValue == null,
+      "Cannot specify both deviceId and deviceIdFieldValue",
+    );
+    assert(
+      userId == _sentinel || userIdFieldValue == null,
+      "Cannot specify both userId and userIdFieldValue",
+    );
+    assert(
+      userProfilePictureUrl == _sentinel ||
+          userProfilePictureUrlFieldValue == null,
+      "Cannot specify both userProfilePictureUrl and userProfilePictureUrlFieldValue",
+    );
+    final json = {
+      if (address != _sentinel)
+        _$AppReviewFieldMap['address']!:
+            _$AppReviewPerFieldToJson.address(address as String),
+      if (addressFieldValue != null)
+        _$AppReviewFieldMap['address']!: addressFieldValue,
+      if (comment != _sentinel)
+        _$AppReviewFieldMap['comment']!:
+            _$AppReviewPerFieldToJson.comment(comment as String?),
+      if (commentFieldValue != null)
+        _$AppReviewFieldMap['comment']!: commentFieldValue,
+      if (hash != _sentinel)
+        _$AppReviewFieldMap['hash']!:
+            _$AppReviewPerFieldToJson.hash(hash as String),
+      if (hashFieldValue != null) _$AppReviewFieldMap['hash']!: hashFieldValue,
+      if (rating != _sentinel)
+        _$AppReviewFieldMap['rating']!:
+            _$AppReviewPerFieldToJson.rating(rating as double),
+      if (ratingFieldValue != null)
+        _$AppReviewFieldMap['rating']!: ratingFieldValue,
+      if (addedAt != _sentinel)
+        _$AppReviewFieldMap['addedAt']!:
+            _$AppReviewPerFieldToJson.addedAt(addedAt as DateTime),
+      if (addedAtFieldValue != null)
+        _$AppReviewFieldMap['addedAt']!: addedAtFieldValue,
+      if (assetId != _sentinel)
+        _$AppReviewFieldMap['assetId']!:
+            _$AppReviewPerFieldToJson.assetId(assetId as String),
+      if (assetIdFieldValue != null)
+        _$AppReviewFieldMap['assetId']!: assetIdFieldValue,
+      if (applicationId != _sentinel)
+        _$AppReviewFieldMap['applicationId']!:
+            _$AppReviewPerFieldToJson.applicationId(applicationId as String),
+      if (applicationIdFieldValue != null)
+        _$AppReviewFieldMap['applicationId']!: applicationIdFieldValue,
+      if (deviceId != _sentinel)
+        _$AppReviewFieldMap['deviceId']!:
+            _$AppReviewPerFieldToJson.deviceId(deviceId as String),
+      if (deviceIdFieldValue != null)
+        _$AppReviewFieldMap['deviceId']!: deviceIdFieldValue,
+      if (userId != _sentinel)
+        _$AppReviewFieldMap['userId']!:
+            _$AppReviewPerFieldToJson.userId(userId as String),
+      if (userIdFieldValue != null)
+        _$AppReviewFieldMap['userId']!: userIdFieldValue,
+      if (userProfilePictureUrl != _sentinel)
+        _$AppReviewFieldMap['userProfilePictureUrl']!: _$AppReviewPerFieldToJson
+            .userProfilePictureUrl(userProfilePictureUrl as String?),
+      if (userProfilePictureUrlFieldValue != null)
+        _$AppReviewFieldMap['userProfilePictureUrl']!:
+            userProfilePictureUrlFieldValue,
+    };
+
+    transaction.update(reference, json);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is AppReviewDocumentReference &&
+        other.runtimeType == runtimeType &&
+        other.parent == parent &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, id);
+}
+
+abstract class AppReviewQuery
+    implements QueryReference<AppReview, AppReviewQuerySnapshot> {
+  @override
+  AppReviewQuery limit(int limit);
+
+  @override
+  AppReviewQuery limitToLast(int limit);
+
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  AppReviewQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereAddress({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereComment({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereHash({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereRating({
+    double? isEqualTo,
+    double? isNotEqualTo,
+    double? isLessThan,
+    double? isLessThanOrEqualTo,
+    double? isGreaterThan,
+    double? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereAddedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereAssetId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereApplicationId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereDeviceId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereUserId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  AppReviewQuery whereUserProfilePictureUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  /// Perform an order query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of order queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```
+  AppReviewQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByDocumentId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByAddress({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByComment({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByHash({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByRating({
+    bool descending = false,
+    double startAt,
+    double startAfter,
+    double endAt,
+    double endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByAddedAt({
+    bool descending = false,
+    DateTime startAt,
+    DateTime startAfter,
+    DateTime endAt,
+    DateTime endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByAssetId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByApplicationId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByDeviceId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByUserId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  AppReviewQuery orderByUserProfilePictureUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  });
+}
+
+class _$AppReviewQuery extends QueryReference<AppReview, AppReviewQuerySnapshot>
+    implements AppReviewQuery {
+  _$AppReviewQuery(
+    this._collection, {
+    required Query<AppReview> $referenceWithoutCursor,
+    $QueryCursor $queryCursor = const $QueryCursor(),
+  }) : super(
+          $referenceWithoutCursor: $referenceWithoutCursor,
+          $queryCursor: $queryCursor,
+        );
+
+  final CollectionReference<Object?> _collection;
+
+  @override
+  Stream<AppReviewQuerySnapshot> snapshots([SnapshotOptions? options]) {
+    return reference.snapshots().map(AppReviewQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Future<AppReviewQuerySnapshot> get([GetOptions? options]) {
+    return reference
+        .get(options)
+        .then(AppReviewQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  AppReviewQuery limit(int limit) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery limitToLast(int limit) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereAddress({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['address']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.address(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.address(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.address(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.address(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.address(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .address(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$AppReviewPerFieldToJson.address(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$AppReviewPerFieldToJson.address(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereComment({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['comment']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.comment(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.comment(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.comment(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.comment(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.comment(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .comment(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn?.map((e) => _$AppReviewPerFieldToJson.comment(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$AppReviewPerFieldToJson.comment(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereHash({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['hash']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.hash(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.hash(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.hash(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.hash(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.hash(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.hash(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$AppReviewPerFieldToJson.hash(e)),
+        whereNotIn: whereNotIn?.map((e) => _$AppReviewPerFieldToJson.hash(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereRating({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['rating']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.rating(isEqualTo as double)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.rating(isNotEqualTo as double)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.rating(isLessThan as double)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.rating(isLessThanOrEqualTo as double)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.rating(isGreaterThan as double)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.rating(isGreaterThanOrEqualTo as double)
+            : null,
+        whereIn: whereIn?.map((e) => _$AppReviewPerFieldToJson.rating(e)),
+        whereNotIn: whereNotIn?.map((e) => _$AppReviewPerFieldToJson.rating(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereAddedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['addedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.addedAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.addedAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.addedAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.addedAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.addedAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .addedAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn: whereIn?.map((e) => _$AppReviewPerFieldToJson.addedAt(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$AppReviewPerFieldToJson.addedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereAssetId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['assetId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.assetId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.assetId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.assetId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.assetId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.assetId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .assetId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$AppReviewPerFieldToJson.assetId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$AppReviewPerFieldToJson.assetId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereApplicationId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['applicationId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.applicationId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.applicationId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.applicationId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .applicationId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.applicationId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .applicationId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$AppReviewPerFieldToJson.applicationId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$AppReviewPerFieldToJson.applicationId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereDeviceId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['deviceId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.deviceId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.deviceId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.deviceId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.deviceId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.deviceId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .deviceId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$AppReviewPerFieldToJson.deviceId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$AppReviewPerFieldToJson.deviceId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereUserId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['userId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.userId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson.userId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson.userId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.userId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson.userId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson.userId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$AppReviewPerFieldToJson.userId(e)),
+        whereNotIn: whereNotIn?.map((e) => _$AppReviewPerFieldToJson.userId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery whereUserProfilePictureUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$AppReviewFieldMap['userProfilePictureUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson
+                .userProfilePictureUrl(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$AppReviewPerFieldToJson
+                .userProfilePictureUrl(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$AppReviewPerFieldToJson
+                .userProfilePictureUrl(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .userProfilePictureUrl(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$AppReviewPerFieldToJson
+                .userProfilePictureUrl(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$AppReviewPerFieldToJson
+                .userProfilePictureUrl(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$AppReviewPerFieldToJson.userProfilePictureUrl(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$AppReviewPerFieldToJson.userProfilePictureUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query =
+        $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByDocumentId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByAddress({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$AppReviewFieldMap['address']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByComment({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$AppReviewFieldMap['comment']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByHash({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(_$AppReviewFieldMap['hash']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByRating({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$AppReviewFieldMap['rating']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByAddedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$AppReviewFieldMap['addedAt']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByAssetId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$AppReviewFieldMap['assetId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByApplicationId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$AppReviewFieldMap['applicationId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByDeviceId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$AppReviewFieldMap['deviceId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByUserId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$AppReviewFieldMap['userId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  AppReviewQuery orderByUserProfilePictureUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    AppReviewDocumentSnapshot? startAtDocument,
+    AppReviewDocumentSnapshot? endAtDocument,
+    AppReviewDocumentSnapshot? endBeforeDocument,
+    AppReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$AppReviewFieldMap['userProfilePictureUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$AppReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$AppReviewQuery &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+class AppReviewDocumentSnapshot extends FirestoreDocumentSnapshot<AppReview> {
+  AppReviewDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<AppReview> snapshot;
+
+  @override
+  AppReviewDocumentReference get reference {
+    return AppReviewDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final AppReview? data;
+}
+
+class AppReviewQuerySnapshot
+    extends FirestoreQuerySnapshot<AppReview, AppReviewQueryDocumentSnapshot> {
+  AppReviewQuerySnapshot._(
+    this.snapshot,
+    this.docs,
+    this.docChanges,
+  );
+
+  factory AppReviewQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<AppReview> snapshot,
+  ) {
+    final docs = snapshot.docs.map(AppReviewQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        AppReviewDocumentSnapshot._,
+      );
+    }).toList();
+
+    return AppReviewQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<AppReviewDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    AppReviewDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+  ) {
+    return FirestoreDocumentChange<AppReviewDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
+
+  final QuerySnapshot<AppReview> snapshot;
+
+  @override
+  final List<AppReviewQueryDocumentSnapshot> docs;
+
+  @override
+  final List<FirestoreDocumentChange<AppReviewDocumentSnapshot>> docChanges;
+}
+
+class AppReviewQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<AppReview>
+    implements AppReviewDocumentSnapshot {
+  AppReviewQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final QueryDocumentSnapshot<AppReview> snapshot;
+
+  @override
+  final AppReview data;
+
+  @override
+  AppReviewDocumentReference get reference {
+    return AppReviewDocumentReference(snapshot.reference);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -10694,8 +13047,8 @@ const _$ApplicationModelFieldMap = <String, String>{
   'tags': 'tags',
   'version': 'version',
   'actualReleaseId': 'actual_release_id',
-  'assetId': 'asset_id',
   'appType': 'app_type',
+  'assetId': 'asset_id',
   'categoryId': 'category_id',
   'categoryName': 'category_name',
   'containsAds': 'contains_ads',
@@ -10747,9 +13100,9 @@ abstract class _$ApplicationModelPerFieldToJson {
   // ignore: unused_element
   static Object? actualReleaseId(String? instance) => instance;
   // ignore: unused_element
-  static Object? assetId(String? instance) => instance;
-  // ignore: unused_element
   static Object? appType(String instance) => instance;
+  // ignore: unused_element
+  static Object? assetId(String? instance) => instance;
   // ignore: unused_element
   static Object? categoryId(String instance) => instance;
   // ignore: unused_element
@@ -10823,8 +13176,8 @@ Map<String, dynamic> _$ApplicationModelToJson(ApplicationModel instance) =>
       'tags': instance.tags,
       'version': instance.version,
       'actual_release_id': instance.actualReleaseId,
-      'asset_id': instance.assetId,
       'app_type': instance.appType,
+      'asset_id': instance.assetId,
       'category_id': instance.categoryId,
       'category_name': instance.categoryName,
       'contains_ads': instance.containsAds,
@@ -10982,70 +13335,72 @@ Map<String, dynamic> _$ApplicationReleaseToJson(ApplicationRelease instance) =>
       'version_code': instance.versionCode,
     };
 
-ItemNote _$ItemNoteFromJson(Map<String, dynamic> json) => ItemNote(
+AppReview _$AppReviewFromJson(Map<String, dynamic> json) => AppReview(
       addedAt: const FirestoreDateTimeConverter()
           .fromJson(json['added_at'] as Timestamp),
-      comment: json['comment'] as String,
-      downVotesCount: json['down_votes_count'] as int,
+      address: json['address'] as String,
+      applicationId: json['application_id'] as String,
+      assetId: json['asset_id'] as String,
+      deviceId: json['device_id'] as String,
       id: json['id'] as String,
-      updatedAt: const FirestoreDateTimeConverter()
-          .fromJson(json['updated_at'] as Timestamp),
-      upVotesCount: json['up_votes_count'] as int,
+      hash: json['hash'] as String,
       userId: json['user_id'] as String,
-      userName: json['user_name'] as String,
-      userProfilePictureUrl: json['user_profile_picture_url'] as String,
-      value: (json['value'] as num).toDouble(),
+      rating: (json['rating'] as num).toDouble(),
+      comment: json['comment'] as String?,
+      userProfilePictureUrl: json['user_profile_picture_url'] as String?,
     );
 
-const _$ItemNoteFieldMap = <String, String>{
+const _$AppReviewFieldMap = <String, String>{
+  'address': 'address',
   'comment': 'comment',
-  'value': 'value',
+  'hash': 'hash',
+  'rating': 'rating',
   'addedAt': 'added_at',
-  'downVotesCount': 'down_votes_count',
+  'assetId': 'asset_id',
+  'applicationId': 'application_id',
+  'deviceId': 'device_id',
   'id': 'id',
-  'upVotesCount': 'up_votes_count',
-  'updatedAt': 'updated_at',
   'userId': 'user_id',
-  'userName': 'user_name',
   'userProfilePictureUrl': 'user_profile_picture_url',
 };
 
 // ignore: unused_element
-abstract class _$ItemNotePerFieldToJson {
+abstract class _$AppReviewPerFieldToJson {
   // ignore: unused_element
-  static Object? comment(String instance) => instance;
+  static Object? address(String instance) => instance;
   // ignore: unused_element
-  static Object? value(double instance) => instance;
+  static Object? comment(String? instance) => instance;
+  // ignore: unused_element
+  static Object? hash(String instance) => instance;
+  // ignore: unused_element
+  static Object? rating(double instance) => instance;
   // ignore: unused_element
   static Object? addedAt(DateTime instance) =>
       const FirestoreDateTimeConverter().toJson(instance);
   // ignore: unused_element
-  static Object? downVotesCount(int instance) => instance;
+  static Object? assetId(String instance) => instance;
+  // ignore: unused_element
+  static Object? applicationId(String instance) => instance;
+  // ignore: unused_element
+  static Object? deviceId(String instance) => instance;
   // ignore: unused_element
   static Object? id(String instance) => instance;
   // ignore: unused_element
-  static Object? upVotesCount(int instance) => instance;
-  // ignore: unused_element
-  static Object? updatedAt(DateTime instance) =>
-      const FirestoreDateTimeConverter().toJson(instance);
-  // ignore: unused_element
   static Object? userId(String instance) => instance;
   // ignore: unused_element
-  static Object? userName(String instance) => instance;
-  // ignore: unused_element
-  static Object? userProfilePictureUrl(String instance) => instance;
+  static Object? userProfilePictureUrl(String? instance) => instance;
 }
 
-Map<String, dynamic> _$ItemNoteToJson(ItemNote instance) => <String, dynamic>{
+Map<String, dynamic> _$AppReviewToJson(AppReview instance) => <String, dynamic>{
+      'address': instance.address,
       'comment': instance.comment,
-      'value': instance.value,
+      'hash': instance.hash,
+      'rating': instance.rating,
       'added_at': const FirestoreDateTimeConverter().toJson(instance.addedAt),
-      'down_votes_count': instance.downVotesCount,
+      'asset_id': instance.assetId,
+      'application_id': instance.applicationId,
+      'device_id': instance.deviceId,
       'id': instance.id,
-      'up_votes_count': instance.upVotesCount,
-      'updated_at':
-          const FirestoreDateTimeConverter().toJson(instance.updatedAt),
       'user_id': instance.userId,
-      'user_name': instance.userName,
       'user_profile_picture_url': instance.userProfilePictureUrl,
     };

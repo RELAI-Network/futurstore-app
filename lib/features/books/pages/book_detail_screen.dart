@@ -24,8 +24,9 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
           child: Column(
             children: <Widget>[
               ListTile(
-                leading: const FlutterLogo(
-                  size: 40,
+                leading: Image.network(
+                  widget.data.coverUrl,
+                  width: 40,
                 ),
                 title: Text(widget.data.title),
                 trailing: GetBookButton(

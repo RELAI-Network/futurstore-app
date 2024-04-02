@@ -83,7 +83,8 @@ class _AppDrawerState extends State<AppDrawer> {
               // ListTile(
               //   onTap: () {},
               //   leading:
-              //       const Icon(Icons.settings, size: 20, color: Colors.black54),
+              //       const Icon(Icons.settings, size: 20, color:
+              // Colors.black54),
               //   title: const Text('Settings'),
               // ),
               ListTile(
