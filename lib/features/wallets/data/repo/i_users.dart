@@ -11,6 +11,8 @@ abstract class IUsers {
     String deviceId,
   );
 
+  Future<UserModel?> findUserByDeviceId(String deviceId);
+
   Future<void> deleteWallet(String walletAddress, String uuid);
 
   Future<void> buyAsset(

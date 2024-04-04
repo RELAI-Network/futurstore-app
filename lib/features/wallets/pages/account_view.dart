@@ -334,7 +334,7 @@ class _WalletTile extends ConsumerWidget {
                     if (data.hasError) {
                       return Text(data.error.toString());
                     }
-                    final balance = (data.data!.toDouble()) / 10000000000;
+                    final balance = (data.data!.toDouble()) / 1000000000000;
 
                     // debugPrint(data.data!.toDouble().toString());
 
@@ -354,8 +354,17 @@ class _WalletTile extends ConsumerWidget {
                             ),
                           ),
                           subtitle: Text(
-                            '''${balance.toStringAsFixed(2)} $kRelaiTokenSymbol''',
+                            '''${balance.toStringAsFixed(10)} $kRelaiTokenSymbol''',
                             style: context.textTheme.bodyLarge,
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(
+                              Icons.refresh,
+                            ),
+                            onPressed: () {
+                              // ignore: unused_result
+                              ref.refresh(getBalanceProvider(address));
+                            },
                           ),
                         ),
                         if (balance < 10) ...[

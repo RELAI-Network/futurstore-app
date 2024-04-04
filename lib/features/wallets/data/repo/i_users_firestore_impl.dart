@@ -21,16 +21,23 @@ class UsersFirestoreImpl extends IUsers {
       final user = await docRef.get();
 
       if (!user.exists) {
-        await _service.doc(uuid).set(
-              UserModel(
-                uuid: uuid,
-                id: uuid,
-                role: 'user',
-                createdAt: DateTime.now(),
-                lastConnection: DateTime.now(),
-                deviceId: deviceId,
-              ),
-            );
+        await docRef.set(
+          UserModel(
+            uuid: uuid,
+            id: uuid,
+            role: 'user',
+            createdAt: DateTime.now(),
+            lastConnection: DateTime.now(),
+            deviceId: deviceId,
+            addresses: <String>[wallet.address],
+          ),
+        );
+      } else {
+        await docRef.set(
+          user.data!.copyWith(
+            addresses: [...user.data!.addresses, wallet.address],
+          ),
+        );
       }
 
       await docRef.wallets.doc(wallet.address).set(
@@ -195,6 +202,25 @@ class UsersFirestoreImpl extends IUsers {
       debugPrint(e.toString());
 
       rethrow;
+    }
+  }
+
+  @override
+  Future<UserModel?> findUserByDeviceId(String deviceId) async {
+    try {
+      return _service.whereDeviceId(isEqualTo: deviceId).get().then((value) {
+        if (value.docs.isEmpty) {
+          return null;
+        }
+
+        return value.docs.first.data;
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+
+      return null;
+
+      // rethrow;
     }
   }
 }

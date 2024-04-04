@@ -145,6 +145,8 @@ abstract class UserModelDocumentReference
     FieldValue createdAtFieldValue,
     String? deviceId,
     FieldValue deviceIdFieldValue,
+    List<String> addresses,
+    FieldValue addressesFieldValue,
     DateTime? lastConnection,
     FieldValue lastConnectionFieldValue,
     String role,
@@ -162,6 +164,8 @@ abstract class UserModelDocumentReference
     FieldValue createdAtFieldValue,
     String? deviceId,
     FieldValue deviceIdFieldValue,
+    List<String> addresses,
+    FieldValue addressesFieldValue,
     DateTime? lastConnection,
     FieldValue lastConnectionFieldValue,
     String role,
@@ -214,6 +218,8 @@ class _$UserModelDocumentReference
     FieldValue? createdAtFieldValue,
     Object? deviceId = _sentinel,
     FieldValue? deviceIdFieldValue,
+    Object? addresses = _sentinel,
+    FieldValue? addressesFieldValue,
     Object? lastConnection = _sentinel,
     FieldValue? lastConnectionFieldValue,
     Object? role = _sentinel,
@@ -230,6 +236,10 @@ class _$UserModelDocumentReference
     assert(
       deviceId == _sentinel || deviceIdFieldValue == null,
       "Cannot specify both deviceId and deviceIdFieldValue",
+    );
+    assert(
+      addresses == _sentinel || addressesFieldValue == null,
+      "Cannot specify both addresses and addressesFieldValue",
     );
     assert(
       lastConnection == _sentinel || lastConnectionFieldValue == null,
@@ -254,6 +264,11 @@ class _$UserModelDocumentReference
             _$UserModelPerFieldToJson.deviceId(deviceId as String?),
       if (deviceIdFieldValue != null)
         _$UserModelFieldMap['deviceId']!: deviceIdFieldValue,
+      if (addresses != _sentinel)
+        _$UserModelFieldMap['addresses']!:
+            _$UserModelPerFieldToJson.addresses(addresses as List<String>),
+      if (addressesFieldValue != null)
+        _$UserModelFieldMap['addresses']!: addressesFieldValue,
       if (lastConnection != _sentinel)
         _$UserModelFieldMap['lastConnection']!: _$UserModelPerFieldToJson
             .lastConnection(lastConnection as DateTime?),
@@ -276,6 +291,8 @@ class _$UserModelDocumentReference
     FieldValue? createdAtFieldValue,
     Object? deviceId = _sentinel,
     FieldValue? deviceIdFieldValue,
+    Object? addresses = _sentinel,
+    FieldValue? addressesFieldValue,
     Object? lastConnection = _sentinel,
     FieldValue? lastConnectionFieldValue,
     Object? role = _sentinel,
@@ -292,6 +309,10 @@ class _$UserModelDocumentReference
     assert(
       deviceId == _sentinel || deviceIdFieldValue == null,
       "Cannot specify both deviceId and deviceIdFieldValue",
+    );
+    assert(
+      addresses == _sentinel || addressesFieldValue == null,
+      "Cannot specify both addresses and addressesFieldValue",
     );
     assert(
       lastConnection == _sentinel || lastConnectionFieldValue == null,
@@ -316,6 +337,11 @@ class _$UserModelDocumentReference
             _$UserModelPerFieldToJson.deviceId(deviceId as String?),
       if (deviceIdFieldValue != null)
         _$UserModelFieldMap['deviceId']!: deviceIdFieldValue,
+      if (addresses != _sentinel)
+        _$UserModelFieldMap['addresses']!:
+            _$UserModelPerFieldToJson.addresses(addresses as List<String>),
+      if (addressesFieldValue != null)
+        _$UserModelFieldMap['addresses']!: addressesFieldValue,
       if (lastConnection != _sentinel)
         _$UserModelFieldMap['lastConnection']!: _$UserModelPerFieldToJson
             .lastConnection(lastConnection as DateTime?),
@@ -430,6 +456,18 @@ abstract class UserModelQuery
     bool? isNull,
   });
 
+  UserModelQuery whereAddresses({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  });
+
   UserModelQuery whereLastConnection({
     DateTime? isEqualTo,
     DateTime? isNotEqualTo,
@@ -529,6 +567,18 @@ abstract class UserModelQuery
     String? startAfter,
     String? endAt,
     String? endBefore,
+    UserModelDocumentSnapshot? startAtDocument,
+    UserModelDocumentSnapshot? endAtDocument,
+    UserModelDocumentSnapshot? endBeforeDocument,
+    UserModelDocumentSnapshot? startAfterDocument,
+  });
+
+  UserModelQuery orderByAddresses({
+    bool descending = false,
+    List<String> startAt,
+    List<String> startAfter,
+    List<String> endAt,
+    List<String> endBefore,
     UserModelDocumentSnapshot? startAtDocument,
     UserModelDocumentSnapshot? endAtDocument,
     UserModelDocumentSnapshot? endBeforeDocument,
@@ -801,6 +851,59 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
         whereIn: whereIn?.map((e) => _$UserModelPerFieldToJson.deviceId(e)),
         whereNotIn:
             whereNotIn?.map((e) => _$UserModelPerFieldToJson.deviceId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  UserModelQuery whereAddresses({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains = _sentinel,
+    List<String>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$UserModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$UserModelFieldMap['addresses']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$UserModelPerFieldToJson.addresses(isEqualTo as List<String>)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$UserModelPerFieldToJson.addresses(isNotEqualTo as List<String>)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$UserModelPerFieldToJson.addresses(isLessThan as List<String>)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$UserModelPerFieldToJson
+                .addresses(isLessThanOrEqualTo as List<String>)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$UserModelPerFieldToJson.addresses(isGreaterThan as List<String>)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$UserModelPerFieldToJson
+                .addresses(isGreaterThanOrEqualTo as List<String>)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$UserModelPerFieldToJson.addresses([arrayContains as String])
+                    as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$UserModelPerFieldToJson.addresses(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1210,6 +1313,79 @@ class _$UserModelQuery extends QueryReference<UserModel, UserModelQuerySnapshot>
   }) {
     final query = $referenceWithoutCursor
         .orderBy(_$UserModelFieldMap['deviceId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$UserModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  UserModelQuery orderByAddresses({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    UserModelDocumentSnapshot? startAtDocument,
+    UserModelDocumentSnapshot? endAtDocument,
+    UserModelDocumentSnapshot? endBeforeDocument,
+    UserModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$UserModelFieldMap['addresses']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -4387,6 +4563,10 @@ class UserAssetQueryDocumentSnapshot
 // **************************************************************************
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
+      addresses: (json['addresses'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
       id: json['id'] as String,
       role: json['role'] as String? ?? 'user',
       uuid: json['uuid'] as String,
@@ -4401,6 +4581,7 @@ const _$UserModelFieldMap = <String, String>{
   'uuid': 'uuid',
   'createdAt': 'created_at',
   'deviceId': 'device_id',
+  'addresses': 'addresses',
   'id': 'id',
   'lastConnection': 'last_connection',
   'role': 'role',
@@ -4417,6 +4598,8 @@ abstract class _$UserModelPerFieldToJson {
   // ignore: unused_element
   static Object? deviceId(String? instance) => instance;
   // ignore: unused_element
+  static Object? addresses(List<String> instance) => instance;
+  // ignore: unused_element
   static Object? id(String instance) => instance;
   // ignore: unused_element
   static Object? lastConnection(DateTime? instance) =>
@@ -4431,6 +4614,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'created_at': _$JsonConverterToJson<Timestamp, DateTime>(
           instance.createdAt, const FirestoreDateTimeConverter().toJson),
       'device_id': instance.deviceId,
+      'addresses': instance.addresses,
       'id': instance.id,
       'last_connection': _$JsonConverterToJson<Timestamp, DateTime>(
           instance.lastConnection, const FirestoreDateTimeConverter().toJson),
