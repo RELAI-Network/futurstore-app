@@ -13,7 +13,7 @@ class BooksPage extends ConsumerWidget {
     final books = ref.watch(booksProvider);
 
     return books.build(
-      builder: (books) => BooksView(books: books ?? []),
+      builder: (books) => BooksView(books: books),
       retryOnError: () {
         // ignore: unused_result
         ref.refresh(booksProvider);

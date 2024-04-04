@@ -103,7 +103,7 @@ class $EventCodec with _i1.Codec<Event> {
   }
 }
 
-/// A sudo just took place. \[result\]
+/// A sudo just took place. /[result/]
 class Sudid extends Event {
   const Sudid({required this.sudoResult});
 
@@ -159,7 +159,7 @@ class Sudid extends Event {
   int get hashCode => sudoResult.hashCode;
 }
 
-/// The \[sudoer\] just switched identity; the old key is supplied if one existed.
+/// The /[sudoer/] just switched identity; the old key is supplied if one existed.
 class KeyChanged extends Event {
   const KeyChanged({this.oldSudoer});
 
@@ -209,7 +209,7 @@ class KeyChanged extends Event {
   int get hashCode => oldSudoer.hashCode;
 }
 
-/// A sudo just took place. \[result\]
+/// A sudo just took place. /[result/]
 class SudoAsDone extends Event {
   const SudoAsDone({required this.sudoResult});
 

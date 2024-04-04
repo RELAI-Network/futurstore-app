@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:installed_apps/installed_apps.dart';
 
-import '../data/models/index.dart';
+typedef OpenPackageInstalledSettingsFunc = Future<void> Function(
+  String packageName,
+);
 
 final openPackageInstalledSettingsFuncProvider =
     Provider<OpenPackageInstalledSettingsFunc>(

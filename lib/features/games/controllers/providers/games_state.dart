@@ -22,6 +22,7 @@ class GamesState extends Equatable {
     required this.status,
     this.games = const [],
     this.hasMoreGames = true,
+    this.error,
   });
 
   /// Initial state
@@ -39,6 +40,8 @@ class GamesState extends Equatable {
   /// Has more apps
   final bool hasMoreGames;
 
+  final String? error;
+
   @override
   List<Object> get props => [
         status,
@@ -50,14 +53,23 @@ class GamesState extends Equatable {
   GamesState copyWith({
     AppsStatus? status,
     List<GameModel>? apps,
-    bool? hasMoreApps,
-    List<GameModel>? forYou,
-    bool? hasMoreForYouApps,
+    bool? hasMoreGames,
+    String? error,
   }) {
     return GamesState(
       status: status ?? this.status,
       games: apps ?? games,
-      hasMoreGames: hasMoreApps ?? hasMoreGames,
+      hasMoreGames: hasMoreGames ?? this.hasMoreGames,
+      error: error ?? this.error,
+    );
+  }
+
+  GamesState withError(String error) {
+    return GamesState(
+      status: status,
+      games: games,
+      hasMoreGames: hasMoreGames,
+      error: error,
     );
   }
 }

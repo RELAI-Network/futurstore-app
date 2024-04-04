@@ -2,9 +2,9 @@
 
 import 'dart:io';
 
+import '../../providers/file_downloader_func_provider.dart';
 import '../models/download_task_status.dart';
 import '../models/package_file_access_data.dart';
-import '../models/typedefs/file_background_download_function.dart';
 import '../repo/i_package_file_access_policy.dart';
 
 class UrlPackageAccessPolicy extends IPackageFileAccessPolicy {

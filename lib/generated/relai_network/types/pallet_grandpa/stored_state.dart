@@ -31,7 +31,7 @@ class $StoredState {
   const $StoredState();
 
   Live live() {
-    return const Live();
+    return Live();
   }
 
   PendingPause pendingPause({
@@ -45,7 +45,7 @@ class $StoredState {
   }
 
   Paused paused() {
-    return const Paused();
+    return Paused();
   }
 
   PendingResume pendingResume({
@@ -87,16 +87,19 @@ class $StoredStateCodec with _i1.Codec<StoredState> {
     switch (value.runtimeType) {
       case Live:
         (value as Live).encodeTo(output);
+        break;
       case PendingPause:
         (value as PendingPause).encodeTo(output);
+        break;
       case Paused:
         (value as Paused).encodeTo(output);
+        break;
       case PendingResume:
         (value as PendingResume).encodeTo(output);
+        break;
       default:
         throw Exception(
-          'StoredState: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'StoredState: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 
@@ -113,8 +116,7 @@ class $StoredStateCodec with _i1.Codec<StoredState> {
         return (value as PendingResume)._sizeHint();
       default:
         throw Exception(
-          'StoredState: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'StoredState: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 }
@@ -163,11 +165,11 @@ class PendingPause extends StoredState {
         'PendingPause': {
           'scheduledAt': scheduledAt,
           'delay': delay,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U32Codec.codec.sizeHint(scheduledAt);
     size = size + _i1.U32Codec.codec.sizeHint(delay);
     return size;
@@ -249,11 +251,11 @@ class PendingResume extends StoredState {
         'PendingResume': {
           'scheduledAt': scheduledAt,
           'delay': delay,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U32Codec.codec.sizeHint(scheduledAt);
     size = size + _i1.U32Codec.codec.sizeHint(delay);
     return size;

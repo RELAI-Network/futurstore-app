@@ -8,6 +8,12 @@ import 'package:json_annotation/json_annotation.dart';
 part 'book.g.dart';
 
 @Collection<BookModel>(BookModel.collection)
+@Collection<BookModelEdition>(
+  '${BookModel.collection}/*/${BookModelEdition.collection}',
+)
+@Collection<BookReview>(
+  '${BookModel.collection}/*/${BookReview.collection}',
+)
 final booksReference = BookModelCollectionReference();
 
 @firestoreSerializable
@@ -25,36 +31,53 @@ class BookModel {
     required this.language,
     required this.price,
     required this.publishedAt,
+    required this.published,
     required this.publisherId,
     required this.publisherName,
     required this.resume,
     required this.title,
     required this.type,
+    this.actualEditionId,
+    this.assetId,
     this.audioFormat,
+    this.createdAt,
+    this.status,
     this.textFormat,
+    this.updatedAt,
   });
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   static const String collection = 'books';
 
-  final List<String> authors;
   final String description;
   final String genre;
   final String isbn;
   final String language;
-  final double price;
   final String resume;
+  final String? status;
   final String title;
   final String type;
 
+  @JsonKey(name: 'actual_edition_id')
+  final String? actualEditionId;
+
+  @JsonKey(name: 'asset_id')
+  final String? assetId;
+
   @JsonKey(name: 'audio_format')
   final String? audioFormat;
+
+  @JsonKey(fromJson: listOrStringToString)
+  final String authors;
 
   @JsonKey(name: 'category_id')
   final String categoryId;
 
   @JsonKey(name: 'cover_url')
   final String coverUrl;
+
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
 
   @JsonKey(name: 'file_extension')
   final String fileExtension;
@@ -65,10 +88,16 @@ class BookModel {
   @Id()
   final String id;
 
+  @JsonKey(fromJson: numberToInt)
+  final double price;
+
+  @JsonKey(defaultValue: false)
+  final bool published;
+
   @JsonKey(name: 'published_at')
   final DateTime publishedAt;
 
-  @JsonKey(name: 'publisher_id')
+  @JsonKey(name: 'publisher_id', fromJson: intToString)
   final String publisherId;
 
   @JsonKey(name: 'publisher_name')
@@ -76,6 +105,9 @@ class BookModel {
 
   @JsonKey(name: 'text_format')
   final String? textFormat;
+
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
 
   String get publicationDate {
     return DateFormat.yMMMd(publicationLanguageEnum.code).format(publishedAt);
@@ -97,6 +129,127 @@ class BookModel {
   }
 
   String get typeName => typeEnum.name.capitalize;
+}
+
+@firestoreSerializable
+class BookModelEdition {
+  BookModelEdition({
+    required this.authors,
+    required this.coverUrl,
+    required this.description,
+    required this.fileExtension,
+    required this.fileMailUrl,
+    required this.id,
+    required this.isbn,
+    required this.language,
+    required this.price,
+    required this.published,
+    required this.publishedAt,
+    required this.resume,
+    required this.title,
+    required this.type,
+  });
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  static const String collection = 'editions';
+
+  final String description;
+  final String isbn;
+  final String language;
+  final String resume;
+  final String title;
+  final String type;
+
+  @JsonKey(fromJson: listOrStringToString)
+  final String authors;
+
+  @JsonKey(name: 'cover_url')
+  final String coverUrl;
+
+  @JsonKey(name: 'file_extension')
+  final String fileExtension;
+
+  @JsonKey(name: 'file_main_url')
+  final String fileMailUrl;
+
+  @Id()
+  final String id;
+
+  @JsonKey(fromJson: numberToInt)
+  final double price;
+
+  @JsonKey(defaultValue: false)
+  final bool published;
+
+  @JsonKey(name: 'published_at')
+  final DateTime publishedAt;
+
+  String get publicationDate {
+    return DateFormat.yMMMd(publicationLanguageEnum.code).format(publishedAt);
+  }
+
+  String get publicationLanguage => publicationLanguageEnum.name.capitalize;
+  PublicationLanguage get publicationLanguageEnum {
+    return PublicationLanguage.values.firstWhereOrNull(
+          (languageEnum) => languageEnum.name == language,
+        ) ??
+        PublicationLanguage.english;
+  }
+
+  BookType get typeEnum {
+    return BookType.values.firstWhereOrNull(
+          (bookTypeEnum) => bookTypeEnum.name == type,
+        ) ??
+        BookType.text;
+  }
+
+  String get typeName => typeEnum.name.capitalize;
+}
+
+@firestoreSerializable
+class BookReview {
+  BookReview({
+    required this.addedAt,
+    required this.address,
+    required this.bookId,
+    required this.assetId,
+    required this.deviceId,
+    required this.id,
+    required this.hash,
+    required this.userId,
+    required this.rating,
+    this.comment,
+    this.userProfilePictureUrl,
+  });
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  static const String collection = 'reviews';
+
+  final String address;
+  final String? comment;
+  final String hash;
+  final double rating;
+
+  @JsonKey(name: 'added_at')
+  final DateTime addedAt;
+
+  @JsonKey(name: 'asset_id')
+  final String assetId;
+
+  @JsonKey(name: 'book_id')
+  final String bookId;
+
+  @JsonKey(name: 'device_id')
+  final String deviceId;
+
+  @Id()
+  final String id;
+
+  @JsonKey(name: 'user_id')
+  final String userId;
+
+  @JsonKey(name: 'user_profile_picture_url')
+  final String? userProfilePictureUrl;
 }
 
 enum BookGenre {

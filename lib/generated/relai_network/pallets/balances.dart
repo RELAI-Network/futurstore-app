@@ -1,5 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes, avoid_field_initializers_in_const_classes, lines_longer_than_80_chars
-
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
 import 'dart:typed_data' as _i9;
 
@@ -293,11 +292,11 @@ class Txs {
     required _i11.MultiAddress dest,
     required BigInt value,
   }) {
-    final call = _i12.Call.values.transferAllowDeath(
+    final _call = _i12.Call.values.transferAllowDeath(
       dest: dest,
       value: value,
     );
-    return _i10.RuntimeCall.values.balances(call);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 
   /// See [`Pallet::set_balance_deprecated`].
@@ -306,12 +305,12 @@ class Txs {
     required BigInt newFree,
     required BigInt oldReserved,
   }) {
-    final call = _i12.Call.values.setBalanceDeprecated(
+    final _call = _i12.Call.values.setBalanceDeprecated(
       who: who,
       newFree: newFree,
       oldReserved: oldReserved,
     );
-    return _i10.RuntimeCall.values.balances(call);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 
   /// See [`Pallet::force_transfer`].
@@ -320,12 +319,12 @@ class Txs {
     required _i11.MultiAddress dest,
     required BigInt value,
   }) {
-    final call = _i12.Call.values.forceTransfer(
+    final _call = _i12.Call.values.forceTransfer(
       source: source,
       dest: dest,
       value: value,
     );
-    return _i10.RuntimeCall.values.balances(call);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 
   /// See [`Pallet::transfer_keep_alive`].
@@ -333,11 +332,11 @@ class Txs {
     required _i11.MultiAddress dest,
     required BigInt value,
   }) {
-    final call = _i12.Call.values.transferKeepAlive(
+    final _call = _i12.Call.values.transferKeepAlive(
       dest: dest,
       value: value,
     );
-    return _i10.RuntimeCall.values.balances(call);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 
   /// See [`Pallet::transfer_all`].
@@ -345,11 +344,11 @@ class Txs {
     required _i11.MultiAddress dest,
     required bool keepAlive,
   }) {
-    final call = _i12.Call.values.transferAll(
+    final _call = _i12.Call.values.transferAll(
       dest: dest,
       keepAlive: keepAlive,
     );
-    return _i10.RuntimeCall.values.balances(call);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 
   /// See [`Pallet::force_unreserve`].
@@ -357,17 +356,17 @@ class Txs {
     required _i11.MultiAddress who,
     required BigInt amount,
   }) {
-    final call = _i12.Call.values.forceUnreserve(
+    final _call = _i12.Call.values.forceUnreserve(
       who: who,
       amount: amount,
     );
-    return _i10.RuntimeCall.values.balances(call);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 
   /// See [`Pallet::upgrade_accounts`].
   _i10.RuntimeCall upgradeAccounts({required List<_i3.AccountId32> who}) {
-    final call = _i12.Call.values.upgradeAccounts(who: who);
-    return _i10.RuntimeCall.values.balances(call);
+    final _call = _i12.Call.values.upgradeAccounts(who: who);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 
   /// See [`Pallet::transfer`].
@@ -375,11 +374,11 @@ class Txs {
     required _i11.MultiAddress dest,
     required BigInt value,
   }) {
-    final call = _i12.Call.values.transfer(
+    final _call = _i12.Call.values.transfer(
       dest: dest,
       value: value,
     );
-    return _i10.RuntimeCall.values.balances(call);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 
   /// See [`Pallet::force_set_balance`].
@@ -387,11 +386,11 @@ class Txs {
     required _i11.MultiAddress who,
     required BigInt newFree,
   }) {
-    final call = _i12.Call.values.forceSetBalance(
+    final _call = _i12.Call.values.forceSetBalance(
       who: who,
       newFree: newFree,
     );
-    return _i10.RuntimeCall.values.balances(call);
+    return _i10.RuntimeCall.values.balances(_call);
   }
 }
 

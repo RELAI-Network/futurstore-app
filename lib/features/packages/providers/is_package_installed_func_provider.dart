@@ -1,9 +1,11 @@
 import 'package:installed_apps/installed_apps.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../data/models/index.dart';
-
 part 'is_package_installed_func_provider.g.dart';
+
+typedef IsPackageInstalledFunc = Future<bool> Function(
+  String packageName,
+);
 
 final isPackageInstalledFuncProvider = Provider<IsPackageInstalledFunc>(
   (ref) => isPackageInstalledFunc,

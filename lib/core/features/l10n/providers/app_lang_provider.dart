@@ -7,7 +7,8 @@ final appLangProvider = ChangeNotifierProvider(
   (ref) => AppLocalSettingProvider<Locale>(
     ref.watch(localStorageProvider),
     defaultValue: const Locale('en'),
-    fromStorage: Locale.new,
+    // fromStorage: Locale.new,
+    fromStorage: (_) => const Locale('en'),
     localKey: '__locale_code__',
     toStorage: (locale) => locale.languageCode,
   ),

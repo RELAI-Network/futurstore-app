@@ -18,6 +18,10 @@ class AppLocalSettingProvider<T> with ChangeNotifier {
     unawaited(_init());
   }
 
+  bool _initializing = true;
+
+  bool get initializing => _initializing;
+
   /// Default value
   final T defaultValue;
 
@@ -50,9 +54,18 @@ class AppLocalSettingProvider<T> with ChangeNotifier {
       final value = await _storage.getString(localKey);
 
       _value = fromStorage(value!) ?? defaultValue;
+
+      _initializing = false;
+
       notifyListeners();
     } catch (e) {
       debugPrint(e.toString());
+
+      _value = defaultValue;
+
+      _initializing = false;
+
+      notifyListeners();
     }
   }
 }
