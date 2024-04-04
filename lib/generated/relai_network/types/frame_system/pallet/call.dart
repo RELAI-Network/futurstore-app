@@ -50,9 +50,8 @@ class $Call {
     return SetCodeWithoutChecks(code: code);
   }
 
-  SetStorage setStorage({
-    required List<_i3.Tuple2<List<int>, List<int>>> items,
-  }) {
+  SetStorage setStorage(
+      {required List<_i3.Tuple2<List<int>, List<int>>> items}) {
     return SetStorage(items: items);
   }
 
@@ -111,24 +110,31 @@ class $CallCodec with _i1.Codec<Call> {
     switch (value.runtimeType) {
       case Remark:
         (value as Remark).encodeTo(output);
+        break;
       case SetHeapPages:
         (value as SetHeapPages).encodeTo(output);
+        break;
       case SetCode:
         (value as SetCode).encodeTo(output);
+        break;
       case SetCodeWithoutChecks:
         (value as SetCodeWithoutChecks).encodeTo(output);
+        break;
       case SetStorage:
         (value as SetStorage).encodeTo(output);
+        break;
       case KillStorage:
         (value as KillStorage).encodeTo(output);
+        break;
       case KillPrefix:
         (value as KillPrefix).encodeTo(output);
+        break;
       case RemarkWithEvent:
         (value as RemarkWithEvent).encodeTo(output);
+        break;
       default:
         throw Exception(
-          'Call: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'Call: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 
@@ -153,8 +159,7 @@ class $CallCodec with _i1.Codec<Call> {
         return (value as RemarkWithEvent)._sizeHint();
       default:
         throw Exception(
-          'Call: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'Call: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 }
@@ -172,11 +177,11 @@ class Remark extends Call {
 
   @override
   Map<String, Map<String, List<int>>> toJson() => {
-        'remark': {'remark': remark},
+        'remark': {'remark': remark}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U8SequenceCodec.codec.sizeHint(remark);
     return size;
   }
@@ -221,11 +226,11 @@ class SetHeapPages extends Call {
 
   @override
   Map<String, Map<String, BigInt>> toJson() => {
-        'set_heap_pages': {'pages': pages},
+        'set_heap_pages': {'pages': pages}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U64Codec.codec.sizeHint(pages);
     return size;
   }
@@ -266,11 +271,11 @@ class SetCode extends Call {
 
   @override
   Map<String, Map<String, List<int>>> toJson() => {
-        'set_code': {'code': code},
+        'set_code': {'code': code}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U8SequenceCodec.codec.sizeHint(code);
     return size;
   }
@@ -315,11 +320,11 @@ class SetCodeWithoutChecks extends Call {
 
   @override
   Map<String, Map<String, List<int>>> toJson() => {
-        'set_code_without_checks': {'code': code},
+        'set_code_without_checks': {'code': code}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U8SequenceCodec.codec.sizeHint(code);
     return size;
   }
@@ -357,13 +362,11 @@ class SetStorage extends Call {
 
   factory SetStorage._decode(_i1.Input input) {
     return SetStorage(
-      items: const _i1.SequenceCodec<_i3.Tuple2<List<int>, List<int>>>(
-        _i3.Tuple2Codec<List<int>, List<int>>(
-          _i1.U8SequenceCodec.codec,
-          _i1.U8SequenceCodec.codec,
-        ),
-      ).decode(input),
-    );
+        items: const _i1.SequenceCodec<_i3.Tuple2<List<int>, List<int>>>(
+            _i3.Tuple2Codec<List<int>, List<int>>(
+      _i1.U8SequenceCodec.codec,
+      _i1.U8SequenceCodec.codec,
+    )).decode(input));
   }
 
   /// Vec<KeyValue>
@@ -373,25 +376,22 @@ class SetStorage extends Call {
   Map<String, Map<String, List<List<List<int>>>>> toJson() => {
         'set_storage': {
           'items': items
-              .map(
-                (value) => [
-                  value.value0,
-                  value.value1,
-                ],
-              )
-              .toList(),
-        },
+              .map((value) => [
+                    value.value0,
+                    value.value1,
+                  ])
+              .toList()
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size +
         const _i1.SequenceCodec<_i3.Tuple2<List<int>, List<int>>>(
-          _i3.Tuple2Codec<List<int>, List<int>>(
-            _i1.U8SequenceCodec.codec,
-            _i1.U8SequenceCodec.codec,
-          ),
-        ).sizeHint(items);
+            _i3.Tuple2Codec<List<int>, List<int>>(
+          _i1.U8SequenceCodec.codec,
+          _i1.U8SequenceCodec.codec,
+        )).sizeHint(items);
     return size;
   }
 
@@ -401,11 +401,10 @@ class SetStorage extends Call {
       output,
     );
     const _i1.SequenceCodec<_i3.Tuple2<List<int>, List<int>>>(
-      _i3.Tuple2Codec<List<int>, List<int>>(
-        _i1.U8SequenceCodec.codec,
-        _i1.U8SequenceCodec.codec,
-      ),
-    ).encodeTo(
+        _i3.Tuple2Codec<List<int>, List<int>>(
+      _i1.U8SequenceCodec.codec,
+      _i1.U8SequenceCodec.codec,
+    )).encodeTo(
       items,
       output,
     );
@@ -433,9 +432,8 @@ class KillStorage extends Call {
 
   factory KillStorage._decode(_i1.Input input) {
     return KillStorage(
-      keys: const _i1.SequenceCodec<List<int>>(_i1.U8SequenceCodec.codec)
-          .decode(input),
-    );
+        keys: const _i1.SequenceCodec<List<int>>(_i1.U8SequenceCodec.codec)
+            .decode(input));
   }
 
   /// Vec<Key>
@@ -443,11 +441,11 @@ class KillStorage extends Call {
 
   @override
   Map<String, Map<String, List<List<int>>>> toJson() => {
-        'kill_storage': {'keys': keys.map((value) => value).toList()},
+        'kill_storage': {'keys': keys.map((value) => value).toList()}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size +
         const _i1.SequenceCodec<List<int>>(_i1.U8SequenceCodec.codec)
             .sizeHint(keys);
@@ -506,11 +504,11 @@ class KillPrefix extends Call {
         'kill_prefix': {
           'prefix': prefix,
           'subkeys': subkeys,
-        },
+        }
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U8SequenceCodec.codec.sizeHint(prefix);
     size = size + _i1.U32Codec.codec.sizeHint(subkeys);
     return size;
@@ -564,11 +562,11 @@ class RemarkWithEvent extends Call {
 
   @override
   Map<String, Map<String, List<int>>> toJson() => {
-        'remark_with_event': {'remark': remark},
+        'remark_with_event': {'remark': remark}
       };
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U8SequenceCodec.codec.sizeHint(remark);
     return size;
   }

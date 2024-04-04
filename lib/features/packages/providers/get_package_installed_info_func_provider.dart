@@ -1,8 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:futurstore/features/packages/data/models/typedefs/get_package_installed_info_function.dart';
 import 'package:installed_apps/installed_apps.dart';
 
 import '../data/models/index.dart';
+
+typedef GetPackageInstalledInfoFunc = Future<PackageInstalledInfo?> Function(
+  String packageName,
+);
 
 final getPackageInstalledInfoFuncProvider =
     Provider<GetPackageInstalledInfoFunc>(

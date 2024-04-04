@@ -22,6 +22,7 @@ class AppsState extends Equatable {
     required this.status,
     this.apps = const [],
     this.hasMoreApps = true,
+    this.error,
   });
 
   /// Initial state
@@ -38,6 +39,8 @@ class AppsState extends Equatable {
 
   /// Has more apps
   final bool hasMoreApps;
+
+  final String? error;
 
   @override
   List<Object> get props => [
@@ -56,6 +59,15 @@ class AppsState extends Equatable {
       status: status ?? this.status,
       apps: apps ?? this.apps,
       hasMoreApps: hasMoreApps ?? this.hasMoreApps,
+    );
+  }
+
+  AppsState withError(String error) {
+    return AppsState(
+      status: status,
+      apps: apps,
+      hasMoreApps: hasMoreApps,
+      error: error,
     );
   }
 }

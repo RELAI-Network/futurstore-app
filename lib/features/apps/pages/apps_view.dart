@@ -4,7 +4,7 @@ import 'package:futurstore/core/features/l10n/l10n.dart';
 import 'package:futurstore/core/presentation/views/loading_error_screen_view.dart';
 
 import '../controllers/providers/apps_state_provider.dart';
-import '../widgets/app_card.dart';
+import 'apps_grid_view.dart';
 
 class AppsView extends ConsumerStatefulWidget {
   const AppsView({
@@ -55,27 +55,18 @@ class _AppsViewState extends ConsumerState<AppsView>
       );
     }
 
-    if (appsState.state.apps.isEmpty) {
+    if (appsState.state.status == AppsStatus.failure ||
+        appsState.state.apps.isEmpty) {
       return LoadingErrorScreenView(
-        error: context.l10n.noAppsFound,
+        error: appsState.state.error ?? context.l10n.noAppsFound,
         retry: () async {
           ref.read(appsStateProvider).onAppsRefreshRequested();
         },
       );
     }
 
-    return GridView.count(
-      crossAxisCount: 3,
-      children: appsState.state.apps.map(
-        (a) {
-          return Padding(
-            padding: const EdgeInsets.all(2),
-            child: AppCard(
-              appData: a,
-            ),
-          );
-        },
-      ).toList(),
+    return AppsGridView(
+      apps: appsState.state.apps,
     );
   }
 }

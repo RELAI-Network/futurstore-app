@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:futurstore/core/utils/extensions/navigator.dart';
 import 'package:futurstore/core/utils/extensions/theme_on_build_context.dart';
-import 'package:futurstore/features/games/data/models/game.dart';
+import 'package:futurstore/features/apps/data/models/app.dart';
 import 'package:futurstore/features/packages/providers/is_package_installed_func_provider.dart';
 
 import '../pages/game_detail_screen.dart';
 
 class GameCard extends ConsumerWidget {
   const GameCard({required this.data, super.key});
-  final GameModel data;
+  final ApplicationModel data;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,8 +24,9 @@ class GameCard extends ConsumerWidget {
             SizedBox(
               width: 200,
               height: 90,
-              child: Card(
+              child: Material(
                 elevation: 9,
+                color: Colors.transparent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -48,6 +49,8 @@ class GameCard extends ConsumerWidget {
                   child: Text(
                     data.name,
                     style: context.textTheme.bodySmall,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Padding(
@@ -57,6 +60,8 @@ class GameCard extends ConsumerWidget {
                     style: context.textTheme.bodySmall?.copyWith(
                       color: context.colorScheme.primary,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 if (data.notesAverage != null)
@@ -66,19 +71,22 @@ class GameCard extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                          children: [
-                            Text(
-                              data.notesAverage!.toString(),
-                              style: context.textTheme.bodySmall,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 3, bottom: 0.6),
-                              child: Icon(
-                                Icons.star,
-                                size: 15,
-                              ),
-                            ),
-                          ],
+                          children: data.notesAverage == 0
+                              ? []
+                              : [
+                                  Text(
+                                    data.notesAverage!.toString(),
+                                    style: context.textTheme.bodySmall,
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 3, bottom: 0.6),
+                                    child: Icon(
+                                      Icons.star,
+                                      size: 15,
+                                    ),
+                                  ),
+                                ],
                         ),
                         FutureBuilder(
                           // ignore: discarded_futures

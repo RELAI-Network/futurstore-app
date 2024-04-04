@@ -4,7 +4,7 @@ import 'package:background_downloader/background_downloader.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../data/models/typedefs/file_install_function.dart';
+typedef FileInstallFunction = Future<bool> Function(File file);
 
 final fileInstallerFuncProvider = Provider<FileInstallFunction>(
   (ref) {

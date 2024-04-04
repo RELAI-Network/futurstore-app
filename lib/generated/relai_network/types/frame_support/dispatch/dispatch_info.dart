@@ -91,7 +91,7 @@ class $DispatchInfoCodec with _i1.Codec<DispatchInfo> {
 
   @override
   int sizeHint(DispatchInfo obj) {
-    var size = 0;
+    int size = 0;
     size = size + _i2.Weight.codec.sizeHint(obj.weight);
     size = size + _i3.DispatchClass.codec.sizeHint(obj.class_);
     size = size + _i4.Pays.codec.sizeHint(obj.paysFee);

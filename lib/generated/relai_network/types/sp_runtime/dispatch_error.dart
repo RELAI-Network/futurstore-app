@@ -36,15 +36,15 @@ class $DispatchError {
   const $DispatchError();
 
   Other other() {
-    return const Other();
+    return Other();
   }
 
   CannotLookup cannotLookup() {
-    return const CannotLookup();
+    return CannotLookup();
   }
 
   BadOrigin badOrigin() {
-    return const BadOrigin();
+    return BadOrigin();
   }
 
   Module module(_i3.ModuleError value0) {
@@ -52,15 +52,15 @@ class $DispatchError {
   }
 
   ConsumerRemaining consumerRemaining() {
-    return const ConsumerRemaining();
+    return ConsumerRemaining();
   }
 
   NoProviders noProviders() {
-    return const NoProviders();
+    return NoProviders();
   }
 
   TooManyConsumers tooManyConsumers() {
-    return const TooManyConsumers();
+    return TooManyConsumers();
   }
 
   Token token(_i4.TokenError value0) {
@@ -76,19 +76,19 @@ class $DispatchError {
   }
 
   Exhausted exhausted() {
-    return const Exhausted();
+    return Exhausted();
   }
 
   Corruption corruption() {
-    return const Corruption();
+    return Corruption();
   }
 
   Unavailable unavailable() {
-    return const Unavailable();
+    return Unavailable();
   }
 
   RootNotAllowed rootNotAllowed() {
-    return const RootNotAllowed();
+    return RootNotAllowed();
   }
 }
 
@@ -140,36 +140,49 @@ class $DispatchErrorCodec with _i1.Codec<DispatchError> {
     switch (value.runtimeType) {
       case Other:
         (value as Other).encodeTo(output);
+        break;
       case CannotLookup:
         (value as CannotLookup).encodeTo(output);
+        break;
       case BadOrigin:
         (value as BadOrigin).encodeTo(output);
+        break;
       case Module:
         (value as Module).encodeTo(output);
+        break;
       case ConsumerRemaining:
         (value as ConsumerRemaining).encodeTo(output);
+        break;
       case NoProviders:
         (value as NoProviders).encodeTo(output);
+        break;
       case TooManyConsumers:
         (value as TooManyConsumers).encodeTo(output);
+        break;
       case Token:
         (value as Token).encodeTo(output);
+        break;
       case Arithmetic:
         (value as Arithmetic).encodeTo(output);
+        break;
       case Transactional:
         (value as Transactional).encodeTo(output);
+        break;
       case Exhausted:
         (value as Exhausted).encodeTo(output);
+        break;
       case Corruption:
         (value as Corruption).encodeTo(output);
+        break;
       case Unavailable:
         (value as Unavailable).encodeTo(output);
+        break;
       case RootNotAllowed:
         (value as RootNotAllowed).encodeTo(output);
+        break;
       default:
         throw Exception(
-          'DispatchError: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'DispatchError: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 
@@ -206,8 +219,7 @@ class $DispatchErrorCodec with _i1.Codec<DispatchError> {
         return 1;
       default:
         throw Exception(
-          'DispatchError: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'DispatchError: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 }
@@ -286,7 +298,7 @@ class Module extends DispatchError {
   Map<String, Map<String, dynamic>> toJson() => {'Module': value0.toJson()};
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i3.ModuleError.codec.sizeHint(value0);
     return size;
   }
@@ -388,7 +400,7 @@ class Token extends DispatchError {
   Map<String, String> toJson() => {'Token': value0.toJson()};
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i4.TokenError.codec.sizeHint(value0);
     return size;
   }
@@ -430,7 +442,7 @@ class Arithmetic extends DispatchError {
   Map<String, String> toJson() => {'Arithmetic': value0.toJson()};
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i5.ArithmeticError.codec.sizeHint(value0);
     return size;
   }
@@ -472,7 +484,7 @@ class Transactional extends DispatchError {
   Map<String, String> toJson() => {'Transactional': value0.toJson()};
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i6.TransactionalError.codec.sizeHint(value0);
     return size;
   }

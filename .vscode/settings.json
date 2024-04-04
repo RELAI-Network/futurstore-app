@@ -30,16 +30,21 @@
     "cSpell.words": [
         "arabic",
         "chinese",
+        "Denticon",
+        "ecdsa",
         "epub",
+        "extrinsics",
         "firestore",
         "futurstore",
         "isbn",
         "italian",
         "multiaddress",
         "polkadart",
+        "pubkey",
         "russian",
         "spanish",
         "theming",
-        "typedefs"
+        "typedefs",
+        "xxlg"
     ]
 }
