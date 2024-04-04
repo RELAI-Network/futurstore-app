@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:installed_apps/installed_apps.dart';
 
-import '../data/models/index.dart';
+typedef UninstallPackageInstalledFunc = Future<bool> Function(
+  String packageName,
+);
 
 final uninstalledPackageInstalledFuncProvider =
     Provider<UninstallPackageInstalledFunc>(

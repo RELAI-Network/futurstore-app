@@ -52,3 +52,9 @@ macos/firebase_app_id_file.json
 
 # Design related files
 .design/
+
+# Signing Keys
+
+key.properties
+*.keystore
+*.keystore.old

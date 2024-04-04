@@ -5,10 +5,16 @@ import 'package:flutter/foundation.dart';
 import 'package:futurstore/features/packages/functions/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../data/models/typedefs/file_background_download_function.dart';
 import '../data/repo/i_package_file_installer.dart';
 
 part 'file_downloader_func_provider.g.dart';
+
+typedef FileBackgroundDownloadFunction = Future<File> Function(
+  String url,
+  String packageName,
+  void Function(double)? onProgress,
+  void Function(DownloadTaskStatus)? onStatus,
+);
 
 final fileDownloaderFuncProvider = Provider<FileBackgroundDownloadFunction>(
   (ref) {

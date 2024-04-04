@@ -115,6 +115,16 @@ abstract class BookModelDocumentReference
     return _$BookModelCollectionReference(reference.firestore);
   }
 
+  late final BookModelEditionCollectionReference editions =
+      _$BookModelEditionCollectionReference(
+    reference,
+  );
+
+  late final BookReviewCollectionReference reviews =
+      _$BookReviewCollectionReference(
+    reference,
+  );
+
   @override
   Stream<BookModelDocumentSnapshot> snapshots();
 
@@ -129,8 +139,6 @@ abstract class BookModelDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    List<String> authors,
-    FieldValue authorsFieldValue,
     String description,
     FieldValue descriptionFieldValue,
     String genre,
@@ -139,24 +147,36 @@ abstract class BookModelDocumentReference
     FieldValue isbnFieldValue,
     String language,
     FieldValue languageFieldValue,
-    double price,
-    FieldValue priceFieldValue,
     String resume,
     FieldValue resumeFieldValue,
+    String? status,
+    FieldValue statusFieldValue,
     String title,
     FieldValue titleFieldValue,
     String type,
     FieldValue typeFieldValue,
+    String? actualEditionId,
+    FieldValue actualEditionIdFieldValue,
+    String? assetId,
+    FieldValue assetIdFieldValue,
     String? audioFormat,
     FieldValue audioFormatFieldValue,
+    String authors,
+    FieldValue authorsFieldValue,
     String categoryId,
     FieldValue categoryIdFieldValue,
     String coverUrl,
     FieldValue coverUrlFieldValue,
+    DateTime? createdAt,
+    FieldValue createdAtFieldValue,
     String fileExtension,
     FieldValue fileExtensionFieldValue,
     String fileMailUrl,
     FieldValue fileMailUrlFieldValue,
+    double price,
+    FieldValue priceFieldValue,
+    bool published,
+    FieldValue publishedFieldValue,
     DateTime publishedAt,
     FieldValue publishedAtFieldValue,
     String publisherId,
@@ -165,6 +185,8 @@ abstract class BookModelDocumentReference
     FieldValue publisherNameFieldValue,
     String? textFormat,
     FieldValue textFormatFieldValue,
+    DateTime? updatedAt,
+    FieldValue updatedAtFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -172,8 +194,6 @@ abstract class BookModelDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    List<String> authors,
-    FieldValue authorsFieldValue,
     String description,
     FieldValue descriptionFieldValue,
     String genre,
@@ -182,24 +202,36 @@ abstract class BookModelDocumentReference
     FieldValue isbnFieldValue,
     String language,
     FieldValue languageFieldValue,
-    double price,
-    FieldValue priceFieldValue,
     String resume,
     FieldValue resumeFieldValue,
+    String? status,
+    FieldValue statusFieldValue,
     String title,
     FieldValue titleFieldValue,
     String type,
     FieldValue typeFieldValue,
+    String? actualEditionId,
+    FieldValue actualEditionIdFieldValue,
+    String? assetId,
+    FieldValue assetIdFieldValue,
     String? audioFormat,
     FieldValue audioFormatFieldValue,
+    String authors,
+    FieldValue authorsFieldValue,
     String categoryId,
     FieldValue categoryIdFieldValue,
     String coverUrl,
     FieldValue coverUrlFieldValue,
+    DateTime? createdAt,
+    FieldValue createdAtFieldValue,
     String fileExtension,
     FieldValue fileExtensionFieldValue,
     String fileMailUrl,
     FieldValue fileMailUrlFieldValue,
+    double price,
+    FieldValue priceFieldValue,
+    bool published,
+    FieldValue publishedFieldValue,
     DateTime publishedAt,
     FieldValue publishedAtFieldValue,
     String publisherId,
@@ -208,6 +240,8 @@ abstract class BookModelDocumentReference
     FieldValue publisherNameFieldValue,
     String? textFormat,
     FieldValue textFormatFieldValue,
+    DateTime? updatedAt,
+    FieldValue updatedAtFieldValue,
   });
 }
 
@@ -223,6 +257,16 @@ class _$BookModelDocumentReference
   BookModelCollectionReference get parent {
     return _$BookModelCollectionReference(reference.firestore);
   }
+
+  late final BookModelEditionCollectionReference editions =
+      _$BookModelEditionCollectionReference(
+    reference,
+  );
+
+  late final BookReviewCollectionReference reviews =
+      _$BookReviewCollectionReference(
+    reference,
+  );
 
   @override
   Stream<BookModelDocumentSnapshot> snapshots() {
@@ -240,8 +284,6 @@ class _$BookModelDocumentReference
   }
 
   Future<void> update({
-    Object? authors = _sentinel,
-    FieldValue? authorsFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
     Object? genre = _sentinel,
@@ -250,24 +292,36 @@ class _$BookModelDocumentReference
     FieldValue? isbnFieldValue,
     Object? language = _sentinel,
     FieldValue? languageFieldValue,
-    Object? price = _sentinel,
-    FieldValue? priceFieldValue,
     Object? resume = _sentinel,
     FieldValue? resumeFieldValue,
+    Object? status = _sentinel,
+    FieldValue? statusFieldValue,
     Object? title = _sentinel,
     FieldValue? titleFieldValue,
     Object? type = _sentinel,
     FieldValue? typeFieldValue,
+    Object? actualEditionId = _sentinel,
+    FieldValue? actualEditionIdFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
     Object? audioFormat = _sentinel,
     FieldValue? audioFormatFieldValue,
+    Object? authors = _sentinel,
+    FieldValue? authorsFieldValue,
     Object? categoryId = _sentinel,
     FieldValue? categoryIdFieldValue,
     Object? coverUrl = _sentinel,
     FieldValue? coverUrlFieldValue,
+    Object? createdAt = _sentinel,
+    FieldValue? createdAtFieldValue,
     Object? fileExtension = _sentinel,
     FieldValue? fileExtensionFieldValue,
     Object? fileMailUrl = _sentinel,
     FieldValue? fileMailUrlFieldValue,
+    Object? price = _sentinel,
+    FieldValue? priceFieldValue,
+    Object? published = _sentinel,
+    FieldValue? publishedFieldValue,
     Object? publishedAt = _sentinel,
     FieldValue? publishedAtFieldValue,
     Object? publisherId = _sentinel,
@@ -276,11 +330,9 @@ class _$BookModelDocumentReference
     FieldValue? publisherNameFieldValue,
     Object? textFormat = _sentinel,
     FieldValue? textFormatFieldValue,
+    Object? updatedAt = _sentinel,
+    FieldValue? updatedAtFieldValue,
   }) async {
-    assert(
-      authors == _sentinel || authorsFieldValue == null,
-      "Cannot specify both authors and authorsFieldValue",
-    );
     assert(
       description == _sentinel || descriptionFieldValue == null,
       "Cannot specify both description and descriptionFieldValue",
@@ -298,12 +350,12 @@ class _$BookModelDocumentReference
       "Cannot specify both language and languageFieldValue",
     );
     assert(
-      price == _sentinel || priceFieldValue == null,
-      "Cannot specify both price and priceFieldValue",
-    );
-    assert(
       resume == _sentinel || resumeFieldValue == null,
       "Cannot specify both resume and resumeFieldValue",
+    );
+    assert(
+      status == _sentinel || statusFieldValue == null,
+      "Cannot specify both status and statusFieldValue",
     );
     assert(
       title == _sentinel || titleFieldValue == null,
@@ -314,8 +366,20 @@ class _$BookModelDocumentReference
       "Cannot specify both type and typeFieldValue",
     );
     assert(
+      actualEditionId == _sentinel || actualEditionIdFieldValue == null,
+      "Cannot specify both actualEditionId and actualEditionIdFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
+    );
+    assert(
       audioFormat == _sentinel || audioFormatFieldValue == null,
       "Cannot specify both audioFormat and audioFormatFieldValue",
+    );
+    assert(
+      authors == _sentinel || authorsFieldValue == null,
+      "Cannot specify both authors and authorsFieldValue",
     );
     assert(
       categoryId == _sentinel || categoryIdFieldValue == null,
@@ -326,12 +390,24 @@ class _$BookModelDocumentReference
       "Cannot specify both coverUrl and coverUrlFieldValue",
     );
     assert(
+      createdAt == _sentinel || createdAtFieldValue == null,
+      "Cannot specify both createdAt and createdAtFieldValue",
+    );
+    assert(
       fileExtension == _sentinel || fileExtensionFieldValue == null,
       "Cannot specify both fileExtension and fileExtensionFieldValue",
     );
     assert(
       fileMailUrl == _sentinel || fileMailUrlFieldValue == null,
       "Cannot specify both fileMailUrl and fileMailUrlFieldValue",
+    );
+    assert(
+      price == _sentinel || priceFieldValue == null,
+      "Cannot specify both price and priceFieldValue",
+    );
+    assert(
+      published == _sentinel || publishedFieldValue == null,
+      "Cannot specify both published and publishedFieldValue",
     );
     assert(
       publishedAt == _sentinel || publishedAtFieldValue == null,
@@ -349,12 +425,11 @@ class _$BookModelDocumentReference
       textFormat == _sentinel || textFormatFieldValue == null,
       "Cannot specify both textFormat and textFormatFieldValue",
     );
+    assert(
+      updatedAt == _sentinel || updatedAtFieldValue == null,
+      "Cannot specify both updatedAt and updatedAtFieldValue",
+    );
     final json = {
-      if (authors != _sentinel)
-        _$BookModelFieldMap['authors']!:
-            _$BookModelPerFieldToJson.authors(authors as List<String>),
-      if (authorsFieldValue != null)
-        _$BookModelFieldMap['authors']!: authorsFieldValue,
       if (description != _sentinel)
         _$BookModelFieldMap['description']!:
             _$BookModelPerFieldToJson.description(description as String),
@@ -374,16 +449,16 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.language(language as String),
       if (languageFieldValue != null)
         _$BookModelFieldMap['language']!: languageFieldValue,
-      if (price != _sentinel)
-        _$BookModelFieldMap['price']!:
-            _$BookModelPerFieldToJson.price(price as double),
-      if (priceFieldValue != null)
-        _$BookModelFieldMap['price']!: priceFieldValue,
       if (resume != _sentinel)
         _$BookModelFieldMap['resume']!:
             _$BookModelPerFieldToJson.resume(resume as String),
       if (resumeFieldValue != null)
         _$BookModelFieldMap['resume']!: resumeFieldValue,
+      if (status != _sentinel)
+        _$BookModelFieldMap['status']!:
+            _$BookModelPerFieldToJson.status(status as String?),
+      if (statusFieldValue != null)
+        _$BookModelFieldMap['status']!: statusFieldValue,
       if (title != _sentinel)
         _$BookModelFieldMap['title']!:
             _$BookModelPerFieldToJson.title(title as String),
@@ -393,11 +468,26 @@ class _$BookModelDocumentReference
         _$BookModelFieldMap['type']!:
             _$BookModelPerFieldToJson.type(type as String),
       if (typeFieldValue != null) _$BookModelFieldMap['type']!: typeFieldValue,
+      if (actualEditionId != _sentinel)
+        _$BookModelFieldMap['actualEditionId']!: _$BookModelPerFieldToJson
+            .actualEditionId(actualEditionId as String?),
+      if (actualEditionIdFieldValue != null)
+        _$BookModelFieldMap['actualEditionId']!: actualEditionIdFieldValue,
+      if (assetId != _sentinel)
+        _$BookModelFieldMap['assetId']!:
+            _$BookModelPerFieldToJson.assetId(assetId as String?),
+      if (assetIdFieldValue != null)
+        _$BookModelFieldMap['assetId']!: assetIdFieldValue,
       if (audioFormat != _sentinel)
         _$BookModelFieldMap['audioFormat']!:
             _$BookModelPerFieldToJson.audioFormat(audioFormat as String?),
       if (audioFormatFieldValue != null)
         _$BookModelFieldMap['audioFormat']!: audioFormatFieldValue,
+      if (authors != _sentinel)
+        _$BookModelFieldMap['authors']!:
+            _$BookModelPerFieldToJson.authors(authors as String),
+      if (authorsFieldValue != null)
+        _$BookModelFieldMap['authors']!: authorsFieldValue,
       if (categoryId != _sentinel)
         _$BookModelFieldMap['categoryId']!:
             _$BookModelPerFieldToJson.categoryId(categoryId as String),
@@ -408,6 +498,11 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.coverUrl(coverUrl as String),
       if (coverUrlFieldValue != null)
         _$BookModelFieldMap['coverUrl']!: coverUrlFieldValue,
+      if (createdAt != _sentinel)
+        _$BookModelFieldMap['createdAt']!:
+            _$BookModelPerFieldToJson.createdAt(createdAt as DateTime?),
+      if (createdAtFieldValue != null)
+        _$BookModelFieldMap['createdAt']!: createdAtFieldValue,
       if (fileExtension != _sentinel)
         _$BookModelFieldMap['fileExtension']!:
             _$BookModelPerFieldToJson.fileExtension(fileExtension as String),
@@ -418,6 +513,16 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.fileMailUrl(fileMailUrl as String),
       if (fileMailUrlFieldValue != null)
         _$BookModelFieldMap['fileMailUrl']!: fileMailUrlFieldValue,
+      if (price != _sentinel)
+        _$BookModelFieldMap['price']!:
+            _$BookModelPerFieldToJson.price(price as double),
+      if (priceFieldValue != null)
+        _$BookModelFieldMap['price']!: priceFieldValue,
+      if (published != _sentinel)
+        _$BookModelFieldMap['published']!:
+            _$BookModelPerFieldToJson.published(published as bool),
+      if (publishedFieldValue != null)
+        _$BookModelFieldMap['published']!: publishedFieldValue,
       if (publishedAt != _sentinel)
         _$BookModelFieldMap['publishedAt']!:
             _$BookModelPerFieldToJson.publishedAt(publishedAt as DateTime),
@@ -438,6 +543,11 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.textFormat(textFormat as String?),
       if (textFormatFieldValue != null)
         _$BookModelFieldMap['textFormat']!: textFormatFieldValue,
+      if (updatedAt != _sentinel)
+        _$BookModelFieldMap['updatedAt']!:
+            _$BookModelPerFieldToJson.updatedAt(updatedAt as DateTime?),
+      if (updatedAtFieldValue != null)
+        _$BookModelFieldMap['updatedAt']!: updatedAtFieldValue,
     };
 
     return reference.update(json);
@@ -445,8 +555,6 @@ class _$BookModelDocumentReference
 
   void transactionUpdate(
     Transaction transaction, {
-    Object? authors = _sentinel,
-    FieldValue? authorsFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
     Object? genre = _sentinel,
@@ -455,24 +563,36 @@ class _$BookModelDocumentReference
     FieldValue? isbnFieldValue,
     Object? language = _sentinel,
     FieldValue? languageFieldValue,
-    Object? price = _sentinel,
-    FieldValue? priceFieldValue,
     Object? resume = _sentinel,
     FieldValue? resumeFieldValue,
+    Object? status = _sentinel,
+    FieldValue? statusFieldValue,
     Object? title = _sentinel,
     FieldValue? titleFieldValue,
     Object? type = _sentinel,
     FieldValue? typeFieldValue,
+    Object? actualEditionId = _sentinel,
+    FieldValue? actualEditionIdFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
     Object? audioFormat = _sentinel,
     FieldValue? audioFormatFieldValue,
+    Object? authors = _sentinel,
+    FieldValue? authorsFieldValue,
     Object? categoryId = _sentinel,
     FieldValue? categoryIdFieldValue,
     Object? coverUrl = _sentinel,
     FieldValue? coverUrlFieldValue,
+    Object? createdAt = _sentinel,
+    FieldValue? createdAtFieldValue,
     Object? fileExtension = _sentinel,
     FieldValue? fileExtensionFieldValue,
     Object? fileMailUrl = _sentinel,
     FieldValue? fileMailUrlFieldValue,
+    Object? price = _sentinel,
+    FieldValue? priceFieldValue,
+    Object? published = _sentinel,
+    FieldValue? publishedFieldValue,
     Object? publishedAt = _sentinel,
     FieldValue? publishedAtFieldValue,
     Object? publisherId = _sentinel,
@@ -481,11 +601,9 @@ class _$BookModelDocumentReference
     FieldValue? publisherNameFieldValue,
     Object? textFormat = _sentinel,
     FieldValue? textFormatFieldValue,
+    Object? updatedAt = _sentinel,
+    FieldValue? updatedAtFieldValue,
   }) {
-    assert(
-      authors == _sentinel || authorsFieldValue == null,
-      "Cannot specify both authors and authorsFieldValue",
-    );
     assert(
       description == _sentinel || descriptionFieldValue == null,
       "Cannot specify both description and descriptionFieldValue",
@@ -503,12 +621,12 @@ class _$BookModelDocumentReference
       "Cannot specify both language and languageFieldValue",
     );
     assert(
-      price == _sentinel || priceFieldValue == null,
-      "Cannot specify both price and priceFieldValue",
-    );
-    assert(
       resume == _sentinel || resumeFieldValue == null,
       "Cannot specify both resume and resumeFieldValue",
+    );
+    assert(
+      status == _sentinel || statusFieldValue == null,
+      "Cannot specify both status and statusFieldValue",
     );
     assert(
       title == _sentinel || titleFieldValue == null,
@@ -519,8 +637,20 @@ class _$BookModelDocumentReference
       "Cannot specify both type and typeFieldValue",
     );
     assert(
+      actualEditionId == _sentinel || actualEditionIdFieldValue == null,
+      "Cannot specify both actualEditionId and actualEditionIdFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
+    );
+    assert(
       audioFormat == _sentinel || audioFormatFieldValue == null,
       "Cannot specify both audioFormat and audioFormatFieldValue",
+    );
+    assert(
+      authors == _sentinel || authorsFieldValue == null,
+      "Cannot specify both authors and authorsFieldValue",
     );
     assert(
       categoryId == _sentinel || categoryIdFieldValue == null,
@@ -531,12 +661,24 @@ class _$BookModelDocumentReference
       "Cannot specify both coverUrl and coverUrlFieldValue",
     );
     assert(
+      createdAt == _sentinel || createdAtFieldValue == null,
+      "Cannot specify both createdAt and createdAtFieldValue",
+    );
+    assert(
       fileExtension == _sentinel || fileExtensionFieldValue == null,
       "Cannot specify both fileExtension and fileExtensionFieldValue",
     );
     assert(
       fileMailUrl == _sentinel || fileMailUrlFieldValue == null,
       "Cannot specify both fileMailUrl and fileMailUrlFieldValue",
+    );
+    assert(
+      price == _sentinel || priceFieldValue == null,
+      "Cannot specify both price and priceFieldValue",
+    );
+    assert(
+      published == _sentinel || publishedFieldValue == null,
+      "Cannot specify both published and publishedFieldValue",
     );
     assert(
       publishedAt == _sentinel || publishedAtFieldValue == null,
@@ -554,12 +696,11 @@ class _$BookModelDocumentReference
       textFormat == _sentinel || textFormatFieldValue == null,
       "Cannot specify both textFormat and textFormatFieldValue",
     );
+    assert(
+      updatedAt == _sentinel || updatedAtFieldValue == null,
+      "Cannot specify both updatedAt and updatedAtFieldValue",
+    );
     final json = {
-      if (authors != _sentinel)
-        _$BookModelFieldMap['authors']!:
-            _$BookModelPerFieldToJson.authors(authors as List<String>),
-      if (authorsFieldValue != null)
-        _$BookModelFieldMap['authors']!: authorsFieldValue,
       if (description != _sentinel)
         _$BookModelFieldMap['description']!:
             _$BookModelPerFieldToJson.description(description as String),
@@ -579,16 +720,16 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.language(language as String),
       if (languageFieldValue != null)
         _$BookModelFieldMap['language']!: languageFieldValue,
-      if (price != _sentinel)
-        _$BookModelFieldMap['price']!:
-            _$BookModelPerFieldToJson.price(price as double),
-      if (priceFieldValue != null)
-        _$BookModelFieldMap['price']!: priceFieldValue,
       if (resume != _sentinel)
         _$BookModelFieldMap['resume']!:
             _$BookModelPerFieldToJson.resume(resume as String),
       if (resumeFieldValue != null)
         _$BookModelFieldMap['resume']!: resumeFieldValue,
+      if (status != _sentinel)
+        _$BookModelFieldMap['status']!:
+            _$BookModelPerFieldToJson.status(status as String?),
+      if (statusFieldValue != null)
+        _$BookModelFieldMap['status']!: statusFieldValue,
       if (title != _sentinel)
         _$BookModelFieldMap['title']!:
             _$BookModelPerFieldToJson.title(title as String),
@@ -598,11 +739,26 @@ class _$BookModelDocumentReference
         _$BookModelFieldMap['type']!:
             _$BookModelPerFieldToJson.type(type as String),
       if (typeFieldValue != null) _$BookModelFieldMap['type']!: typeFieldValue,
+      if (actualEditionId != _sentinel)
+        _$BookModelFieldMap['actualEditionId']!: _$BookModelPerFieldToJson
+            .actualEditionId(actualEditionId as String?),
+      if (actualEditionIdFieldValue != null)
+        _$BookModelFieldMap['actualEditionId']!: actualEditionIdFieldValue,
+      if (assetId != _sentinel)
+        _$BookModelFieldMap['assetId']!:
+            _$BookModelPerFieldToJson.assetId(assetId as String?),
+      if (assetIdFieldValue != null)
+        _$BookModelFieldMap['assetId']!: assetIdFieldValue,
       if (audioFormat != _sentinel)
         _$BookModelFieldMap['audioFormat']!:
             _$BookModelPerFieldToJson.audioFormat(audioFormat as String?),
       if (audioFormatFieldValue != null)
         _$BookModelFieldMap['audioFormat']!: audioFormatFieldValue,
+      if (authors != _sentinel)
+        _$BookModelFieldMap['authors']!:
+            _$BookModelPerFieldToJson.authors(authors as String),
+      if (authorsFieldValue != null)
+        _$BookModelFieldMap['authors']!: authorsFieldValue,
       if (categoryId != _sentinel)
         _$BookModelFieldMap['categoryId']!:
             _$BookModelPerFieldToJson.categoryId(categoryId as String),
@@ -613,6 +769,11 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.coverUrl(coverUrl as String),
       if (coverUrlFieldValue != null)
         _$BookModelFieldMap['coverUrl']!: coverUrlFieldValue,
+      if (createdAt != _sentinel)
+        _$BookModelFieldMap['createdAt']!:
+            _$BookModelPerFieldToJson.createdAt(createdAt as DateTime?),
+      if (createdAtFieldValue != null)
+        _$BookModelFieldMap['createdAt']!: createdAtFieldValue,
       if (fileExtension != _sentinel)
         _$BookModelFieldMap['fileExtension']!:
             _$BookModelPerFieldToJson.fileExtension(fileExtension as String),
@@ -623,6 +784,16 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.fileMailUrl(fileMailUrl as String),
       if (fileMailUrlFieldValue != null)
         _$BookModelFieldMap['fileMailUrl']!: fileMailUrlFieldValue,
+      if (price != _sentinel)
+        _$BookModelFieldMap['price']!:
+            _$BookModelPerFieldToJson.price(price as double),
+      if (priceFieldValue != null)
+        _$BookModelFieldMap['price']!: priceFieldValue,
+      if (published != _sentinel)
+        _$BookModelFieldMap['published']!:
+            _$BookModelPerFieldToJson.published(published as bool),
+      if (publishedFieldValue != null)
+        _$BookModelFieldMap['published']!: publishedFieldValue,
       if (publishedAt != _sentinel)
         _$BookModelFieldMap['publishedAt']!:
             _$BookModelPerFieldToJson.publishedAt(publishedAt as DateTime),
@@ -643,6 +814,11 @@ class _$BookModelDocumentReference
             _$BookModelPerFieldToJson.textFormat(textFormat as String?),
       if (textFormatFieldValue != null)
         _$BookModelFieldMap['textFormat']!: textFormatFieldValue,
+      if (updatedAt != _sentinel)
+        _$BookModelFieldMap['updatedAt']!:
+            _$BookModelPerFieldToJson.updatedAt(updatedAt as DateTime?),
+      if (updatedAtFieldValue != null)
+        _$BookModelFieldMap['updatedAt']!: updatedAtFieldValue,
     };
 
     transaction.update(reference, json);
@@ -712,18 +888,6 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
-  BookModelQuery whereAuthors({
-    List<String>? isEqualTo,
-    List<String>? isNotEqualTo,
-    List<String>? isLessThan,
-    List<String>? isLessThanOrEqualTo,
-    List<String>? isGreaterThan,
-    List<String>? isGreaterThanOrEqualTo,
-    String? arrayContains,
-    List<String>? arrayContainsAny,
-    bool? isNull,
-  });
-
   BookModelQuery whereDescription({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -772,18 +936,6 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
-  BookModelQuery wherePrice({
-    double? isEqualTo,
-    double? isNotEqualTo,
-    double? isLessThan,
-    double? isLessThanOrEqualTo,
-    double? isGreaterThan,
-    double? isGreaterThanOrEqualTo,
-    List<double>? whereIn,
-    List<double>? whereNotIn,
-    bool? isNull,
-  });
-
   BookModelQuery whereResume({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -793,6 +945,18 @@ abstract class BookModelQuery
     String? isGreaterThanOrEqualTo,
     List<String>? whereIn,
     List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereStatus({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
     bool? isNull,
   });
 
@@ -820,6 +984,30 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
+  BookModelQuery whereActualEditionId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereAssetId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
   BookModelQuery whereAudioFormat({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -829,6 +1017,18 @@ abstract class BookModelQuery
     String? isGreaterThanOrEqualTo,
     List<String?>? whereIn,
     List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery whereAuthors({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
     bool? isNull,
   });
 
@@ -856,6 +1056,18 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
+  BookModelQuery whereCreatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  });
+
   BookModelQuery whereFileExtension({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -877,6 +1089,30 @@ abstract class BookModelQuery
     String? isGreaterThanOrEqualTo,
     List<String>? whereIn,
     List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery wherePrice({
+    double? isEqualTo,
+    double? isNotEqualTo,
+    double? isLessThan,
+    double? isLessThanOrEqualTo,
+    double? isGreaterThan,
+    double? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelQuery wherePublished({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
     bool? isNull,
   });
 
@@ -928,6 +1164,18 @@ abstract class BookModelQuery
     bool? isNull,
   });
 
+  BookModelQuery whereUpdatedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -967,18 +1215,6 @@ abstract class BookModelQuery
     String startAfter,
     String endAt,
     String endBefore,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  });
-
-  BookModelQuery orderByAuthors({
-    bool descending = false,
-    List<String> startAt,
-    List<String> startAfter,
-    List<String> endAt,
-    List<String> endBefore,
     BookModelDocumentSnapshot? startAtDocument,
     BookModelDocumentSnapshot? endAtDocument,
     BookModelDocumentSnapshot? endBeforeDocument,
@@ -1033,24 +1269,24 @@ abstract class BookModelQuery
     BookModelDocumentSnapshot? startAfterDocument,
   });
 
-  BookModelQuery orderByPrice({
-    bool descending = false,
-    double startAt,
-    double startAfter,
-    double endAt,
-    double endBefore,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  });
-
   BookModelQuery orderByResume({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByStatus({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     BookModelDocumentSnapshot? startAtDocument,
     BookModelDocumentSnapshot? endAtDocument,
     BookModelDocumentSnapshot? endBeforeDocument,
@@ -1081,12 +1317,48 @@ abstract class BookModelQuery
     BookModelDocumentSnapshot? startAfterDocument,
   });
 
+  BookModelQuery orderByActualEditionId({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByAssetId({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
   BookModelQuery orderByAudioFormat({
     bool descending = false,
     String? startAt,
     String? startAfter,
     String? endAt,
     String? endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByAuthors({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
     BookModelDocumentSnapshot? startAtDocument,
     BookModelDocumentSnapshot? endAtDocument,
     BookModelDocumentSnapshot? endBeforeDocument,
@@ -1117,6 +1389,18 @@ abstract class BookModelQuery
     BookModelDocumentSnapshot? startAfterDocument,
   });
 
+  BookModelQuery orderByCreatedAt({
+    bool descending = false,
+    DateTime? startAt,
+    DateTime? startAfter,
+    DateTime? endAt,
+    DateTime? endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
   BookModelQuery orderByFileExtension({
     bool descending = false,
     String startAt,
@@ -1135,6 +1419,30 @@ abstract class BookModelQuery
     String startAfter,
     String endAt,
     String endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByPrice({
+    bool descending = false,
+    double startAt,
+    double startAfter,
+    double endAt,
+    double endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByPublished({
+    bool descending = false,
+    bool startAt,
+    bool startAfter,
+    bool endAt,
+    bool endBefore,
     BookModelDocumentSnapshot? startAtDocument,
     BookModelDocumentSnapshot? endAtDocument,
     BookModelDocumentSnapshot? endBeforeDocument,
@@ -1183,6 +1491,18 @@ abstract class BookModelQuery
     String? startAfter,
     String? endAt,
     String? endBefore,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelQuery orderByUpdatedAt({
+    bool descending = false,
+    DateTime? startAt,
+    DateTime? startAfter,
+    DateTime? endAt,
+    DateTime? endBefore,
     BookModelDocumentSnapshot? startAtDocument,
     BookModelDocumentSnapshot? endAtDocument,
     BookModelDocumentSnapshot? endBeforeDocument,
@@ -1294,59 +1614,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
         whereIn: whereIn,
         whereNotIn: whereNotIn,
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
-  BookModelQuery whereAuthors({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains = _sentinel,
-    List<String>? arrayContainsAny,
-    bool? isNull,
-  }) {
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$BookModelFieldMap['authors']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.authors(isEqualTo as List<String>)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.authors(isNotEqualTo as List<String>)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$BookModelPerFieldToJson.authors(isLessThan as List<String>)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson
-                .authors(isLessThanOrEqualTo as List<String>)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$BookModelPerFieldToJson.authors(isGreaterThan as List<String>)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson
-                .authors(isGreaterThanOrEqualTo as List<String>)
-            : null,
-        arrayContains: arrayContains != null
-            ? (_$BookModelPerFieldToJson.authors([arrayContains as String])
-                    as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$BookModelPerFieldToJson.authors(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1537,50 +1804,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery wherePrice({
-    Object? isEqualTo = _sentinel,
-    Object? isNotEqualTo = _sentinel,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    List<double>? whereIn,
-    List<double>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$BookModelFieldMap['price']!,
-        isEqualTo: isEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.price(isEqualTo as double)
-            : null,
-        isNotEqualTo: isNotEqualTo != _sentinel
-            ? _$BookModelPerFieldToJson.price(isNotEqualTo as double)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$BookModelPerFieldToJson.price(isLessThan as double)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.price(isLessThanOrEqualTo as double)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$BookModelPerFieldToJson.price(isGreaterThan as double)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$BookModelPerFieldToJson.price(isGreaterThanOrEqualTo as double)
-            : null,
-        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.price(e)),
-        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.price(e)),
-        isNull: isNull ??
-            (isEqualTo == _sentinel ? false : null) ??
-            (isNotEqualTo == _sentinel ? true : null),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  @override
   BookModelQuery whereResume({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -1616,6 +1839,51 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
             : null,
         whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.resume(e)),
         whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.resume(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereStatus({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['status']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.status(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.status(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.status(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.status(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.status(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .status(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.status(e)),
+        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.status(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1713,6 +1981,101 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
+  BookModelQuery whereActualEditionId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['actualEditionId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.actualEditionId(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.actualEditionId(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.actualEditionId(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .actualEditionId(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson
+                .actualEditionId(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .actualEditionId(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$BookModelPerFieldToJson.actualEditionId(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookModelPerFieldToJson.actualEditionId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereAssetId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['assetId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.assetId(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.assetId(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.assetId(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.assetId(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.assetId(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .assetId(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.assetId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.assetId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   BookModelQuery whereAudioFormat({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -1751,6 +2114,52 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
         whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.audioFormat(e)),
         whereNotIn:
             whereNotIn?.map((e) => _$BookModelPerFieldToJson.audioFormat(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery whereAuthors({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['authors']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.authors(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.authors(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.authors(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.authors(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.authors(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .authors(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.authors(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.authors(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -1853,6 +2262,53 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
+  BookModelQuery whereCreatedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['createdAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.createdAt(isEqualTo as DateTime?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.createdAt(isNotEqualTo as DateTime?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.createdAt(isLessThan as DateTime?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .createdAt(isLessThanOrEqualTo as DateTime?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.createdAt(isGreaterThan as DateTime?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .createdAt(isGreaterThanOrEqualTo as DateTime?)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.createdAt(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.createdAt(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   BookModelQuery whereFileExtension({
     Object? isEqualTo = _sentinel,
     Object? isNotEqualTo = _sentinel,
@@ -1939,6 +2395,96 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
         whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.fileMailUrl(e)),
         whereNotIn:
             whereNotIn?.map((e) => _$BookModelPerFieldToJson.fileMailUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery wherePrice({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['price']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.price(isEqualTo as double)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.price(isNotEqualTo as double)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.price(isLessThan as double)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.price(isLessThanOrEqualTo as double)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.price(isGreaterThan as double)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.price(isGreaterThanOrEqualTo as double)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.price(e)),
+        whereNotIn: whereNotIn?.map((e) => _$BookModelPerFieldToJson.price(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery wherePublished({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['published']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.published(isEqualTo as bool)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.published(isNotEqualTo as bool)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.published(isLessThan as bool)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson.published(isLessThanOrEqualTo as bool)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.published(isGreaterThan as bool)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .published(isGreaterThanOrEqualTo as bool)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.published(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.published(e)),
         isNull: isNull ??
             (isEqualTo == _sentinel ? false : null) ??
             (isNotEqualTo == _sentinel ? true : null),
@@ -2137,6 +2683,53 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
+  BookModelQuery whereUpdatedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelFieldMap['updatedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.updatedAt(isEqualTo as DateTime?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelPerFieldToJson.updatedAt(isNotEqualTo as DateTime?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelPerFieldToJson.updatedAt(isLessThan as DateTime?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .updatedAt(isLessThanOrEqualTo as DateTime?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelPerFieldToJson.updatedAt(isGreaterThan as DateTime?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelPerFieldToJson
+                .updatedAt(isGreaterThanOrEqualTo as DateTime?)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelPerFieldToJson.updatedAt(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelPerFieldToJson.updatedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   BookModelQuery orderByFieldPath(
     Object fieldPath, {
     bool descending = false,
@@ -2224,79 +2817,6 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }) {
     final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
         descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$BookModelQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  @override
-  BookModelQuery orderByAuthors({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    BookModelDocumentSnapshot? startAtDocument,
-    BookModelDocumentSnapshot? endAtDocument,
-    BookModelDocumentSnapshot? endBeforeDocument,
-    BookModelDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$BookModelFieldMap['authors']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2649,7 +3169,7 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery orderByPrice({
+  BookModelQuery orderByResume({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -2660,8 +3180,8 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
     BookModelDocumentSnapshot? endBeforeDocument,
     BookModelDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor.orderBy(_$BookModelFieldMap['price']!,
-        descending: descending);
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['resume']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2722,7 +3242,7 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
-  BookModelQuery orderByResume({
+  BookModelQuery orderByStatus({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -2734,7 +3254,7 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
     BookModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor
-        .orderBy(_$BookModelFieldMap['resume']!, descending: descending);
+        .orderBy(_$BookModelFieldMap['status']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2941,6 +3461,153 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
+  BookModelQuery orderByActualEditionId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelFieldMap['actualEditionId']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByAssetId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['assetId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
   BookModelQuery orderByAudioFormat({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2954,6 +3621,79 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }) {
     final query = $referenceWithoutCursor
         .orderBy(_$BookModelFieldMap['audioFormat']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByAuthors({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['authors']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -3160,6 +3900,79 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
+  BookModelQuery orderByCreatedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['createdAt']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
   BookModelQuery orderByFileExtension({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -3246,6 +4059,152 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }) {
     final query = $referenceWithoutCursor
         .orderBy(_$BookModelFieldMap['fileMailUrl']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByPrice({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(_$BookModelFieldMap['price']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelQuery orderByPublished({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['published']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -3598,6 +4557,79 @@ class _$BookModelQuery extends QueryReference<BookModel, BookModelQuerySnapshot>
   }
 
   @override
+  BookModelQuery orderByUpdatedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelDocumentSnapshot? startAtDocument,
+    BookModelDocumentSnapshot? endAtDocument,
+    BookModelDocumentSnapshot? endBeforeDocument,
+    BookModelDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelFieldMap['updatedAt']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
   bool operator ==(Object other) {
     return other is _$BookModelQuery &&
         other.runtimeType == runtimeType &&
@@ -3691,13 +4723,5268 @@ class BookModelQueryDocumentSnapshot
   }
 }
 
+/// A collection reference object can be used for adding documents,
+/// getting document references, and querying for documents
+/// (using the methods inherited from Query).
+abstract class BookModelEditionCollectionReference
+    implements
+        BookModelEditionQuery,
+        FirestoreCollectionReference<BookModelEdition,
+            BookModelEditionQuerySnapshot> {
+  factory BookModelEditionCollectionReference(
+    DocumentReference<BookModel> parent,
+  ) = _$BookModelEditionCollectionReference;
+
+  static BookModelEdition fromFirestore(
+    DocumentSnapshot<Map<String, Object?>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return _$BookModelEditionFromJson({'id': snapshot.id, ...?snapshot.data()});
+  }
+
+  static Map<String, Object?> toFirestore(
+    BookModelEdition value,
+    SetOptions? options,
+  ) {
+    return {..._$BookModelEditionToJson(value)}..remove('id');
+  }
+
+  @override
+  CollectionReference<BookModelEdition> get reference;
+
+  /// A reference to the containing [BookModelDocumentReference] if this is a subcollection.
+  BookModelDocumentReference get parent;
+
+  @override
+  BookModelEditionDocumentReference doc([String? id]);
+
+  /// Add a new document to this collection with the specified data,
+  /// assigning it a document ID automatically.
+  Future<BookModelEditionDocumentReference> add(BookModelEdition value);
+}
+
+class _$BookModelEditionCollectionReference extends _$BookModelEditionQuery
+    implements BookModelEditionCollectionReference {
+  factory _$BookModelEditionCollectionReference(
+    DocumentReference<BookModel> parent,
+  ) {
+    return _$BookModelEditionCollectionReference._(
+      BookModelDocumentReference(parent),
+      parent.collection('editions').withConverter(
+            fromFirestore: BookModelEditionCollectionReference.fromFirestore,
+            toFirestore: BookModelEditionCollectionReference.toFirestore,
+          ),
+    );
+  }
+
+  _$BookModelEditionCollectionReference._(
+    this.parent,
+    CollectionReference<BookModelEdition> reference,
+  ) : super(reference, $referenceWithoutCursor: reference);
+
+  @override
+  final BookModelDocumentReference parent;
+
+  String get path => reference.path;
+
+  @override
+  CollectionReference<BookModelEdition> get reference =>
+      super.reference as CollectionReference<BookModelEdition>;
+
+  @override
+  BookModelEditionDocumentReference doc([String? id]) {
+    assert(
+      id == null || id.split('/').length == 1,
+      'The document ID cannot be from a different collection',
+    );
+    return BookModelEditionDocumentReference(
+      reference.doc(id),
+    );
+  }
+
+  @override
+  Future<BookModelEditionDocumentReference> add(BookModelEdition value) {
+    return reference
+        .add(value)
+        .then((ref) => BookModelEditionDocumentReference(ref));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$BookModelEditionCollectionReference &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+abstract class BookModelEditionDocumentReference
+    extends FirestoreDocumentReference<BookModelEdition,
+        BookModelEditionDocumentSnapshot> {
+  factory BookModelEditionDocumentReference(
+          DocumentReference<BookModelEdition> reference) =
+      _$BookModelEditionDocumentReference;
+
+  DocumentReference<BookModelEdition> get reference;
+
+  /// A reference to the [BookModelEditionCollectionReference] containing this document.
+  BookModelEditionCollectionReference get parent {
+    return _$BookModelEditionCollectionReference(
+      reference.parent.parent!.withConverter<BookModel>(
+        fromFirestore: BookModelCollectionReference.fromFirestore,
+        toFirestore: BookModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<BookModelEditionDocumentSnapshot> snapshots();
+
+  @override
+  Future<BookModelEditionDocumentSnapshot> get([GetOptions? options]);
+
+  @override
+  Future<void> delete();
+
+  /// Updates data on the document. Data will be merged with any existing
+  /// document data.
+  ///
+  /// If no document exists yet, the update will fail.
+  Future<void> update({
+    String description,
+    FieldValue descriptionFieldValue,
+    String isbn,
+    FieldValue isbnFieldValue,
+    String language,
+    FieldValue languageFieldValue,
+    String resume,
+    FieldValue resumeFieldValue,
+    String title,
+    FieldValue titleFieldValue,
+    String type,
+    FieldValue typeFieldValue,
+    String authors,
+    FieldValue authorsFieldValue,
+    String coverUrl,
+    FieldValue coverUrlFieldValue,
+    String fileExtension,
+    FieldValue fileExtensionFieldValue,
+    String fileMailUrl,
+    FieldValue fileMailUrlFieldValue,
+    double price,
+    FieldValue priceFieldValue,
+    bool published,
+    FieldValue publishedFieldValue,
+    DateTime publishedAt,
+    FieldValue publishedAtFieldValue,
+  });
+
+  /// Updates fields in the current document using the transaction API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void transactionUpdate(
+    Transaction transaction, {
+    String description,
+    FieldValue descriptionFieldValue,
+    String isbn,
+    FieldValue isbnFieldValue,
+    String language,
+    FieldValue languageFieldValue,
+    String resume,
+    FieldValue resumeFieldValue,
+    String title,
+    FieldValue titleFieldValue,
+    String type,
+    FieldValue typeFieldValue,
+    String authors,
+    FieldValue authorsFieldValue,
+    String coverUrl,
+    FieldValue coverUrlFieldValue,
+    String fileExtension,
+    FieldValue fileExtensionFieldValue,
+    String fileMailUrl,
+    FieldValue fileMailUrlFieldValue,
+    double price,
+    FieldValue priceFieldValue,
+    bool published,
+    FieldValue publishedFieldValue,
+    DateTime publishedAt,
+    FieldValue publishedAtFieldValue,
+  });
+}
+
+class _$BookModelEditionDocumentReference extends FirestoreDocumentReference<
+        BookModelEdition, BookModelEditionDocumentSnapshot>
+    implements BookModelEditionDocumentReference {
+  _$BookModelEditionDocumentReference(this.reference);
+
+  @override
+  final DocumentReference<BookModelEdition> reference;
+
+  /// A reference to the [BookModelEditionCollectionReference] containing this document.
+  BookModelEditionCollectionReference get parent {
+    return _$BookModelEditionCollectionReference(
+      reference.parent.parent!.withConverter<BookModel>(
+        fromFirestore: BookModelCollectionReference.fromFirestore,
+        toFirestore: BookModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<BookModelEditionDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(BookModelEditionDocumentSnapshot._);
+  }
+
+  @override
+  Future<BookModelEditionDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(BookModelEditionDocumentSnapshot._);
+  }
+
+  @override
+  Future<BookModelEditionDocumentSnapshot> transactionGet(
+      Transaction transaction) {
+    return transaction.get(reference).then(BookModelEditionDocumentSnapshot._);
+  }
+
+  Future<void> update({
+    Object? description = _sentinel,
+    FieldValue? descriptionFieldValue,
+    Object? isbn = _sentinel,
+    FieldValue? isbnFieldValue,
+    Object? language = _sentinel,
+    FieldValue? languageFieldValue,
+    Object? resume = _sentinel,
+    FieldValue? resumeFieldValue,
+    Object? title = _sentinel,
+    FieldValue? titleFieldValue,
+    Object? type = _sentinel,
+    FieldValue? typeFieldValue,
+    Object? authors = _sentinel,
+    FieldValue? authorsFieldValue,
+    Object? coverUrl = _sentinel,
+    FieldValue? coverUrlFieldValue,
+    Object? fileExtension = _sentinel,
+    FieldValue? fileExtensionFieldValue,
+    Object? fileMailUrl = _sentinel,
+    FieldValue? fileMailUrlFieldValue,
+    Object? price = _sentinel,
+    FieldValue? priceFieldValue,
+    Object? published = _sentinel,
+    FieldValue? publishedFieldValue,
+    Object? publishedAt = _sentinel,
+    FieldValue? publishedAtFieldValue,
+  }) async {
+    assert(
+      description == _sentinel || descriptionFieldValue == null,
+      "Cannot specify both description and descriptionFieldValue",
+    );
+    assert(
+      isbn == _sentinel || isbnFieldValue == null,
+      "Cannot specify both isbn and isbnFieldValue",
+    );
+    assert(
+      language == _sentinel || languageFieldValue == null,
+      "Cannot specify both language and languageFieldValue",
+    );
+    assert(
+      resume == _sentinel || resumeFieldValue == null,
+      "Cannot specify both resume and resumeFieldValue",
+    );
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      type == _sentinel || typeFieldValue == null,
+      "Cannot specify both type and typeFieldValue",
+    );
+    assert(
+      authors == _sentinel || authorsFieldValue == null,
+      "Cannot specify both authors and authorsFieldValue",
+    );
+    assert(
+      coverUrl == _sentinel || coverUrlFieldValue == null,
+      "Cannot specify both coverUrl and coverUrlFieldValue",
+    );
+    assert(
+      fileExtension == _sentinel || fileExtensionFieldValue == null,
+      "Cannot specify both fileExtension and fileExtensionFieldValue",
+    );
+    assert(
+      fileMailUrl == _sentinel || fileMailUrlFieldValue == null,
+      "Cannot specify both fileMailUrl and fileMailUrlFieldValue",
+    );
+    assert(
+      price == _sentinel || priceFieldValue == null,
+      "Cannot specify both price and priceFieldValue",
+    );
+    assert(
+      published == _sentinel || publishedFieldValue == null,
+      "Cannot specify both published and publishedFieldValue",
+    );
+    assert(
+      publishedAt == _sentinel || publishedAtFieldValue == null,
+      "Cannot specify both publishedAt and publishedAtFieldValue",
+    );
+    final json = {
+      if (description != _sentinel)
+        _$BookModelEditionFieldMap['description']!:
+            _$BookModelEditionPerFieldToJson.description(description as String),
+      if (descriptionFieldValue != null)
+        _$BookModelEditionFieldMap['description']!: descriptionFieldValue,
+      if (isbn != _sentinel)
+        _$BookModelEditionFieldMap['isbn']!:
+            _$BookModelEditionPerFieldToJson.isbn(isbn as String),
+      if (isbnFieldValue != null)
+        _$BookModelEditionFieldMap['isbn']!: isbnFieldValue,
+      if (language != _sentinel)
+        _$BookModelEditionFieldMap['language']!:
+            _$BookModelEditionPerFieldToJson.language(language as String),
+      if (languageFieldValue != null)
+        _$BookModelEditionFieldMap['language']!: languageFieldValue,
+      if (resume != _sentinel)
+        _$BookModelEditionFieldMap['resume']!:
+            _$BookModelEditionPerFieldToJson.resume(resume as String),
+      if (resumeFieldValue != null)
+        _$BookModelEditionFieldMap['resume']!: resumeFieldValue,
+      if (title != _sentinel)
+        _$BookModelEditionFieldMap['title']!:
+            _$BookModelEditionPerFieldToJson.title(title as String),
+      if (titleFieldValue != null)
+        _$BookModelEditionFieldMap['title']!: titleFieldValue,
+      if (type != _sentinel)
+        _$BookModelEditionFieldMap['type']!:
+            _$BookModelEditionPerFieldToJson.type(type as String),
+      if (typeFieldValue != null)
+        _$BookModelEditionFieldMap['type']!: typeFieldValue,
+      if (authors != _sentinel)
+        _$BookModelEditionFieldMap['authors']!:
+            _$BookModelEditionPerFieldToJson.authors(authors as String),
+      if (authorsFieldValue != null)
+        _$BookModelEditionFieldMap['authors']!: authorsFieldValue,
+      if (coverUrl != _sentinel)
+        _$BookModelEditionFieldMap['coverUrl']!:
+            _$BookModelEditionPerFieldToJson.coverUrl(coverUrl as String),
+      if (coverUrlFieldValue != null)
+        _$BookModelEditionFieldMap['coverUrl']!: coverUrlFieldValue,
+      if (fileExtension != _sentinel)
+        _$BookModelEditionFieldMap['fileExtension']!:
+            _$BookModelEditionPerFieldToJson
+                .fileExtension(fileExtension as String),
+      if (fileExtensionFieldValue != null)
+        _$BookModelEditionFieldMap['fileExtension']!: fileExtensionFieldValue,
+      if (fileMailUrl != _sentinel)
+        _$BookModelEditionFieldMap['fileMailUrl']!:
+            _$BookModelEditionPerFieldToJson.fileMailUrl(fileMailUrl as String),
+      if (fileMailUrlFieldValue != null)
+        _$BookModelEditionFieldMap['fileMailUrl']!: fileMailUrlFieldValue,
+      if (price != _sentinel)
+        _$BookModelEditionFieldMap['price']!:
+            _$BookModelEditionPerFieldToJson.price(price as double),
+      if (priceFieldValue != null)
+        _$BookModelEditionFieldMap['price']!: priceFieldValue,
+      if (published != _sentinel)
+        _$BookModelEditionFieldMap['published']!:
+            _$BookModelEditionPerFieldToJson.published(published as bool),
+      if (publishedFieldValue != null)
+        _$BookModelEditionFieldMap['published']!: publishedFieldValue,
+      if (publishedAt != _sentinel)
+        _$BookModelEditionFieldMap['publishedAt']!:
+            _$BookModelEditionPerFieldToJson
+                .publishedAt(publishedAt as DateTime),
+      if (publishedAtFieldValue != null)
+        _$BookModelEditionFieldMap['publishedAt']!: publishedAtFieldValue,
+    };
+
+    return reference.update(json);
+  }
+
+  void transactionUpdate(
+    Transaction transaction, {
+    Object? description = _sentinel,
+    FieldValue? descriptionFieldValue,
+    Object? isbn = _sentinel,
+    FieldValue? isbnFieldValue,
+    Object? language = _sentinel,
+    FieldValue? languageFieldValue,
+    Object? resume = _sentinel,
+    FieldValue? resumeFieldValue,
+    Object? title = _sentinel,
+    FieldValue? titleFieldValue,
+    Object? type = _sentinel,
+    FieldValue? typeFieldValue,
+    Object? authors = _sentinel,
+    FieldValue? authorsFieldValue,
+    Object? coverUrl = _sentinel,
+    FieldValue? coverUrlFieldValue,
+    Object? fileExtension = _sentinel,
+    FieldValue? fileExtensionFieldValue,
+    Object? fileMailUrl = _sentinel,
+    FieldValue? fileMailUrlFieldValue,
+    Object? price = _sentinel,
+    FieldValue? priceFieldValue,
+    Object? published = _sentinel,
+    FieldValue? publishedFieldValue,
+    Object? publishedAt = _sentinel,
+    FieldValue? publishedAtFieldValue,
+  }) {
+    assert(
+      description == _sentinel || descriptionFieldValue == null,
+      "Cannot specify both description and descriptionFieldValue",
+    );
+    assert(
+      isbn == _sentinel || isbnFieldValue == null,
+      "Cannot specify both isbn and isbnFieldValue",
+    );
+    assert(
+      language == _sentinel || languageFieldValue == null,
+      "Cannot specify both language and languageFieldValue",
+    );
+    assert(
+      resume == _sentinel || resumeFieldValue == null,
+      "Cannot specify both resume and resumeFieldValue",
+    );
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      type == _sentinel || typeFieldValue == null,
+      "Cannot specify both type and typeFieldValue",
+    );
+    assert(
+      authors == _sentinel || authorsFieldValue == null,
+      "Cannot specify both authors and authorsFieldValue",
+    );
+    assert(
+      coverUrl == _sentinel || coverUrlFieldValue == null,
+      "Cannot specify both coverUrl and coverUrlFieldValue",
+    );
+    assert(
+      fileExtension == _sentinel || fileExtensionFieldValue == null,
+      "Cannot specify both fileExtension and fileExtensionFieldValue",
+    );
+    assert(
+      fileMailUrl == _sentinel || fileMailUrlFieldValue == null,
+      "Cannot specify both fileMailUrl and fileMailUrlFieldValue",
+    );
+    assert(
+      price == _sentinel || priceFieldValue == null,
+      "Cannot specify both price and priceFieldValue",
+    );
+    assert(
+      published == _sentinel || publishedFieldValue == null,
+      "Cannot specify both published and publishedFieldValue",
+    );
+    assert(
+      publishedAt == _sentinel || publishedAtFieldValue == null,
+      "Cannot specify both publishedAt and publishedAtFieldValue",
+    );
+    final json = {
+      if (description != _sentinel)
+        _$BookModelEditionFieldMap['description']!:
+            _$BookModelEditionPerFieldToJson.description(description as String),
+      if (descriptionFieldValue != null)
+        _$BookModelEditionFieldMap['description']!: descriptionFieldValue,
+      if (isbn != _sentinel)
+        _$BookModelEditionFieldMap['isbn']!:
+            _$BookModelEditionPerFieldToJson.isbn(isbn as String),
+      if (isbnFieldValue != null)
+        _$BookModelEditionFieldMap['isbn']!: isbnFieldValue,
+      if (language != _sentinel)
+        _$BookModelEditionFieldMap['language']!:
+            _$BookModelEditionPerFieldToJson.language(language as String),
+      if (languageFieldValue != null)
+        _$BookModelEditionFieldMap['language']!: languageFieldValue,
+      if (resume != _sentinel)
+        _$BookModelEditionFieldMap['resume']!:
+            _$BookModelEditionPerFieldToJson.resume(resume as String),
+      if (resumeFieldValue != null)
+        _$BookModelEditionFieldMap['resume']!: resumeFieldValue,
+      if (title != _sentinel)
+        _$BookModelEditionFieldMap['title']!:
+            _$BookModelEditionPerFieldToJson.title(title as String),
+      if (titleFieldValue != null)
+        _$BookModelEditionFieldMap['title']!: titleFieldValue,
+      if (type != _sentinel)
+        _$BookModelEditionFieldMap['type']!:
+            _$BookModelEditionPerFieldToJson.type(type as String),
+      if (typeFieldValue != null)
+        _$BookModelEditionFieldMap['type']!: typeFieldValue,
+      if (authors != _sentinel)
+        _$BookModelEditionFieldMap['authors']!:
+            _$BookModelEditionPerFieldToJson.authors(authors as String),
+      if (authorsFieldValue != null)
+        _$BookModelEditionFieldMap['authors']!: authorsFieldValue,
+      if (coverUrl != _sentinel)
+        _$BookModelEditionFieldMap['coverUrl']!:
+            _$BookModelEditionPerFieldToJson.coverUrl(coverUrl as String),
+      if (coverUrlFieldValue != null)
+        _$BookModelEditionFieldMap['coverUrl']!: coverUrlFieldValue,
+      if (fileExtension != _sentinel)
+        _$BookModelEditionFieldMap['fileExtension']!:
+            _$BookModelEditionPerFieldToJson
+                .fileExtension(fileExtension as String),
+      if (fileExtensionFieldValue != null)
+        _$BookModelEditionFieldMap['fileExtension']!: fileExtensionFieldValue,
+      if (fileMailUrl != _sentinel)
+        _$BookModelEditionFieldMap['fileMailUrl']!:
+            _$BookModelEditionPerFieldToJson.fileMailUrl(fileMailUrl as String),
+      if (fileMailUrlFieldValue != null)
+        _$BookModelEditionFieldMap['fileMailUrl']!: fileMailUrlFieldValue,
+      if (price != _sentinel)
+        _$BookModelEditionFieldMap['price']!:
+            _$BookModelEditionPerFieldToJson.price(price as double),
+      if (priceFieldValue != null)
+        _$BookModelEditionFieldMap['price']!: priceFieldValue,
+      if (published != _sentinel)
+        _$BookModelEditionFieldMap['published']!:
+            _$BookModelEditionPerFieldToJson.published(published as bool),
+      if (publishedFieldValue != null)
+        _$BookModelEditionFieldMap['published']!: publishedFieldValue,
+      if (publishedAt != _sentinel)
+        _$BookModelEditionFieldMap['publishedAt']!:
+            _$BookModelEditionPerFieldToJson
+                .publishedAt(publishedAt as DateTime),
+      if (publishedAtFieldValue != null)
+        _$BookModelEditionFieldMap['publishedAt']!: publishedAtFieldValue,
+    };
+
+    transaction.update(reference, json);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is BookModelEditionDocumentReference &&
+        other.runtimeType == runtimeType &&
+        other.parent == parent &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, id);
+}
+
+abstract class BookModelEditionQuery
+    implements QueryReference<BookModelEdition, BookModelEditionQuerySnapshot> {
+  @override
+  BookModelEditionQuery limit(int limit);
+
+  @override
+  BookModelEditionQuery limitToLast(int limit);
+
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  BookModelEditionQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereDescription({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereIsbn({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereLanguage({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereResume({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereTitle({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereType({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereAuthors({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereCoverUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereFileExtension({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery whereFileMailUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery wherePrice({
+    double? isEqualTo,
+    double? isNotEqualTo,
+    double? isLessThan,
+    double? isLessThanOrEqualTo,
+    double? isGreaterThan,
+    double? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery wherePublished({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookModelEditionQuery wherePublishedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  /// Perform an order query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of order queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```
+  BookModelEditionQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByDocumentId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByDescription({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByIsbn({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByLanguage({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByResume({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByTitle({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByType({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByAuthors({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByCoverUrl({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByFileExtension({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByFileMailUrl({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByPrice({
+    bool descending = false,
+    double startAt,
+    double startAfter,
+    double endAt,
+    double endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByPublished({
+    bool descending = false,
+    bool startAt,
+    bool startAfter,
+    bool endAt,
+    bool endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+
+  BookModelEditionQuery orderByPublishedAt({
+    bool descending = false,
+    DateTime startAt,
+    DateTime startAfter,
+    DateTime endAt,
+    DateTime endBefore,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  });
+}
+
+class _$BookModelEditionQuery
+    extends QueryReference<BookModelEdition, BookModelEditionQuerySnapshot>
+    implements BookModelEditionQuery {
+  _$BookModelEditionQuery(
+    this._collection, {
+    required Query<BookModelEdition> $referenceWithoutCursor,
+    $QueryCursor $queryCursor = const $QueryCursor(),
+  }) : super(
+          $referenceWithoutCursor: $referenceWithoutCursor,
+          $queryCursor: $queryCursor,
+        );
+
+  final CollectionReference<Object?> _collection;
+
+  @override
+  Stream<BookModelEditionQuerySnapshot> snapshots([SnapshotOptions? options]) {
+    return reference
+        .snapshots()
+        .map(BookModelEditionQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Future<BookModelEditionQuerySnapshot> get([GetOptions? options]) {
+    return reference
+        .get(options)
+        .then(BookModelEditionQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  BookModelEditionQuery limit(int limit) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery limitToLast(int limit) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereDescription({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['description']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.description(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson
+                .description(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.description(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .description(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson
+                .description(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .description(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.description(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.description(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereIsbn({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['isbn']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.isbn(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.isbn(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.isbn(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .isbn(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.isbn(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .isbn(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelEditionPerFieldToJson.isbn(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelEditionPerFieldToJson.isbn(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereLanguage({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['language']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.language(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.language(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.language(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .language(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.language(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .language(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$BookModelEditionPerFieldToJson.language(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.language(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereResume({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['resume']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.resume(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.resume(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.resume(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .resume(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.resume(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .resume(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$BookModelEditionPerFieldToJson.resume(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelEditionPerFieldToJson.resume(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereTitle({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['title']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.title(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.title(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.title(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .title(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.title(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .title(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelEditionPerFieldToJson.title(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelEditionPerFieldToJson.title(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereType({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['type']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.type(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.type(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.type(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .type(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.type(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .type(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelEditionPerFieldToJson.type(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelEditionPerFieldToJson.type(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereAuthors({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['authors']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.authors(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.authors(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.authors(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .authors(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.authors(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .authors(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$BookModelEditionPerFieldToJson.authors(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelEditionPerFieldToJson.authors(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereCoverUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['coverUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.coverUrl(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.coverUrl(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.coverUrl(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .coverUrl(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.coverUrl(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .coverUrl(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$BookModelEditionPerFieldToJson.coverUrl(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.coverUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereFileExtension({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['fileExtension']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson
+                .fileExtension(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson
+                .fileExtension(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson
+                .fileExtension(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .fileExtension(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson
+                .fileExtension(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .fileExtension(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.fileExtension(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.fileExtension(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery whereFileMailUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['fileMailUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.fileMailUrl(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson
+                .fileMailUrl(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.fileMailUrl(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .fileMailUrl(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson
+                .fileMailUrl(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .fileMailUrl(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.fileMailUrl(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.fileMailUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery wherePrice({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['price']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.price(isEqualTo as double)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.price(isNotEqualTo as double)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.price(isLessThan as double)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .price(isLessThanOrEqualTo as double)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.price(isGreaterThan as double)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .price(isGreaterThanOrEqualTo as double)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookModelEditionPerFieldToJson.price(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookModelEditionPerFieldToJson.price(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery wherePublished({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['published']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.published(isEqualTo as bool)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson.published(isNotEqualTo as bool)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson.published(isLessThan as bool)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .published(isLessThanOrEqualTo as bool)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson.published(isGreaterThan as bool)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .published(isGreaterThanOrEqualTo as bool)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$BookModelEditionPerFieldToJson.published(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.published(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery wherePublishedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookModelEditionFieldMap['publishedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson
+                .publishedAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookModelEditionPerFieldToJson
+                .publishedAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookModelEditionPerFieldToJson
+                .publishedAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .publishedAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookModelEditionPerFieldToJson
+                .publishedAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookModelEditionPerFieldToJson
+                .publishedAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.publishedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookModelEditionPerFieldToJson.publishedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query =
+        $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByDocumentId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByDescription({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelEditionFieldMap['description']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByIsbn({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelEditionFieldMap['isbn']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByLanguage({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelEditionFieldMap['language']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByResume({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelEditionFieldMap['resume']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByTitle({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelEditionFieldMap['title']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByType({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelEditionFieldMap['type']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByAuthors({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelEditionFieldMap['authors']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByCoverUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelEditionFieldMap['coverUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByFileExtension({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelEditionFieldMap['fileExtension']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByFileMailUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelEditionFieldMap['fileMailUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByPrice({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookModelEditionFieldMap['price']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByPublished({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelEditionFieldMap['published']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookModelEditionQuery orderByPublishedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookModelEditionDocumentSnapshot? startAtDocument,
+    BookModelEditionDocumentSnapshot? endAtDocument,
+    BookModelEditionDocumentSnapshot? endBeforeDocument,
+    BookModelEditionDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookModelEditionFieldMap['publishedAt']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookModelEditionQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$BookModelEditionQuery &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+class BookModelEditionDocumentSnapshot
+    extends FirestoreDocumentSnapshot<BookModelEdition> {
+  BookModelEditionDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<BookModelEdition> snapshot;
+
+  @override
+  BookModelEditionDocumentReference get reference {
+    return BookModelEditionDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final BookModelEdition? data;
+}
+
+class BookModelEditionQuerySnapshot extends FirestoreQuerySnapshot<
+    BookModelEdition, BookModelEditionQueryDocumentSnapshot> {
+  BookModelEditionQuerySnapshot._(
+    this.snapshot,
+    this.docs,
+    this.docChanges,
+  );
+
+  factory BookModelEditionQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<BookModelEdition> snapshot,
+  ) {
+    final docs =
+        snapshot.docs.map(BookModelEditionQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        BookModelEditionDocumentSnapshot._,
+      );
+    }).toList();
+
+    return BookModelEditionQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<BookModelEditionDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    BookModelEditionDocumentSnapshot Function(DocumentSnapshot<T> doc)
+        decodeDoc,
+  ) {
+    return FirestoreDocumentChange<BookModelEditionDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
+
+  final QuerySnapshot<BookModelEdition> snapshot;
+
+  @override
+  final List<BookModelEditionQueryDocumentSnapshot> docs;
+
+  @override
+  final List<FirestoreDocumentChange<BookModelEditionDocumentSnapshot>>
+      docChanges;
+}
+
+class BookModelEditionQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<BookModelEdition>
+    implements BookModelEditionDocumentSnapshot {
+  BookModelEditionQueryDocumentSnapshot._(this.snapshot)
+      : data = snapshot.data();
+
+  @override
+  final QueryDocumentSnapshot<BookModelEdition> snapshot;
+
+  @override
+  final BookModelEdition data;
+
+  @override
+  BookModelEditionDocumentReference get reference {
+    return BookModelEditionDocumentReference(snapshot.reference);
+  }
+}
+
+/// A collection reference object can be used for adding documents,
+/// getting document references, and querying for documents
+/// (using the methods inherited from Query).
+abstract class BookReviewCollectionReference
+    implements
+        BookReviewQuery,
+        FirestoreCollectionReference<BookReview, BookReviewQuerySnapshot> {
+  factory BookReviewCollectionReference(
+    DocumentReference<BookModel> parent,
+  ) = _$BookReviewCollectionReference;
+
+  static BookReview fromFirestore(
+    DocumentSnapshot<Map<String, Object?>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return _$BookReviewFromJson({'id': snapshot.id, ...?snapshot.data()});
+  }
+
+  static Map<String, Object?> toFirestore(
+    BookReview value,
+    SetOptions? options,
+  ) {
+    return {..._$BookReviewToJson(value)}..remove('id');
+  }
+
+  @override
+  CollectionReference<BookReview> get reference;
+
+  /// A reference to the containing [BookModelDocumentReference] if this is a subcollection.
+  BookModelDocumentReference get parent;
+
+  @override
+  BookReviewDocumentReference doc([String? id]);
+
+  /// Add a new document to this collection with the specified data,
+  /// assigning it a document ID automatically.
+  Future<BookReviewDocumentReference> add(BookReview value);
+}
+
+class _$BookReviewCollectionReference extends _$BookReviewQuery
+    implements BookReviewCollectionReference {
+  factory _$BookReviewCollectionReference(
+    DocumentReference<BookModel> parent,
+  ) {
+    return _$BookReviewCollectionReference._(
+      BookModelDocumentReference(parent),
+      parent.collection('reviews').withConverter(
+            fromFirestore: BookReviewCollectionReference.fromFirestore,
+            toFirestore: BookReviewCollectionReference.toFirestore,
+          ),
+    );
+  }
+
+  _$BookReviewCollectionReference._(
+    this.parent,
+    CollectionReference<BookReview> reference,
+  ) : super(reference, $referenceWithoutCursor: reference);
+
+  @override
+  final BookModelDocumentReference parent;
+
+  String get path => reference.path;
+
+  @override
+  CollectionReference<BookReview> get reference =>
+      super.reference as CollectionReference<BookReview>;
+
+  @override
+  BookReviewDocumentReference doc([String? id]) {
+    assert(
+      id == null || id.split('/').length == 1,
+      'The document ID cannot be from a different collection',
+    );
+    return BookReviewDocumentReference(
+      reference.doc(id),
+    );
+  }
+
+  @override
+  Future<BookReviewDocumentReference> add(BookReview value) {
+    return reference.add(value).then((ref) => BookReviewDocumentReference(ref));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$BookReviewCollectionReference &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+abstract class BookReviewDocumentReference
+    extends FirestoreDocumentReference<BookReview, BookReviewDocumentSnapshot> {
+  factory BookReviewDocumentReference(DocumentReference<BookReview> reference) =
+      _$BookReviewDocumentReference;
+
+  DocumentReference<BookReview> get reference;
+
+  /// A reference to the [BookReviewCollectionReference] containing this document.
+  BookReviewCollectionReference get parent {
+    return _$BookReviewCollectionReference(
+      reference.parent.parent!.withConverter<BookModel>(
+        fromFirestore: BookModelCollectionReference.fromFirestore,
+        toFirestore: BookModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<BookReviewDocumentSnapshot> snapshots();
+
+  @override
+  Future<BookReviewDocumentSnapshot> get([GetOptions? options]);
+
+  @override
+  Future<void> delete();
+
+  /// Updates data on the document. Data will be merged with any existing
+  /// document data.
+  ///
+  /// If no document exists yet, the update will fail.
+  Future<void> update({
+    String address,
+    FieldValue addressFieldValue,
+    String? comment,
+    FieldValue commentFieldValue,
+    String hash,
+    FieldValue hashFieldValue,
+    double rating,
+    FieldValue ratingFieldValue,
+    DateTime addedAt,
+    FieldValue addedAtFieldValue,
+    String assetId,
+    FieldValue assetIdFieldValue,
+    String bookId,
+    FieldValue bookIdFieldValue,
+    String deviceId,
+    FieldValue deviceIdFieldValue,
+    String userId,
+    FieldValue userIdFieldValue,
+    String? userProfilePictureUrl,
+    FieldValue userProfilePictureUrlFieldValue,
+  });
+
+  /// Updates fields in the current document using the transaction API.
+  ///
+  /// The update will fail if applied to a document that does not exist.
+  void transactionUpdate(
+    Transaction transaction, {
+    String address,
+    FieldValue addressFieldValue,
+    String? comment,
+    FieldValue commentFieldValue,
+    String hash,
+    FieldValue hashFieldValue,
+    double rating,
+    FieldValue ratingFieldValue,
+    DateTime addedAt,
+    FieldValue addedAtFieldValue,
+    String assetId,
+    FieldValue assetIdFieldValue,
+    String bookId,
+    FieldValue bookIdFieldValue,
+    String deviceId,
+    FieldValue deviceIdFieldValue,
+    String userId,
+    FieldValue userIdFieldValue,
+    String? userProfilePictureUrl,
+    FieldValue userProfilePictureUrlFieldValue,
+  });
+}
+
+class _$BookReviewDocumentReference
+    extends FirestoreDocumentReference<BookReview, BookReviewDocumentSnapshot>
+    implements BookReviewDocumentReference {
+  _$BookReviewDocumentReference(this.reference);
+
+  @override
+  final DocumentReference<BookReview> reference;
+
+  /// A reference to the [BookReviewCollectionReference] containing this document.
+  BookReviewCollectionReference get parent {
+    return _$BookReviewCollectionReference(
+      reference.parent.parent!.withConverter<BookModel>(
+        fromFirestore: BookModelCollectionReference.fromFirestore,
+        toFirestore: BookModelCollectionReference.toFirestore,
+      ),
+    );
+  }
+
+  @override
+  Stream<BookReviewDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(BookReviewDocumentSnapshot._);
+  }
+
+  @override
+  Future<BookReviewDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(BookReviewDocumentSnapshot._);
+  }
+
+  @override
+  Future<BookReviewDocumentSnapshot> transactionGet(Transaction transaction) {
+    return transaction.get(reference).then(BookReviewDocumentSnapshot._);
+  }
+
+  Future<void> update({
+    Object? address = _sentinel,
+    FieldValue? addressFieldValue,
+    Object? comment = _sentinel,
+    FieldValue? commentFieldValue,
+    Object? hash = _sentinel,
+    FieldValue? hashFieldValue,
+    Object? rating = _sentinel,
+    FieldValue? ratingFieldValue,
+    Object? addedAt = _sentinel,
+    FieldValue? addedAtFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
+    Object? bookId = _sentinel,
+    FieldValue? bookIdFieldValue,
+    Object? deviceId = _sentinel,
+    FieldValue? deviceIdFieldValue,
+    Object? userId = _sentinel,
+    FieldValue? userIdFieldValue,
+    Object? userProfilePictureUrl = _sentinel,
+    FieldValue? userProfilePictureUrlFieldValue,
+  }) async {
+    assert(
+      address == _sentinel || addressFieldValue == null,
+      "Cannot specify both address and addressFieldValue",
+    );
+    assert(
+      comment == _sentinel || commentFieldValue == null,
+      "Cannot specify both comment and commentFieldValue",
+    );
+    assert(
+      hash == _sentinel || hashFieldValue == null,
+      "Cannot specify both hash and hashFieldValue",
+    );
+    assert(
+      rating == _sentinel || ratingFieldValue == null,
+      "Cannot specify both rating and ratingFieldValue",
+    );
+    assert(
+      addedAt == _sentinel || addedAtFieldValue == null,
+      "Cannot specify both addedAt and addedAtFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
+    );
+    assert(
+      bookId == _sentinel || bookIdFieldValue == null,
+      "Cannot specify both bookId and bookIdFieldValue",
+    );
+    assert(
+      deviceId == _sentinel || deviceIdFieldValue == null,
+      "Cannot specify both deviceId and deviceIdFieldValue",
+    );
+    assert(
+      userId == _sentinel || userIdFieldValue == null,
+      "Cannot specify both userId and userIdFieldValue",
+    );
+    assert(
+      userProfilePictureUrl == _sentinel ||
+          userProfilePictureUrlFieldValue == null,
+      "Cannot specify both userProfilePictureUrl and userProfilePictureUrlFieldValue",
+    );
+    final json = {
+      if (address != _sentinel)
+        _$BookReviewFieldMap['address']!:
+            _$BookReviewPerFieldToJson.address(address as String),
+      if (addressFieldValue != null)
+        _$BookReviewFieldMap['address']!: addressFieldValue,
+      if (comment != _sentinel)
+        _$BookReviewFieldMap['comment']!:
+            _$BookReviewPerFieldToJson.comment(comment as String?),
+      if (commentFieldValue != null)
+        _$BookReviewFieldMap['comment']!: commentFieldValue,
+      if (hash != _sentinel)
+        _$BookReviewFieldMap['hash']!:
+            _$BookReviewPerFieldToJson.hash(hash as String),
+      if (hashFieldValue != null) _$BookReviewFieldMap['hash']!: hashFieldValue,
+      if (rating != _sentinel)
+        _$BookReviewFieldMap['rating']!:
+            _$BookReviewPerFieldToJson.rating(rating as double),
+      if (ratingFieldValue != null)
+        _$BookReviewFieldMap['rating']!: ratingFieldValue,
+      if (addedAt != _sentinel)
+        _$BookReviewFieldMap['addedAt']!:
+            _$BookReviewPerFieldToJson.addedAt(addedAt as DateTime),
+      if (addedAtFieldValue != null)
+        _$BookReviewFieldMap['addedAt']!: addedAtFieldValue,
+      if (assetId != _sentinel)
+        _$BookReviewFieldMap['assetId']!:
+            _$BookReviewPerFieldToJson.assetId(assetId as String),
+      if (assetIdFieldValue != null)
+        _$BookReviewFieldMap['assetId']!: assetIdFieldValue,
+      if (bookId != _sentinel)
+        _$BookReviewFieldMap['bookId']!:
+            _$BookReviewPerFieldToJson.bookId(bookId as String),
+      if (bookIdFieldValue != null)
+        _$BookReviewFieldMap['bookId']!: bookIdFieldValue,
+      if (deviceId != _sentinel)
+        _$BookReviewFieldMap['deviceId']!:
+            _$BookReviewPerFieldToJson.deviceId(deviceId as String),
+      if (deviceIdFieldValue != null)
+        _$BookReviewFieldMap['deviceId']!: deviceIdFieldValue,
+      if (userId != _sentinel)
+        _$BookReviewFieldMap['userId']!:
+            _$BookReviewPerFieldToJson.userId(userId as String),
+      if (userIdFieldValue != null)
+        _$BookReviewFieldMap['userId']!: userIdFieldValue,
+      if (userProfilePictureUrl != _sentinel)
+        _$BookReviewFieldMap['userProfilePictureUrl']!:
+            _$BookReviewPerFieldToJson
+                .userProfilePictureUrl(userProfilePictureUrl as String?),
+      if (userProfilePictureUrlFieldValue != null)
+        _$BookReviewFieldMap['userProfilePictureUrl']!:
+            userProfilePictureUrlFieldValue,
+    };
+
+    return reference.update(json);
+  }
+
+  void transactionUpdate(
+    Transaction transaction, {
+    Object? address = _sentinel,
+    FieldValue? addressFieldValue,
+    Object? comment = _sentinel,
+    FieldValue? commentFieldValue,
+    Object? hash = _sentinel,
+    FieldValue? hashFieldValue,
+    Object? rating = _sentinel,
+    FieldValue? ratingFieldValue,
+    Object? addedAt = _sentinel,
+    FieldValue? addedAtFieldValue,
+    Object? assetId = _sentinel,
+    FieldValue? assetIdFieldValue,
+    Object? bookId = _sentinel,
+    FieldValue? bookIdFieldValue,
+    Object? deviceId = _sentinel,
+    FieldValue? deviceIdFieldValue,
+    Object? userId = _sentinel,
+    FieldValue? userIdFieldValue,
+    Object? userProfilePictureUrl = _sentinel,
+    FieldValue? userProfilePictureUrlFieldValue,
+  }) {
+    assert(
+      address == _sentinel || addressFieldValue == null,
+      "Cannot specify both address and addressFieldValue",
+    );
+    assert(
+      comment == _sentinel || commentFieldValue == null,
+      "Cannot specify both comment and commentFieldValue",
+    );
+    assert(
+      hash == _sentinel || hashFieldValue == null,
+      "Cannot specify both hash and hashFieldValue",
+    );
+    assert(
+      rating == _sentinel || ratingFieldValue == null,
+      "Cannot specify both rating and ratingFieldValue",
+    );
+    assert(
+      addedAt == _sentinel || addedAtFieldValue == null,
+      "Cannot specify both addedAt and addedAtFieldValue",
+    );
+    assert(
+      assetId == _sentinel || assetIdFieldValue == null,
+      "Cannot specify both assetId and assetIdFieldValue",
+    );
+    assert(
+      bookId == _sentinel || bookIdFieldValue == null,
+      "Cannot specify both bookId and bookIdFieldValue",
+    );
+    assert(
+      deviceId == _sentinel || deviceIdFieldValue == null,
+      "Cannot specify both deviceId and deviceIdFieldValue",
+    );
+    assert(
+      userId == _sentinel || userIdFieldValue == null,
+      "Cannot specify both userId and userIdFieldValue",
+    );
+    assert(
+      userProfilePictureUrl == _sentinel ||
+          userProfilePictureUrlFieldValue == null,
+      "Cannot specify both userProfilePictureUrl and userProfilePictureUrlFieldValue",
+    );
+    final json = {
+      if (address != _sentinel)
+        _$BookReviewFieldMap['address']!:
+            _$BookReviewPerFieldToJson.address(address as String),
+      if (addressFieldValue != null)
+        _$BookReviewFieldMap['address']!: addressFieldValue,
+      if (comment != _sentinel)
+        _$BookReviewFieldMap['comment']!:
+            _$BookReviewPerFieldToJson.comment(comment as String?),
+      if (commentFieldValue != null)
+        _$BookReviewFieldMap['comment']!: commentFieldValue,
+      if (hash != _sentinel)
+        _$BookReviewFieldMap['hash']!:
+            _$BookReviewPerFieldToJson.hash(hash as String),
+      if (hashFieldValue != null) _$BookReviewFieldMap['hash']!: hashFieldValue,
+      if (rating != _sentinel)
+        _$BookReviewFieldMap['rating']!:
+            _$BookReviewPerFieldToJson.rating(rating as double),
+      if (ratingFieldValue != null)
+        _$BookReviewFieldMap['rating']!: ratingFieldValue,
+      if (addedAt != _sentinel)
+        _$BookReviewFieldMap['addedAt']!:
+            _$BookReviewPerFieldToJson.addedAt(addedAt as DateTime),
+      if (addedAtFieldValue != null)
+        _$BookReviewFieldMap['addedAt']!: addedAtFieldValue,
+      if (assetId != _sentinel)
+        _$BookReviewFieldMap['assetId']!:
+            _$BookReviewPerFieldToJson.assetId(assetId as String),
+      if (assetIdFieldValue != null)
+        _$BookReviewFieldMap['assetId']!: assetIdFieldValue,
+      if (bookId != _sentinel)
+        _$BookReviewFieldMap['bookId']!:
+            _$BookReviewPerFieldToJson.bookId(bookId as String),
+      if (bookIdFieldValue != null)
+        _$BookReviewFieldMap['bookId']!: bookIdFieldValue,
+      if (deviceId != _sentinel)
+        _$BookReviewFieldMap['deviceId']!:
+            _$BookReviewPerFieldToJson.deviceId(deviceId as String),
+      if (deviceIdFieldValue != null)
+        _$BookReviewFieldMap['deviceId']!: deviceIdFieldValue,
+      if (userId != _sentinel)
+        _$BookReviewFieldMap['userId']!:
+            _$BookReviewPerFieldToJson.userId(userId as String),
+      if (userIdFieldValue != null)
+        _$BookReviewFieldMap['userId']!: userIdFieldValue,
+      if (userProfilePictureUrl != _sentinel)
+        _$BookReviewFieldMap['userProfilePictureUrl']!:
+            _$BookReviewPerFieldToJson
+                .userProfilePictureUrl(userProfilePictureUrl as String?),
+      if (userProfilePictureUrlFieldValue != null)
+        _$BookReviewFieldMap['userProfilePictureUrl']!:
+            userProfilePictureUrlFieldValue,
+    };
+
+    transaction.update(reference, json);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is BookReviewDocumentReference &&
+        other.runtimeType == runtimeType &&
+        other.parent == parent &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parent, id);
+}
+
+abstract class BookReviewQuery
+    implements QueryReference<BookReview, BookReviewQuerySnapshot> {
+  @override
+  BookReviewQuery limit(int limit);
+
+  @override
+  BookReviewQuery limitToLast(int limit);
+
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  BookReviewQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereAddress({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereComment({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereHash({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereRating({
+    double? isEqualTo,
+    double? isNotEqualTo,
+    double? isLessThan,
+    double? isLessThanOrEqualTo,
+    double? isGreaterThan,
+    double? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereAddedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereAssetId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereBookId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereDeviceId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereUserId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  BookReviewQuery whereUserProfilePictureUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  });
+
+  /// Perform an order query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of order queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.orderByFieldPath(
+  ///   FieldPath.fromString('title'),
+  ///   startAt: 'title',
+  /// );
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.orderByTitle(startAt: 'title');
+  /// ```
+  BookReviewQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByDocumentId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByAddress({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByComment({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByHash({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByRating({
+    bool descending = false,
+    double startAt,
+    double startAfter,
+    double endAt,
+    double endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByAddedAt({
+    bool descending = false,
+    DateTime startAt,
+    DateTime startAfter,
+    DateTime endAt,
+    DateTime endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByAssetId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByBookId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByDeviceId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByUserId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+
+  BookReviewQuery orderByUserProfilePictureUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  });
+}
+
+class _$BookReviewQuery
+    extends QueryReference<BookReview, BookReviewQuerySnapshot>
+    implements BookReviewQuery {
+  _$BookReviewQuery(
+    this._collection, {
+    required Query<BookReview> $referenceWithoutCursor,
+    $QueryCursor $queryCursor = const $QueryCursor(),
+  }) : super(
+          $referenceWithoutCursor: $referenceWithoutCursor,
+          $queryCursor: $queryCursor,
+        );
+
+  final CollectionReference<Object?> _collection;
+
+  @override
+  Stream<BookReviewQuerySnapshot> snapshots([SnapshotOptions? options]) {
+    return reference
+        .snapshots()
+        .map(BookReviewQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  Future<BookReviewQuerySnapshot> get([GetOptions? options]) {
+    return reference
+        .get(options)
+        .then(BookReviewQuerySnapshot._fromQuerySnapshot);
+  }
+
+  @override
+  BookReviewQuery limit(int limit) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery limitToLast(int limit) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereAddress({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['address']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.address(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.address(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.address(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.address(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.address(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .address(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.address(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookReviewPerFieldToJson.address(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereComment({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['comment']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.comment(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.comment(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.comment(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.comment(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.comment(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .comment(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.comment(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookReviewPerFieldToJson.comment(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereHash({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['hash']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.hash(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.hash(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.hash(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.hash(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.hash(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.hash(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.hash(e)),
+        whereNotIn: whereNotIn?.map((e) => _$BookReviewPerFieldToJson.hash(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereRating({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<double>? whereIn,
+    List<double>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['rating']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.rating(isEqualTo as double)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.rating(isNotEqualTo as double)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.rating(isLessThan as double)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.rating(isLessThanOrEqualTo as double)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.rating(isGreaterThan as double)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .rating(isGreaterThanOrEqualTo as double)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.rating(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookReviewPerFieldToJson.rating(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereAddedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['addedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.addedAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.addedAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.addedAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .addedAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.addedAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .addedAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.addedAt(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookReviewPerFieldToJson.addedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereAssetId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['assetId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.assetId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.assetId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.assetId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.assetId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.assetId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .assetId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.assetId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookReviewPerFieldToJson.assetId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereBookId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['bookId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.bookId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.bookId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.bookId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.bookId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.bookId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .bookId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.bookId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookReviewPerFieldToJson.bookId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereDeviceId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['deviceId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.deviceId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.deviceId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.deviceId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.deviceId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.deviceId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .deviceId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.deviceId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookReviewPerFieldToJson.deviceId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereUserId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['userId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.userId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson.userId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson.userId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson.userId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson.userId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .userId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$BookReviewPerFieldToJson.userId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$BookReviewPerFieldToJson.userId(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery whereUserProfilePictureUrl({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$BookReviewFieldMap['userProfilePictureUrl']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson
+                .userProfilePictureUrl(isEqualTo as String?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$BookReviewPerFieldToJson
+                .userProfilePictureUrl(isNotEqualTo as String?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$BookReviewPerFieldToJson
+                .userProfilePictureUrl(isLessThan as String?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .userProfilePictureUrl(isLessThanOrEqualTo as String?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$BookReviewPerFieldToJson
+                .userProfilePictureUrl(isGreaterThan as String?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$BookReviewPerFieldToJson
+                .userProfilePictureUrl(isGreaterThanOrEqualTo as String?)
+            : null,
+        whereIn: whereIn
+            ?.map((e) => _$BookReviewPerFieldToJson.userProfilePictureUrl(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$BookReviewPerFieldToJson.userProfilePictureUrl(e)),
+        isNull: isNull ??
+            (isEqualTo == _sentinel ? false : null) ??
+            (isNotEqualTo == _sentinel ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByFieldPath(
+    Object fieldPath, {
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query =
+        $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByDocumentId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByAddress({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookReviewFieldMap['address']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByComment({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookReviewFieldMap['comment']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByHash({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(_$BookReviewFieldMap['hash']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByRating({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookReviewFieldMap['rating']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByAddedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookReviewFieldMap['addedAt']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByAssetId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookReviewFieldMap['assetId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByBookId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookReviewFieldMap['bookId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByDeviceId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookReviewFieldMap['deviceId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByUserId({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$BookReviewFieldMap['userId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  BookReviewQuery orderByUserProfilePictureUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    BookReviewDocumentSnapshot? startAtDocument,
+    BookReviewDocumentSnapshot? endAtDocument,
+    BookReviewDocumentSnapshot? endBeforeDocument,
+    BookReviewDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$BookReviewFieldMap['userProfilePictureUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$BookReviewQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is _$BookReviewQuery &&
+        other.runtimeType == runtimeType &&
+        other.reference == reference;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reference);
+}
+
+class BookReviewDocumentSnapshot extends FirestoreDocumentSnapshot<BookReview> {
+  BookReviewDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<BookReview> snapshot;
+
+  @override
+  BookReviewDocumentReference get reference {
+    return BookReviewDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final BookReview? data;
+}
+
+class BookReviewQuerySnapshot extends FirestoreQuerySnapshot<BookReview,
+    BookReviewQueryDocumentSnapshot> {
+  BookReviewQuerySnapshot._(
+    this.snapshot,
+    this.docs,
+    this.docChanges,
+  );
+
+  factory BookReviewQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<BookReview> snapshot,
+  ) {
+    final docs = snapshot.docs.map(BookReviewQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        BookReviewDocumentSnapshot._,
+      );
+    }).toList();
+
+    return BookReviewQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<BookReviewDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    BookReviewDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+  ) {
+    return FirestoreDocumentChange<BookReviewDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
+
+  final QuerySnapshot<BookReview> snapshot;
+
+  @override
+  final List<BookReviewQueryDocumentSnapshot> docs;
+
+  @override
+  final List<FirestoreDocumentChange<BookReviewDocumentSnapshot>> docChanges;
+}
+
+class BookReviewQueryDocumentSnapshot
+    extends FirestoreQueryDocumentSnapshot<BookReview>
+    implements BookReviewDocumentSnapshot {
+  BookReviewQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final QueryDocumentSnapshot<BookReview> snapshot;
+
+  @override
+  final BookReview data;
+
+  @override
+  BookReviewDocumentReference get reference {
+    return BookReviewDocumentReference(snapshot.reference);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
 BookModel _$BookModelFromJson(Map<String, dynamic> json) => BookModel(
-      authors:
-          (json['authors'] as List<dynamic>).map((e) => e as String).toList(),
+      authors: listOrStringToString(json['authors']),
       categoryId: json['category_id'] as String,
       coverUrl: json['cover_url'] as String,
       description: json['description'] as String,
@@ -3707,44 +9994,56 @@ BookModel _$BookModelFromJson(Map<String, dynamic> json) => BookModel(
       id: json['id'] as String,
       isbn: json['isbn'] as String,
       language: json['language'] as String,
-      price: (json['price'] as num).toDouble(),
+      price: numberToInt(json['price']),
       publishedAt: const FirestoreDateTimeConverter()
           .fromJson(json['published_at'] as Timestamp),
-      publisherId: json['publisher_id'] as String,
+      published: json['published'] as bool? ?? false,
+      publisherId: intToString(json['publisher_id']),
       publisherName: json['publisher_name'] as String,
       resume: json['resume'] as String,
       title: json['title'] as String,
       type: json['type'] as String,
+      actualEditionId: json['actual_edition_id'] as String?,
+      assetId: json['asset_id'] as String?,
       audioFormat: json['audio_format'] as String?,
+      createdAt: _$JsonConverterFromJson<Timestamp, DateTime>(
+          json['created_at'], const FirestoreDateTimeConverter().fromJson),
+      status: json['status'] as String?,
       textFormat: json['text_format'] as String?,
+      updatedAt: _$JsonConverterFromJson<Timestamp, DateTime>(
+          json['updated_at'], const FirestoreDateTimeConverter().fromJson),
     );
 
 const _$BookModelFieldMap = <String, String>{
-  'authors': 'authors',
   'description': 'description',
   'genre': 'genre',
   'isbn': 'isbn',
   'language': 'language',
-  'price': 'price',
   'resume': 'resume',
+  'status': 'status',
   'title': 'title',
   'type': 'type',
+  'actualEditionId': 'actual_edition_id',
+  'assetId': 'asset_id',
   'audioFormat': 'audio_format',
+  'authors': 'authors',
   'categoryId': 'category_id',
   'coverUrl': 'cover_url',
+  'createdAt': 'created_at',
   'fileExtension': 'file_extension',
   'fileMailUrl': 'file_main_url',
   'id': 'id',
+  'price': 'price',
+  'published': 'published',
   'publishedAt': 'published_at',
   'publisherId': 'publisher_id',
   'publisherName': 'publisher_name',
   'textFormat': 'text_format',
+  'updatedAt': 'updated_at',
 };
 
 // ignore: unused_element
 abstract class _$BookModelPerFieldToJson {
-  // ignore: unused_element
-  static Object? authors(List<String> instance) => instance;
   // ignore: unused_element
   static Object? description(String instance) => instance;
   // ignore: unused_element
@@ -3754,25 +10053,39 @@ abstract class _$BookModelPerFieldToJson {
   // ignore: unused_element
   static Object? language(String instance) => instance;
   // ignore: unused_element
-  static Object? price(double instance) => instance;
-  // ignore: unused_element
   static Object? resume(String instance) => instance;
+  // ignore: unused_element
+  static Object? status(String? instance) => instance;
   // ignore: unused_element
   static Object? title(String instance) => instance;
   // ignore: unused_element
   static Object? type(String instance) => instance;
   // ignore: unused_element
+  static Object? actualEditionId(String? instance) => instance;
+  // ignore: unused_element
+  static Object? assetId(String? instance) => instance;
+  // ignore: unused_element
   static Object? audioFormat(String? instance) => instance;
+  // ignore: unused_element
+  static Object? authors(String instance) => instance;
   // ignore: unused_element
   static Object? categoryId(String instance) => instance;
   // ignore: unused_element
   static Object? coverUrl(String instance) => instance;
+  // ignore: unused_element
+  static Object? createdAt(DateTime? instance) =>
+      _$JsonConverterToJson<Timestamp, DateTime>(
+          instance, const FirestoreDateTimeConverter().toJson);
   // ignore: unused_element
   static Object? fileExtension(String instance) => instance;
   // ignore: unused_element
   static Object? fileMailUrl(String instance) => instance;
   // ignore: unused_element
   static Object? id(String instance) => instance;
+  // ignore: unused_element
+  static Object? price(double instance) => instance;
+  // ignore: unused_element
+  static Object? published(bool instance) => instance;
   // ignore: unused_element
   static Object? publishedAt(DateTime instance) =>
       const FirestoreDateTimeConverter().toJson(instance);
@@ -3782,27 +10095,210 @@ abstract class _$BookModelPerFieldToJson {
   static Object? publisherName(String instance) => instance;
   // ignore: unused_element
   static Object? textFormat(String? instance) => instance;
+  // ignore: unused_element
+  static Object? updatedAt(DateTime? instance) =>
+      _$JsonConverterToJson<Timestamp, DateTime>(
+          instance, const FirestoreDateTimeConverter().toJson);
 }
 
 Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
-      'authors': instance.authors,
       'description': instance.description,
       'genre': instance.genre,
       'isbn': instance.isbn,
       'language': instance.language,
-      'price': instance.price,
       'resume': instance.resume,
+      'status': instance.status,
       'title': instance.title,
       'type': instance.type,
+      'actual_edition_id': instance.actualEditionId,
+      'asset_id': instance.assetId,
       'audio_format': instance.audioFormat,
+      'authors': instance.authors,
       'category_id': instance.categoryId,
       'cover_url': instance.coverUrl,
+      'created_at': _$JsonConverterToJson<Timestamp, DateTime>(
+          instance.createdAt, const FirestoreDateTimeConverter().toJson),
       'file_extension': instance.fileExtension,
       'file_main_url': instance.fileMailUrl,
       'id': instance.id,
+      'price': instance.price,
+      'published': instance.published,
       'published_at':
           const FirestoreDateTimeConverter().toJson(instance.publishedAt),
       'publisher_id': instance.publisherId,
       'publisher_name': instance.publisherName,
       'text_format': instance.textFormat,
+      'updated_at': _$JsonConverterToJson<Timestamp, DateTime>(
+          instance.updatedAt, const FirestoreDateTimeConverter().toJson),
+    };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
+
+BookModelEdition _$BookModelEditionFromJson(Map<String, dynamic> json) =>
+    BookModelEdition(
+      authors: listOrStringToString(json['authors']),
+      coverUrl: json['cover_url'] as String,
+      description: json['description'] as String,
+      fileExtension: json['file_extension'] as String,
+      fileMailUrl: json['file_main_url'] as String,
+      id: json['id'] as String,
+      isbn: json['isbn'] as String,
+      language: json['language'] as String,
+      price: numberToInt(json['price']),
+      published: json['published'] as bool? ?? false,
+      publishedAt: const FirestoreDateTimeConverter()
+          .fromJson(json['published_at'] as Timestamp),
+      resume: json['resume'] as String,
+      title: json['title'] as String,
+      type: json['type'] as String,
+    );
+
+const _$BookModelEditionFieldMap = <String, String>{
+  'description': 'description',
+  'isbn': 'isbn',
+  'language': 'language',
+  'resume': 'resume',
+  'title': 'title',
+  'type': 'type',
+  'authors': 'authors',
+  'coverUrl': 'cover_url',
+  'fileExtension': 'file_extension',
+  'fileMailUrl': 'file_main_url',
+  'id': 'id',
+  'price': 'price',
+  'published': 'published',
+  'publishedAt': 'published_at',
+};
+
+// ignore: unused_element
+abstract class _$BookModelEditionPerFieldToJson {
+  // ignore: unused_element
+  static Object? description(String instance) => instance;
+  // ignore: unused_element
+  static Object? isbn(String instance) => instance;
+  // ignore: unused_element
+  static Object? language(String instance) => instance;
+  // ignore: unused_element
+  static Object? resume(String instance) => instance;
+  // ignore: unused_element
+  static Object? title(String instance) => instance;
+  // ignore: unused_element
+  static Object? type(String instance) => instance;
+  // ignore: unused_element
+  static Object? authors(String instance) => instance;
+  // ignore: unused_element
+  static Object? coverUrl(String instance) => instance;
+  // ignore: unused_element
+  static Object? fileExtension(String instance) => instance;
+  // ignore: unused_element
+  static Object? fileMailUrl(String instance) => instance;
+  // ignore: unused_element
+  static Object? id(String instance) => instance;
+  // ignore: unused_element
+  static Object? price(double instance) => instance;
+  // ignore: unused_element
+  static Object? published(bool instance) => instance;
+  // ignore: unused_element
+  static Object? publishedAt(DateTime instance) =>
+      const FirestoreDateTimeConverter().toJson(instance);
+}
+
+Map<String, dynamic> _$BookModelEditionToJson(BookModelEdition instance) =>
+    <String, dynamic>{
+      'description': instance.description,
+      'isbn': instance.isbn,
+      'language': instance.language,
+      'resume': instance.resume,
+      'title': instance.title,
+      'type': instance.type,
+      'authors': instance.authors,
+      'cover_url': instance.coverUrl,
+      'file_extension': instance.fileExtension,
+      'file_main_url': instance.fileMailUrl,
+      'id': instance.id,
+      'price': instance.price,
+      'published': instance.published,
+      'published_at':
+          const FirestoreDateTimeConverter().toJson(instance.publishedAt),
+    };
+
+BookReview _$BookReviewFromJson(Map<String, dynamic> json) => BookReview(
+      addedAt: const FirestoreDateTimeConverter()
+          .fromJson(json['added_at'] as Timestamp),
+      address: json['address'] as String,
+      bookId: json['book_id'] as String,
+      assetId: json['asset_id'] as String,
+      deviceId: json['device_id'] as String,
+      id: json['id'] as String,
+      hash: json['hash'] as String,
+      userId: json['user_id'] as String,
+      rating: (json['rating'] as num).toDouble(),
+      comment: json['comment'] as String?,
+      userProfilePictureUrl: json['user_profile_picture_url'] as String?,
+    );
+
+const _$BookReviewFieldMap = <String, String>{
+  'address': 'address',
+  'comment': 'comment',
+  'hash': 'hash',
+  'rating': 'rating',
+  'addedAt': 'added_at',
+  'assetId': 'asset_id',
+  'bookId': 'book_id',
+  'deviceId': 'device_id',
+  'id': 'id',
+  'userId': 'user_id',
+  'userProfilePictureUrl': 'user_profile_picture_url',
+};
+
+// ignore: unused_element
+abstract class _$BookReviewPerFieldToJson {
+  // ignore: unused_element
+  static Object? address(String instance) => instance;
+  // ignore: unused_element
+  static Object? comment(String? instance) => instance;
+  // ignore: unused_element
+  static Object? hash(String instance) => instance;
+  // ignore: unused_element
+  static Object? rating(double instance) => instance;
+  // ignore: unused_element
+  static Object? addedAt(DateTime instance) =>
+      const FirestoreDateTimeConverter().toJson(instance);
+  // ignore: unused_element
+  static Object? assetId(String instance) => instance;
+  // ignore: unused_element
+  static Object? bookId(String instance) => instance;
+  // ignore: unused_element
+  static Object? deviceId(String instance) => instance;
+  // ignore: unused_element
+  static Object? id(String instance) => instance;
+  // ignore: unused_element
+  static Object? userId(String instance) => instance;
+  // ignore: unused_element
+  static Object? userProfilePictureUrl(String? instance) => instance;
+}
+
+Map<String, dynamic> _$BookReviewToJson(BookReview instance) =>
+    <String, dynamic>{
+      'address': instance.address,
+      'comment': instance.comment,
+      'hash': instance.hash,
+      'rating': instance.rating,
+      'added_at': const FirestoreDateTimeConverter().toJson(instance.addedAt),
+      'asset_id': instance.assetId,
+      'book_id': instance.bookId,
+      'device_id': instance.deviceId,
+      'id': instance.id,
+      'user_id': instance.userId,
+      'user_profile_picture_url': instance.userProfilePictureUrl,
     };

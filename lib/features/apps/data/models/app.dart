@@ -10,6 +10,9 @@ part 'app.g.dart';
 @Collection<ApplicationRelease>(
   '${ApplicationModel.collection}/*/${ApplicationRelease.collection}',
 )
+@Collection<AppReview>(
+  '${ApplicationModel.collection}/*/${AppReview.collection}',
+)
 final appsReferences = ApplicationModelCollectionReference();
 // @Collection<ApplicationModel>(ApplicationModel.collection)
 // @Collection<ItemNote>(
@@ -37,19 +40,26 @@ class ApplicationModel {
     required this.publisherName,
     required this.packageName,
     required this.privacyPolicyLinkUrl,
+    required this.published,
     required this.releaseFileMainUrl,
     required this.screenshots,
     required this.tags,
     required this.version,
+    required this.price,
+    this.actualReleaseId,
     this.address,
     this.appType = 'app',
+    this.assetId,
     this.coverImageRectUrl,
     this.notesAverage,
     this.notesCount,
     this.phone,
-    this.price,
+    this.publishedAt,
+    this.status,
     this.trailerVideoUrl,
+    this.unPublishedAt,
     this.updatedAt,
+    this.versionCode,
     this.websiteUrl,
   });
 
@@ -61,13 +71,19 @@ class ApplicationModel {
   final String email;
   final String name;
   final String? phone;
-  final double? price;
   final List<String> screenshots;
+  final String? status;
   final List<String> tags;
-  final String version;
+  final String? version;
+
+  @JsonKey(name: 'actual_release_id')
+  final String? actualReleaseId;
 
   @JsonKey(name: 'app_type')
   final String appType;
+
+  @JsonKey(name: 'asset_id')
+  final String? assetId;
 
   @JsonKey(name: 'category_id')
   final String categoryId;
@@ -75,7 +91,7 @@ class ApplicationModel {
   @JsonKey(name: 'category_name')
   final String categoryName;
 
-  @JsonKey(name: 'contains_ads')
+  @JsonKey(name: 'contains_ads', defaultValue: false)
   final bool containsAds;
 
   @JsonKey(name: 'cover_image_rect_url')
@@ -84,13 +100,13 @@ class ApplicationModel {
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
 
-  @JsonKey(name: 'app_download_size')
+  @JsonKey(name: 'app_download_size', defaultValue: 0)
   final int downloadSize;
 
-  @JsonKey(name: 'downloads_count')
+  @JsonKey(name: 'downloads_count', defaultValue: 0)
   final int downloadsCount;
 
-  @JsonKey(name: 'has_in_app_purchases')
+  @JsonKey(name: 'has_in_app_purchases', defaultValue: false)
   final bool hasInAppPurchases;
 
   @Id()
@@ -99,10 +115,10 @@ class ApplicationModel {
   @JsonKey(name: 'logo_image_square_url')
   final String logoImageSquareUrl;
 
-  @JsonKey(name: 'min_age_requirement')
+  @JsonKey(name: 'min_age_requirement', defaultValue: 18)
   final int minAgeRequirement;
 
-  @JsonKey(name: 'notes_average')
+  @JsonKey(name: 'notes_average', defaultValue: 0.0)
   final double? notesAverage;
 
   @JsonKey(name: 'notes_count')
@@ -111,33 +127,49 @@ class ApplicationModel {
   @JsonKey(name: 'package_name')
   final String packageName;
 
+  @JsonKey(fromJson: stringToDouble)
+  final double price;
+
   @JsonKey(name: 'privacy_policy_link_url')
   final String privacyPolicyLinkUrl;
 
-  @JsonKey(name: 'publisher_id')
+  @JsonKey(name: 'published', defaultValue: false)
+  final bool published;
+
+  @JsonKey(name: 'published_at')
+  final DateTime? publishedAt;
+
+  @JsonKey(name: 'publisher_id', fromJson: intToString)
   final String publisherId;
 
   @JsonKey(name: 'publisher_name')
   final String publisherName;
 
   @JsonKey(name: 'release_file_main_url')
-  final String releaseFileMainUrl;
+  final String? releaseFileMainUrl;
 
   @JsonKey(name: 'trailer_video_url')
   final String? trailerVideoUrl;
 
+  @JsonKey(name: 'un_published_at')
+  final DateTime? unPublishedAt;
+
   @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
+
+  @JsonKey(name: 'version_code')
+  final int? versionCode;
 
   @JsonKey(name: 'website_url')
   final String? websiteUrl;
 
   String get appSize {
-    if (downloadSize > 1000) {
-      return '${(downloadSize / 1000).toStringAsFixed(2)} MB';
+    return '${(downloadSize / 1000000).toStringAsFixed(2)} MB';
+    /* if (downloadSize > 1000000) {
+      return '${(downloadSize / 1000000).toStringAsFixed(2)} MB';
     } else {
       return '$downloadSize KB';
-    }
+    } */
   }
 
   String get title => name;
@@ -174,6 +206,12 @@ class ApplicationModel {
     String? trailerVideoUrl,
     DateTime? updatedAt,
     String? websiteUrl,
+    bool? published,
+    DateTime? publishedAt,
+    DateTime? unPublishedAt,
+    String? status,
+    String? actualReleaseId,
+    int? versionCode,
   }) {
     return ApplicationModel(
       address: address ?? this.address,
@@ -207,6 +245,12 @@ class ApplicationModel {
       trailerVideoUrl: trailerVideoUrl ?? this.trailerVideoUrl,
       updatedAt: updatedAt ?? this.updatedAt,
       websiteUrl: websiteUrl ?? this.websiteUrl,
+      published: published ?? this.published,
+      publishedAt: publishedAt ?? this.publishedAt,
+      unPublishedAt: unPublishedAt ?? this.unPublishedAt,
+      actualReleaseId: actualReleaseId ?? this.actualReleaseId,
+      status: status ?? this.status,
+      versionCode: versionCode ?? this.versionCode,
     );
   }
 }
@@ -220,20 +264,42 @@ enum ApplicationType {
 class ApplicationRelease {
   ApplicationRelease({
     required this.addedAt,
+    required this.applicationId,
+    required this.createdAt,
     required this.fileDownloadUrl,
     required this.id,
     required this.isBeta,
+    required this.published,
     required this.releasesNotes,
+    required this.size,
     required this.version,
+    this.downloadsCount,
+    this.logo,
+    this.publishedAt,
+    this.scanHash,
+    this.scanScore,
+    this.unPublishedAt,
+    this.versionCode,
   });
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   static const String collection = 'releases';
 
+  final String? logo;
+  final int size;
   final String version;
 
   @JsonKey(name: 'added_at')
   final DateTime addedAt;
+
+  @JsonKey(name: 'application_id')
+  final String applicationId;
+
+  @JsonKey(name: 'created_at')
+  final DateTime createdAt;
+
+  @JsonKey(name: 'downloads_count', defaultValue: 0)
+  final int? downloadsCount;
 
   @JsonKey(name: 'file_download_url')
   final String fileDownloadUrl;
@@ -244,52 +310,70 @@ class ApplicationRelease {
   @JsonKey(name: 'is_beta')
   final bool isBeta;
 
+  @JsonKey(name: 'published', defaultValue: false)
+  final bool published;
+
+  @JsonKey(name: 'published_at')
+  final DateTime? publishedAt;
+
   @JsonKey(name: 'releases_notes')
   final String releasesNotes;
+
+  @JsonKey(name: 'scan_hash')
+  final String? scanHash;
+
+  @JsonKey(name: 'scan_score')
+  final int? scanScore;
+
+  @JsonKey(name: 'un_published_at')
+  final DateTime? unPublishedAt;
+
+  @JsonKey(name: 'version_code')
+  final int? versionCode;
 }
 
 @firestoreSerializable
-class ItemNote {
-  ItemNote({
+class AppReview {
+  AppReview({
     required this.addedAt,
-    required this.comment,
-    required this.downVotesCount,
+    required this.address,
+    required this.applicationId,
+    required this.assetId,
+    required this.deviceId,
     required this.id,
-    required this.updatedAt,
-    required this.upVotesCount,
+    required this.hash,
     required this.userId,
-    required this.userName,
-    required this.userProfilePictureUrl,
-    required this.value,
+    required this.rating,
+    this.comment,
+    this.userProfilePictureUrl,
   });
 
   @JsonKey(includeFromJson: false, includeToJson: false)
-  static const String collection = 'notes';
+  static const String collection = 'reviews';
 
-  final String comment;
-  final double value;
+  final String address;
+  final String? comment;
+  final String hash;
+  final double rating;
 
   @JsonKey(name: 'added_at')
   final DateTime addedAt;
 
-  @JsonKey(name: 'down_votes_count')
-  final int downVotesCount;
+  @JsonKey(name: 'asset_id')
+  final String assetId;
+
+  @JsonKey(name: 'application_id')
+  final String applicationId;
+
+  @JsonKey(name: 'device_id')
+  final String deviceId;
 
   @Id()
   final String id;
 
-  @JsonKey(name: 'up_votes_count')
-  final int upVotesCount;
-
-  @JsonKey(name: 'updated_at')
-  final DateTime updatedAt;
-
   @JsonKey(name: 'user_id')
   final String userId;
 
-  @JsonKey(name: 'user_name')
-  final String userName;
-
   @JsonKey(name: 'user_profile_picture_url')
-  final String userProfilePictureUrl;
+  final String? userProfilePictureUrl;
 }

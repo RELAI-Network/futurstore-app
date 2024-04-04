@@ -35,11 +35,11 @@ class $Phase {
   }
 
   Finalization finalization() {
-    return const Finalization();
+    return Finalization();
   }
 
   Initialization initialization() {
-    return const Initialization();
+    return Initialization();
   }
 }
 
@@ -69,14 +69,16 @@ class $PhaseCodec with _i1.Codec<Phase> {
     switch (value.runtimeType) {
       case ApplyExtrinsic:
         (value as ApplyExtrinsic).encodeTo(output);
+        break;
       case Finalization:
         (value as Finalization).encodeTo(output);
+        break;
       case Initialization:
         (value as Initialization).encodeTo(output);
+        break;
       default:
         throw Exception(
-          'Phase: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'Phase: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 
@@ -91,8 +93,7 @@ class $PhaseCodec with _i1.Codec<Phase> {
         return 1;
       default:
         throw Exception(
-          'Phase: Unsupported "$value" of type "${value.runtimeType}"',
-        );
+            'Phase: Unsupported "$value" of type "${value.runtimeType}"');
     }
   }
 }
@@ -111,7 +112,7 @@ class ApplyExtrinsic extends Phase {
   Map<String, int> toJson() => {'ApplyExtrinsic': value0};
 
   int _sizeHint() {
-    var size = 1;
+    int size = 1;
     size = size + _i1.U32Codec.codec.sizeHint(value0);
     return size;
   }

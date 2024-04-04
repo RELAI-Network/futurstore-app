@@ -1,11 +1,12 @@
 name: futurstore
 description: "Futur Store Decentralized App store"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 0.0.1+1
+version: 0.0.3+9
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
 dependencies:
+  android_id: ^0.3.6
   austerity: ^1.2.0
   background_downloader: ^8.2.1
   bip39: ^1.0.6
@@ -17,26 +18,33 @@ dependencies:
   cupertino_icons: ^1.0.2
   dart_utils:
     git: https://github.com/bienvenuelisis/dart_utils.git
+  firebase_auth: ^4.18.0
   firebase_core: ^2.24.2
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_rating_bar: ^4.0.1
   flutter_riverpod: ^2.4.10
   flutter_secure_storage: ^9.0.0
+  flutter_svg: ^2.0.10+1
+  http: ^1.2.1
   installed_apps: ^1.5.0
   intl: ^0.18.1
+  jdenticon_dart: ^2.0.0
   json_annotation: ^4.8.1
   local_storage:
     path: packages/local_storage
-  polkadart: ^0.3.2
-  polkadart_cli: ^0.3.2
-  polkadart_keyring: ^0.3.0
+  polkadart: ^0.4.3
+  polkadart_cli: ^0.4.2
+  polkadart_keyring: ^0.4.3
   riverpod_annotation: ^2.3.4
   shared_preferences: ^2.2.2
+  ss58: ^1.1.2
 
 dev_dependencies:
   build_runner: ^2.4.8
+  change_app_package_name: ^1.1.0
   cloud_firestore_odm_generator: ^1.0.0-dev.83
   custom_lint: ^0.6.2
   flutter_test:
@@ -49,6 +57,9 @@ flutter:
   uses-material-design: true
   # Flutter Localization : https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization
   generate: true
+
+  assets:
+    - assets/images/
 
 polkadart:
   output_dir: lib/generated

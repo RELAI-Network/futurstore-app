@@ -13,14 +13,42 @@ class FirestoreBooksRepo extends IBooksRepo {
   late final BookModelCollectionReference _service;
 
   @override
-  Future<List<BookModel>> get({ItemCategory? category}) async {
+  Future<void> addReview(
+    String uuid,
+    String deviceId,
+    String address,
+    String bookId,
+    String assetId,
+    String hash,
+    double rating,
+    String? comment,
+    String? userProfilePictureUrl,
+  ) async {
     try {
-      return (category == null
-              ? (await _service.get())
-              : (await _service.whereCategoryId(isEqualTo: category.id).get()))
-          .docs
-          .map((e) => e.data)
-          .toList();
+      final docRef = _service.doc(bookId);
+      final application = await docRef.get();
+
+      if (!application.exists) {
+        throw Exception('Book not found');
+      }
+
+      if (await haveAddedReview(bookId, address)) return;
+
+      await docRef.reviews.doc(address).set(
+            BookReview(
+              addedAt: DateTime.now(),
+              address: address,
+              bookId: bookId,
+              assetId: assetId,
+              comment: comment,
+              deviceId: deviceId,
+              id: address,
+              hash: hash,
+              userId: uuid,
+              rating: rating,
+              userProfilePictureUrl: userProfilePictureUrl,
+            ),
+          );
     } catch (e) {
       debugPrint(e.toString());
 
@@ -32,6 +60,70 @@ class FirestoreBooksRepo extends IBooksRepo {
   Future<BookModel?> find(String id) async {
     try {
       return (await _service.doc(id).get()).data;
+    } catch (e) {
+      debugPrint(e.toString());
+
+      rethrow;
+    }
+  }
+
+  @override
+  Future<BookModel?> findBook(String bookId) {
+    try {
+      return _service.doc(bookId).get().then((value) {
+        return value.data;
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<BookModel>> get({ItemCategory? category}) async {
+    try {
+      return (category == null
+              ? (await _service.get())
+              : (await _service.whereCategoryId(isEqualTo: category.id).get()))
+          .docs
+          .map((e) => e.data)
+          .where(
+            (book) => book.published && book.assetId != null,
+          )
+          .toList();
+    } catch (e) {
+      debugPrint(e.toString());
+
+      rethrow;
+    }
+  }
+
+  @override
+  Future<bool> haveAddedReview(
+    String bookId,
+    String address,
+  ) {
+    try {
+      return _service.doc(bookId).reviews.doc(address).get().then((value) {
+        return value.exists;
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+
+      rethrow;
+    }
+  }
+
+  @override
+  Future<BookReview?> myReview(
+    String bookId,
+    String address,
+  ) {
+    try {
+      return _service.doc(bookId).reviews.doc(address).get().then((value) {
+        return value.data;
+      });
     } catch (e) {
       debugPrint(e.toString());
 

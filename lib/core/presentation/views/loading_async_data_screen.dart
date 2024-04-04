@@ -18,7 +18,7 @@ extension LoadingAsyncDataScreenX<T> on AsyncValue<T> {
   }
 
   Widget build({
-    required Widget Function(T? data) builder,
+    required Widget Function(T data) builder,
     required VoidCallback retryOnError,
     String? error,
   }) {
@@ -28,13 +28,13 @@ extension LoadingAsyncDataScreenX<T> on AsyncValue<T> {
       );
     }
 
-    if (hasError) {
+    if (hasError || value == null) {
       return LoadingErrorScreenView(
         error: error ?? this.error.toString(),
         retry: retryOnError,
       );
     }
 
-    return builder(value);
+    return builder(value as T);
   }
 }
