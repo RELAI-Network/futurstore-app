@@ -24,7 +24,7 @@
   "submitReview": "Submit",
   "pleaseEnterWalletMnemonicOrSeed": "Please enter wallet mnemonic or seed",
   "pleaseEnterYourWalletName": "Please enter wallet name.",
-  "noWalletsInStorage": "You haven't connect to any wallet on this device.",
+  "noWalletsInStorage": "No connected wallet in this device",
   "noAppCategoriesFound": "No apps categories found",
   "noGamesCategoriesFound": "No games categories found",
   "noBooksCategoriesFound": "No books categories found",
