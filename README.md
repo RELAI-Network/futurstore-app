@@ -35,7 +35,7 @@ by
 polkadart:
   output_dir: lib/generated
   chains:
-    local: ws://localhost:9944   // or 9945 depending on the port you chose
+    local: ws://localhost:9944   # or 9945 depending on the port you chose
 ```
 
 **NB**
