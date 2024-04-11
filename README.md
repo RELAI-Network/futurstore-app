@@ -46,7 +46,7 @@ On Windows, this generation can [cause](https://github.com/dart-lang/code_builde
 
 You first need to create a firebase project and [FlutterFire](https://firebase.google.com/docs/flutter/setup?platform=web) SDK (just follow step 1 and 2).
 
-There is an already built apks for both FuturStore and Kaggu that can be found and downloaded [here] (https://drive.google.com/drive/u/1/folders/1cfoUhpKXK46_57sAQPWOqfSUNhTFdEa7) and a [tutorial](https://blog.relai.network/futur-store-app-devnet-relai-network) that shows us how to use the app.
+There is an already built apks for both FuturStore and Kaggu that can be found and downloaded [here](https://drive.google.com/drive/u/1/folders/1cfoUhpKXK46_57sAQPWOqfSUNhTFdEa7) and a [tutorial](https://blog.relai.network/futur-store-app-devnet-relai-network) that shows us how to use the app.
 
 
 
