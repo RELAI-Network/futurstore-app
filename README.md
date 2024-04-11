@@ -2,18 +2,52 @@
 
 Flutter Mobile app client for accessing the Futur Store Decentralized marketplace.
 
-## Internationalization
+There is a compagnon app [Kaggu](https://github.com/RELAI-Network/kaggu) that is used to read the ebooks downloaded from the Futurstore app
 
-[Flutter internationalization](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization) and [arb_translate package](https://pub.dev/packages/arb_translate) are used to auto translate internationalization files, using Gemini. More [details](https://leancode.co/blog/flutter-app-localization-with-ai).
+The app interacts with Relai Network Devnet and also Firebase and some configs needs to be done to run the app.
 
-1. Provide internationationalization messages for main file (en).
-2. Run _arb_translate_ in command line to complete arb translations files for other languages.
-3. Run _flutter gen-l10n_ to generate dart translation files.
+First install [Flutter SDK](https://docs.flutter.dev/get-started/install) 
 
-Follow [setup](https://pub.dev/packages/arb_translate#installation) instructions, to make sure everything is setted up on your local machine.
+## Generating Relai Network Substrate types
 
-## Using Polkadart
+To interact with the blockchain the [polkadart](https://pub.dev/packages/polkadart) package is used.
 
-`dart run polkadart_cli:generate -v`
 
-This generation can [cause](https://github.com/dart-lang/code_builder/issues/383) [import issues](https://github.com/leonardocustodio/polkadart/issues/323). Running `sh .replace_backslash_in_dart_files.sh lib/generated` should [resolve them](https://github.com/encointer/encointer-wallet-flutter/blob/5197562a9f0c2103e40f69ee4b09b52a4197f9ca/scripts/replace_backslash_in_dart_files.sh).
+At the root of the project get first the packages by typing `pub get` and after
+
+`dart run polkadart_cli:generate -v` to generate the Relai Network Substrate chain types.
+
+The generated types should be located under `lib/generated/relai` folder.
+
+If you want to generatee types against a local version of [Relai Network](https://github.com/RELAI-Network/relai-network).
+
+You can modify the `pubspec.yaml` file and replace
+
+```yaml
+polkadart:
+  output_dir: lib/generated
+  chains:
+    relai_network: wss://rpc1.relai.network
+```
+by
+
+```yaml
+polkadart:
+  output_dir: lib/generated
+  chains:
+    local: ws://localhost:9944   // or 9945 depending on the port you chose
+```
+
+**NB**
+On Windows, this generation can [cause](https://github.com/dart-lang/code_builder/issues/383) [import issues](https://github.com/leonardocustodio/polkadart/issues/323). Running `sh .replace_backslash_in_dart_files.sh lib/generated` should [resolve them](https://github.com/encointer/encointer-wallet-flutter/blob/5197562a9f0c2103e40f69ee4b09b52a4197f9ca/scripts/replace_backslash_in_dart_files.sh).
+
+
+## Configuring Firebase
+
+You first need to create a firebase project and [FlutterFire](https://firebase.google.com/docs/flutter/setup?platform=web) SDK (just follow step 1 and 2).
+
+There is an already built apks for both FuturStore and Kaggu that can be found and downloaded [here] (https://drive.google.com/drive/u/1/folders/1cfoUhpKXK46_57sAQPWOqfSUNhTFdEa7) and a [tutorial](https://blog.relai.network/futur-store-app-devnet-relai-network) that shows us how to use the app.
+
+
+
+
