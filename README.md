@@ -1,12 +1,27 @@
 # Futur Store App 📱🎮📚
 
-Flutter Mobile app client for accessing the Futur Store Decentralized marketplace.
+[Flutter](https://docs.flutter.dev/get-started/install) Mobile app client for accessing the Futur Store Decentralized marketplace.
+
+## Environment Setup
+
+The FuturStore app and [Kaggu](https://github.com/RELAI-Network/kaggu) App are built in Flutter so get the [environment](https://docs.flutter.dev/get-started/install) ready first.
+
+### Running the app
+
+There are 2 maim files you can choose from when running the app:
+
+`lib/main.development.dart` and  `lib/main.production.dart`and you can choose one of them to run and test the app.
+
+Once you are set up and have your virtual device running for example
+
+```
+flutter run -t lib/main.development.dart
+```
 
 There is a compagnon app [Kaggu](https://github.com/RELAI-Network/kaggu) that is used to read the ebooks downloaded from the Futurstore app
 
 The app interacts with Relai Network Devnet and also Firebase and some configs needs to be done to run the app.
 
-First install [Flutter SDK](https://docs.flutter.dev/get-started/install) 
 
 ## Generating Relai Network Substrate types
 
@@ -47,7 +62,6 @@ On Windows, this generation can [cause](https://github.com/dart-lang/code_builde
 You first need to create a firebase project and [FlutterFire](https://firebase.google.com/docs/flutter/setup?platform=web) SDK (just follow step 1 and 2).
 
 There is an already built apks for both FuturStore and Kaggu that can be found and downloaded [here](https://drive.google.com/drive/u/1/folders/1cfoUhpKXK46_57sAQPWOqfSUNhTFdEa7) and a [tutorial](https://blog.relai.network/futur-store-app-devnet-relai-network) that shows us how to use the app.
-
 
 
 
